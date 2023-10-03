@@ -6,6 +6,7 @@ import routes from './routes'
 import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
 import { UserDetails } from './pages/UserDetails'
+import { PopularServiceCarousel } from './cmps/PopularServiceCarousel'
 
 export function RootCmp() {
 
@@ -18,6 +19,7 @@ export function RootCmp() {
                     <Route path="user/:id" element={<UserDetails />} />
                 </Routes>
             </main>
+            <PopularServiceCarousel />
             <AppFooter />
         </div>
     )
