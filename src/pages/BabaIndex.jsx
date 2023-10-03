@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadBabas, addBaba, updateBaba, removeBaba } from '../store/baba.actions.js'
+import { loadBabas, addBaba, updateBaba, removeBaba } from '../store/action/baba.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
