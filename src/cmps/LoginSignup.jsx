@@ -3,7 +3,7 @@ import { userService } from '../services/user.service'
 import { ImgUploader } from './ImgUploader'
 
 export function LoginSignup(props) {
-    const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
+    const [credentials, setCredentials] = useState({ username: '', password: '', email: '' })
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
 
@@ -17,7 +17,7 @@ export function LoginSignup(props) {
     }
 
     function clearState() {
-        setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })
+        setCredentials({ username: '', password: '', email: '', imgUrl: '' })
         setIsSignup(false)
     }
 
@@ -36,7 +36,7 @@ export function LoginSignup(props) {
 
     function onSignup(ev = null) {
         if (ev) ev.preventDefault()
-        if (!credentials.username || !credentials.password || !credentials.fullname) return
+        if (!credentials.username || !credentials.password || !credentials.email) return
         props.onSignup(credentials)
         clearState()
     }
@@ -61,7 +61,7 @@ export function LoginSignup(props) {
                     onChange={handleChange}
                 >
                     <option value="">Select User</option>
-                    {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
+                    {users.map(user => <option key={user._id} value={user.username}>{user.email}</option>)}
                 </select>
                 {/* <input
                         type="text"
@@ -86,9 +86,9 @@ export function LoginSignup(props) {
                 {isSignup && <form className="signup-form" onSubmit={onSignup}>
                     <input
                         type="text"
-                        name="fullname"
-                        value={credentials.fullname}
-                        placeholder="Fullname"
+                        name="email"
+                        value={credentials.email}
+                        placeholder="email"
                         onChange={handleChange}
                         required
                     />

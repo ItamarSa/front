@@ -11,7 +11,7 @@ export function AppHeader() {
     async function onLogin(credentials) {
         try {
             const user = await login(credentials)
-            showSuccessMsg(`Welcome: ${user.fullname}`)
+            showSuccessMsg(`Welcome: ${user.email}`)
         } catch(err) {
             showErrorMsg('Cannot login')
         }
@@ -19,7 +19,7 @@ export function AppHeader() {
     async function onSignup(credentials) {
         try {
             const user = await signup(credentials)
-            showSuccessMsg(`Welcome new user: ${user.fullname}`)
+            showSuccessMsg(`Welcome new user: ${user.email}`)
         } catch(err) {
             showErrorMsg('Cannot signup')
         }
@@ -42,7 +42,7 @@ export function AppHeader() {
                     <span className="user-info">
                         <Link to={`user/${user._id}`}>
                             {user.imgUrl && <img src={user.imgUrl} />}
-                            {user.fullname}
+                            {user.email}
                         </Link>
                         <span className="score">{user.score?.toLocaleString()}</span>
                         <button onClick={onLogout}>Logout</button>
