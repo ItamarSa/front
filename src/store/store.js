@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from 'redux'
 
 import { carReducer } from './car.reducer.js'
-import { babaReducer } from './baba.reducer.js'
+import { babaReducer } from './reducer/baba.reducer.js'
 import { userReducer } from './user.reducer.js'
 import { reviewReducer } from './review.reducer'
 import { systemReducer } from './system.reducer'

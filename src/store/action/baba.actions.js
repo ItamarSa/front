@@ -1,7 +1,7 @@
-import { babaService } from "../services/baba.service.local.js";
-import { store } from '../store/store.js'
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_BABA, REMOVE_BABA, SET_BABAS, UNDO_REMOVE_BABA, UPDATE_BABA } from "./baba.reducer.js";
+import { babaService } from "../../services/baba.service.local.js";
+import { store } from '../store.js'
+import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service.js'
+import { ADD_BABA, REMOVE_BABA, SET_BABAS, UNDO_REMOVE_BABA, UPDATE_BABA } from "../reducer/baba.reducer.js";
 
 // Action Creators:
 export function getActionRemoveBaba(babaId) {
