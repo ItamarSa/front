@@ -1,76 +1,93 @@
-import { useState, useRef, useEffect } from "react"
-import { utilService } from "../services/util.service"
-import { gigService } from "../services/gig.service.local"
-import { NavLink } from "react-router-dom"
+import { useState, useEffect } from "react";
+import { gigService } from "../services/gig.service.local";
+import { NavLink } from "react-router-dom";
 
+const gigTags = gigService.getGigTags();
 
+export function GigFilter({ filterBy, onSetFilter }) {
+    const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy, tags: [] });
 
-// const gigLabels = gigService.getGigLabels()
+    useEffect(() => {
+        onSetFilter(filterByToEdit);
+    }, [filterByToEdit, onSetFilter]);
 
+    // function handleTagButtonClick(tag) {
+    //     const updatedTags = [...filterByToEdit.tags];
 
-export function GigFilter() {
-    // const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
+    //     // Toggle the tag in the array
+    //     if (updatedTags.includes(tag)) {
+    //         updatedTags.splice(updatedTags.indexOf(tag), 1);
+    //     } else {
+    //         updatedTags.push(tag);
+    //     }
 
-    // onSetFilter = useRef(utilService.debounce(onSetFilter))
-    // useEffect(() => {
-    //     onSetFilter.current(filterByToEdit)
-    // }, [filterByToEdit])
-
-    function handleChange({ target }) {
-        let { value, name: field, type } = target
-        if (field === 'inStock' && value === '') {
-            value = ''
-        } else if (type === 'select-one') {
-            value = value === 'true'
-        } else if (type === 'number') {
-            value = +value || ''
-        } else if (type === 'select-multiple') {
-            value = Array.from(target.selectedOptions, (option) => option.value)
-            // console.log('value', value)
-        }
-
-        // setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
+    //     setFilterByToEdit((prevFilter) => ({ ...prevFilter, tags: updatedTags }));
+    // }
+    function handleTagButtonClick(tag) {
+        // Create a new array with the clicked tag
+        const updatedTags = [tag];
+    
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, tags: updatedTags }));
+    }
+    function handleClearAll() {
+        // Clear all filters by resetting filterByToEdit
+        setFilterByToEdit({
+            txt: "",
+            tags: [],
+            // Add other filter fields here if needed
+        });
     }
 
-    // if (!filterBy) return <div>loading</div>
-    return (
+    function handleChange({ target }) {
+        const { value, name: field, type } = target;
+        let updatedValue = value;
 
+        if (field === "inStock" && value === "") {
+            updatedValue = "";
+        } else if (type === "number") {
+            updatedValue = +value || "";
+        } else if (type === "select-multiple") {
+            updatedValue = Array.from(
+                target.selectedOptions,
+                (option) => option.value
+            );
+        }
+
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: updatedValue }));
+    }
+
+    return (
         <div>
-            {/* <h2>Filter Our Gigs</h2> */}
             <section className="gig-filter">
                 <div className="filter-group">
-                    <label htmlFor="txt"></label><br />
-                    <NavLink title='Toys' to="/toy">logo</NavLink>
-                    <input value="" onChange={handleChange} type="txt" placeholder="What service are you looking for today?" id="txt" name="txt" />
-                    <NavLink title='Dashboard' to="/dashboard">business solutions</NavLink>
-                    <NavLink title='Dashboard' to="/dashboard">explor</NavLink>
-                    <NavLink title='Reviews' to="/review">english</NavLink>
-                    <NavLink title='Dashboard' to="/dashboard">become a seller</NavLink>
-                    <NavLink title='Dashboard' to="/dashboard">signin</NavLink>
-                    <NavLink title='Reviews' to="/review">join</NavLink>
+                    <label htmlFor="txt">Search By text</label><br />
+                    <input
+                        value={filterByToEdit.txt}
+                        onChange={handleChange}
+                        type="text"
+                        placeholder="By txt"
+                        id="txt"
+                        name="txt"
+                    />
                 </div>
-                {/* <div className="filter-group">
-                    <label htmlFor="inStock">Stoke available:</label>
-                    <select value="{filterByToEdit.inStock}" name="inStock" id="inStock" onChange={handleChange}>
-                        <option value="">All</option>
-                        <option value="true">In Stock</option>
-                        <option value="false">Out Of Stock</option>
-                    </select>
-                </div>
-
                 <div className="filter-group">
-                    <label htmlFor="gigs">Label:</label>
-                    <select multiple value="{filterByToEdit.labels}" name="labels" id="labels" onChange={handleChange}>
-                        <option value="">All</option>
-                        <>
-                            {gigLabels.map(label => (
-                                <option key={label} value={label}>{label}</option>
-                            ))}
-                        </>
-                    </select>
-                </div> */}
-
+                    <label>Label:</label><br />
+                    {gigTags.map((tag) => (
+                        <button
+                            key={tag}
+                            className={
+                                filterByToEdit.tags.includes(tag) ? "selected" : ""
+                            }
+                            onClick={() => handleTagButtonClick(tag)}
+                        >
+                            {tag}
+                        </button>
+                    ))}
+                    <button className="clear-all-button" onClick={handleClearAll}>
+                        Clear All
+                    </button>
+                </div>
             </section>
         </div>
-    )
+    );
 }

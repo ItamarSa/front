@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
-import { login, signup } from '../store/action/user.actions'
+import { login, logout, signup } from '../store/action/user.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 // import { ImgUploader } from './ImgUploader'
 
@@ -59,6 +59,14 @@ export function LoginSignup(props) {
         sign(credentials)
         clearState()
     }
+    async function onLogout() {
+        try {
+            await logout()
+            showSuccessMsg(`Bye now`)
+        } catch (err) {
+            showErrorMsg('Cannot logout')
+        }
+    }
 
     function toggleSignup() {
         setIsSignup(!isSignup)
@@ -99,6 +107,7 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     /> */}
+                <button onClick={onLogout}>Logout</button>
                 <button>Login!</button>
             </form>}
             <div className="signup-section">

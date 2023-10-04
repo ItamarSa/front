@@ -10,6 +10,7 @@ export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
     const [showBusinessModal, setShowBusinessModal] = useState(false);
     const [showExploreModal, setShowExploreModal] = useState(false);
+    const filterBy = useSelector(storeState => storeState.gigModule.filterBy)
 
 
     const closeModals = () => {
@@ -73,16 +74,7 @@ export function AppHeader() {
             <button><NavLink title='home' to="/">Tenner</NavLink></button>
             <nav>
                 <div className='main-nav'>
-                    {user &&
-                        <span className="user-info">
-                            {/* <Link to={`user/${user._id}`}>
-                            {user.imgUrl && <img src={user.imgUrl} />}
-                            {user.email}
-                        </Link> */}
-                            {/* <span className="score">{user.score?.toLocaleString()}</span> */}
-                            {/* <button onClick={onLogout}>Logout</button> */}
-                        </span>
-                    }
+
                     <button onClick={(e) => { e.stopPropagation(); setShowBusinessModal(!showBusinessModal); }}>Business solutions</button>
                     <button onClick={(e) => { e.stopPropagation(); setShowExploreModal(!showExploreModal); }}>Explore</button>
                     {/* ... */}
@@ -119,7 +111,16 @@ export function AppHeader() {
                     <button>  <NavLink title='gig' to="/gig">gigs</NavLink></button>
 
 
+                    {user &&
+                        <span className="user-info">
+                            <Link to={`user/${user._id}`}>
+                                {user.imgUrl && <img src={user.imgUrl} />}
+                                {user.email}
+                            </Link>
+                            {/* <span className="score">{user.score?.toLocaleString()}</span> */}
 
+                        </span>
+                    }
                     {/* {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)} */}
 
 
