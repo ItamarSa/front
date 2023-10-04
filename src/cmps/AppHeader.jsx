@@ -114,9 +114,9 @@ export function AppHeader() {
 
                     <button>Become a Seller</button>
                     <button>🌐English</button>
-                    <NavLink title='Login' to="/login">Sign in  </NavLink>
-                    <NavLink title='Login' to="/login">Join</NavLink>
-                    <NavLink title='gig' to="/gig">gigs</NavLink>
+                    <button><NavLink title='Login' to="/login">Sign in  </NavLink></button>
+                    <button> <NavLink title='Login' to="/login">Join</NavLink></button>
+                    <button>  <NavLink title='gig' to="/gig">gigs</NavLink></button>
 
 
 
