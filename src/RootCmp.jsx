@@ -28,8 +28,6 @@ export function RootCmp() {
                     <Route element={<GigEdit />} path="/edit/:gigId" />
                     <Route element={<GigIndex />} path="/gigs" />
                     <Route element={<GigDetails />} path="/gig/:gigId" />
-
-
                 </Routes>
             </main>
             <AppFooter />
