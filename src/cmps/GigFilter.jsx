@@ -1,26 +1,27 @@
-import { useState, useEffect } from "react"
-import { gigService } from "../services/gig.service.local"
-import { useParams, Link } from 'react-router-dom';
-import { NavLink } from "react-router-dom"
+import { useState, useEffect } from "react";
+import { gigService } from "../services/gig.service.local";
+import { useNavigate } from "react-router-dom";
 
-const gigTags = gigService.getGigTags()
+const gigTags = gigService.getGigTags();
 
 export function GigFilter({ filterBy, onSetFilter }) {
-    const { tag } = useParams();
-    
-    const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy, tags: tag ? [tag] : [] }); // Initialize with the 'tag' parameter if available
+    const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy, tags: [] });
+    const navigate = useNavigate();
 
     useEffect(() => {
-        onSetFilter(filterByToEdit)
-    }, [filterByToEdit, onSetFilter])
-
-    useEffect(() => {
-        // When the 'tag' parameter changes in the URL, update the 'filterByToEdit' state accordingly
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, tags: tag ? [tag] : [] }));
-    }, [tag]);
+        onSetFilter(filterByToEdit);
+    }, [filterByToEdit, onSetFilter]);
 
     function handleTagButtonClick(tag) {
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, tags: [tag] }));
+        const updatedTags = [...filterByToEdit.tags];
+        // Toggle the tag in the array
+        if (updatedTags.includes(tag)) {
+            updatedTags.splice(updatedTags.indexOf(tag), 1);
+        } else {
+            updatedTags.push(tag);
+        }
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, tags: updatedTags }));
+        updateURL({ ...filterByToEdit, tags: updatedTags });
     }
 
     function handleClearAll() {
@@ -28,24 +29,18 @@ export function GigFilter({ filterBy, onSetFilter }) {
             txt: "",
             tags: [],
         });
+        updateURL({ txt: "", tags: [] });
     }
 
     function handleChange({ target }) {
-        const { value, name: field, type } = target;
-        let updatedValue = value;
+        const { value, name: field } = target;
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }));
+        updateURL({ ...filterByToEdit, [field]: value });
+    }
 
-        if (field === "inStock" && value === "") {
-            updatedValue = "";
-        } else if (type === "number") {
-            updatedValue = +value || "";
-        } else if (type === "select-multiple") {
-            updatedValue = Array.from(
-                target.selectedOptions,
-                (option) => option.value
-            );
-        }
-
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: updatedValue }));
+    function updateURL(params) {
+        const queryString = new URLSearchParams(params).toString();
+        navigate(`/gigs?${queryString}`);
     }
 
     return (
@@ -65,16 +60,15 @@ export function GigFilter({ filterBy, onSetFilter }) {
                 <div className="filter-group">
                     <label>Label:</label><br />
                     {gigTags.map((tag) => (
-                        <Link
+                        <button
                             key={tag}
-                            to={`/gigs/${tag}`}
                             className={
                                 filterByToEdit.tags.includes(tag) ? "selected" : ""
                             }
                             onClick={() => handleTagButtonClick(tag)}
                         >
                             {tag}
-                        </Link>
+                        </button>
                     ))}
                     <button className="clear-all-button" onClick={handleClearAll}>
                         Clear All
@@ -82,5 +76,5 @@ export function GigFilter({ filterBy, onSetFilter }) {
                 </div>
             </section>
         </div>
-    )
+    );
 }
