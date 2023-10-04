@@ -11,7 +11,8 @@ export const gigService = {
     save,
     remove,
     getEmptyGig,
-    addGigMsg
+    addGigMsg,
+    getDemoGig
 }
 // debug trick
 window.bs = gigService
@@ -72,12 +73,23 @@ async function addGigMsg(gigId, txt) {
 //         price: utilService.getRandomIntInclusive(1000, 9000),
 //     }
 // }
-function getEmptyGig() {
+function getDemoGig() {
     return {
         name: utilService.makeLorem(1),
         title: utilService.makeLorem(5),
         price: utilService.getRandomIntInclusive(100, 300),
         rate: utilService.getRandomIntInclusive(2, 5),
+        createdAt:(Date.now()),
+        // inStock: utilService.randomTrueFalse(),
+        // icon: utilService.makeImage()
+    }
+}
+function getEmptyGig() {
+    return {
+        name: '',
+        title: '',
+        price:0,
+        rate: 0,
         createdAt:(Date.now()),
         // inStock: utilService.randomTrueFalse(),
         // icon: utilService.makeImage()

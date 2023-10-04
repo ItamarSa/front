@@ -6,6 +6,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
 import { gigService } from '../services/gig.service.local.js'
 import { GigList } from './GigList.jsx'
+import { Link } from 'react-router-dom'
 
 export function GigIndex() {
 
@@ -25,7 +26,7 @@ export function GigIndex() {
     }
 
     async function onAddGig() {
-        const gig = gigService.getEmptyGig()
+        const gig = gigService.getDemoGig()
         // gig.title = prompt('Title?')
         try {
             const savedGig = await addGig(gig)
@@ -61,6 +62,9 @@ export function GigIndex() {
             <h3>Gig App</h3>
             <main>
                 <button onClick={onAddGig}>Add Gig ⛐</button>
+                <button>
+                    <Link to='/edit'>Add Gig Customize</Link>
+                </button>
                 <GigList
                     gigs={gigs}
                     onRemoveGig={onRemoveGig}

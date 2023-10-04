@@ -9,7 +9,7 @@ export function GigPreview({gig, onRemoveGig, onUpdateGig}) {
 
             {/* {shouldShowActionBtns(gig) && <div> */}
                 <button onClick={() => { onRemoveGig(gig._id) }}>x</button>
-                <button onClick={() => { onUpdateGig(gig) }}>Edit</button>
+                {/* <button onClick={() => { onUpdateGig(gig) }}>Edit</button> */}
             {/* </div>} */}
         </section>
     )
