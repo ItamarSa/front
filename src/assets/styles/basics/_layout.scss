@@ -1,12 +1,12 @@
 .main-container {
     display: grid;
     justify-content: center;
-    grid-template-columns: 32px minmax( 1400px,1fr) 32px;
+    grid-template-columns: 32px minmax(1fr, 1400px) 32px;
 
-    > * {
+    > * :not(full){
         grid-column: 2;
 
-        &.full {
+        &*.full {
             grid-column: 1 /-1;
         }
     //      >*:not(.full) {
