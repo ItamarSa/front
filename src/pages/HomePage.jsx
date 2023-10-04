@@ -4,6 +4,7 @@ import logo from '../assets/img/colin-2x.jpg'
 import { CHANGE_COUNT } from '../store/reducer/user.reducer'
 
 import { utilService } from '../services/util.service'
+import { PopularServiceCarousel } from '../cmps/PopularServiceCarousel'
 
 
 export function HomePage() {
@@ -16,7 +17,7 @@ export function HomePage() {
     }
 
     return (
-        <section>
+        <>    <section>
             <img src={logo} alt="Logo" style={{ maxWidth: '900px' }} />
             {/* <h2>
                 Count {count}
@@ -28,5 +29,8 @@ export function HomePage() {
                 }}>+10</button>
             </h2 > */}
         </section >
+        <PopularServiceCarousel />
+        </>
+
     )
 }
