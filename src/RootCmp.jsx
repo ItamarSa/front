@@ -8,6 +8,7 @@ import { AppFooter } from './cmps/AppFooter'
 import { UserDetails } from './pages/UserDetails'
 import { LoginSignup } from './cmps/LoginSignup'
 import { GigIndex } from './pages/GigIndex'
+import { GigDetails } from './pages/GigDetails'
 
 export function RootCmp() {
 
@@ -20,6 +21,8 @@ export function RootCmp() {
                     <Route path="user/:id" element={<UserDetails />} />
                     <Route element={<LoginSignup />} path="/login" />
                     <Route element={<GigIndex />} path="/gigs" />
+                    <Route element={<GigDetails />} path="/gig/:gigId" />
+
 
                 </Routes>
             </main>
