@@ -5,6 +5,7 @@ import { loadGigs, addGig, updateGig, removeGig } from '../store/action/gig.acti
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
 import { gigService } from '../services/gig.service.local.js'
+import { GigList } from './GigList.jsx'
 
 export function GigIndex() {
 
@@ -17,7 +18,7 @@ export function GigIndex() {
     async function onRemoveGig(gigId) {
         try {
             await removeGig(gigId)
-            showSuccessMsg('Gig removed')            
+            showSuccessMsg('Gig removed')
         } catch (err) {
             showErrorMsg('Cannot remove gig')
         }
@@ -31,7 +32,7 @@ export function GigIndex() {
             showSuccessMsg(`Gig added (id: ${savedGig._id})`)
         } catch (err) {
             showErrorMsg('Cannot add gig')
-        }        
+        }
     }
 
     async function onUpdateGig(gig) {
@@ -42,7 +43,7 @@ export function GigIndex() {
             showSuccessMsg(`Gig updated, new price: ${savedGig.price}`)
         } catch (err) {
             showErrorMsg('Cannot update gig')
-        }        
+        }
     }
 
     function onAddGigMsg(gig) {
@@ -60,22 +61,12 @@ export function GigIndex() {
             <h3>Gig App</h3>
             <main>
                 <button onClick={onAddGig}>Add Gig ⛐</button>
-                <ul className="gig-list">
-                    {gigs.map(gig =>
-                        <li className="gig-preview" key={gig._id}>
-                            <h4>{gig.title}</h4>
-                            {/* <h1>⛐</h1> */}
-                            <p>Price: <span>${gig.price.toLocaleString()}</span></p>
-                            <p>Owner: <span>{gig.owner && gig.owner.fullname}</span></p>
-                            {shouldShowActionBtns(gig) && <div>
-                                <button onClick={() => { onRemoveGig(gig._id) }}>x</button>
-                                <button onClick={() => { onUpdateGig(gig) }}>Edit</button>
-                            </div>}
+                <GigList
+                    gigs={gigs}
+                    onRemoveGig={onRemoveGig}
+                    onUpdateGig={onUpdateGig}
+                />
 
-                            <button onClick={() => { onAddGigMsg(gig) }}>Add gig msg</button>
-                        </li>)
-                    }
-                </ul>
             </main>
         </div>
     )
