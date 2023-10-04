@@ -1,6 +1,6 @@
 import { HomePage } from './pages/HomePage.jsx'
 import { AboutUs } from './pages/AboutUs.jsx'
-import { CarIndex } from './pages/CarIndex.jsx'
+// import { CarIndex } from './pages/CarIndex.jsx'
 import { ReviewIndex } from './pages/ReviewIndex.jsx'
 import { ChatApp } from './pages/Chat.jsx'
 import { AdminApp } from './pages/AdminIndex.jsx'
@@ -24,11 +24,6 @@ const routes = [
     //     component: <SurveyIndex />,
     //     label: 'Take our survey'
     // },
-    {
-        path: 'car',
-        component: <CarIndex />,
-        label: 'Cars'
-    },
     {
         path: 'review',
         component: <ReviewIndex />,
