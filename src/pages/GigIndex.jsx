@@ -25,7 +25,7 @@ export function GigIndex() {
 
     async function onAddGig() {
         const gig = gigService.getEmptyGig()
-        gig.title = prompt('Title?')
+        // gig.title = prompt('Title?')
         try {
             const savedGig = await addGig(gig)
             showSuccessMsg(`Gig added (id: ${savedGig._id})`)
@@ -64,7 +64,7 @@ export function GigIndex() {
                     {gigs.map(gig =>
                         <li className="gig-preview" key={gig._id}>
                             <h4>{gig.title}</h4>
-                            <h1>⛐</h1>
+                            {/* <h1>⛐</h1> */}
                             <p>Price: <span>${gig.price.toLocaleString()}</span></p>
                             <p>Owner: <span>{gig.owner && gig.owner.fullname}</span></p>
                             {shouldShowActionBtns(gig) && <div>

@@ -72,6 +72,17 @@ function getEmptyGig() {
         price: utilService.getRandomIntInclusive(1000, 9000),
     }
 }
+function getEmptyGig() {
+    return {
+        name: utilService.makeLorem(1),
+        title: utilService.makeLorem(5),
+        price: utilService.getRandomIntInclusive(100, 300),
+        rate: utilService.getRandomIntInclusive(2, 5),
+        createdAt:(Date.now()),
+        // inStock: utilService.randomTrueFalse(),
+        // icon: utilService.makeImage()
+    }
+}
 
 
 // TEST DATA
