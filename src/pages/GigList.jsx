@@ -15,9 +15,6 @@ export function GigList({ gigs, onRemoveGig, onUpdateGig }) {
                             onRemoveGig={onRemoveGig}
                             onUpdateGig={onUpdateGig}
                         />
-                        <button>
-                         <Link to={`/edit/${gig._id}`}>Edit</Link>
-                        </button>
                     </li>)
                 }
             </ul>

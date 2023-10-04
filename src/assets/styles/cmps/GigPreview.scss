@@ -1,0 +1,37 @@
+
+.slick-dots {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 40px;
+    align-items: center;
+    padding: 4px;
+
+    .li {
+        display: inline;
+        padding: 0 2px;
+        transform: scale(.8);
+        transition: 0.3s;
+        color: #fff;
+
+
+        &:after {
+            content: '\25CF';
+        }
+
+        &.active {
+            transform: scale(1.2);
+        }
+
+        &.edge {
+            transform: scale(.5);
+        }
+
+        &.hide {
+            display: none;
+        }
+    }
+}
