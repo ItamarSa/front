@@ -1,40 +1,32 @@
-import { useState, useEffect } from "react";
-import { gigService } from "../services/gig.service.local";
-import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react"
+import { gigService } from "../services/gig.service.local"
+import { useParams, Link } from 'react-router-dom';
+import { NavLink } from "react-router-dom"
 
-const gigTags = gigService.getGigTags();
+const gigTags = gigService.getGigTags()
 
 export function GigFilter({ filterBy, onSetFilter }) {
-    const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy, tags: [] });
+    const { tag } = useParams();
+    
+    const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy, tags: tag ? [tag] : [] }); // Initialize with the 'tag' parameter if available
 
     useEffect(() => {
-        onSetFilter(filterByToEdit);
-    }, [filterByToEdit, onSetFilter]);
+        onSetFilter(filterByToEdit)
+    }, [filterByToEdit, onSetFilter])
 
-    // function handleTagButtonClick(tag) {
-    //     const updatedTags = [...filterByToEdit.tags];
+    useEffect(() => {
+        // When the 'tag' parameter changes in the URL, update the 'filterByToEdit' state accordingly
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, tags: tag ? [tag] : [] }));
+    }, [tag]);
 
-    //     // Toggle the tag in the array
-    //     if (updatedTags.includes(tag)) {
-    //         updatedTags.splice(updatedTags.indexOf(tag), 1);
-    //     } else {
-    //         updatedTags.push(tag);
-    //     }
-
-    //     setFilterByToEdit((prevFilter) => ({ ...prevFilter, tags: updatedTags }));
-    // }
     function handleTagButtonClick(tag) {
-        // Create a new array with the clicked tag
-        const updatedTags = [tag];
-    
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, tags: updatedTags }));
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, tags: [tag] }));
     }
+
     function handleClearAll() {
-        // Clear all filters by resetting filterByToEdit
         setFilterByToEdit({
             txt: "",
             tags: [],
-            // Add other filter fields here if needed
         });
     }
 
@@ -73,15 +65,16 @@ export function GigFilter({ filterBy, onSetFilter }) {
                 <div className="filter-group">
                     <label>Label:</label><br />
                     {gigTags.map((tag) => (
-                        <button
+                        <Link
                             key={tag}
+                            to={`/gigs/${tag}`}
                             className={
                                 filterByToEdit.tags.includes(tag) ? "selected" : ""
                             }
                             onClick={() => handleTagButtonClick(tag)}
                         >
                             {tag}
-                        </button>
+                        </Link>
                     ))}
                     <button className="clear-all-button" onClick={handleClearAll}>
                         Clear All
@@ -89,5 +82,5 @@ export function GigFilter({ filterBy, onSetFilter }) {
                 </div>
             </section>
         </div>
-    );
+    )
 }

@@ -77,8 +77,8 @@ export function PopularServiceCarousel() {
     const settings = {
         slidesToShow: 5,
         slidesToScroll: 4,
-        nextArrow: <button type="button" className="slick-next">Next</button>,
-        prevArrow: <button type="button" className="slick-prev">Previous</button>,
+        // nextArrow: <button type="button" className="slick-next">Next</button>,
+        // prevArrow: <button type="button" className="slick-prev">Previous</button>,
         speed:500,
     }
 
