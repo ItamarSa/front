@@ -29,26 +29,26 @@ const routes = [
         component: <CarIndex />,
         label: 'Cars'
     },
-    // {
-    //     path: 'review',
-    //     component: <ReviewIndex />,
-    //     label: 'Reviews'
-    // },
-    // {
-    //     path: 'chat',
-    //     component: <ChatApp />,
-    //     label: 'Chat'
-    // },
-    // {
-    //     path: 'about',
-    //     component: <AboutUs />,
-    //     label: 'About us'
-    // },
-    // {
-    //     path: 'admin',
-    //     component: <AdminApp />,
-    //     label: 'Admin Only'
-    // }
+    {
+        path: 'review',
+        component: <ReviewIndex />,
+        label: 'Reviews'
+    },
+    {
+        path: 'chat',
+        component: <ChatApp />,
+        label: 'Chat'
+    },
+    {
+        path: 'about',
+        component: <AboutUs />,
+        label: 'About us'
+    },
+    {
+        path: 'admin',
+        component: <AdminApp />,
+        label: 'Admin Only'
+    }
 ]
 
 export default routes

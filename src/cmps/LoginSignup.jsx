@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
-import { ImgUploader } from './ImgUploader'
+import { login, signup } from '../store/action/user.actions'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+// import { ImgUploader } from './ImgUploader'
 
 export function LoginSignup(props) {
-    const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
+    const [credentials, setCredentials] = useState({ username: '', password: '', email: '' })
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
 
@@ -17,7 +19,7 @@ export function LoginSignup(props) {
     }
 
     function clearState() {
-        setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })
+        setCredentials({ username: '', password: '', email: '', imgUrl: '' })
         setIsSignup(false)
     }
 
@@ -27,17 +29,34 @@ export function LoginSignup(props) {
         setCredentials({ ...credentials, [field]: value })
     }
 
+    async function log(credentials) {
+        try {
+            const user = await login(credentials)
+            showSuccessMsg(`Welcome: ${user.email}`)
+        } catch (err) {
+            showErrorMsg('Cannot login')
+        }
+    }
+
     function onLogin(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username) return
-        props.onLogin(credentials)
+        log(credentials)
         clearState()
+    }
+    async function sign(credentials) {
+        try {
+            const user = await signup(credentials)
+            showSuccessMsg(`Welcome new user: ${user.email}`)
+        } catch (err) {
+            showErrorMsg('Cannot signup')
+        }
     }
 
     function onSignup(ev = null) {
         if (ev) ev.preventDefault()
-        if (!credentials.username || !credentials.password || !credentials.fullname) return
-        props.onSignup(credentials)
+        if (!credentials.username || !credentials.password || !credentials.email) return
+        sign(credentials)
         clearState()
     }
 
@@ -45,9 +64,9 @@ export function LoginSignup(props) {
         setIsSignup(!isSignup)
     }
 
-    function onUploaded(imgUrl) {
-        setCredentials({ ...credentials, imgUrl })
-    }
+    // function onUploaded(imgUrl) {
+    //     setCredentials({ ...credentials, imgUrl })
+    // }
 
     return (
         <div className="login-page">
@@ -61,7 +80,7 @@ export function LoginSignup(props) {
                     onChange={handleChange}
                 >
                     <option value="">Select User</option>
-                    {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
+                    {users.map(user => <option key={user._id} value={user.username}>{user.email}</option>)}
                 </select>
                 {/* <input
                         type="text"
@@ -86,9 +105,9 @@ export function LoginSignup(props) {
                 {isSignup && <form className="signup-form" onSubmit={onSignup}>
                     <input
                         type="text"
-                        name="fullname"
-                        value={credentials.fullname}
-                        placeholder="Fullname"
+                        name="email"
+                        value={credentials.email}
+                        placeholder="email"
                         onChange={handleChange}
                         required
                     />
@@ -108,7 +127,7 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     />
-                    <ImgUploader onUploaded={onUploaded} />
+                    {/* <ImgUploader onUploaded={onUploaded} /> */}
                     <button >Signup!</button>
                 </form>}
             </div>
