@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 export function GigIndex() {
 
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
+    const gigCounts = gigs.length
 
     useEffect(() => {
         loadGigs()
@@ -65,12 +66,14 @@ export function GigIndex() {
                 <button>
                     <Link to='/edit'>Add Gig Customize</Link>
                 </button>
+                <div>
+                {gigCounts}services available
+                </div>
                 <GigList
                     gigs={gigs}
                     onRemoveGig={onRemoveGig}
                     onUpdateGig={onUpdateGig}
                 />
-
             </main>
         </div>
     )
