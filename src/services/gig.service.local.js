@@ -66,12 +66,12 @@ async function addGigMsg(gigId, txt) {
     return msg
 }
 
-function getEmptyGig() {
-    return {
-        title: 'Gig-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
-    }
-}
+// function getEmptyGig() {
+//     return {
+//         title: 'Gig-' + (Date.now() % 1000),
+//         price: utilService.getRandomIntInclusive(1000, 9000),
+//     }
+// }
 function getEmptyGig() {
     return {
         name: utilService.makeLorem(1),
