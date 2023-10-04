@@ -79,10 +79,7 @@ export function PopularServiceCarousel() {
         slidesToScroll: 4,
         nextArrow: <button type="button" className="slick-next">Next</button>,
         prevArrow: <button type="button" className="slick-prev">Previous</button>,
-        speed:250,
-        
-        
-
+        speed:500,
     }
 
     let slider
