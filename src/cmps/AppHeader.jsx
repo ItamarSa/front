@@ -70,7 +70,7 @@ export function AppHeader() {
 
     return (
         <header className="app-header full">
-            <button>LOGO</button>
+            <button><NavLink title='home' to="/">Tenner</NavLink></button>
             <nav>
                 <div className='main-nav'>
                     {user &&
