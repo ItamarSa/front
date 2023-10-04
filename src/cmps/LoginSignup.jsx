@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
+import { login, signup } from '../store/action/user.actions'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 // import { ImgUploader } from './ImgUploader'
 
 export function LoginSignup(props) {
@@ -27,17 +29,34 @@ export function LoginSignup(props) {
         setCredentials({ ...credentials, [field]: value })
     }
 
+    async function log(credentials) {
+        try {
+            const user = await login(credentials)
+            showSuccessMsg(`Welcome: ${user.email}`)
+        } catch (err) {
+            showErrorMsg('Cannot login')
+        }
+    }
+
     function onLogin(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username) return
-        props.onLogin(credentials)
+        log(credentials)
         clearState()
+    }
+    async function sign(credentials) {
+        try {
+            const user = await signup(credentials)
+            showSuccessMsg(`Welcome new user: ${user.email}`)
+        } catch (err) {
+            showErrorMsg('Cannot signup')
+        }
     }
 
     function onSignup(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username || !credentials.password || !credentials.email) return
-        props.onSignup(credentials)
+        sign(credentials)
         clearState()
     }
 
