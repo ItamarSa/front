@@ -2,12 +2,14 @@ import { useEffect, useState } from "react"
 import { gigService } from "../services/gig.service.local"
 import { useNavigate, useParams } from "react-router"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
+import { utilService } from "../services/util.service"
 
 export function GigEdit(onAddGig) {
     const [gigToAdd, setGigToAdd] = useState({
         name: "",
         title: "",
-        price: 0, // Initialize price as a number
+        price: 0,
+        tags:utilService.makeTag(1)
     })
     const navigate = useNavigate()
     const params = useParams()

@@ -1,7 +1,7 @@
 import { gigService } from "../../services/gig.service.local.js";
 import { store } from '../store.js'
 import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service.js'
-import { ADD_GIG, REMOVE_GIG, SET_GIGS, UNDO_REMOVE_GIG, UPDATE_GIG } from "../reducer/gig.reducer.js";
+import { ADD_GIG, REMOVE_GIG, SET_FILTER, SET_GIGS, UNDO_REMOVE_GIG, UPDATE_GIG } from "../reducer/gig.reducer.js";
 
 // Action Creators:
 export function getActionRemoveGig(gigId) {
@@ -25,7 +25,10 @@ export function getActionUpdateGig(gig) {
 
 export async function loadGigs() {
     try {
-        const gigs = await gigService.query()
+        const { filterBy } = store.getState().gigModule
+        const gigs = await gigService.query(filterBy)
+        console.log('filterBy:', filterBy)
+        console.log('gigs:', gigs)
         console.log('Gigs from DB:', gigs)
         store.dispatch({
             type: SET_GIGS,
@@ -59,6 +62,12 @@ export async function addGig(gig) {
         console.log('Cannot add gig', err)
         throw err
     }
+}
+export function setGigFilter(filterBy = toyService.getDefaultFilter()) {
+    // dispatch
+    store.dispatch({ type: SET_FILTER, filterBy })
+    return Promise.resolve(filterBy)
+    // return loadToys()
 }
 
 export function updateGig(gig) {

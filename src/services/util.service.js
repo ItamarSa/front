@@ -6,7 +6,8 @@ export const utilService = {
     randomPastTime,
     saveToStorage,
     loadFromStorage,
-    getAssetSrc
+    getAssetSrc,
+    makeTag
 }
 
 function makeId(length = 6) {
@@ -18,6 +19,22 @@ function makeId(length = 6) {
     }
 
     return txt
+}
+function makeTag(size = 1) {
+    var words = [
+        "logo-design",
+        "artisitic",
+        "proffesional",
+        "accessible"
+      ]
+    var word = ''
+    let tags = []
+    while (size > 0) {
+        size--
+        word = words[Math.floor(Math.random() * words.length)] + ''
+        tags.push(word)
+    }
+    return tags
 }
 
 function makeLorem(size = 100) {
@@ -47,12 +64,13 @@ function randomPastTime() {
 }
 
 function debounce(func, timeout = 300) {
-    let timer
-    return (...args) => {
-        clearTimeout(timer)
-        timer = setTimeout(() => { func.apply(this, args) }, timeout)
-    }
+    let timer;
+    return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), timeout);
+    };
 }
+
 
 function saveToStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value))

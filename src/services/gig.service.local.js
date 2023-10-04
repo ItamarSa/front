@@ -3,7 +3,14 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-const STORAGE_KEY = 'gig'
+const STORAGE_KEY = 'gigDB'
+const tags = [
+    "logo-design",
+    "artisitic",
+    "proffesional",
+    "accessible"
+]
+
 
 export const gigService = {
     query,
@@ -13,9 +20,9 @@ export const gigService = {
     getEmptyGig,
     addGigMsg,
     getDemoGig,
-    getImgs
-
-
+    getImgs,
+    getDemoGig,
+     getGigTags,
 }
 // debug trick
 window.bs = gigService
@@ -26,16 +33,27 @@ window.bs = gigService
 function getImgs(){
     return gigImgs
 }
-async function query(filterBy = { txt: '', price: 0 }) {
-    var gigs = await storageService.query(STORAGE_KEY)
+// async function query(filterBy = { txt: '', price: 0 }) {
+//     var gigs = await storageService.query(STORAGE_KEY)}
+
+async function query(filterBy = {}) {
+    console.log("hi");
+    var gigs = await storageService.query(STORAGE_KEY,filterBy)
+    let GigToDisplay=[...gigs]
     if (filterBy.txt) {
         const regex = new RegExp(filterBy.txt, 'i')
-        gigs = gigs.filter(gig => regex.test(gig.title) || regex.test(gig.description))
+        GigToDisplay = GigToDisplay.filter(gig => regex.test(gig.title) || regex.test(gig.description))
     }
     if (filterBy.price) {
-        gigs = gigs.filter(gig => gig.price <= filterBy.price)
+        GigToDisplay = GigToDisplay.filter(gig => gig.price <= filterBy.price)
     }
-    return gigs
+    if (filterBy.tags && filterBy.tags.length > 0) {
+        GigToDisplay = GigToDisplay.filter(gig => {
+            return gig.tags.some(tag => filterBy.tags.includes(tag))
+        })
+    }
+    console.log('GigToDisplay:', GigToDisplay)
+    return GigToDisplay
 }
 
 function getById(gigId) {
@@ -88,7 +106,8 @@ function getDemoGig() {
         title: utilService.makeLorem(5),
         price: utilService.getRandomIntInclusive(100, 300),
         rate: utilService.getRandomIntInclusive(2, 5),
-        createdAt:(Date.now()),
+        createdAt: (Date.now()),
+        tags: utilService.makeTag(1)
         // inStock: utilService.randomTrueFalse(),
         // icon: utilService.makeImage()
     }
@@ -97,12 +116,15 @@ function getEmptyGig() {
     return {
         name: '',
         title: '',
-        price:0,
+        price: 0,
         rate: 0,
-        createdAt:(Date.now()),
+        createdAt: (Date.now()),
         // inStock: utilService.randomTrueFalse(),
         // icon: utilService.makeImage()
     }
+}
+function getGigTags() {
+    return tags
 }
 
 

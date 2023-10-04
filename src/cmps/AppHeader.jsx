@@ -5,86 +5,48 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/action/user.actions.js'
 import { LoginSignup } from './LoginSignup.jsx'
 import { useEffect, useState } from 'react'
+import { GigFilter } from './GigFilter'
+import { setGigFilter } from '../store/action/gig.actions'
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
-    const [showBusinessModal, setShowBusinessModal] = useState(false);
-    const [showExploreModal, setShowExploreModal] = useState(false);
+    const [showBusinessModal, setShowBusinessModal] = useState(false)
+    const [showExploreModal, setShowExploreModal] = useState(false)
+    const filterBy = useSelector(storeState => storeState.gigModule.filterBy)
+
 
 
     const closeModals = () => {
-        setShowBusinessModal(false);
-        setShowExploreModal(false);
-    };
+        setShowBusinessModal(false)
+        setShowExploreModal(false)
+    }
 
     // Add event listener to the document body to close modals on click outside
     useEffect(() => {
-        document.body.addEventListener('click', closeModals);
+        document.body.addEventListener('click', closeModals)
 
         // Cleanup the event listener when the component unmounts
         return () => {
-            document.body.removeEventListener('click', closeModals);
-        };
-    }, []);
+            document.body.removeEventListener('click', closeModals)
+        }
+    }, [])
 
 
 
-
-    async function onSignup(credentials) {
-        try {
-            const user = await signup(credentials)
-            showSuccessMsg(`Welcome new user: ${user.email}`)
-        } catch (err) {
-            showErrorMsg('Cannot signup')
-        }
+    function onSetFilter(filterBy) {
+        console.log('filterBy:', filterBy)
+        setGigFilter(filterBy)
     }
-    async function onLogin(credentials) {
-        try {
-            const user = await login(credentials)
-            showSuccessMsg(`Welcome: ${user.email}`)
-        } catch (err) {
-            showErrorMsg('Cannot login')
-        }
-    }
-    async function onLogout() {
-        try {
-            await logout()
-            showSuccessMsg(`Bye now`)
-        } catch (err) {
-            showErrorMsg('Cannot logout')
-        }
-    }
-    function handleChange({ target }) {
-        let { value, name: field, type } = target
-        if (field === 'inStock' && value === '') {
-            value = ''
-        } else if (type === 'select-one') {
-            value = value === 'true'
-        } else if (type === 'number') {
-            value = +value || ''
-        } else if (type === 'select-multiple') {
-            value = Array.from(target.selectedOptions, (option) => option.value)
-            // console.log('value', value)
-        }
-    }
+    
 
     return (
         <header className="app-header full">
             <button><NavLink title='home' to="/">Tenner</NavLink></button>
             <nav>
                 <div className='main-nav'>
-                    {user &&
-                        <span className="user-info">
-                            {/* <Link to={`user/${user._id}`}>
-                            {user.imgUrl && <img src={user.imgUrl} />}
-                            {user.email}
-                        </Link> */}
-                            {/* <span className="score">{user.score?.toLocaleString()}</span> */}
-                            {/* <button onClick={onLogout}>Logout</button> */}
-                        </span>
-                    }
-                    <button onClick={(e) => { e.stopPropagation(); setShowBusinessModal(!showBusinessModal); }}>Business solutions</button>
-                    <button onClick={(e) => { e.stopPropagation(); setShowExploreModal(!showExploreModal); }}>Explore</button>
+
+                    <button onClick={(e) => { e.stopPropagation(); setShowBusinessModal(!showBusinessModal)}}>Business solutions</button>
+                    <button onClick={(e) => { e.stopPropagation(); setShowExploreModal(!showExploreModal) }}>Explore</button>
                     {/* ... */}
 
                     {showBusinessModal && (
@@ -113,13 +75,23 @@ export function AppHeader() {
                     )}
 
                     <button>Become a Seller</button>
-                    <button>🌐English</button>
+                    {/* <button>🌐English</button> */}
                     <button><NavLink title='Login' to="/login">Sign in  </NavLink></button>
                     <button> <NavLink title='Login' to="/login">Join</NavLink></button>
                     <button>  <NavLink title='gig' to="/gig">gigs</NavLink></button>
+                    <GigFilter onSetFilter={onSetFilter}/>
 
 
+                    {user &&
+                        <span className="user-info">
+                            <Link to={`user/${user._id}`}>
+                                {user.imgUrl && <img src={user.imgUrl} />}
+                                {user.email}
+                            </Link>
+                            {/* <span className="score">{user.score?.toLocaleString()}</span> */}
 
+                        </span>
+                    }
                     {/* {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)} */}
 
 
