@@ -6,7 +6,6 @@ import routes from './routes'
 import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
 import { UserDetails } from './pages/UserDetails'
-import { PopularServiceCarousel } from './cmps/PopularServiceCarousel'
 import { LoginSignup } from './cmps/LoginSignup'
 import { GigIndex } from './pages/GigIndex'
 import { GigEdit } from './cmps/GigEdit'
@@ -26,11 +25,8 @@ export function RootCmp() {
                     <Route element={<GigEdit />} path="/edit/:gigId" />
                     <Route element={<GigIndex />} path="/gigs" />
                     <Route element={<GigDetails />} path="/gig/:gigId" />
-
-
                 </Routes>
             </main>
-            <PopularServiceCarousel />
             <AppFooter />
         </div>
     )
