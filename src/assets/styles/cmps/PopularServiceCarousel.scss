@@ -10,10 +10,10 @@ $black_15: rgba(0, 0, 0, .15);
 $base_multiplier: 36px;
 
 $slide_gap: $base_multiplier;
-$slide_gap_half: $base_multiplier/2;
+$slide_gap_half: calc($base_multiplier/2);
 
 $slide_gap_alt: 24px;
-$slide_gap_alt_half: $slide_gap_alt/2;
+$slide_gap_alt_half: calc($slide_gap_alt/2);
 
 
 
@@ -54,7 +54,7 @@ $slide_small_arrow_button_size: 32px;
 &:after {
     content: '';
     display: inline-block;
-    background: url('../../img/arrows.c651879.svg') no-repeat;
+    // background: url('../../img/arrows.c651879.svg') no-repeat;
     background-size: $slide_arrow_size (
         4 * $slide_arrow_size
     );
@@ -67,11 +67,11 @@ margin-top: 3px;
     display: none;
 
     &.slick-next {
-        right: -(($slide_arrow_button_size/2) - ($slide_gap_half/2) + 2);
+        right: -(calc($slide_arrow_button_size/2) - calc($slide_gap_half/2) + 2);
         border-radius: 30px;
 
         &.small-arrow {
-            right: -(($slide_small_arrow_button_size/2) - ($slide_gap_half/2) + 2);
+            right: -(calc($slide_small_arrow_button_size/2) - calc($slide_gap_half/2) + 2);
 
             &:after {
                 background-position: 0 (3 * -$slide_small_arrow_size);
@@ -84,11 +84,11 @@ margin-top: 3px;
     }
 
     &.slick-prev {
-        left: -(($slide_arrow_button_size/2) - ($slide_gap_half/2) + 2);
+        left: -(calc($slide_arrow_button_size/2) - calc($slide_gap_half/2) + 2);
         border-radius: 30px;
 
         &.small-arrow {
-            left: -(($slide_small_arrow_button_size/2) - ($slide_gap_half/2) + 2);
+            left: -(calc($slide_small_arrow_button_size/2) - calc($slide_gap_half/2) + 2);
 
             &:after {
                 background-position: 0 (2 * -$slide_small_arrow_size);
@@ -105,7 +105,7 @@ margin-top: 3px;
 
 
 .popular-services-slider {
-    width: 100%;
+    width: 100vh;
 
     .slide {
         text-align: start;
