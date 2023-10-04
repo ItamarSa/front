@@ -1,0 +1,25 @@
+.gig-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .gig-preview {
+        max-width: 326px;
+        max-height: 361px;
+        width: calc(25% - 20px);
+        margin-bottom: 20px;
+        margin-right: 15px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+
+
+        @media (max-width: 1100px) {
+            width: calc(33.33% - 20px);
+        }
+
+        @media (max-width: 900px) {
+            width: calc(50% - 20px);
+        }
+    }
+}

@@ -15,6 +15,7 @@ export function GigIndex() {
     const filterBy = useSelector(storeState => storeState.gigModule.filterBy)
     console.log('filterBy:', filterBy)
 
+    const gigCounts = gigs.length
 
     useEffect(() => {
         try {
@@ -81,12 +82,14 @@ export function GigIndex() {
                 <button>
                     <Link to='/edit'>Add Gig Customize</Link>
                 </button>
+                <div>
+                {gigCounts}services available
+                </div>
                 <GigList
                     gigs={gigs}
                     onRemoveGig={onRemoveGig}
                     onUpdateGig={onUpdateGig}
                 />
-
             </main>
         </div>
     )
