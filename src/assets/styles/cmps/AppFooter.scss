@@ -1,7 +1,105 @@
-.app-footer{
-    // background-color: #111;
-    // color: $clr4;
-    // padding: 20px;
-    // margin: 10px;
-    text-align: center;
+.app-footer {
+    display: flex;
+    justify-content: space-between;
+    
+    .right {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .left {
+        display: flex;
+        // justify-content: space-between;
+    }
+    
+    .footer-social {
+        // display: flex;
+        // justify-content: space-between;
+
+    
+    }
 }
+
+
+
+
+
+// .app-footer {
+//     background-color: var($clr6);
+//     padding: 20px 0;
+
+//     display: flex;
+//     justify-content: space-between;
+//     font-size: 14px;
+
+//     color:#62646a
+// ;
+//     border-top: 1px solid #E0E0E0;
+//   }
+
+//   .footer-logo {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     svg {
+//       height: auto;
+//     }
+//   }
+
+//   .footer-links {
+//     display: flex;
+//     align-items: center;
+//     a {
+//       text-decoration: none;
+//       color:#62646a
+// ;
+//       margin-right: 20px;
+//       &:hover {
+//         text-decoration: underline;
+//       }
+//     }
+//   }
+
+//   .footer-social {
+//     align-items: center;
+//     ul{
+//         justify-content: flex-start;
+//         padding-bottom: 0px;
+//         padding-right: 32px;
+//         justify-content: space-between;
+
+//     }
+//     svg {
+//       width: 20px;
+//       height: 20px;
+//       fill:#62646a
+// ;
+//       margin-right: 15px;
+//       cursor: pointer;
+//       &:last-child {
+//         margin-right: 0;
+//       }
+//       &:hover {
+//         fill: #00A0FF; /* Change the color on hover */
+//       }
+//     }
+//   }
+
+//   .footer-language {
+//     display: flex;
+//     align-items: center;
+//     span {
+//       margin-right: 10px;
+//       cursor: pointer;
+//       &:last-child {
+//         margin-right: 0;
+//       }
+//       &:hover {
+//         text-decoration: underline;
+//       }
+//     }
+//   }
+//   .right{
+//     display: flex;
+//     justify-content: space-between;
+//   }
