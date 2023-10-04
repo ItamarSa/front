@@ -10,6 +10,8 @@ import { LoginSignup } from './cmps/LoginSignup'
 import { GigIndex } from './pages/GigIndex'
 import { GigEdit } from './cmps/GigEdit'
 import { GigDetails } from './pages/GigDetails'
+import { HomePage } from './pages/HomePage'
+import { UserMsg } from './cmps/UserMsg'
 
 export function RootCmp() {
 
@@ -19,6 +21,7 @@ export function RootCmp() {
             <main>
                 <Routes>
                     {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
+                    <Route path="/" element={<HomePage />} />
                     <Route path="user/:id" element={<UserDetails />} />
                     <Route element={<LoginSignup />} path="/login" />
                     <Route element={<GigEdit />} path="/edit" />
@@ -30,6 +33,7 @@ export function RootCmp() {
                 </Routes>
             </main>
             <AppFooter />
+            <UserMsg/>
         </div>
     )
 }

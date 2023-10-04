@@ -1,20 +1,35 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadGigs, addGig, updateGig, removeGig } from '../store/action/gig.actions.js'
+import { loadGigs, addGig, updateGig, removeGig, setGigFilter } from '../store/action/gig.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
 import { gigService } from '../services/gig.service.local.js'
 import { GigList } from './GigList.jsx'
 import { Link } from 'react-router-dom'
+import { GigFilter } from '../cmps/GigFilter.jsx'
 
 export function GigIndex() {
 
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
+    const filterBy = useSelector(storeState => storeState.gigModule.filterBy)
+    console.log('filterBy:', filterBy)
+
 
     useEffect(() => {
-        loadGigs()
-    }, [])
+        try {
+            console.log("log");
+            loadGigs()
+        } catch (err) {
+            console.log('err:', err)
+            showErrorMsg('Cannot load toys')
+        }
+    }, [filterBy])
+
+    function onSetFilter(filterBy) {
+        console.log('filterBy:', filterBy)
+        setGigFilter(filterBy)
+    }
 
     async function onRemoveGig(gigId) {
         try {
@@ -59,6 +74,7 @@ export function GigIndex() {
 
     return (
         <div>
+            <GigFilter filterBy={filterBy} onSetFilter={onSetFilter} />
             <h3>Gig App</h3>
             <main>
                 <button onClick={onAddGig}>Add Gig ⛐</button>
