@@ -71,11 +71,7 @@ export function AppHeader() {
 
     return (
         <header className="app-header full">
-<<<<<<< HEAD
-            <button><NavLink title='home' to="/">LOGO</NavLink></button>
-=======
             <button><NavLink title='home' to="/">Tenner</NavLink></button>
->>>>>>> 88e19a6988492d2a356446215ea205e3ccd8d47c
             <nav>
                 <div className='main-nav'>
 
