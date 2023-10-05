@@ -1,7 +1,7 @@
-import { gigService } from "../../services/gig.service.local.js";
+import { gigService } from '../../services/gig.service.local.js'
 import { store } from '../store.js'
 import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service.js'
-import { ADD_GIG, REMOVE_GIG, SET_FILTER, SET_GIGS, UNDO_REMOVE_GIG, UPDATE_GIG } from "../reducer/gig.reducer.js";
+import { ADD_GIG, REMOVE_GIG, SET_FILTER, SET_GIGS, UNDO_REMOVE_GIG, UPDATE_GIG } from '../reducer/gig.reducer.js'
 
 // Action Creators:
 export function getActionRemoveGig(gigId) {
@@ -94,7 +94,7 @@ export function onRemoveGigOptimistic(gigId) {
 
     gigService.remove(gigId)
         .then(() => {
-            console.log('Server Reported - Deleted Succesfully');
+            console.log('Server Reported - Deleted Succesfully')
         })
         .catch(err => {
             showErrorMsg('Cannot remove gig')

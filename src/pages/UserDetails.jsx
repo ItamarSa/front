@@ -30,14 +30,14 @@ export function UserDetails() {
   }
 
   return (
-    <section className="user-details">
+    <section className='user-details'>
       <h1>User Details</h1>
       {user && <div>
         <h3>
           {user.fullname}
         </h3>
         {/* Demo for dynamic images: */}
-        <div className="user-img" style={{ backgroundImage: `url('/img/u${0}.png')` }}>
+        <div className='user-img' style={{ backgroundImage: `url('/img/u${0}.png')` }}>
         </div>
         <pre>
           {JSON.stringify(user, null, 2)}

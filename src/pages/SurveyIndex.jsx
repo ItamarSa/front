@@ -1,4 +1,4 @@
-import { surveyService } from "../services/survey.service.js"
+import { surveyService } from '../services/survey.service.js'
 
 import { useState, useEffect } from 'react'
 export function SurveyIndex() {
@@ -29,7 +29,7 @@ export function SurveyIndex() {
         padding: '5px', margin: '5px'
     }
     return (
-        <section className="survey-app">
+        <section className='survey-app'>
             <h2>Survey - {survey.title}</h2>
             {
                 survey.cmps.map((cmp, idx) => <div key={cmp.id} style={style}>
@@ -58,7 +58,7 @@ function TextBox({ info, val = '', onChangeVal }) {
     return (
         <label>
             {label}
-            <input type="text" value={val} onChange={(ev) => {
+            <input type='text' value={val} onChange={(ev) => {
                 onChangeVal(ev.target.value)
             }} />
         </label>
@@ -74,7 +74,7 @@ function SelectBox({ info, val = '', onChangeVal }) {
             <select value={val} onChange={(ev) => {
                 onChangeVal(ev.target.value)
             }}>
-                <option value="">Select an option</option>
+                <option value=''>Select an option</option>
                 {
                     opts.map(opt => <option key={opt}>{opt}</option>)
                 }
