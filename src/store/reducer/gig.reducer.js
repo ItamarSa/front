@@ -15,7 +15,7 @@ const initialState = {
 export function gigReducer(state = initialState, action) {
     var newState = state
     var gigs
-    var gigt
+
     switch (action.type) {
         case SET_GIGS:
             newState = { ...state, gigs: action.gigs }
