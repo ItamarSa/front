@@ -4,6 +4,21 @@
     justify-content: space-evenly;
     background-color: $clr4;
     padding: 10px;
+    position: sticky;
+    top: 0;
+    .header{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-nav{
+        display: flex;
+        flex-direction: row;
+    }
+    .filter{
+        display: flex;
+        flex-direction: column;
+    }
 
 
     // .user-info {
@@ -56,8 +71,6 @@
     // nav .active {
     //     color: $clr1;
     // }
-    .main-nav{
-        display: flex;
-    }
+    
 
 }

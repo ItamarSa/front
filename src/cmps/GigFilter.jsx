@@ -60,7 +60,7 @@ export function GigFilter({ onSetFilter }) {
     <div>
       <section className="gig-filter">
         <div className="filter-group">
-          <label htmlFor="txt">Search By text</label>
+          <label htmlFor="txt"></label>
           <br />
           <input
             value={filterBy.txt}
@@ -72,7 +72,7 @@ export function GigFilter({ onSetFilter }) {
           />
         </div>
         <div className="filter-group">
-          <label>Label:</label>
+          <label></label>
           <br />
           {gigTags.map((tag) => (
             <button

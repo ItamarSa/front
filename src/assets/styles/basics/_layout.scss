@@ -1,45 +1,49 @@
 .main-container {
     display: grid;
+    grid-template-columns: 32px minmax(0, 1400px) 32px;
+    gap: 16px;
     justify-content: center;
-    grid-template-columns: 32px minmax(1fr, 1400px) 32px;
 
-    > * :not(full){
-        grid-column: 2;
-
-        &*.full {
-            grid-column: 1 /-1;
-        }
-    //      >*:not(.full) {
-    //     grid-column: 2;
-    //     // display: grid;
-    //     // grid-auto-flow: dense;
-    //     // grid-template-columns: repeat(6, 1fr);
-    // }
+    >*.full {
+        grid-column: 1 / -1;
     }
 
-    // @include for-narrow-layout {
-    //     grid-template-columns: 
-    //         minmax(20px, 1fr)
-    //         minmax(auto, $mobile-breakpoint)
-    //         minmax(20px, 1fr);
-    // }
-    // @include for-normal-layout {
-    //     grid-template-columns: 
-    //         minmax(20px, 1fr)
-    //         minmax(auto, $narrow-breakpoint)
-    //         minmax(20px, 1fr);
-    // }
-    // @include for-wide-layout {
-    //     grid-template-columns: 
-    //         minmax(20px, 1fr)
-    //         minmax(auto, $normal-breakpoint)
-    //         minmax(20px, 1fr);
-    // }
+    >*:not(.full) {
+        grid-column: 2;
+    }
 }
+
+// .main-container>* {
+//     grid-column: 2;
+// }
+
+// .main-container>*.full {
+//     grid-column: 1 / -1;
+// }
+
+
+// @include for-narrow-layout {
+//     grid-template-columns: 
+//         minmax(20px, 1fr)
+//         minmax(auto, $mobile-breakpoint)
+//         minmax(20px, 1fr);
+// }
+// @include for-normal-layout {
+//     grid-template-columns: 
+//         minmax(20px, 1fr)
+//         minmax(auto, $narrow-breakpoint)
+//         minmax(20px, 1fr);
+// }
+// @include for-wide-layout {
+//     grid-template-columns: 
+//         minmax(20px, 1fr)
+//         minmax(auto, $normal-breakpoint)
+//         minmax(20px, 1fr);
+// }
+
 
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 20px;
 }
-

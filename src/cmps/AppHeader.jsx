@@ -35,9 +35,9 @@ export function AppHeader() {
 
     return (
         <header className='app-header full'>
-            <button><NavLink title='home' to='/'>Tenner</NavLink></button>
-            <nav>
+            <nav className='header'>
                 <div className='main-nav'>
+                    <button><NavLink title='home' to='/'>Tenner</NavLink></button>
 
                     <button onClick={(e) => { e.stopPropagation(); setShowBusinessModal(!showBusinessModal) }}>Business solutions</button>
                     <button onClick={(e) => { e.stopPropagation(); setShowExploreModal(!showExploreModal) }}>Explore</button>
@@ -73,6 +73,8 @@ export function AppHeader() {
                     <button><NavLink title='Login' to="/login">Sign in  </NavLink></button>
                     <button> <NavLink title='Login' to="/login">Join</NavLink></button>
                     <button>  <NavLink title='gig' to="/gig">gigs</NavLink></button>
+                </div>
+                <div className='filter'>
                     <GigFilter onSetFilter={onSetFilter} />
 
 
@@ -87,11 +89,13 @@ export function AppHeader() {
                         </span>
                     }
                     {/* {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)} */}
-
-
-
                 </div>
             </nav>
+
+
+
+
+
 
 
 
