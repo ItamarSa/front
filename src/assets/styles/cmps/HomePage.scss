@@ -1,0 +1,94 @@
+.main-img-container {
+    position: relative;
+
+    .img-title-overlay {
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        color: white;
+        border-radius: 5px;
+
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            line-height: 56px;
+
+            .img-title {
+                margin-bottom: 10px;
+                font-size: 48px;
+
+                i {
+                    font-family: domnic-display;
+                }
+            }
+
+            .search-form {
+                display: flex;
+                flex-direction: column;
+
+                .search-input-container {
+                    display: flex;
+            
+                    .search-input {
+                        flex: 1;
+                        padding: 10px;
+                        border-radius: 4px;
+
+                    }
+
+                    .btn-search {
+                        background-color: $clr1;
+                        color: white;
+                        padding: 10px 20px;
+                        border: none;
+                        cursor: pointer;
+                        border-radius: 4px;
+
+                        .search-icon {
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.sponsor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $belowMainImg;
+
+    .sponsor-title {
+        color: #b5b6ba;
+        padding-right: 20px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        font-family: macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+        @media(max-width: 1100px) {
+            display: none;
+        }
+    }
+
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 24px;
+        height: 70px;
+        list-style: none;
+
+        img {
+            padding: 30px;
+        }
+    }
+}

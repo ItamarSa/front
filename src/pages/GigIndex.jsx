@@ -19,7 +19,6 @@ export function GigIndex() {
 
     useEffect(() => {
         try {
-            console.log('log')
             loadGigs()
         } catch (err) {
             console.log('err:', err)
@@ -27,10 +26,10 @@ export function GigIndex() {
         }
     }, [filterBy])
 
-    function onSetFilter(filterBy) {
-        console.log('filterBy:', filterBy)
-        setGigFilter(filterBy)
-    }
+    // function onSetFilter(filterBy) {
+    //     console.log('filterBy:', filterBy)
+    //     setGigFilter(filterBy)
+    // }
 
     async function onRemoveGig(gigId) {
         try {
@@ -43,7 +42,6 @@ export function GigIndex() {
 
     async function onAddGig() {
         const gig = gigService.getDemoGig()
-        // gig.title = prompt('Title?')
         try {
             const savedGig = await addGig(gig)
             showSuccessMsg(`Gig added (id: ${savedGig._id})`)
@@ -63,15 +61,15 @@ export function GigIndex() {
         }
     }
 
-    function onAddGigMsg(gig) {
-        console.log(`TODO Adding msg to gig`)
-    }
-    function shouldShowActionBtns(gig) {
-        const user = userService.getLoggedinUser()
-        if (!user) return false
-        if (user.isAdmin) return true
-        return gig.owner?._id === user._id
-    }
+    // function onAddGigMsg(gig) {
+    //     console.log(`TODO Adding msg to gig`)
+    // }
+    // function shouldShowActionBtns(gig) {
+    //     const user = userService.getLoggedinUser()
+    //     if (!user) return false
+    //     if (user.isAdmin) return true
+    //     return gig.owner?._id === user._id
+    // }
 
     return (
         <div>
@@ -83,7 +81,7 @@ export function GigIndex() {
                     <Link to='/edit'>Add Gig Customize</Link>
                 </button>
                 <div>
-                {gigCounts}services available
+                    {gigCounts}services available
                 </div>
                 <GigList
                     gigs={gigs}

@@ -18,7 +18,7 @@ export function RootCmp() {
     return (
         <div className='main-container '>
             <AppHeader />
-            <main>
+            {/* <main className='full'> */}
                 <Routes>
                     {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
                     <Route path='/' element={<HomePage />} />
@@ -30,7 +30,7 @@ export function RootCmp() {
                     <Route element={<GigIndex />} path='/gigs' />
                     <Route element={<GigDetails />} path='/gig/:gigId' />
                 </Routes>
-            </main>
+            {/* </main> */}
             <AppFooter />
             <UserMsg/>
         </div>
