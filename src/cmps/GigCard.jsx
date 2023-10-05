@@ -38,7 +38,7 @@ export function GigCard({ gig }) {
             </div>
             <div className='details-mini-review'> add mini reviews </div>
             <p className='gig-description'>gig.description</p>
-            {/* <GigDescription gig={gig} /> */}
+            <GigDescription gig={gig} />
         </div>
     )
 }
