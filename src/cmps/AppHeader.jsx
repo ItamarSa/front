@@ -40,8 +40,8 @@ export function AppHeader() {
     
 
     return (
-        <header className="app-header full">
-            <button><NavLink title='home' to="/">Tenner</NavLink></button>
+        <header className='app-header full'>
+            <button><NavLink title='home' to='/'>Tenner</NavLink></button>
             <nav>
                 <div className='main-nav'>
 
@@ -50,9 +50,9 @@ export function AppHeader() {
                     {/* ... */}
 
                     {showBusinessModal && (
-                        <div className="side-modal" onClick={(e) => e.stopPropagation()}>
+                        <div className='side-modal' onClick={(e) => e.stopPropagation()}>
                             <h2>Business Solutions</h2>
-                            <div className="child-buttons">
+                            <div className='child-buttons'>
                                 <button>Button 1</button>
                                 <button>Button 2</button>
                                 <button>Button 3</button>
@@ -63,9 +63,9 @@ export function AppHeader() {
 
                     {/* Render Explore Modal */}
                     {showExploreModal && (
-                        <div className="side-modal" onClick={(e) => e.stopPropagation()}>
+                        <div className='side-modal' onClick={(e) => e.stopPropagation()}>
                             <h2>Explore</h2>
-                            <div className="child-buttons">
+                            <div className='child-buttons'>
                                 <button>Button 1</button>
                                 <button>Button 2</button>
                                 <button>Button 3</button>
@@ -76,19 +76,19 @@ export function AppHeader() {
 
                     <button>Become a Seller</button>
                     {/* <button>🌐English</button> */}
-                    <button><NavLink title='Login' to="/login">Sign in  </NavLink></button>
-                    <button> <NavLink title='Login' to="/login">Join</NavLink></button>
-                    <button>  <NavLink title='gig' to="/gig">gigs</NavLink></button>
+                    <button><NavLink title='Login' to='/login'>Sign in  </NavLink></button>
+                    <button> <NavLink title='Login' to='/login'>Join</NavLink></button>
+                    <button>  <NavLink title='gig' to='/gig'>gigs</NavLink></button>
                     <GigFilter onSetFilter={onSetFilter}/>
 
 
                     {user &&
-                        <span className="user-info">
+                        <span className='user-info'>
                             <Link to={`user/${user._id}`}>
                                 {user.imgUrl && <img src={user.imgUrl} />}
                                 {user.email}
                             </Link>
-                            {/* <span className="score">{user.score?.toLocaleString()}</span> */}
+                            {/* <span className='score'>{user.score?.toLocaleString()}</span> */}
 
                         </span>
                     }

@@ -1,7 +1,7 @@
-import { useNavigate, useParams } from "react-router"
-import { useEffect, useState } from "react"
-import { gigService } from "../services/gig.service.local"
-import { showErrorMsg } from "../services/event-bus.service"
+import { useNavigate, useParams } from 'react-router'
+import { useEffect, useState } from 'react'
+import { gigService } from '../services/gig.service.local'
+import { showErrorMsg } from '../services/event-bus.service'
 
 
 export function GigDetails() {
@@ -27,26 +27,26 @@ export function GigDetails() {
         }
 
     }
-    if (!gig) return <div className="center-spinner"> <div className="lds-facebook"><div></div><div></div><div></div></div></div>
+    if (!gig) return <div className='center-spinner'> <div className='lds-facebook'><div></div><div></div><div></div></div></div>
 
     return (
-        <div className="main-details">
+        <div className='main-details'>
             <a>Home 🏡</a> <small> / </small><a>gig.tag</a>
-            <div className="gig-details">
+            <div className='gig-details'>
                 <h1>{gig.title}</h1>
-                <div className="seller-details">
+                <div className='seller-details'>
                     <h3>{gig.name} @user.unknown</h3>
                     <h3>⭐{gig.rate}(reviews.length)</h3>
                 </div>
-                <div className="details-gallery">
-                    <img src={gig.img} alt="gig imgs" />
+                <div className='details-gallery'>
+                    <img src={gig.img} alt='gig imgs' />
                 </div>
-                <div className="mini-review">
+                <div className='mini-review'>
                     <h2>What people loved about this seller</h2>
-                    <a href="">See all reviews</a>
+                    <a href=''>See all reviews</a>
                 </div>
-                <div className="details-mini-review"> add mini reviews </div>
-                <div className="about-gig">
+                <div className='details-mini-review'> add mini reviews </div>
+                <div className='about-gig'>
 
                     <h2>About this gig</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, rem architecto! Consequuntur ad sint facere excepturi libero cum dolorum architecto.</p>
@@ -112,9 +112,9 @@ export function GigDetails() {
 
                     </table>
                 </div>
-                <div className="about-seller">
+                <div className='about-seller'>
                     <h2>About the seller</h2>
-                    <div className="seller-details">
+                    <div className='seller-details'>
                         <h3>{gig.name} @user.unknown</h3>
                         <h3>user.profession</h3>
                         <h3>⭐{gig.rate}(reviews.length)</h3>

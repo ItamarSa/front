@@ -77,62 +77,62 @@ export function LoginSignup(props) {
     // }
 
     return (
-        <div className="login-page">
+        <div className='login-page'>
             <p>
-                <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
+                <button className='btn-link' onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
             </p>
-            {!isSignup && <form className="login-form" onSubmit={onLogin}>
+            {!isSignup && <form className='login-form' onSubmit={onLogin}>
                 <select
-                    name="username"
+                    name='username'
                     value={credentials.username}
                     onChange={handleChange}
                 >
-                    <option value="">Select User</option>
+                    <option value=''>Select User</option>
                     {users.map(user => <option key={user._id} value={user.username}>{user.email}</option>)}
                 </select>
                 {/* <input
-                        type="text"
-                        name="username"
+                        type='text'
+                        name='username'
                         value={username}
-                        placeholder="Username"
+                        placeholder='Username'
                         onChange={handleChange}
                         required
                         autoFocus
                     />
                     <input
-                        type="password"
-                        name="password"
+                        type='password'
+                        name='password'
                         value={password}
-                        placeholder="Password"
+                        placeholder='Password'
                         onChange={handleChange}
                         required
                     /> */}
                 <button onClick={onLogout}>Logout</button>
                 <button>Login!</button>
             </form>}
-            <div className="signup-section">
-                {isSignup && <form className="signup-form" onSubmit={onSignup}>
+            <div className='signup-section'>
+                {isSignup && <form className='signup-form' onSubmit={onSignup}>
                     <input
-                        type="text"
-                        name="email"
+                        type='text'
+                        name='email'
                         value={credentials.email}
-                        placeholder="email"
+                        placeholder='email'
                         onChange={handleChange}
                         required
                     />
                     <input
-                        type="text"
-                        name="username"
+                        type='text'
+                        name='username'
                         value={credentials.username}
-                        placeholder="Username"
+                        placeholder='Username'
                         onChange={handleChange}
                         required
                     />
                     <input
-                        type="password"
-                        name="password"
+                        type='password'
+                        name='password'
                         value={credentials.password}
-                        placeholder="Password"
+                        placeholder='Password'
                         onChange={handleChange}
                         required
                     />

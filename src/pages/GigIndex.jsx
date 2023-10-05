@@ -19,7 +19,7 @@ export function GigIndex() {
 
     useEffect(() => {
         try {
-            console.log("log");
+            console.log('log')
             loadGigs()
         } catch (err) {
             console.log('err:', err)

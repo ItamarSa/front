@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 function FancyBox(props) {
-    return <div className="fancy-box">
+    return <div className='fancy-box'>
         <button style={{ float: 'right' }} onClick={props.onClose}>x</button>
         {props.children}
     </div>
@@ -22,8 +22,8 @@ function Contacts() {
 function Projects() {
     const [projs, setProjs] = useState(['Puki Proj', 'Muki Proj'])
     const projList = projs.map((proj, idx) => (
-        <article className="proj-preview" key={proj} onClick={(ev) => {
-            ev.stopPropagation();
+        <article className='proj-preview' key={proj} onClick={(ev) => {
+            ev.stopPropagation()
             setProjs(projs.filter(p => p !== proj))
         }}>
             {proj}
@@ -33,7 +33,7 @@ function Projects() {
         <h2>Projects</h2>
         {projList}
         <button onClick={ev => {
-            ev.stopPropagation();
+            ev.stopPropagation()
             setProjs([...projs, 'Babu Proj' + Date.now() % 100])
         }}>Add</button>
     </section>
@@ -47,7 +47,7 @@ function SplitPane(props) {
         throw new Error('Projects cannot load')
     }
     return (
-        <div className="split-pane" style={{
+        <div className='split-pane' style={{
             display: 'flex'
         }}>
             <div style={{ width: width + '%' }} onClick={() => {
@@ -69,7 +69,7 @@ export function AboutUs() {
     const [count, setCount] = useState(100)
 
     function onTellMeMore() {
-        console.log('Telling you more');
+        console.log('Telling you more')
     }
     return (
         <section>
@@ -96,7 +96,7 @@ export function AboutUs() {
 // Currently - no solution for using ErrorBoundaries with react hooks:
 // https://reactjs.org/docs/hooks-faq.html#do-hooks-cover-all-use-cases-for-classes
 // class MyErrorBoundary extends React.Component {
-//     state = { error: null, errorInfo: null };
+//     state = { error: null, errorInfo: null }
 
 //     componentDidCatch(error, errorInfo) {
 //         // Catch errors in children and re-render with error message
@@ -121,9 +121,9 @@ export function AboutUs() {
 //                         {this.state.errorInfo.componentStack}
 //                     </details>
 //                 </div>
-//             );
+//             )
 //         }
 //         // Normally, just render children
-//         return this.props.children;
+//         return this.props.children
 //     }
 // }

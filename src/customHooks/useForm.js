@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from 'react'
 
 export const useForm = (initialState) => {
     const [fields, setFields] = useState(initialState)
@@ -10,12 +10,12 @@ export const useForm = (initialState) => {
             case 'number':
             case 'range':
                 value = +value
-                break;
+                break
             case 'checkbox':
                 value = checked
 
             default:
-                break;
+                break
         }
         setFields((prevFields) => ({ ...prevFields, [field]: value }))
     }
