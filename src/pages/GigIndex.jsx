@@ -24,7 +24,7 @@ export function GigIndex() {
             console.log('err:', err)
             showErrorMsg('Cannot load toys')
         }
-    }, [filterBy])
+    }, [])
 
     // function onSetFilter(filterBy) {
     //     console.log('filterBy:', filterBy)
