@@ -1,0 +1,26 @@
+.details-gallery {
+    .custom-fullscreen-button {
+        position: absolute;
+        top: 20px; // Adjust top position as needed
+        right: 20px; // Adjust right position as needed
+        background-color: opacify($color: #000000, $amount: 0.5);
+        color: #fff;
+        box-shadow: none;
+        border-radius: 8px;
+        // padding: 5px 10px;
+        cursor: pointer;
+        transition: opacity 0.3s;
+        opacity: 0; // Hide the button by default
+
+        font-family:Macan, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        
+        
+        &.fullscreen-active {
+            background-color: #ff5722; // Change the background color when in fullscreen mode
+            color: #fff; // Change the text color when in fullscreen mode
+        }
+    }
+    &:hover .custom-fullscreen-button {
+      opacity: 1; // Show the button on hover
+    }
+}

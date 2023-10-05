@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { gigService } from '../services/gig.service.local'
-
 
 
 export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
@@ -18,12 +16,10 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
 
     let slider
 
-    const gigImgs = gigService.getImgs()
-
     return (
         <section className='gigs-card'>
             <Link className='gig-details' to={`/gig/${gig._id}`}> <Slider {...settings} ref={(c) => (slider = c)}>
-                {gigImgs.map((img, index) => <img src={img} key={index} />)}
+                {gig.imgs.map((img, index) => <img src={img} key={index} />)}
             </Slider>
             </Link>
 

@@ -100,11 +100,11 @@ async function addGigMsg(gigId, txt) {
 // }
 function getDemoGig() {
     return {
-        img: gigImgs,
+        imgs: getImgs(),
         name: utilService.makeLorem(1),
         title: utilService.makeLorem(5),
         price: utilService.getRandomIntInclusive(100, 300),
-        rate: utilService.getRandomIntInclusive(2, 5),
+        rate: parseFloat((utilService.getRandomIntInclusive(20, 50) * 0.1).toPrecision(2)),
         createdAt: (Date.now()),
         tags: utilService.makeTag(1)
         // inStock: utilService.randomTrueFalse(),
