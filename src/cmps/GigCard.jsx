@@ -1,15 +1,10 @@
 import { GigDescription } from './GigDescription'
-// import Slider from 'react-slick'
-// import 'slick-carousel/slick/slick.css'
-// import 'slick-carousel/slick/slick-theme.css'
-
 import React from 'react'
-import ReactDOM from 'react-dom'
-
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
 import 'react-image-gallery/styles/css/image-gallery.css'
 
+const symbol = <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M2 2H6V0H0V6H2V2Z"/><path d="M10 0V2H14V6H16V0H10Z"/><path d="M14 14H10V16H16V10H14V14Z"/><path d="M2 10H0V16H6V14H2V10Z"/></svg>
 
 
 export function GigCard({ gig }) {
@@ -20,6 +15,11 @@ export function GigCard({ gig }) {
     })
     )
 
+    const customFullscreenButton = (onClick, isFullscreen) => (
+        <div className={`custom-fullscreen-button ${isFullscreen ? 'fullscreen-active' : ''}`} onClick={onClick}>
+          {isFullscreen ? 'Exit Fullscreen' : `${symbol} Full Screen`}
+        </div>
+      )
 
     return (
         <div className='gig-card'>
@@ -29,7 +29,11 @@ export function GigCard({ gig }) {
                 <h3>⭐{gig.rate}(reviews.length)</h3>
             </div>
             <div className='details-gallery'>
-                <ImageGallery items={images} />
+                <ImageGallery 
+                items={images} 
+                showPlayButton={false}
+                renderFullscreenButton={customFullscreenButton}
+                />
             </div>
 
             <div className='mini-review'>
