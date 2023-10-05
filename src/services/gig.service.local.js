@@ -36,24 +36,33 @@ function getImgs() {
 //     var gigs = await storageService.query(STORAGE_KEY)}
 
 async function query(filterBy = {}) {
-    // console.log('hi')
-    var gigs = await storageService.query(STORAGE_KEY, filterBy)
-    let gigToDisplay = [...gigs]
+    var gigs = await storageService.query(STORAGE_KEY, filterBy);
+
+    let gigToDisplay = [...gigs];
+
     if (filterBy.txt) {
-        const regex = new RegExp(filterBy.txt, 'i')
-        gigToDisplay = gigToDisplay.filter(gig => regex.test(gig.title) || regex.test(gig.description))
+        const regex = new RegExp(filterBy.txt, 'i');
+        gigToDisplay = gigToDisplay.filter((gig) => {
+            return (
+                gig.title.match(regex) || // Match by title
+                gig.tags.some((tag) => tag.match(regex)) // Match by tags
+            );
+        });
     }
+
     if (filterBy.price) {
-        gigToDisplay = gigToDisplay.filter(gig => gig.price <= filterBy.price)
+        gigToDisplay = gigToDisplay.filter((gig) => gig.price <= filterBy.price);
     }
+
     if (filterBy.tags && filterBy.tags.length > 0) {
-        gigToDisplay = gigToDisplay.filter(gig => {
-            return gig.tags.some(tag => filterBy.tags.includes(tag))
-        })
+        gigToDisplay = gigToDisplay.filter((gig) => {
+            return gig.tags.some((tag) => filterBy.tags.includes(tag));
+        });
     }
-    // console.log('gigToDisplay:', gigToDisplay)
-    return gigToDisplay
+
+    return gigToDisplay;
 }
+
 
 function getById(gigId) {
     return storageService.get(STORAGE_KEY, gigId)

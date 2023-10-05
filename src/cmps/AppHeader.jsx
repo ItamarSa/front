@@ -5,16 +5,16 @@ import routes from "../routes";
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service";
 import { login, logout, signup } from "../store/action/user.actions.js";
 import { LoginSignup } from "./LoginSignup.jsx";
-import { GigFilter } from "./GigFilter";
 import { setGigFilter } from "../store/action/gig.actions";
-import { TextFilter } from "./TextFilter"; // Import the TextFilter component
-import { TagFilter } from "./TagFilter"; // Import the TagFilter component
+import { TextFilter } from "./TextFilter";
+import { TagFilter } from "./TagFilter";
 
 export function AppHeader() {
   const user = useSelector((storeState) => storeState.userModule.user);
   const [showBusinessModal, setShowBusinessModal] = useState(false);
   const [showExploreModal, setShowExploreModal] = useState(false);
-  const filterBy = useSelector((storeState) => storeState.gigModule.filterBy);
+  const [filterText, setFilterText] = useState(""); // Local state for text filter
+  const [filterTags, setFilterTags] = useState([]); // Local state for tag filter
 
   const closeModals = () => {
     setShowBusinessModal(false);
@@ -28,23 +28,33 @@ export function AppHeader() {
     };
   }, []);
 
-  function onSetFilter(filterBy) {
-    // console.log("filterBy:", filterBy);
-    setGigFilter(filterBy);
+  function onSetFilterTag(filterBy) {
+    console.log("filterBy tags:", filterBy);
+    // Update local state for tags filter
+    setFilterTags(filterBy.tags);
+    // Update the store filter with both text and tags
+    setGigFilter({ txt: filterText, tags: filterBy.tags });
+  }
+
+  function onSetFilterText(filterBy) {
+    console.log("filterBy text:", filterBy);
+    // Update local state for text filter
+    setFilterText(filterBy.txt);
+    // Update the store filter with both text and tags
+    setGigFilter({ txt: filterBy.txt, tags: filterTags });
   }
 
   return (
     <header className="app-header full">
       <nav className="header">
         <div className="main-nav">
-            
           <button>
             <NavLink title="home" to="/">
               Tenner
             </NavLink>
           </button>
-           {/* Render the TextFilter component */}
-           <TextFilter onSetFilter={onSetFilter} />
+          <TagFilter onSetFilter={onSetFilterTag} />
+          <TextFilter onSetFilter={onSetFilterText} />
 
           <button
             onClick={(e) => {
@@ -106,10 +116,6 @@ export function AppHeader() {
               gigs
             </NavLink>
           </button>
-        </div>
-        <div className="filter">
-          {/* Render the TagFilter component */}
-          <TagFilter onSetFilter={onSetFilter} />
           {user && (
             <span className="user-info">
               <Link to={`user/${user._id}`}>
@@ -119,6 +125,10 @@ export function AppHeader() {
               {/* <span className='score'>{user.score?.toLocaleString()}</span> */}
             </span>
           )}
+        </div>
+        <div className="filter">
+          {/* Render the TagFilter component */}
+          
           {/* {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)} */}
         </div>
       </nav>
