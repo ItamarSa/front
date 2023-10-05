@@ -21,23 +21,17 @@ export function AppHeader() {
         setShowExploreModal(false)
     }
 
-    // Add event listener to the document body to close modals on click outside
     useEffect(() => {
         document.body.addEventListener('click', closeModals)
-
-        // Cleanup the event listener when the component unmounts
         return () => {
             document.body.removeEventListener('click', closeModals)
         }
     }, [])
 
-
-
     function onSetFilter(filterBy) {
         console.log('filterBy:', filterBy)
         setGigFilter(filterBy)
     }
-    
 
     return (
         <header className="app-header full">
@@ -45,7 +39,7 @@ export function AppHeader() {
             <nav>
                 <div className='main-nav'>
 
-                    <button onClick={(e) => { e.stopPropagation(); setShowBusinessModal(!showBusinessModal)}}>Business solutions</button>
+                    <button onClick={(e) => { e.stopPropagation(); setShowBusinessModal(!showBusinessModal) }}>Business solutions</button>
                     <button onClick={(e) => { e.stopPropagation(); setShowExploreModal(!showExploreModal) }}>Explore</button>
                     {/* ... */}
 
@@ -79,7 +73,7 @@ export function AppHeader() {
                     <button><NavLink title='Login' to="/login">Sign in  </NavLink></button>
                     <button> <NavLink title='Login' to="/login">Join</NavLink></button>
                     <button>  <NavLink title='gig' to="/gig">gigs</NavLink></button>
-                    <GigFilter onSetFilter={onSetFilter}/>
+                    <GigFilter onSetFilter={onSetFilter} />
 
 
                     {user &&

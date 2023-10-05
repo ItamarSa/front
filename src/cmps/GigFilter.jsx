@@ -1,80 +1,93 @@
-import { useState, useEffect } from "react";
-import { gigService } from "../services/gig.service.local";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
+import { utilService } from "../services/util.service"
+import { gigService } from "../services/gig.service.local"
 
-const gigTags = gigService.getGigTags();
+const gigTags = gigService.getGigTags()
 
-export function GigFilter({ filterBy, onSetFilter }) {
-    const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy, tags: [] });
-    const navigate = useNavigate();
+export function GigFilter({ onSetFilter }) {
+  const location = useLocation()
+  const navigate = useNavigate()
 
-    useEffect(() => {
-        onSetFilter(filterByToEdit);
-    }, [filterByToEdit, onSetFilter]);
+  // Parse query parameters from the URL
+  const searchParams = new URLSearchParams(location.search)
+  const filterByFromURL = {
+    txt: searchParams.get("txt") || "", // Initialize with text from URL
+    tags: searchParams.getAll("tags") || [], // Initialize with tags from URL
+  }
 
-    function handleTagButtonClick(tag) {
-        const updatedTags = [...filterByToEdit.tags];
-        // Toggle the tag in the array
-        if (updatedTags.includes(tag)) {
-            updatedTags.splice(updatedTags.indexOf(tag), 1);
-        } else {
-            updatedTags.push(tag);
-        }
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, tags: updatedTags }));
-        updateURL({ ...filterByToEdit, tags: updatedTags });
-    }
+  const [filterBy, setFilterBy] = useState(filterByFromURL)
 
-    function handleClearAll() {
-        setFilterByToEdit({
-            txt: "",
-            tags: [],
-        });
-        updateURL({ txt: "", tags: [] });
-    }
+  const debouncedUpdateURL = utilService.debounce(updateURL, 500)
 
-    function handleChange({ target }) {
-        const { value, name: field } = target;
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }));
-        updateURL({ ...filterByToEdit, [field]: value });
-    }
 
-    function updateURL(params) {
-        const queryString = new URLSearchParams(params).toString();
-        navigate(`/gigs?${queryString}`);
-    }
+  useEffect(() => {
+    // Call onSetFilter whenever filterBy changes
+    onSetFilter(filterBy)
+  }, [filterBy, onSetFilter])
 
-    return (
-        <div>
-            <section className="gig-filter">
-                <div className="filter-group">
-                    <label htmlFor="txt">Search By text</label><br />
-                    <input
-                        value={filterByToEdit.txt}
-                        onChange={handleChange}
-                        type="text"
-                        placeholder="By txt"
-                        id="txt"
-                        name="txt"
-                    />
-                </div>
-                <div className="filter-group">
-                    <label>Label:</label><br />
-                    {gigTags.map((tag) => (
-                        <button
-                            key={tag}
-                            className={
-                                filterByToEdit.tags.includes(tag) ? "selected" : ""
-                            }
-                            onClick={() => handleTagButtonClick(tag)}
-                        >
-                            {tag}
-                        </button>
-                    ))}
-                    <button className="clear-all-button" onClick={handleClearAll}>
-                        Clear All
-                    </button>
-                </div>
-            </section>
+  // Initialize filterBy state when the component first loads
+  useEffect(() => {
+    setFilterBy(filterByFromURL)
+  }, [])
+
+  function handleTagButtonClick(tag) {
+    // Create a new array with the clicked tag
+    const updatedTags = [tag]
+    setFilterBy({ txt: filterBy.txt, tags: updatedTags }) // Preserve text filter
+    debouncedUpdateURL({ txt: filterBy.txt, tags: updatedTags })
+  }
+
+  function handleClearAll() {
+    setFilterBy({ txt: "", tags: [] }) // Clear existing filter
+    debouncedUpdateURL({ txt: "", tags: [] })
+  }
+
+  function handleChange({ target }) {
+    const { value, name: field } = target
+    setFilterBy({ ...filterBy, [field]: value })
+    debouncedUpdateURL({ ...filterBy, [field]: value })
+  }
+
+  function updateURL(params) {
+    const queryString = new URLSearchParams(params).toString()
+    navigate(`/gigs?${queryString}`)
+  }
+
+  
+
+  return (
+    <div>
+      <section className="gig-filter">
+        <div className="filter-group">
+          <label htmlFor="txt">Search By text</label>
+          <br />
+          <input
+            value={filterBy.txt}
+            onChange={handleChange}
+            type="text"
+            placeholder="By txt"
+            id="txt"
+            name="txt"
+          />
         </div>
-    );
+        <div className="filter-group">
+          <label>Label:</label>
+          <br />
+          {gigTags.map((tag) => (
+            <button
+              key={tag}
+              className={filterBy.tags.includes(tag) ? "selected" : ""}
+              onClick={() => handleTagButtonClick(tag)}
+            >
+              {tag}
+            </button>
+          ))}
+          <button className="clear-all-button" onClick={handleClearAll}>
+            Clear All
+          </button>
+        </div>
+      </section>
+    </div>
+  )
 }
