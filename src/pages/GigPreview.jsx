@@ -18,12 +18,12 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
 
     let slider
 
-    const gigImgs = gigService.getImgs()
+    // const gigImgs = gigService.getImgs()
 
     return (
         <section className='gigs-card'>
             <Link className='gig-details' to={`/gig/${gig._id}`}> <Slider {...settings} ref={(c) => (slider = c)}>
-                {gigImgs.map((img, index) => <img src={img} key={index} />)}
+                {gig.imgs.map((img, index) => <img src={img} key={index} />)}
             </Slider>
             </Link>
 
