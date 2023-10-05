@@ -1,6 +1,6 @@
 .main-container {
     display: grid;
-    grid-template-columns: 32px minmax(0, 1400px) 32px;
+    grid-template-columns: em(32px) minmax(0, 1400px) em(32px);
     gap: 16px;
     justify-content: center;
 

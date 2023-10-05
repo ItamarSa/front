@@ -73,7 +73,22 @@ export function HomePage() {
         <>
             <section className='full'>
                 <Slider {...settings} ref={(c) => (slider = c)}>
-                    {mainImg.map((img) => <img src={img.imgSrc} alt={img.altTxt} />)}
+                    {mainImg.map((img) => (
+                        <div key={img.altTxt} className="main-img-container">
+                            <img src={img.imgSrc} alt={img.altTxt} />
+                            <div className="img-title-overlay">
+                                <div className="content-container">
+                                    <h1 className="img-title">Find the right <i>freelance</i><br />service, right away</h1>
+                                    <form className='search-form'>
+                                        <div className="search-input-container">
+                                            <input type="text" className="search-input" placeholder="Search for any services..." value='' />
+                                            <button className='btn-search'><i class="fa-solid fa-magnifying-glass search-icon"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </Slider>
                 <div className='sponsor'>
                     <ul><span className='sponsor-title'>Trusted by:</span>
