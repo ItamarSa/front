@@ -54,25 +54,25 @@ export function ChatApp() {
     }
 
     return (
-        <section className="chat">
+        <section className='chat'>
             <h2>Lets Chat about {topic}</h2>
 
             <label>
-                <input type="checkbox" name="isBotMode" checked={isBotMode}
+                <input type='checkbox' name='isBotMode' checked={isBotMode}
                     onChange={({ target }) => setIsBotMode(target.checked)} />
                 Bot Mode
             </label>
 
             <div>
                 <label>
-                    <input type="radio" name="topic" value="Love"
+                    <input type='radio' name='topic' value='Love'
                         checked={topic === 'Love'} onChange={({ target }) => setTopic(target.value)} />
                     Love
                 </label>
 
                 <label>
                     <input
-                        type="radio" name="topic" value="Politics"
+                        type='radio' name='topic' value='Politics'
                         checked={topic === 'Politics'} onChange={({ target }) => setTopic(target.value)} />
                     Politics
                 </label>
@@ -81,8 +81,8 @@ export function ChatApp() {
 
             <form onSubmit={sendMsg}>
                 <input
-                    type="text" value={msg.txt} onChange={handleFormChange}
-                    name="txt" autoComplete="off" />
+                    type='text' value={msg.txt} onChange={handleFormChange}
+                    name='txt' autoComplete='off' />
                 <button>Send</button>
             </form>
 

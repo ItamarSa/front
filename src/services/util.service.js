@@ -22,10 +22,10 @@ function makeId(length = 6) {
 }
 function makeTag(size = 1) {
     var words = [
-        "logo-design",
-        "artisitic",
-        "proffesional",
-        "accessible"
+        'logo-design',
+        'artisitic',
+        'proffesional',
+        'accessible'
       ]
     var word = ''
     let tags = []
@@ -66,9 +66,9 @@ function randomPastTime() {
 function debounce(func, timeout = 600) {
     let timer;
     return function (...args) {
-        clearTimeout(timer);
-        timer = setTimeout(() => func.apply(this, args), timeout);
-    };
+        clearTimeout(timer)
+        timer = setTimeout(() => func.apply(this, args), timeout)
+    }
 }
 
 

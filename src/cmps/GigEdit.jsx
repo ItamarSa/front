@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react"
-import { gigService } from "../services/gig.service.local"
-import { useNavigate, useParams } from "react-router"
-import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
-import { utilService } from "../services/util.service"
+import { useEffect, useState } from 'react'
+import { gigService } from '../services/gig.service.local'
+import { useNavigate, useParams } from 'react-router'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+import { utilService } from '../services/util.service'
 
 export function GigEdit(onAddGig) {
     const [gigToAdd, setGigToAdd] = useState({
-        name: "",
-        title: "",
+        name: '',
+        title: '',
         price: 0,
         tags:utilService.makeTag(1)
     })
@@ -59,7 +59,7 @@ export function GigEdit(onAddGig) {
             navigate('/gig')
         } catch (error) {
             console.log('Had issues saving gig', error)
-            showErrorMsg("Couldn't save gig")
+            showErrorMsg('Couldn\'t save gig')
         }
     }
 

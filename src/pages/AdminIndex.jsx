@@ -10,7 +10,7 @@ export function AdminApp() {
         loadUsers()
     }, [])
 
-    return <section className="admin">
+    return <section className='admin'>
         {isLoading && 'Loading...'}
         {users && <ul>
 

@@ -65,9 +65,9 @@ export function ReviewIndex() {
 
 
   return (
-    <div className="review-index">
+    <div className='review-index'>
       <h1>Reviews and Gossip</h1>
-      {reviews && <ul className="review-list">
+      {reviews && <ul className='review-list'>
         {reviews.map(review => (
           <li key={review._id}>
             {canRemove(review) &&
@@ -93,9 +93,9 @@ export function ReviewIndex() {
           <select
             onChange={handleChange}
             value={reviewToEdit.aboutUserId}
-            name="aboutUserId"
+            name='aboutUserId'
           >
-            <option value="">Select User</option>
+            <option value=''>Select User</option>
             {users.map(user => (
               <option key={user._id} value={user._id}>
                 {user.fullname}
@@ -103,7 +103,7 @@ export function ReviewIndex() {
             ))}
           </select>
           <textarea
-            name="txt"
+            name='txt'
             onChange={handleChange}
             value={reviewToEdit.txt}
           ></textarea>
