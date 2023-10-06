@@ -7,16 +7,24 @@
     position: sticky;
     z-index: 999;
     top: 0;
-
+   
     .header {
         display: flex;
         flex-direction: column;
-
-
+        
+        
         .main-nav {
             display: flex;
             flex-direction: row;
+            
+            .option-header{
+                display: none;
+            }
 
+            .btn-join{
+                border: solid 1px red;
+            }
+            
             .filter-container {
                 position: fixed;
                 top: -100%;
@@ -25,11 +33,11 @@
                 background-color: #fff;
                 transition: top 0.3s ease-in-out;
                 z-index: 1000;
-
+                
                 &active {
                     top: 0;
                 }
-
+                
                 .filter {
                     display: flex;
                     flex-direction: column;
