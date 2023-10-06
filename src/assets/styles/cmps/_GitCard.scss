@@ -1,5 +1,6 @@
 .details-gallery {
     cursor: pointer;
+
     .custom-fullscreen-button {
         position: absolute;
         top: 20px; // Adjust top position as needed
@@ -11,20 +12,42 @@
         // padding: 5px 10px;
         transition: opacity 0.3s;
         opacity: 0; // Hide the button by default
-        
-        
-        font-family:Macan, "Helvetica Neue", Helvetica, Arial, sans-serif;
-        
-        
+
+
+        font-family: Macan, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
         // &.fullscreen-active {
         //     background-color: #ff5722; // Change the background color when in fullscreen mode
         //     color: #fff; // Change the text color when in fullscreen mode
         // }
     }
+
     &:hover .custom-fullscreen-button {
         opacity: 1; // Show the button on hover
     }
+
     .fullscreen-icon {
         margin-right: 5px; // Adjust the spacing between the icon and text
-      }
+    }
 }
+
+.mini-user {
+    display: flex;
+    align-items: center;
+    
+    .user-img {
+        width: 64px;
+        border-radius: 50%;
+    }
+}
+
+.mini-review {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h2{
+        font-size: 20px;
+    }
+}
+

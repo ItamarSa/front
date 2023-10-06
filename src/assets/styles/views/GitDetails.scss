@@ -1,3 +1,22 @@
+.details-layout{
+  display: grid;
+  grid-template-columns: 5fr 1fr 4fr;
+  
+  .cart-option {
+      grid-column: 3;
+  }
+  .cart-option p{
+      position: sticky;
+      top: 174px;
+      z-index: 100;
+  }   
+}
+
+
+
+
+
+
 .center-spinner {
     display: flex;
     justify-content: center;

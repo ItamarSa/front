@@ -7,7 +7,7 @@ import fullscreenIcon from '../assets/img/fullscreen.svg'
 
 
 
-export function GigCard({ gig }) {
+export function GigCard({ gig, user }) {
 
     const images = gig.imgs.map(img => ({
         original: img,
@@ -17,13 +17,13 @@ export function GigCard({ gig }) {
 
     const customFullscreenButton = (onClick, isFullscreen) => (
         <div className={`custom-fullscreen-button ${isFullscreen ? 'fullscreen-active' : ''}`} onClick={onClick}>
-           <img
-            src={fullscreenIcon}
-            alt="Fullscreen Icon"
-            className="fullscreen-icon"
-            width="16"
-            height="16"
-      />
+            <img
+                src={fullscreenIcon}
+                alt="Fullscreen Icon"
+                className="fullscreen-icon"
+                width="16"
+                height="16"
+            />
             {isFullscreen ? 'Exit Fullscreen' : 'Full Screen'}
         </div>
     )
@@ -31,10 +31,14 @@ export function GigCard({ gig }) {
     return (
         <div className='gig-card'>
             <h1>{gig.title}</h1>
-            <div className='seller-details'>
-                <h3>{gig.name} @user.unknown</h3>
-                <h3>⭐{gig.rate}(reviews.length)</h3>
+            <div className="mini-user">
+                <img className='user-img' src={user.imgUrl} alt='user-img' />
+                <div className='seller-details'>
+                    <h4>{gig.name} <span>{user.store}</span></h4>
+                    <h4>⭐{gig.rate}(reviews.length)</h4>
+                </div>
             </div>
+
             <div className='details-gallery'>
                 <ImageGallery
                     items={images}
