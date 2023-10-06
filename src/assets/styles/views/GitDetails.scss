@@ -3,12 +3,14 @@
   grid-template-columns: 5fr 1fr 4fr;
   
   .cart-option {
-      grid-column: 3;
+    grid-column: 3;
   }
-  .cart-option p{
-      position: sticky;
-      top: 174px;
-      z-index: 100;
+  .cart-option section{
+    position: sticky;
+    top: 174px;
+    z-index: 100;
+
+    border: 1px solid #62646a;
   }   
 }
 

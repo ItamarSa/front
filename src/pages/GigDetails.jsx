@@ -4,6 +4,7 @@ import { gigService } from '../services/gig.service.local'
 import { showErrorMsg } from '../services/event-bus.service'
 import { GigCard } from '../cmps/GigCard'
 import { AboutSeller } from '../cmps/AboutSeller'
+import { GigCart } from './GigCart'
 
 
 export function GigDetails() {
@@ -70,9 +71,7 @@ export function GigDetails() {
                 <AboutSeller gig={gig} user={user} />
             </div>
             <div className="cart-option">
-                {/* <GigCart /> */}
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem id ratione nostrum cum earum corporis error vero sint dolore, totam fugit veritatis veniam excepturi tempore incidunt vitae placeat quae, sapiente obcaecati repudiandae eos ullam perspiciatis eveniet voluptate! Consequatur reiciendis officia quaerat aliquam aperiam nihil, delectus autem at deleniti iste ipsam doloremque. Dolor repellat amet, sed nemo est autem adipisci molestiae! Facilis cumque iusto rem ipsa in maiores similique necessitatibus sit, optio nobis consequuntur voluptates tenetur laboriosam dignissimos saepe nesciunt! Commodi ullam reiciendis nihil placeat fugiat numquam enim ut similique, exercitationem laborum deleniti ab ipsam sequi molestias quae obcaecati unde repudiandae harum vero necessitatibus nemo doloribus quis. Inventore culpa consequatur dolor, aliquid ipsam, quo vitae sit officiis, modi officia dolore reprehenderit quae est praesentium voluptate! Dignissimos sequi amet, minus, architecto, nam velit explicabo rem illum consequuntur eligendi laboriosam quia veniam laborum sint! Sed modi tenetur fugit, expedita sint quidem accusamus? Dignissimos?</p>
-
+                <GigCart gig={gig}/>
             </div>
         </div>
     )
