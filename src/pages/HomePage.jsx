@@ -82,7 +82,7 @@ export function HomePage() {
                                     <form className='search-form'>
                                         <div className="search-input-container">
                                             <input type="text" className="search-input" placeholder="Search for any services..." value='' />
-                                            <button className='btn-search'><i class="fa-solid fa-magnifying-glass search-icon"></i></button>
+                                            <button className='btn-search'><i className="fa-solid fa-magnifying-glass search-icon"></i></button>
                                         </div>
                                     </form>
                                 </div>
@@ -92,8 +92,8 @@ export function HomePage() {
                 </Slider>
                 <div className='sponsor'>
                     <ul><span className='sponsor-title'>Trusted by:</span>
-                        {sponsors.map((sponsor) => (
-                            <li><img src={sponsor.imgSrc} alt={sponsor.altTxt} /></li>
+                        {sponsors.map((sponsor,index) => (
+                            <li key={index}><img src={sponsor.imgSrc} alt={sponsor.altTxt} /></li>
                         ))}
                     </ul>
                 </div>
