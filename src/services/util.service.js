@@ -22,11 +22,17 @@ function makeId(length = 6) {
 }
 function makeTag(size = 1) {
     var words = [
-        'logo-design',
-        'artisitic',
-        'proffesional',
-        'accessible'
-      ]
+        'Graphics & Design',
+        'Programming & Tech',
+        'Digital Marketing',
+        'Video & Animation',
+        'Writing & Translation',
+        'Music & Audio',
+        'Business',
+        'Data',
+        'Photography',
+    
+    ]
     var word = ''
     let tags = []
     while (size > 0) {

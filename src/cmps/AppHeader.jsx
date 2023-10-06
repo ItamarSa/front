@@ -53,7 +53,6 @@ export function AppHeader() {
               Tenner
             </NavLink>
           </button>
-          <TagFilter onSetFilter={onSetFilterTag} />
           <TextFilter onSetFilter={onSetFilterText} />
 
           <button
@@ -128,7 +127,7 @@ export function AppHeader() {
         </div>
         <div className="filter">
           {/* Render the TagFilter component */}
-          
+          <TagFilter onSetFilter={onSetFilterTag} />
           {/* {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)} */}
         </div>
       </nav>
