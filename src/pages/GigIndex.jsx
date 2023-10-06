@@ -7,7 +7,7 @@ import { userService } from '../services/user.service.js'
 import { gigService } from '../services/gig.service.local.js'
 import { GigList } from './GigList.jsx'
 import { Link } from 'react-router-dom'
-import { GigFilter } from '../cmps/GigFilter.jsx'
+// import { GigFilter } from '../cmps/GigFilter.jsx'
 
 export function GigIndex() {
 
