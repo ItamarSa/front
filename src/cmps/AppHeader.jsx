@@ -10,38 +10,55 @@ import { TextFilter } from "./TextFilter";
 import { TagFilter } from "./TagFilter";
 
 export function AppHeader() {
-  const user = useSelector((storeState) => storeState.userModule.user);
-  const [showBusinessModal, setShowBusinessModal] = useState(false);
-  const [showExploreModal, setShowExploreModal] = useState(false);
-  const [filterText, setFilterText] = useState(""); // Local state for text filter
-  const [filterTags, setFilterTags] = useState([]); // Local state for tag filter
+  const user = useSelector((storeState) => storeState.userModule.user)
+  const [showBusinessModal, setShowBusinessModal] = useState(false)
+  const [showExploreModal, setShowExploreModal] = useState(false)
+  const [showFilter, setShowFilter] = useState(false)
+  const [filterText, setFilterText] = useState("") //Local state for text filter
+  const [filterTags, setFilterTags] = useState([]) // Local state for tag filter
 
   const closeModals = () => {
-    setShowBusinessModal(false);
-    setShowExploreModal(false);
+    setShowBusinessModal(false)
+    setShowExploreModal(false)
   };
 
   useEffect(() => {
-    document.body.addEventListener("click", closeModals);
+    document.body.addEventListener("click", closeModals)
     return () => {
-      document.body.removeEventListener("click", closeModals);
+      document.body.removeEventListener("click", closeModals)
     };
   }, []);
 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+        window.removeEventListener('scroll', handleScroll)
+    }
+}, [])
+
+  const handleScroll = () => {
+    if (window.scrollY > 100) {
+        setShowFilter(true)
+    } else {
+        setShowFilter(false)
+    }
+}
+
+
   function onSetFilterTag(filterBy) {
-    console.log("filterBy tags:", filterBy);
+    console.log("filterBy tags:", filterBy)
     // Update local state for tags filter
     setFilterTags(filterBy.tags);
     // Update the store filter with both text and tags
-    setGigFilter({ txt: filterText, tags: filterBy.tags });
+    setGigFilter({ txt: filterText, tags: filterBy.tags })
   }
 
   function onSetFilterText(filterBy) {
-    console.log("filterBy text:", filterBy);
+    console.log("filterBy text:", filterBy)
     // Update local state for text filter
-    setFilterText(filterBy.txt);
+    setFilterText(filterBy.txt)
     // Update the store filter with both text and tags
-    setGigFilter({ txt: filterBy.txt, tags: filterTags });
+    setGigFilter({ txt: filterBy.txt, tags: filterTags })
   }
 
   return (
@@ -58,7 +75,7 @@ export function AppHeader() {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              setShowBusinessModal(!showBusinessModal);
+              setShowBusinessModal(!showBusinessModal)
             }}
           >
             Business solutions
@@ -66,7 +83,7 @@ export function AppHeader() {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              setShowExploreModal(!showExploreModal);
+              setShowExploreModal(!showExploreModal)
             }}
           >
             Explore
@@ -121,14 +138,13 @@ export function AppHeader() {
                 {user.imgUrl && <img src={user.imgUrl} />}
                 {user.email}
               </Link>
-              {/* <span className='score'>{user.score?.toLocaleString()}</span> */}
             </span>
           )}
         </div>
-        <div className="filter">
-          {/* Render the TagFilter component */}
-          <TagFilter onSetFilter={onSetFilterTag} />
-          {/* {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)} */}
+        <div className='filter-container'>
+          <div className="filter">
+          {showFilter && <TagFilter onSetFilter={onSetFilterTag} />}
+          </div>
         </div>
       </nav>
     </header>
