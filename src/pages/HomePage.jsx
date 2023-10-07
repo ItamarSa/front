@@ -12,20 +12,13 @@ import { TagFilterMain } from '../cmps/TagFilterMain';
 export function HomePage() {
   const dispatch = useDispatch();
   const count = useSelector((storeState) => storeState.userModule.count);
-  const [filterText, setFilterText] = useState("")
-  const [filterTags, setFilterTags] = useState([]);
+  const [filterText, setFilterText] = useState(""); // Local state for text filter
+  const [filterTags, setFilterTags] = useState([]); 
 
 
   function changeCount(diff) {
     console.log('Changing count by:', diff);
     dispatch({ type: CHANGE_COUNT, diff });
-  }
-  function onSetFilterText(filterBy) {
-    console.log("filterBy text:", filterBy);
-    // Update local state for text filter
-    setFilterText(filterBy.txt);
-    // Update the store filter with both text and tags
-    setGigFilter({ txt: filterBy.txt, tags: filterTags });
   }
   function onSetFilterTag(filterBy) {
     console.log("filterBy tags:", filterBy);
@@ -33,6 +26,14 @@ export function HomePage() {
     setFilterTags(filterBy.tags);
     // Update the store filter with both text and tags
     setGigFilter({ txt: filterText, tags: filterBy.tags });
+  }
+
+  function onSetFilterText(filterBy) {
+    console.log("filterBy text:", filterBy);
+    // Update local state for text filter
+    setFilterText(filterBy.txt);
+    // Update the store filter with both text and tags
+    setGigFilter({ txt: filterBy.txt, tags: filterTags });
   }
 
   const sponsors = [
@@ -100,18 +101,18 @@ export function HomePage() {
   };
   let slider;
 
-  const [searchText, setSearchText] = useState(''); // State for the input field
+//   const [searchText, setSearchText] = useState(''); // State for the input field
 
-  const handleSearchInputChange = (e) => {
-    // Update the state when the input value changes
-    setSearchText(e.target.value);
-  };
+//   const handleSearchInputChange = (e) => {
+//     // Update the state when the input value changes
+//     setSearchText(e.target.value);
+//   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    // Use the `searchText` state variable in your search logic
-    console.log('Searching for:', searchText);
-  };
+//   const handleSearch = (e) => {
+//     e.preventDefault();
+//     // Use the `searchText` state variable in your search logic
+//     console.log('Searching for:', searchText);
+//   };
 
   return (
     <>
@@ -129,9 +130,9 @@ export function HomePage() {
                   </h1>
                   <TextFilter onSetFilter={onSetFilterText} />
                   <TagFilterMain onSetFilter={onSetFilterTag} />
-                  <form className="search-form" onSubmit={handleSearch}>
-                    <div className="search-input-container">
-                      <input
+                  {/* <form className="search-form" onSubmit={handleSearch}>
+                    <div className="search-input-container"> */}
+                      {/* <input
                         type="text"
                         className="search-input"
                         placeholder="Search for any services..."
@@ -140,9 +141,9 @@ export function HomePage() {
                       />
                       <button className="btn-search">
                         <i className="fa-solid fa-magnifying-glass search-icon"></i>
-                      </button>
-                    </div>
-                  </form>
+                      </button> */}
+                    {/* </div>
+                  </form> */}
                 </div>
               </div>
             </div>

@@ -28,6 +28,7 @@ export const gigService = {
     getImgs,
     getDemoGig,
     getGigTags,
+    getDefaultFilter
 }
 // debug trick
 window.bs = gigService
@@ -67,6 +68,9 @@ async function query(filterBy = {}) {
     }
 
     return gigToDisplay;
+}
+function getDefaultFilter() {
+    return { txt: '', tags: []}
 }
 
 

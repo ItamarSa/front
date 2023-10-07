@@ -1,0 +1,28 @@
+.search-form {
+    display: flex;
+    flex-direction: column;
+
+    .search-input-container {
+        display: flex;
+
+        .search-input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 4px;
+
+        }
+
+        .btn-search {
+            background-color: $clr1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+
+            .search-icon {
+                font-size: 20px;
+            }
+        }
+    }
+}

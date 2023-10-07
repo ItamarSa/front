@@ -88,7 +88,7 @@ export async function onRemoveGigOptimistic(gigId) {
     }
 }
 
-export function setGigFilter(filterBy = toyService.getDefaultFilter()) {
+export function setGigFilter(filterBy = gigService.getDefaultFilter()) {
     // dispatch
     store.dispatch({ type: SET_FILTER, filterBy })
     // return Promise.resolve(filterBy)
