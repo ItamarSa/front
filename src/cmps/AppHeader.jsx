@@ -11,22 +11,24 @@ import { TagFilter } from "./TagFilter";
 
 export function AppHeader() {
   const user = useSelector((storeState) => storeState.userModule.user);
-  const [showBusinessModal, setShowBusinessModal] = useState(false);
-  const [showExploreModal, setShowExploreModal] = useState(false);
+//   const [showBusinessModal, setShowBusinessModal] = useState(false);
+//   const [showExploreModal, setShowExploreModal] = useState(false);
   const [filterText, setFilterText] = useState(""); // Local state for text filter
   const [filterTags, setFilterTags] = useState([]); // Local state for tag filter
+  const [headerColorIndex, setHeaderColorIndex] = useState(0); // Index for selecting header colors
+  const headerColors = ["#a7445a", "#0f4926", "#ad3906", "#5f1628","#0a4226"]; // List of header colors
 
-  const closeModals = () => {
-    setShowBusinessModal(false);
-    setShowExploreModal(false);
-  };
+//   const closeModals = () => {
+//     setShowBusinessModal(false);
+//     setShowExploreModal(false);
+//   };
 
-  useEffect(() => {
-    document.body.addEventListener("click", closeModals);
-    return () => {
-      document.body.removeEventListener("click", closeModals);
-    };
-  }, []);
+//   useEffect(() => {
+//     document.body.addEventListener("click", closeModals);
+//     return () => {
+//       document.body.removeEventListener("click", closeModals);
+//     };
+//   }, []);
 
   function onSetFilterTag(filterBy) {
     // Update local state for tags filter
@@ -42,9 +44,22 @@ export function AppHeader() {
     // Update the store filter with both text and tags
     setGigFilter({ txt: filterBy.txt, tags: filterTags });
   }
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setHeaderColorIndex((prevIndex) => (prevIndex + 1) % headerColors.length);
+    }, 4000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
+  const headerStyle = {
+    backgroundColor: headerColors[headerColorIndex],
+  };
 
   return (
-    <header className="app-header full">
+    <header className="app-header full" style={headerStyle}>
       <nav className="header">
         <div className="main-nav">
           <button>
@@ -55,24 +70,24 @@ export function AppHeader() {
           <TextFilter onSetFilter={onSetFilterText} />
 
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowBusinessModal(!showBusinessModal);
-            }}
+            // onClick={(e) => {
+            //   e.stopPropagation();
+            //   setShowBusinessModal(!showBusinessModal);
+            // }}
           >
             Business solutions
           </button>
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowExploreModal(!showExploreModal);
-            }}
+            // onClick={(e) => {
+            //   e.stopPropagation();
+            //   setShowExploreModal(!showExploreModal);
+            // }}
           >
             Explore
           </button>
           {/* ... */}
 
-          {showBusinessModal && (
+          {/* {showBusinessModal && (
             <div className="side-modal" onClick={(e) => e.stopPropagation()}>
               <h2>Business Solutions</h2>
               <div className="child-buttons">
@@ -82,10 +97,10 @@ export function AppHeader() {
                 <button>Button 4</button>
               </div>
             </div>
-          )}
+          )} */}
 
           {/* Render Explore Modal */}
-          {showExploreModal && (
+          {/* {showExploreModal && (
             <div className="side-modal" onClick={(e) => e.stopPropagation()}>
               <h2>Explore</h2>
               <div className="child-buttons">
@@ -95,7 +110,7 @@ export function AppHeader() {
                 <button>Button 4</button>
               </div>
             </div>
-          )}
+          )} */}
 
           <button>Become a Seller</button>
           {/* <button>🌐English</button> */}
@@ -125,6 +140,7 @@ export function AppHeader() {
           )}
         </div>
         <div className="filter">
+            <br /><br/>
           {/* Render the TagFilter component */}
           <TagFilter onSetFilter={onSetFilterTag} />
           {/* {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)} */}

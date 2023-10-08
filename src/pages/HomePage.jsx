@@ -5,7 +5,7 @@ import { PopularServiceCarousel } from '../cmps/PopularServiceCarousel';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { TextFilter } from '../cmps/TextFilter';
+import { TextFilterMain } from '../cmps/TextFilterMain';
 import { setGigFilter } from '../store/action/gig.actions';
 import { TagFilterMain } from '../cmps/TagFilterMain';
 
@@ -98,6 +98,8 @@ export function HomePage() {
     arrows: false,
     fade: true,
     speed: 700,
+    slidesToShow: 1,
+    slidesToScroll: 1,
   };
   let slider;
 
@@ -128,7 +130,7 @@ export function HomePage() {
                     <br />
                     service, right away
                   </h1>
-                  <TextFilter onSetFilter={onSetFilterText} />
+                  <TextFilterMain onSetFilter={onSetFilterText} />
                   <TagFilterMain onSetFilter={onSetFilterTag} />
                   {/* <form className="search-form" onSubmit={handleSearch}>
                     <div className="search-input-container"> */}

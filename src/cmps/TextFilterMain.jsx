@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { utilService } from "../services/util.service";
 
-export function TextFilter({ filterBy, onSetFilter }) {
+export function TextFilterMain({ filterBy, onSetFilter }) {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -86,7 +86,7 @@ export function TextFilter({ filterBy, onSetFilter }) {
         </div>
         {/* Display the autocomplete suggestions */}
         {filterByText.txt && (
-          <div className="autocomplete-suggestions">
+          <div className="autocomplete-suggestions-main">
             {filteredOptions.map((option) => (
               <div
                 key={option}
