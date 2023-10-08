@@ -1,8 +1,8 @@
 export function GigCart({ gig }) {
 
     return (
-        <section >
-            <div className='main-cart'>
+        <section className='main-cart'>
+            <div className='cart-details'>
                 <div >
                     <div className='basic'>Basic</div>
 
@@ -30,12 +30,12 @@ export function GigCart({ gig }) {
                     <button className="btn-compare">Compare Packages </button>
 
                 </footer>
+            </div>
+
                 <div className="contact-me">
 
                     <button>Contact me</button>
                 </div>
-            </div>
-
 
 
 
