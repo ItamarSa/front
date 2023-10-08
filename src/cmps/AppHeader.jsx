@@ -29,7 +29,6 @@ export function AppHeader() {
   }, []);
 
   function onSetFilterTag(filterBy) {
-    console.log("filterBy tags:", filterBy);
     // Update local state for tags filter
     setFilterTags(filterBy.tags);
     // Update the store filter with both text and tags
