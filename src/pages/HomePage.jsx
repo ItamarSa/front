@@ -118,7 +118,7 @@ export function HomePage() {
 
   return (
     <>
-      <section className="full">
+      <section className=" main full">
         <Slider {...settings} ref={(c) => (slider = c)}>
           {mainImg.map((img) => (
             <div key={img.altTxt} className="main-img-container">

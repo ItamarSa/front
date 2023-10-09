@@ -40,10 +40,9 @@ export function TagFilter({ filterBy, onSetFilter }) {
   }
 
   return (
-    <div>
+    
       <div className="filter-group">
-        <label></label>
-        <br />
+        
         {gigTags.map((tag) => (
           <button
             key={tag}
@@ -54,6 +53,6 @@ export function TagFilter({ filterBy, onSetFilter }) {
           </button>
         ))}
       </div>
-    </div>
+    
   );
 }
