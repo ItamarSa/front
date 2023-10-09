@@ -46,7 +46,7 @@ export function TagFilter({ filterBy, onSetFilter }) {
         {gigTags.map((tag) => (
           <button
             key={tag}
-            className={filterByTags.tags.includes(tag) ? "selected" : ""}
+            className={`btn ${filterByTags.tags.includes(tag) ? "selected" : ""}`}
             onClick={() => handleTagButtonClick(tag)}
           >
             {tag}

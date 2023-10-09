@@ -10,6 +10,8 @@ export function AppHeader() {
     const [showFilter, setShowFilter] = useState(false)
     const [filterText, setFilterText] = useState("") //Local state for text filter
     const [filterTags, setFilterTags] = useState([]) // Local state for tag filter
+    const [showTagFilter, setShowTagFilter] = useState(false);
+
     //   const [headerColorIndex, setHeaderColorIndex] = useState(0); // Index for selecting header colors
     //   const headerColors = ["#a7445a", "#0f4926", "#ad3906", "#5f1628","#0a4226"]; // List of header colors
 
@@ -22,12 +24,27 @@ export function AppHeader() {
     }, [])
 
     const handleScroll = () => {
-        if (window.scrollY > 100) {
-            setShowFilter(true)
+        if (window.scrollY > 50) {
+          if (!showFilter) {
+            // First scroll, change background to white
+            setShowFilter(true);
+          }
+          if (window.scrollY > 100) {
+            // Second scroll, show tag filter
+            setShowTagFilter(true);
+          } else {
+            // Scroll position between 100 and 200, hide tag filter
+            setShowTagFilter(false);
+          }
         } else {
-            setShowFilter(false)
+          // Scroll position less than 100, hide both filter and tag filter
+          setShowFilter(false);
+          setShowTagFilter(false);
         }
-    }
+      };
+      
+      
+      
 
 
     function onSetFilterTag(filterBy) {
@@ -59,7 +76,7 @@ export function AppHeader() {
     //     backgroundColor: headerColors[headerColorIndex],
     //   };
     return (
-        <header className="app-header" >
+        <header className={`app-header full ${showFilter ? 'white-background' : ''}`}>
             <div className="main-nav">
                 <div className="logo">
                     <NavLink className="btn" title="home" to="/">
@@ -108,12 +125,10 @@ export function AppHeader() {
                 </div>
 
             </div>
-
             <div className='filter-container'>
-
-                {showFilter && <TagFilter onSetFilter={onSetFilterTag} />}
-
+              {showTagFilter && <TagFilter onSetFilter={onSetFilterTag} />}
             </div>
+
         </header>
     )
 }

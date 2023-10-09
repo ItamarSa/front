@@ -9,57 +9,66 @@
     top: 0;
     margin-bottom: 11px;
 
-    .filter-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
+    &.white-background {
+        background-color: white;
+        color: black; // Change text color to black
+      }
+    
+      &.black-text {
+        color: white; // Change text color to white
+      }
+    
+      .nav,
+      .btn-join,
+      .option-header {
+        color: inherit; // Inherit text color from parent
+      }
 
-    // .header {
-    //     display: flex;
-    //     flex-direction: column;
+        // .header {
+        //     display: flex;
+        //     flex-direction: column;
 
 
-    .main-nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        margin-top: 8px;
+        .main-nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin-top: 8px;
 
-        .nav {
-            padding: 15px;
-        }
-
-        .option-header {
-            display: none;
-        }
-
-        .btn-join {
-            border: solid 1px white;
-        }
-
-        .filter-container {
-            position: fixed;
-            top: -100%;
-            left: 0;
-            right: 0;
-            background-color: #fff;
-            transition: top 0.3s ease-in-out;
-            z-index: 1000;
-
-            &active {
-                top: 0;
+            .nav {
+                padding: 15px;
             }
 
-            .filter {
-                display: flex;
-                flex-direction: column;
+            .option-header {
+                display: none;
+            }
+
+            .btn-join {
+                border: solid 1px white;
+            }
+
+            .filter-container {
+                position: fixed;
+                top: -100%;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                transition: top 0.3s ease-in-out;
+                z-index: 1000;
+
+                &active {
+                    top: 0;
+                }
+
+                .filter {
+                    display: flex;
+                    flex-direction: column;
+                }
             }
         }
+
     }
 
-}
-
-option {
-    color: black;
-}
+    option {
+        color: black;
+    }
