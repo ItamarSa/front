@@ -10,6 +10,8 @@ export function AppHeader() {
   const [showFilter, setShowFilter] = useState(false)
   const [filterText, setFilterText] = useState("") //Local state for text filter
   const [filterTags, setFilterTags] = useState([]) // Local state for tag filter
+  const [headerColorIndex, setHeaderColorIndex] = useState(0); // Index for selecting header colors
+  const headerColors = ["#a7445a", "#0f4926", "#ad3906", "#5f1628","#0a4226"]; // List of header colors
 
 
   useEffect(() => {
@@ -43,9 +45,22 @@ export function AppHeader() {
     // Update the store filter with both text and tags
     setGigFilter({ txt: filterBy.txt, tags: filterTags })
   }
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setHeaderColorIndex((prevIndex) => (prevIndex + 1) % headerColors.length);
+    }, 4000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
+  const headerStyle = {
+    backgroundColor: headerColors[headerColorIndex],
+  };
 
   return (
-    <header className="app-header full">
+    <header className="app-header full" style={headerStyle}>
       <nav className="header">
         <div className="main-nav">
 

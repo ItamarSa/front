@@ -1,8 +1,22 @@
 // import React from 'react'
 import Slider from 'react-slick'
+import { Link, NavLink } from "react-router-dom";
+
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { ServiceSlide } from './ServiceSlide'
+const tags = [
+    'Graphics-Design',
+    'Programming-Tech',
+    'Digital-Marketing',
+    'Video-Animation',
+    'Writing-Translation',
+    'Music-Audio',
+    'Business',
+    'Data',
+    'Photography',
+
+]
 
 export function PopularServiceCarousel() {
     const serviceData = [
@@ -79,7 +93,7 @@ export function PopularServiceCarousel() {
         slidesToScroll: 4,
         // nextArrow: <button type='button' className='slick-next'>Next</button>,
         // prevArrow: <button type='button' className='slick-prev'>Previous</button>,
-        speed:500,
+        speed: 500,
     }
 
     let slider
@@ -92,13 +106,17 @@ export function PopularServiceCarousel() {
                 </h2>
                 <Slider {...settings} ref={(c) => (slider = c)}>
                     {serviceData.map((service, index) => (
-                        <ServiceSlide
+                        <Link
+                        to={`/gigs?tags=${encodeURIComponent(tags[index])}`}
                             key={index}
-                            imageSrc={service.imageSrc}
-                            altText={service.altText}
-                            title={service.title}
-                            description={service.description}
-                        />
+                        >
+                            <ServiceSlide
+                                imageSrc={service.imageSrc}
+                                altText={service.altText}
+                                title={service.title}
+                                description={service.description}
+                            />
+                        </Link>
                     ))}
                 </Slider>
             </div>

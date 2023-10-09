@@ -22,12 +22,12 @@ function makeId(length = 6) {
 }
 function makeTag(size = 1) {
     var words = [
-        'Graphics & Design',
-        'Programming & Tech',
-        'Digital Marketing',
-        'Video & Animation',
-        'Writing & Translation',
-        'Music & Audio',
+        'Graphics-Design',
+        'Programming-Tech',
+        'Digital-Marketing',
+        'Video-Animation',
+        'Writing-Translation',
+        'Music-Audio',
         'Business',
         'Data',
         'Photography',

@@ -5,12 +5,12 @@ import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'gigDB'
 const tags = [
-    'Graphics & Design',
-    'Programming & Tech',
-    'Digital Marketing',
-    'Video & Animation',
-    'Writing & Translation',
-    'Music & Audio',
+    'Graphics-Design',
+    'Programming-Tech',
+    'Digital-Marketing',
+    'Video-Animation',
+    'Writing-Translation',
+    'Music-Audio',
     'Business',
     'Data',
     'Photography',
@@ -28,6 +28,7 @@ export const gigService = {
     getImgs,
     getDemoGig,
     getGigTags,
+    getDefaultFilter
 }
 // debug trick
 window.bs = gigService
@@ -67,6 +68,9 @@ async function query(filterBy = {}) {
     }
 
     return gigToDisplay;
+}
+function getDefaultFilter() {
+    return { txt: '', tags: []}
 }
 
 
