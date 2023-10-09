@@ -5,6 +5,7 @@ import { showErrorMsg } from '../services/event-bus.service'
 import { GigCard } from '../cmps/GigCard'
 import { AboutSeller } from '../cmps/AboutSeller'
 import { GigCart } from './GigCart'
+import { Link } from 'react-router-dom'
 
 
 export function GigDetails() {
@@ -66,7 +67,7 @@ export function GigDetails() {
     return (
         <div className='details-layout'>
             <div className='main-details'>
-                <a>Home 🏡</a> <small> / </small><a>gig.tag</a>
+                <Link to='/'><a>Home 🏡</a></Link>  <small> / </small> <Link to={`/gig/${gig.tags}`}><a>{gig.tags}</a></Link>
                 <GigCard gig={gig} user={user} />
                 <AboutSeller gig={gig} user={user} />
             </div>
