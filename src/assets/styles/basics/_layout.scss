@@ -1,17 +1,20 @@
 .main-container {
     display: grid;
-    grid-template-columns: em(32px) minmax(0, 1400px) em(32px);
+    grid-template-columns: 1fr minmax(0, 1400px) 1fr;
     gap: 16px;
     justify-content: center;
-
-    >*.full {
-        grid-column: 1 / -1;
-    }
-
-    >*:not(.full) {
-        grid-column: 2;
-    }
-}
+  }
+  
+  .full {
+    grid-column: 1 / -1;
+  }
+  
+  /* Remove grid-column property for elements not having the "full" class */
+  :not(.full) {
+    grid-column: 2;
+  }
+  
+  
 
 // .main-container>* {
 //     grid-column: 2;

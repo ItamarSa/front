@@ -1,10 +1,12 @@
 .main-img-container {
     position: relative;
+    // height: em(600px);
 
     .img-title-overlay {
         position: absolute;
         top: 50%;
         left: 25%;
+        // height: 100px;
         transform: translate(-50%, -50%);
         padding: 20px;
         color: white;
