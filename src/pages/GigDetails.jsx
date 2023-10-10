@@ -6,12 +6,17 @@ import { GigCard } from '../cmps/GigCard'
 import { AboutSeller } from '../cmps/AboutSeller'
 import { GigCart } from './GigCart'
 import { Link } from 'react-router-dom'
+import { utilService } from '../services/util.service'
+import { reviewService } from '../services/review.service'
 
 
 export function GigDetails() {
     const { gigId } = useParams()
     const [gig, setGig] = useState(null)
     const navigate = useNavigate()
+    const [review, setReview] = useState(utilService.getEmptyReview())
+    const [reviews, setReviews] = useState([])
+
 
 
 
@@ -30,6 +35,35 @@ export function GigDetails() {
             navigate('/gig')
         }
 
+    }
+    async function onSaveReview(ev) {
+        ev.preventDefault();
+        const savedReview = await reviewService.add({ txt: review.txt});
+        // Update the reviews state with the new review
+        setReviews((prevReviews) => [...prevReviews, savedReview]);
+        setReview(utilService.getEmptyReview());
+        showSuccessMsg('Review saved!');
+        console.log('savedReview:', savedReview)
+    }
+    async function onRemoveReview(reviewId) {
+        try {
+            const removedReviewId = await reviewService.remove(reviewId);
+
+            // Update the reviews state by filtering out the removed review
+            setReviews((prevReviews) => prevReviews.filter((review) => review._id !== removedReviewId));
+            const reviews = await reviewService.query({ aboutToyId: toyId });
+            console.log('reviews:', reviews)
+            setReviews(reviews);
+            showSuccessMsg('Review removed!');
+        } catch (err) {
+            console.error('Error removing review:', err);
+            showErrorMsg('Failed to remove review');
+        }
+    }
+    function handleReviewChange(ev) {
+        const field = ev.target.name
+        const value = ev.target.value
+        setReview((review) => ({ ...review, [field]: value }))
     }
 
     const user =
@@ -66,6 +100,30 @@ export function GigDetails() {
 
     return (
         <div className='details-layout'>
+            <h5 className="toy-description-heading">Reviews</h5>
+            <ul>
+                {reviews.map((review) => (
+                    <li key={review._id}>
+                        By: {review.byUser.fullname}, {review.txt}
+                        <button type="button" onClick={() => onRemoveReview(review._id)}>
+                            ❌
+                        </button>
+                    </li>
+                ))}
+            </ul>
+
+
+            <form className="login-form" onSubmit={onSaveReview}>
+                <input
+                    type="text"
+                    name="txt"
+                    value={review.txt}
+                    placeholder="Write a Review"
+                    onChange={handleReviewChange}
+                    required
+                />
+                <button>Submit Review</button>
+            </form>
             <div className='main-details'>
                 <Link to='/'><a>Home 🏡</a></Link>  <small> / </small> <Link to={`/gig/${gig.tags}`}><a>{gig.tags}</a></Link>
                 <GigCard gig={gig} user={user} />

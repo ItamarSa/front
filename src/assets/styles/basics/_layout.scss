@@ -1,53 +1,42 @@
 .main-container {
-    display: grid;
-    grid-template-columns: 32px 1fr 32px;
-    justify-content: center;
-  
-    .full {
-      grid-column: 1 / -1;
-    }
-  
-    /* Apply max-width to elements not having the "full" class */
-    :not(.full) {
+  display: grid;
+  grid-template-columns: 24px 1fr 24px;
+  // background-color: $clrSecondary1;
+  > * {
       grid-column: 2;
-    //   max-width: 1400px; /* Add this property */
-    //   margin: 0 auto; /* Center-align the content */
-    }
+      &.full {
+          grid-column: 1 /-1;
+      }
   }
-
-
-
-// .main-container>* {
-//     grid-column: 2;
-// }
-
-// .main-container>*.full {
-//     grid-column: 1 / -1;
-// }
-
-
-// @include for-narrow-layout {
-//     grid-template-columns: 
-//         minmax(20px, 1fr)
-//         minmax(auto, $mobile-breakpoint)
-//         minmax(20px, 1fr);
-// }
-// @include for-normal-layout {
-//     grid-template-columns: 
-//         minmax(20px, 1fr)
-//         minmax(auto, $narrow-breakpoint)
-//         minmax(20px, 1fr);
-// }
-// @include for-wide-layout {
-//     grid-template-columns: 
-//         minmax(20px, 1fr)
-//         minmax(auto, $normal-breakpoint)
-//         minmax(20px, 1fr);
-// }
-
-
+  @include for-narrow-layout {
+      grid-template-columns:
+          minmax(20px, 1fr)
+          minmax(auto, $mobile-breakpoint)
+          minmax(20px, 1fr);
+  }
+  @include for-normal-layout {
+      grid-template-columns:
+          minmax(20px, 1fr)
+          minmax(auto, $narrow-breakpoint)
+          minmax(20px, 1fr);
+  }
+  @include for-wide-layout {
+      grid-template-columns:
+          minmax(20px, 1fr)
+          minmax(auto, $normal-breakpoint)
+          minmax(20px, 1fr);
+  }
+}
+.layout-row {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1400px;
+  padding: 0 10px;
+}
 .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
 }

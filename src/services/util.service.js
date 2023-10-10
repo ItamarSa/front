@@ -7,7 +7,8 @@ export const utilService = {
     saveToStorage,
     loadFromStorage,
     getAssetSrc,
-    makeTag
+    makeTag,
+    getEmptyReview
 }
 
 function makeId(length = 6) {
@@ -94,3 +95,8 @@ function getAssetSrc(name) {
     const mod = modules[path]
     return mod.default
 }
+function getEmptyReview() {
+    return {
+      txt: '',
+    }
+  }
