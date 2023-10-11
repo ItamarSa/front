@@ -1,20 +1,34 @@
+// .main-container {
+//     display: grid;
+//     grid-template-columns: 32px 1fr 32px;
+//     justify-content: center;
+  
+//     .full {
+//       grid-column: 1 / -1;
+//     }
+  
+//     /* Apply max-width to elements not having the "full" class */
+//     :not(.full) {
+//       grid-column: 2;
+//     //   max-width: 1400px; /* Add this property */
+//     //   margin: 0 auto; /* Center-align the content */
+//     }
+//   }
 .main-container {
-    display: grid;
-    grid-template-columns: 32px 1fr 32px;
-    justify-content: center;
-  
-    .full {
-      grid-column: 1 / -1;
-    }
-  
-    /* Apply max-width to elements not having the "full" class */
-    :not(.full) {
-      grid-column: 2;
-    //   max-width: 1400px; /* Add this property */
-    //   margin: 0 auto; /* Center-align the content */
-    }
-  }
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1400px) 1fr;
+  gap: 16px;
+  justify-content: center;
+}
 
+.full {
+  grid-column: 1 / -1;
+}
+
+/* Remove grid-column property for elements not having the "full" class */
+:not(.full) {
+  grid-column: 2;
+}
 
 
 // .main-container>* {

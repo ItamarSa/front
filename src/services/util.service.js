@@ -8,9 +8,45 @@ export const utilService = {
     loadFromStorage,
     getAssetSrc,
     makeTag,
-     getEmptyReview,
-     timeAgo
+    getEmptyReview,
+    timeAgo,
+    makeFlag
 }
+function makeFlag(size = 1) {
+    let flag = ''; // Change from const to let
+    const randomIdx = Math.floor(Math.random() * 9)
+    console.log('randomIdx:', randomIdx)
+    const flags =
+        [
+            'https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png',
+            'https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1f5-1f1f9.png',
+            'https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1f2-1f1fd.png',
+            'https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1ed-1f1f7.png',
+            'https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1e8-1f1ed.png',
+            'https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1e9-1f1ea.png',
+            'https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1e6-1f1ea.png',
+            'https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1e6-1f1f9.png',
+            'https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1e8-1f1ff.png'
+        ]
+    const countryNames =
+        [
+           ' United States',
+            'Portugal',
+            'Mexico',
+            'Croatia',
+            'Switzerland',
+            'Germany',
+            'United Arab Emirates',
+            'Austria',
+            'Czech Republic',
+        ]
+
+    flag = [flags[randomIdx], countryNames[randomIdx]]
+    
+    return flag
+}
+
+
 
 function makeId(length = 6) {
     var txt = ''

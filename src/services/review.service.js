@@ -10,10 +10,15 @@ export const reviewService = {
   remove
 }
 
-function query() {
-  // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
-  // return httpService.get(`review${queryStr}`)
-  return storageService.query(STORAGE_KEY)
+async function query(filterBy = {}) {
+  const reviews = await storageService.query(STORAGE_KEY);
+
+  // Filter reviews by gigId if provided
+  if (filterBy.gigId) {
+    return reviews.filter((review) => review.gigId === filterBy.gigId);
+  }
+
+  return reviews;
 }
 
 async function remove(reviewId) {
@@ -24,7 +29,7 @@ function formatDateForTimeAgo(date) {
   return date.toISOString();
 }
 
-async function add({txt, starRating }) {
+async function add({txt, starRating,gigId,flag }) {
   // const addedReview = await httpService.post(`review`, {txt, aboutUserId})
   
   // const aboutUser = await userService.getById(aboutUserId)
@@ -34,6 +39,8 @@ async function add({txt, starRating }) {
      byUser: userService.getLoggedinUser(),
      starRating:starRating,
      createdAt: formatDateForTimeAgo(new Date()),
+     gigId: gigId,
+     flag:flag
 
     // aboutUser: {
     //   _id: aboutUser._id,

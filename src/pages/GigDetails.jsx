@@ -26,6 +26,10 @@ export function GigDetails() {
 
     }, [gigId])
 
+    function useGigParams() {
+        return useParams().gigId;
+    }
+
 
     function generateRandomStars() {
         const rating = Math.floor(Math.random() * 5) + 1; // Generate a random number between 1 and 5
@@ -50,24 +54,25 @@ export function GigDetails() {
     }
     async function loadReviews() {
         try {
-            // Create a filter object with both aboutToyId and additional filters
-            // const filter = { name: 'exampleFilter', sort: 'exampleSort' };
-
-            // Fetch reviews based on aboutToyId and additional filters
-            const reviews = await reviewService.query();
+            const reviews = await reviewService.query({ gigId }); // Pass the gigId
             setReviews(reviews);
         } catch (err) {
             console.log('Had issues loading reviews', err);
             showErrorMsg('Cannot load reviews');
         }
     }
+    
     async function onSaveReview(ev) {
         ev.preventDefault();
-        const randomStarRating = Math.floor(Math.random() * 5) + 1; // Generates a random number between 1 and 5
+        const randomStarRating = Math.floor(Math.random() * 5) + 1;
+        const flag = utilService.makeFlag(); 
+        console.log('flag:', flag)
         const savedReview = await reviewService.add({
             txt: review.txt,
             aboutUserId: gigId,
-            starRating: randomStarRating, // Use the generated random rating
+            starRating: randomStarRating,
+            gigId: gigId, 
+            flag:flag
         });
 
 
@@ -137,7 +142,7 @@ export function GigDetails() {
             <ul>
                 {reviews.map((review) => (
                     <li key={review._id}>
-                        By: {review.byUser.userName}, {review.txt}
+                        {review.byUser.userName+'   '} <img className="flag" src={review.flag[0]} alt="US" /> {review.flag[1]}
                         <div className="stars">
                             {Array.from({ length: 5 }).map((_, index) => (
                                 <span
@@ -146,8 +151,13 @@ export function GigDetails() {
                                 >
                                     {index < review.starRating ? '★' : '☆'}
                                 </span>
+                            
                             ))}
+                            
                         </div>
+                        <br />
+                            {review.txt}
+                        <h1 className="flag"></h1>
                         <p>{utilService.timeAgo(new Date(review.createdAt))}</p>
 
                         <button type="button" onClick={() => onRemoveReview(review._id)}>
@@ -158,7 +168,7 @@ export function GigDetails() {
             </ul>
 
 
-            <form className="login-form" onSubmit={onSaveReview}>
+            <form className="review-form" onSubmit={onSaveReview}>
                 <input
                     type="text"
                     name="txt"
