@@ -7,7 +7,7 @@ import fullscreenIcon from '../assets/img/fullscreen.svg'
 
 
 
-export function GigCard({ gig, user }) {
+export function GigCard({ gig, user, starSymbol}) {
 
     const images = gig.imgs.map(img => ({
         original: img,
@@ -28,6 +28,7 @@ export function GigCard({ gig, user }) {
         </div>
     )
 
+
     return (
         <div className='gig-card'>
             <h1>{gig.title}</h1>
@@ -35,7 +36,7 @@ export function GigCard({ gig, user }) {
                 <img className='user-img' src={user.imgUrl} alt='user-img' />
                 <div className='seller-details'>
                     <h4>{gig.name} <span>{user.store}</span></h4>
-                    <h4>⭐{gig.rate}(reviews.length)</h4>
+                    <h4>{starSymbol}{gig.rate}(reviews.length)</h4>
                 </div>
             </div>
 

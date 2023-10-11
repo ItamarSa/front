@@ -1,4 +1,4 @@
-export function AboutSeller({ gig, user }) {
+export function AboutSeller({ gig, user, starSymbol}) {
 
 
 
@@ -9,7 +9,7 @@ export function AboutSeller({ gig, user }) {
                 <img className='user-img' src={user.imgUrl} alt='user-img' />
                 <div>
                 <h4>{gig.name} <span>{user.store}</span></h4>
-                <h4>⭐{gig.rate}(reviews.length)</h4>
+                <h4>{starSymbol}{gig.rate}(reviews.length)</h4>
                 {/* <h3>user.profession</h3> */}
                 </div>
             </div>
