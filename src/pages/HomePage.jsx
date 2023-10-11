@@ -118,11 +118,11 @@ export function HomePage() {
 
   return (
     <>
-      <section className="full">
+      <section className=" main full">
         <Slider {...settings} ref={(c) => (slider = c)}>
           {mainImg.map((img) => (
             <div key={img.altTxt} className="main-img-container">
-              <img src={img.imgSrc} alt={img.altTxt} />
+              <img className='hero' src={img.imgSrc} alt={img.altTxt} />
               <div className="img-title-overlay">
                 <div className="content-container">
                   <h1 className="img-title">

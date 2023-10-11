@@ -1,30 +1,52 @@
 .app-header {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    background-color: $clr4;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: clear;
     padding: 10px;
     position: sticky;
     z-index: 999;
     top: 0;
-   
-    .header {
-        display: flex;
-        flex-direction: column;
-        
-        
+    margin-bottom: 11px;
+
+    &.white-background {
+        background-color: white;
+        color: black; // Change text color to black
+      }
+    
+      &.black-text {
+        color: white; // Change text color to white
+      }
+    
+      .nav,
+      .btn-join,
+      .option-header {
+        color: inherit; // Inherit text color from parent
+      }
+
+        // .header {
+        //     display: flex;
+        //     flex-direction: column;
+
+
         .main-nav {
             display: flex;
             flex-direction: row;
-            
-            .option-header{
+            justify-content: space-evenly;
+            margin-top: 8px;
+
+            .nav {
+                padding: 15px;
+            }
+
+            .option-header {
                 display: none;
             }
 
-            .btn-join{
-                border: solid 1px red;
+            .btn-join {
+                border: solid 1px white;
             }
-            
+
             .filter-container {
                 position: fixed;
                 top: -100%;
@@ -33,11 +55,11 @@
                 background-color: #fff;
                 transition: top 0.3s ease-in-out;
                 z-index: 1000;
-                
+
                 &active {
                     top: 0;
                 }
-                
+
                 .filter {
                     display: flex;
                     flex-direction: column;
@@ -46,4 +68,7 @@
         }
 
     }
-}
+
+    option {
+        color: black;
+    }

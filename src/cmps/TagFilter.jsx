@@ -40,20 +40,19 @@ export function TagFilter({ filterBy, onSetFilter }) {
   }
 
   return (
-    <div>
+    
       <div className="filter-group">
-        <label></label>
-        <br />
+        
         {gigTags.map((tag) => (
           <button
             key={tag}
-            className={filterByTags.tags.includes(tag) ? "selected" : ""}
+            className={`btn ${filterByTags.tags.includes(tag) ? "selected" : ""}`}
             onClick={() => handleTagButtonClick(tag)}
           >
             {tag}
           </button>
         ))}
       </div>
-    </div>
+    
   );
 }

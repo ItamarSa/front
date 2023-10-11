@@ -1,3 +1,7 @@
+.main{
+    position: relative;
+    top: -11%;
+}
 .main-img-container {
     position: relative;
     // height: em(600px);
@@ -5,7 +9,7 @@
     .img-title-overlay {
         position: absolute;
         top: 50%;
-        left: 25%;
+        left: 31%;
         // height: 100px;
         transform: translate(-50%, -50%);
         padding: 20px;
