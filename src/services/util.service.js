@@ -10,7 +10,8 @@ export const utilService = {
     makeTag,
     getEmptyReview,
     timeAgo,
-    makeFlag
+    makeFlag,
+    getEmptyOrder
 }
 function makeFlag(size = 1) {
     let flag = ''; // Change from const to let
@@ -135,6 +136,14 @@ function getAssetSrc(name) {
 function getEmptyReview() {
     return {
         txt: '',
+    }
+}
+function getEmptyOrder() {
+    return {
+        buyer: '',
+        seller: '',
+        price: 0,
+        title: '',
     }
 }
 function timeAgo(timestamp) {

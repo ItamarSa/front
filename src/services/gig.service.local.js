@@ -125,7 +125,8 @@ function getDemoGig() {
         price: utilService.getRandomIntInclusive(100, 300),
         rate: parseFloat((utilService.getRandomIntInclusive(20, 50) * 0.1).toPrecision(2)),
         createdAt: (Date.now()),
-        tags: utilService.makeTag(1)
+        tags: utilService.makeTag(1),
+        owner: userService.getLoggedinUser(),
         // inStock: utilService.randomTrueFalse(),
         // icon: utilService.makeImage()
     }

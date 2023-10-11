@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router"
 import { utilService } from '../services/util.service'
 import { reviewService } from '../services/review.service'
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 
 export function GigReview() {
     const { gigId } = useParams()
@@ -44,13 +45,11 @@ export function GigReview() {
         console.log('flag:', flag)
         const savedReview = await reviewService.add({
             txt: review.txt,
-            aboutUserId: gigId,
-            starRating: randomStarRating,
+            byUser:review.byUser,
             gigId: gigId,
+            starRating: randomStarRating,
             flag: flag
-        });
-
-
+        })
         console.log('savedReview:', savedReview)
         // Update the reviews state with the new review
         setReviews((prevReviews) => [...prevReviews, savedReview]);

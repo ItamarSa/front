@@ -5,7 +5,7 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { GigCard } from '../cmps/GigCard'
 import { AboutSeller } from '../cmps/AboutSeller'
 import { GigCart } from './GigCart'
-import { Link } from 'react-router-dom'
+import { Link,NavLink } from 'react-router-dom'
 import { GigReview } from './GigReview'
 
 
@@ -85,8 +85,11 @@ export function GigDetails() {
                 <GigCart gig={gig} />
             </div>
             <div className="gig-reviews">
-                <GigReview/>
+                <GigReview />
             </div>
+            <NavLink gig={gig} className="nav btn" title="gig" to={`/gig/${gig._id}/order`}>
+                Orders
+            </NavLink>
         </div>
     )
 }

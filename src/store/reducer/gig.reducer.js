@@ -6,15 +6,19 @@ export const UNDO_REMOVE_GIG = 'UNDO_REMOVE_GIG'
 
 export const SET_FILTER = 'SET_FILTER'
 
+export const ADD_ORDER = 'ADD_ORDER'
+
 
 const initialState = {
     gigs: [],
+    orders:[],
     lastRemovedGig: null
 }
 
 export function gigReducer(state = initialState, action) {
     var newState = state
     var gigs
+    var orders
 
     switch (action.type) {
         case SET_GIGS:
@@ -39,6 +43,10 @@ export function gigReducer(state = initialState, action) {
             break
         case SET_FILTER:
             return { ...state, filterBy: action.filterBy }
+
+            case ADD_ORDER:
+                newState = { ...state, orders: [...state.orders, action.order] }
+                break
         default:
     }
     return newState
