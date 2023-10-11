@@ -2,6 +2,8 @@ import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+const STORAGE_KEY = 'userDB'
+
 
 export const userService = {
     login,
@@ -19,27 +21,27 @@ window.userService = userService
 
 
 function getUsers() {
-    return storageService.query('user')
+    return storageService.query(STORAGE_KEY)
     // return httpService.get(`user`)
 }
 
 
 
 async function getById(userId) {
-    const user = await storageService.get('user', userId)
+    const user = await storageService.get(STORAGE_KEY, userId)
     // const user = await httpService.get(`user/${userId}`)
     return user
 }
 
 function remove(userId) {
-    return storageService.remove('user', userId)
+    return storageService.remove(STORAGE_KEY, userId)
     // return httpService.delete(`user/${userId}`)
 }
 
 async function update({_id, score}) {
-    const user = await storageService.get('user', _id)
+    const user = await storageService.get(STORAGE_KEY, _id)
     // user.score = score
-    await storageService.put('user', user)
+    await storageService.put(STORAGE_KEY, user)
 
     // const user = await httpService.put(`user/${_id}`, {_id, score})
     // // Handle case in which admin updates other user's details
@@ -48,7 +50,7 @@ async function update({_id, score}) {
 }
 
 async function login(userCred) {
-    const users = await storageService.query('user')
+    const users = await storageService.query(STORAGE_KEY)
     const user = users.find(user => user.username === userCred.username)
     // const user = await httpService.post('auth/login', userCred)
     if (user) {
@@ -59,7 +61,7 @@ async function login(userCred) {
 async function signup(userCred) {
     // if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     // userCred.score = 10000
-    const user = await storageService.post('user', userCred)
+    const user = await storageService.post(STORAGE_KEY, userCred)
     // const user = await httpService.post('auth/signup', userCred)
     return saveLocalUser(user)
 }
@@ -79,7 +81,7 @@ async function logout() {
 
 
 function saveLocalUser(user) {
-    user = {_id: user._id, email: user.email}
+    user = {_id: user._id, email: user.email,userName: user.username}
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }
