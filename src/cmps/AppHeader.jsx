@@ -4,6 +4,9 @@ import { useSelector } from "react-redux";
 import { setGigFilter } from "../store/action/gig.actions";
 import { TextFilter } from "./TextFilter";
 import { TagFilter } from "./TagFilter";
+import { orderService } from "../services/order.service";
+import { showErrorMsg } from "../services/event-bus.service";
+import { utilService } from "../services/util.service";
 
 export function AppHeader() {
     const user = useSelector((storeState) => storeState.userModule.user)
@@ -11,17 +14,47 @@ export function AppHeader() {
     const [filterText, setFilterText] = useState("") //Local state for text filter
     const [filterTags, setFilterTags] = useState([]) // Local state for tag filter
     const [showTagFilter, setShowTagFilter] = useState(false);
+    const [orders, setOrders] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     //   const [headerColorIndex, setHeaderColorIndex] = useState(0); // Index for selecting header colors
     //   const headerColors = ["#a7445a", "#0f4926", "#ad3906", "#5f1628","#0a4226"]; // List of header colors
 
 
     useEffect(() => {
+      loadOrders();
         window.addEventListener('scroll', handleScroll)
         return () => {
             window.removeEventListener('scroll', handleScroll)
         }
-    }, [])
+    }, [orders])
+    async function loadOrders() {
+      try {
+          const buyerId = user._id;
+          const orders = await orderService.query({ buyerId });
+          setOrders(orders);
+      } catch (err) {
+          console.log('Had issues loading orders', err);
+          showErrorMsg('Cannot load orders');
+      }
+  }
+
+  const toggleModal = () => {
+      setIsModalOpen(!isModalOpen);
+  };
+
+  const closeOnOutsideClick = (e) => {
+      if (isModalOpen && !document.querySelector(".modal").contains(e.target) && e.target.className !== "modal-button btn") {
+          setIsModalOpen(false);
+      }
+  };
+
+  useEffect(() => {
+      document.addEventListener("mousedown", closeOnOutsideClick);
+      return () => {
+          document.removeEventListener("mousedown", closeOnOutsideClick);
+      };
+  }, [isModalOpen]);
 
     const handleScroll = () => {
         if (window.scrollY > 50) {
@@ -77,6 +110,46 @@ export function AppHeader() {
     //   };
     return (
         <header className={`app-header full ${showFilter ? 'white-background' : ''}`}>
+          <div className="gig-order">
+            
+
+            {isModalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <h2>All Orders</h2>
+                        <button onClick={toggleModal} className="modal-button">Close</button>
+                        {orders.length === 0 ? (
+                             <p className="no-orders-message">No orders yet</p>
+                        ) : (
+                            <div className="orders-list">
+                                <ul>
+                                    {orders.map((order) => (
+                                        <li key={order._id}>
+                                            <img className="order-img" src={order.imgs[0]} alt="" />
+                                            GigId: {order.gigId}
+                                            <br />
+                                            Buyer: {order.buyer.userName}
+                                            <br />
+                                            Description: {order.title}
+                                            <br />
+                                            Price: {order.price}
+                                            <br />
+                                            Status: {order.status}
+                                            <br />
+                                            Seller: {order.seller}
+                                            <br />
+                                            Ordered: {utilService.timeAgo(new Date(order.createdAt))}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            
+                        )}
+                        
+                    </div>
+                </div>
+            )}
+        </div>
             <div className="main-nav">
                 <div className="logo">
                     <NavLink className="btn" title="home" to="/">
@@ -122,10 +195,25 @@ export function AppHeader() {
                     <NavLink className="nav btn btn-join" title="Login" to="/login">
                         Join
                     </NavLink>
-                    <NavLink className="nav btn " title="orders" to="/gig/:gigId/order">
+                    
+          <button onClick={toggleModal} className="modal-button btn">
+                {isModalOpen ? "Close Orders" : "Orders"}
+            </button>
+          <NavLink className="nav btn " title="orders" to="/gig/:gigId/order">
                         Orders
                     </NavLink>
+                    {user && (
+            <span className="btn user-info">
+              <Link to={`user/${user._id}`}>
+                {user.imgUrl && <img src={user.imgUrl} />}
+                {user.email}
+              </Link>
+            </span>
+          )}
                 </div>
+                
+                
+                    
 
             </div>
             <div className='filter-container'>

@@ -38,7 +38,7 @@ export function GigPayment() {
         }
     }
     async function onAddOrder() {
-        const order = orderService.getDemoOrder(gig)
+        const order = orderService.getOrder(gig)
         try {
             const savedOrder = await addOrder(order)
             showSuccessMsg(`Order added (id: ${savedOrder._id})`)
