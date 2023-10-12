@@ -13,6 +13,7 @@ import { GigDetails } from './pages/GigDetails'
 import { HomePage } from './pages/HomePage'
 import { UserMsg } from './cmps/UserMsg'
 import { GigOrder } from './pages/GigOrder'
+import { GigPayment } from './pages/GigPayment'
 
 export function RootCmp() {
 
