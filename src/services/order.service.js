@@ -20,11 +20,11 @@ function getImgs() {
     return gigImgs
 }
 
-async function query() {
+async function query(filterBy={}) {
   const orders = await storageService.query(STORAGE_KEY);
-  // if (filterBy.gigId) {
-  //   return orders.filter((order) => order.gigId === filterBy.gigId);
-  // }
+  if (filterBy.gigId) {
+    return orders.filter((order) => order.gigId === filterBy.gigId);
+  }
 
   // Filter orders by gigId if provided
 

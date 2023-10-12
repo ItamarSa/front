@@ -20,7 +20,7 @@ export function GigOrder() {
 
     async function loadOrders() {
         try {
-            const orders = await orderService.query(); // Pass the gigId
+            const orders = await orderService.query({ gigId }); // Pass the gigId
             setOrders(orders);
         } catch (err) {
             console.log('Had issues loading orders', err);
@@ -55,7 +55,7 @@ export function GigOrder() {
         console.log('savedOrder:', savedOrder)
     }
     async function onAddOrder() {
-        const order = orderService.getDemoOrder()
+        const order = orderService.getDemoOrder(gigId)
         try {
             const savedOrder = await addOrder(order)
             showSuccessMsg(`Order added (id: ${savedOrder._id})`)
@@ -88,6 +88,7 @@ export function GigOrder() {
             <ul>
                 {orders.map((order) => (
                     <li key={order._id}>
+                        GigId : {gig._id}
                         <br />
                         Buyer {order.buyer?.userName}
                         {/* {order.sellerName.userName} */}
