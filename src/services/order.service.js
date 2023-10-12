@@ -21,13 +21,16 @@ function getImgs() {
 }
 
 async function query(filterBy = {}) {
-  const orders = await storageService.query(STORAGE_KEY);
-  if (filterBy.gigId) {
-    return orders.filter((order) => order.gigId === filterBy.gigId);
+  let orders = await storageService.query(STORAGE_KEY);
+  // if (filterBy.gigId) {
+  //   return orders.filter((order) => order.gigId === filterBy.gigId);
+  // }
+  if (filterBy.buyerId) {
+  orders = orders.filter((order) => order.buyer._id === filterBy.buyerId);
   }
 
-  // Filter orders by gigId if provided
 
+  // Filter orders by gigId if provided
 
   return orders;
 }
@@ -40,6 +43,7 @@ function formatDateForTimeAgo(date) {
   return date.toISOString();
 }
 function getDemoOrder(gig) {
+  console.log('gig:', gig)
   return {
     imgs: getImgs(),
     buyer: userService.getLoggedinUser(),
@@ -49,7 +53,7 @@ function getDemoOrder(gig) {
     createdAt: formatDateForTimeAgo(new Date()),
     status: 'pending',
     seller: gig.owner.userName,
-    gigId: gig._Id
+    gigId: gig._id
     // inStock: utilService.randomTrueFalse(),
     // icon: utilService.makeImage()
   }

@@ -5,26 +5,40 @@ import { orderService } from '../services/order.service'
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { addOrder } from "../store/action/gig.actions"
 import { gigService } from "../services/gig.service.local"
+import { useSelector } from "react-redux"
+import { userService } from "../services/user.service"
 
 export function GigOrder() {
     const { gigId } = useParams()
     const [reorder, setOrder] = useState(utilService.getEmptyOrder())
     const [orders, setOrders] = useState([])
     const [gig, setGig] = useState(null);
+    const user = userService.getLoggedinUser()
 
     useEffect(() => {
         loadOrders();
-        // loadGigData(); // Call this to load the gig data
+        loadGigData(); // Call this to load the gig data
     }, [orders]); // Make sure to trigger the effect when gigId changes
 
 
     async function loadOrders() {
         try {
-            const orders = await orderService.query({ gigId }); // Pass the gigId
+            const buyerId=user._id
+            const orders = await orderService.query( {buyerId} )
             setOrders(orders);
         } catch (err) {
             console.log('Had issues loading orders', err);
             showErrorMsg('Cannot load orders');
+        }
+    }
+    async function loadGigData() {
+        try {
+            const gigData = await gigService.getById(gigId);
+            setGig(gigData);
+            // console.log('gigData:', gigData)
+        } catch (err) {
+            console.log('Error loading gig data', err);
+            showErrorMsg('Cannot load gig data');
         }
     }
     
@@ -65,24 +79,24 @@ export function GigOrder() {
         <h1>Loading</h1>
     return (
         <div className="gig-order">
-            {/* {console.log('gig:', gig)} */}
+           
            
             <h5 className="order-description">Orders</h5>
             <ul>
                 {orders.map((order) => (
                     <li key={order._id}>
-                        GigId : {gig._id}
+                        GigId : {order.gigId}
                         <br />
-                        Buyer {order.buyer?.userName}
+                        {/* Buyer : {order.buyer[userName]} */}
                         {/* {order.sellerName.userName} */}
                         <br />
-                        Description : {gig.title}
+                        Description : {order.title}
                         <br />
-                        Price :{gig.price}
+                        Price :{order.price}
                         <br />
                         Status :{order.status}
                         <br />
-                        Seller :{gig.owner.userName}
+                        {/* Seller :{order.owner.userName} */}
                         <br />
                         Ordered :<p>{utilService.timeAgo(new Date(order.createdAt))}</p>
                         <img className="order-img" src={order.imgs[0]} alt="" />

@@ -14,10 +14,13 @@ import { HomePage } from './pages/HomePage'
 import { UserMsg } from './cmps/UserMsg'
 import { GigOrder } from './pages/GigOrder'
 import { GigPayment } from './pages/GigPayment'
+import { Provider } from 'react-redux'
+import { store } from './store/store'
 
 export function RootCmp() {
 
     return (
+        <Provider store={store}>
         <div className='main-container '>
             <AppHeader />
             {/* <main className='full'> */}
@@ -38,6 +41,7 @@ export function RootCmp() {
             <AppFooter />
             <UserMsg/>
         </div>
+        </Provider>
     )
 }
 

@@ -122,6 +122,9 @@ export function AppHeader() {
                     <NavLink className="nav btn btn-join" title="Login" to="/login">
                         Join
                     </NavLink>
+                    <NavLink className="nav btn " title="orders" to="/gig/:gigId/order">
+                        Orders
+                    </NavLink>
                 </div>
 
             </div>
