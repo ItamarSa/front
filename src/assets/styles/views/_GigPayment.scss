@@ -1,0 +1,33 @@
+.card-logo {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background: white no-repeat;
+    border: none;
+    background-position-y: center;
+}
+
+.tool-tip {
+    // display: none;
+    margin-left: 4px;
+    height: 20px;
+    width: 20px;
+    background: transparent url(https://fiverr-res.cloudinary.com/image/upload/f_png,q_auto/v1/attachments/generic_asset/asset/341705bd68064953c8cc5089db7e63f6-1682948379754/question.svg) no-repeat left;
+}
+
+.circle-box {
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 1px;
+    border: 1px solid #dadbdd;
+    border-radius: 50%;
+    margin-right: 8px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+}
