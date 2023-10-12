@@ -92,7 +92,7 @@ export function AppHeader() {
                     <select className="nav btn" name="BusinessSolution" >
                         <option className="option-header" value="Business Solution">Business Solution</option>
                         <option value="Fiverr Certified">Fiverr Certified</option>
-                        <option value="Fiverr Enterprise">Fiverr Enterprise</option><hr />
+                        <option value="Fiverr Enterprise">Fiverr Enterprise</option>
                         <option value="Contact sales">Contact sales</option>
                     </select>
 

@@ -35,6 +35,7 @@ export function GigDescription({ gig }) {
             <hr />
             <div>
                 <table>
+                <tbody>
                     <tr>
                         <th>Website type</th>
                         <th>Website features</th>
@@ -66,7 +67,7 @@ export function GigDescription({ gig }) {
                         <td></td>
                         <td>lorem</td>
                     </tr>
-
+                    </tbody>
                 </table>
             </div>
         </section>

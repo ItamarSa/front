@@ -77,7 +77,8 @@ export function GigDetails() {
         <div className='details-layout'>
 
             <div className='main-details'>
-                <Link to='/'><a>{homeSymbol}</a></Link>  <small> / </small> <Link to={`/gigs?tags=${gig.tags}`}><a>{gig.tags}</a></Link>
+                <Link to='/'>{homeSymbol}
+                </Link>  <small> / </small> <Link to={`/gigs?tags=${gig.tags}`}>{gig.tags}</Link>
                 <GigCard gig={gig} user={user} starSymbol={starSymbol} />
                 <AboutSeller gig={gig} user={user} starSymbol={starSymbol} />
                 
