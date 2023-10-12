@@ -5,14 +5,16 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { utilService } from '../services/util.service'
 
 export function GigEdit(onAddGig) {
+    
+    const navigate = useNavigate()
+    const params = useParams()
+
     const [gigToAdd, setGigToAdd] = useState({
         name: '',
         title: '',
         price: 0,
         tags:utilService.makeTag(1)
     })
-    const navigate = useNavigate()
-    const params = useParams()
 
     useEffect(() => {
         if (params.gigId) loadGig()
