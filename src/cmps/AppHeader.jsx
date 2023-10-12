@@ -122,10 +122,20 @@ export function AppHeader() {
                     <NavLink className="nav btn btn-join" title="Login" to="/login">
                         Join
                     </NavLink>
-                    <NavLink className="nav btn " title="orders" to="/gig/:gigId/order">
+                    {user && (
+            <span className=" btn user-info">
+              <Link to={`user/${user._id}`}>
+                {user.imgUrl && <img src={user.imgUrl} />}
+                {user.email}
+              </Link>
+            </span>
+          )}
+          <NavLink className="nav btn " title="orders" to="/gig/:gigId/order">
                         Orders
                     </NavLink>
                 </div>
+                
+                    
 
             </div>
             <div className='filter-container'>
