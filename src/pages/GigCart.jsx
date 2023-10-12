@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router"
-import { NavLink } from "react-router-dom"
 
 export function GigCart({ gig }) {
     const navigate = useNavigate()
@@ -40,11 +39,7 @@ export function GigCart({ gig }) {
                     </article>
                 </div>
                 <footer className="cart-footer">
-                <button>
-                    <NavLink className="nav btn" title="gig" to={`/gig/${gig._id}/payment`}>
-                    Continue {arrowSymbol}
-                    </NavLink>
-                </button>
+                    <button>Continue {arrowSymbol} </button>
                     <button className="btn-compare">Compare Packages </button>
                 </footer>
             </div>

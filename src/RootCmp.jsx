@@ -12,6 +12,7 @@ import { GigEdit } from './cmps/GigEdit'
 import { GigDetails } from './pages/GigDetails'
 import { HomePage } from './pages/HomePage'
 import { UserMsg } from './cmps/UserMsg'
+import { GigOrder } from './pages/GigOrder'
 import { GigPayment } from './pages/GigPayment'
 
 export function RootCmp() {
@@ -29,8 +30,9 @@ export function RootCmp() {
                     <Route element={<GigEdit />} path='/edit/:gigId' />
                     <Route element={<GigIndex />} path='/gigs/:tag' />
                     <Route element={<GigIndex />} path='/gigs' />
-                    <Route element={<GigDetails />} path='/gig/:gigId' />
                     <Route element={<GigPayment />} path='/gig/:gigId/payment' />
+                    <Route element={<GigOrder />} path='/gig/:gigId/order' />
+                    <Route element={<GigDetails />} path='/gig/:gigId' />
                 </Routes>
             {/* </main> */}
             <AppFooter />

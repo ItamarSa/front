@@ -1,7 +1,8 @@
 import { gigService } from '../../services/gig.service.local.js'
 import { store } from '../store.js'
 import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service.js'
-import { ADD_GIG, REMOVE_GIG, SET_FILTER, SET_GIGS, UNDO_REMOVE_GIG, UPDATE_GIG } from '../reducer/gig.reducer.js'
+import { ADD_GIG, ADD_ORDER, REMOVE_GIG, SET_FILTER, SET_GIGS, UNDO_REMOVE_GIG, UPDATE_GIG } from '../reducer/gig.reducer.js'
+import { orderService } from '../../services/order.service.js'
 
 // Action Creators:
 export function getActionRemoveGig(gigId) {
@@ -14,6 +15,12 @@ export function getActionAddGig(gig) {
     return {
         type: ADD_GIG,
         gig
+    }
+}
+export function getActionAddOrder(order) {
+    return {
+        type: ADD_ORDER,
+        order
     }
 }
 export function getActionUpdateGig(gig) {
@@ -50,6 +57,17 @@ export async function addGig(gig) {
         return savedGig
     } catch (err) {
         console.log('Cannot add gig', err)
+        throw err
+    }
+}
+export async function addOrder(order) {
+    try {
+        const savedOrder = await orderService.save(order)
+        console.log('Added Order', savedOrder)
+        store.dispatch(getActionAddOrder(savedOrder))
+        return savedOrder
+    } catch (err) {
+        console.log('Cannot add order', err)
         throw err
     }
 }
