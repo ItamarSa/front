@@ -14,7 +14,7 @@ export function GigOrder() {
 
     useEffect(() => {
         loadOrders();
-        loadGigData(); // Call this to load the gig data
+        // loadGigData(); // Call this to load the gig data
     }, [orders]); // Make sure to trigger the effect when gigId changes
 
 
@@ -27,16 +27,7 @@ export function GigOrder() {
             showErrorMsg('Cannot load orders');
         }
     }
-    async function loadGigData() {
-        try {
-            const gigData = await gigService.getById(gigId);
-            setGig(gigData);
-            // console.log('gigData:', gigData)
-        } catch (err) {
-            console.log('Error loading gig data', err);
-            showErrorMsg('Cannot load gig data');
-        }
-    }
+    
     // const gig=loadGigData()
 
     // async function onCreateOrder() {
@@ -54,15 +45,7 @@ export function GigOrder() {
     //     showSuccessMsg('Order saved!');
     //     console.log('savedOrder:', savedOrder)
     // }
-    async function onAddOrder() {
-        const order = orderService.getDemoOrder(gig)
-        try {
-            const savedOrder = await addOrder(order)
-            showSuccessMsg(`Order added (id: ${savedOrder._id})`)
-        } catch (err) {
-            showErrorMsg('Cannot add order')
-        }
-    }
+    
     async function onRemoveOrder(orderId) {
         try {
             const removedOrderId = await orderService.remove(orderId);
@@ -83,7 +66,7 @@ export function GigOrder() {
     return (
         <div className="gig-order">
             {/* {console.log('gig:', gig)} */}
-            <button onClick={onAddOrder}>Pay</button>
+           
             <h5 className="order-description">Orders</h5>
             <ul>
                 {orders.map((order) => (
