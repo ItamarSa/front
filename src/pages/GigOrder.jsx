@@ -31,7 +31,7 @@ export function GigOrder() {
         try {
             const gigData = await gigService.getById(gigId);
             setGig(gigData);
-            console.log('gigData:', gigData)
+            // console.log('gigData:', gigData)
         } catch (err) {
             console.log('Error loading gig data', err);
             showErrorMsg('Cannot load gig data');
@@ -82,8 +82,8 @@ export function GigOrder() {
         <h1>Loading</h1>
     return (
         <div className="gig-order">
-            {console.log('gig:', gig)}
-            <button onClick={onAddOrder}>Add Order ⛐</button>
+            {/* {console.log('gig:', gig)} */}
+            <button onClick={onAddOrder}>Pay</button>
             <h5 className="order-description">Orders</h5>
             <ul>
                 {orders.map((order) => (

@@ -87,9 +87,11 @@ export function GigDetails() {
             <div className="gig-reviews">
                 <GigReview />
             </div>
-            <NavLink gig={gig} className="nav btn" title="gig" to={`/gig/${gig._id}/order`}>
-                Orders
+            <button>
+            <NavLink gig={gig} className="nav btn" title="gig" to={`/gig/${gig._id}/payment`}>
+                CheckOut
             </NavLink>
+            </button>
         </div>
     )
 }
