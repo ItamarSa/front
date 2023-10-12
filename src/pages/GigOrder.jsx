@@ -39,23 +39,23 @@ export function GigOrder() {
     }
     // const gig=loadGigData()
 
-    async function onCreateOrder() {
-        const savedOrder = await orderService.add({
-            buyer: buyer,
-            gigId: gigId,
-            sellerName: gig.owner,
-            price: gig.price,
-            title: gig.title
-        })
-        console.log('savedOrder:', savedOrder)
-        // Update the orders state with the new order
-        setOrders((prevOrders) => [...prevOrders, savedOrder]);
-        // setOrder(utilService.getEmptyOrder());
-        showSuccessMsg('Order saved!');
-        console.log('savedOrder:', savedOrder)
-    }
+    // async function onCreateOrder() {
+    //     const savedOrder = await orderService.add({
+    //         buyer: buyer,
+    //         gigId: gigId,
+    //         sellerName: gig.owner,
+    //         price: gig.price,
+    //         title: gig.title
+    //     })
+    //     console.log('savedOrder:', savedOrder)
+    //     // Update the orders state with the new order
+    //     setOrders((prevOrders) => [...prevOrders, savedOrder]);
+    //     // setOrder(utilService.getEmptyOrder());
+    //     showSuccessMsg('Order saved!');
+    //     console.log('savedOrder:', savedOrder)
+    // }
     async function onAddOrder() {
-        const order = orderService.getDemoOrder(gigId)
+        const order = orderService.getDemoOrder(gig)
         try {
             const savedOrder = await addOrder(order)
             showSuccessMsg(`Order added (id: ${savedOrder._id})`)

@@ -84,11 +84,7 @@ export function GigDetails() {
             </div>
 
             <div className="cart-option">
-                <button>
-                    <NavLink gig={gig} className="nav btn" title="gig" to={`/gig/${gig._id}/payment`}>
-                        CheckOut
-                    </NavLink>
-                </button>
+                
                 <GigCart gig={gig} />
                 
             </div>

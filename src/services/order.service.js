@@ -17,10 +17,10 @@ const gigImgs = ['https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_aut
 // const gigImgs=['https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/327590710/original/f64c53e2a06cc996368097c22a4b37cc2bd64c3b.jpg']
 
 function getImgs() {
-    return gigImgs
+  return gigImgs
 }
 
-async function query(filterBy={}) {
+async function query(filterBy = {}) {
   const orders = await storageService.query(STORAGE_KEY);
   if (filterBy.gigId) {
     return orders.filter((order) => order.gigId === filterBy.gigId);
@@ -39,19 +39,19 @@ async function remove(orderId) {
 function formatDateForTimeAgo(date) {
   return date.toISOString();
 }
-function getDemoOrder(gigId) {
+function getDemoOrder(gig) {
   return {
-      imgs: getImgs(),
-      buyer: userService.getLoggedinUser(),
-      title: utilService.makeLorem(5),
-      price: utilService.getRandomIntInclusive(100, 300),
-      // rate: parseFloat((utilService.getRandomIntInclusive(20, 50) * 0.1).toPrecision(2)),
-      createdAt: formatDateForTimeAgo(new Date()),
-      status:'pending',
-      // owner:owner,
-      gigId:gigId
-      // inStock: utilService.randomTrueFalse(),
-      // icon: utilService.makeImage()
+    imgs: getImgs(),
+    buyer: userService.getLoggedinUser(),
+    title: gig.title,
+    price: gig.price,
+    // rate: parseFloat((utilService.getRandomIntInclusive(20, 50) * 0.1).toPrecision(2)),
+    createdAt: formatDateForTimeAgo(new Date()),
+    status: 'pending',
+    seller: gig.owner.userName,
+    gigId: gig._Id
+    // inStock: utilService.randomTrueFalse(),
+    // icon: utilService.makeImage()
   }
 }
 async function save(order) {
@@ -59,13 +59,13 @@ async function save(order) {
   if (order._id) {
     savedOrder = await storageService.put(STORAGE_KEY, order)
   } else {
-      // Later, owner is set by the backend
-      savedOrder = await storageService.post(STORAGE_KEY, order)
+    // Later, owner is set by the backend
+    savedOrder = await storageService.post(STORAGE_KEY, order)
   }
   return savedOrder
 }
 
-async function add({sellerName, gigId,price,title}) {
+async function add({ sellerName, gigId, price, title }) {
   // const addedOrder = await httpService.post(`order`, {txt, aboutUserId})
 
   // const aboutUser = await userService.getById(aboutUserId)
@@ -76,8 +76,8 @@ async function add({sellerName, gigId,price,title}) {
     gigId: gigId,
     createdAt: formatDateForTimeAgo(new Date()),
     price: price,
-    title:title,
-    status:'pending'
+    title: title,
+    status: 'pending'
 
     // aboutUser: {
     //   _id: aboutUser._id,

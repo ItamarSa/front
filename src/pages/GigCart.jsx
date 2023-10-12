@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom"
+
 export function GigCart({ gig }) {
 
     const vSymbol = <svg width="16" height="16" viewBox="0 0 11 9" xmlns="http://www.w3.org/2000/svg" fill="currentFill"><path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z" /></svg>
@@ -32,7 +34,12 @@ export function GigCart({ gig }) {
                     </article>
                 </div>
                 <footer className="cart-footer">
-                    <button>Continue {arrowSymbol} </button>
+                    {/* <button>Continue {arrowSymbol} </button> */}
+                    <button>
+                        <NavLink className="nav btn" title="gig" to={`/gig/${gig._id}/payment`}>
+                        Continue {arrowSymbol}
+                        </NavLink>
+                    </button>
                     <button className="btn-compare">Compare Packages </button>
                 </footer>
             </div>
