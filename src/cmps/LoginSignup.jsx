@@ -5,7 +5,7 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 // import { ImgUploader } from './ImgUploader'
 
 export function LoginSignup(props) {
-    const [credentials, setCredentials] = useState({ username: '', password: '', email: '' })
+    const [credentials, setCredentials] = useState({ username: '', password: '', email: '',createdAt: new Date()})
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
 

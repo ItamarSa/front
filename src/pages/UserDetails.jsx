@@ -1,16 +1,18 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import { loadUser } from '../store/action/user.actions'
 import { store } from '../store/store'
 import { showSuccessMsg } from '../services/event-bus.service'
 import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from '../services/socket.service'
+import { utilService } from '../services/util.service'
 
 export function UserDetails() {
 
   const params = useParams()
-  const user = useSelector(storeState => storeState.userModule.watchedUser)
+  const user = useSelector((storeState) => storeState.userModule.user)
+  { console.log('user:', user) }
 
   useEffect(() => {
     loadUser(params.id)
@@ -31,18 +33,30 @@ export function UserDetails() {
 
   return (
     <section className='user-details'>
-      <h1>User Details</h1>
-      {user && <div>
-        <h3>
-          {user.fullname}
-        </h3>
-        {/* Demo for dynamic images: */}
-        <div className='user-img' style={{ backgroundImage: `url('/img/u${0}.png')` }}>
-        </div>
-        <pre>
-          {JSON.stringify(user, null, 2)}
-        </pre>
-      </div>}
+      {console.log('user:', user)}
+      <h1 className='user-details-title'>User Details</h1>
+      <p className='user-info-item'>
+          <span className='user-info-label'>Name:</span> {user.userName}
+        </p>
+        <p className='user-info-item'>
+          <span className='user-info-label'>Email:</span> {user.email}
+        </p>
+        <p className='user-info-item'>
+          <span className='user-info-label'>Member Since:</span> {utilService.timeAgo(new Date(user.joined))}
+        </p>
+      <button className='user-details-button'>
+      <Link className='user-details-button' to='/edit' >Add Gig Customize</Link>
+      </button>
+      <div className='user-details-profile'>
+        <h3 className='user-details-subtitle'>{user.fullname}</h3>
+        <div
+          className='user-img'
+          style={{
+            backgroundImage: `url('/img/u${0}.png')`,
+          }}
+        />
+        <pre className='user-details-json'>{JSON.stringify(user, null, 2)}</pre>
+      </div>
     </section>
   )
 }

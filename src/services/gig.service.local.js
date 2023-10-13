@@ -133,13 +133,15 @@ function getDemoGig() {
 }
 function getEmptyGig() {
     return {
+        imgs: gigService.getImgs(),
         name: '',
         title: '',
-        price: 0,
-        rate: 0,
+        price: '',
+        tags:utilService.makeTag(1),
+        rate: parseFloat((utilService.getRandomIntInclusive(20, 50) * 0.1).toPrecision(2)),
         createdAt: (Date.now()),
-        // inStock: utilService.randomTrueFalse(),
-        // icon: utilService.makeImage()
+        tags: utilService.makeTag(1),
+        owner: userService.getLoggedinUser(),
     }
 }
 function getGigTags() {

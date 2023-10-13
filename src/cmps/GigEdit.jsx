@@ -9,12 +9,7 @@ export function GigEdit(onAddGig) {
     const navigate = useNavigate()
     const params = useParams()
 
-    const [gigToAdd, setGigToAdd] = useState({
-        name: '',
-        title: '',
-        price: 0,
-        tags:utilService.makeTag(1)
-    })
+    const [gigToAdd, setGigToAdd] = useState(gigService.getEmptyGig())
 
     useEffect(() => {
         if (params.gigId) loadGig()
@@ -66,7 +61,7 @@ export function GigEdit(onAddGig) {
     }
 
     function onBack() {
-        navigate('/gig')
+        navigate('/user/:id')
     }
 
     return (
