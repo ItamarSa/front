@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { setGigFilter } from "../store/action/gig.actions";
 import { TextFilter } from "./TextFilter";
@@ -7,6 +7,7 @@ import { TagFilter } from "./TagFilter";
 import { orderService } from "../services/order.service";
 import { showErrorMsg } from "../services/event-bus.service";
 import { utilService } from "../services/util.service";
+import { UserMsg } from "./UserMsg";
 
 export function AppHeader() {
     const user = useSelector((storeState) => storeState.userModule.user)
@@ -16,6 +17,10 @@ export function AppHeader() {
     const [showTagFilter, setShowTagFilter] = useState(false);
     const [orders, setOrders] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const location = useLocation();
+    const isHomePage = location.pathname === "/";
+    const [textColor, setTextColor] = useState("white"); // Check if it's the home page
+
 
     //   const [headerColorIndex, setHeaderColorIndex] = useState(0); // Index for selecting header colors
     //   const headerColors = ["#a7445a", "#0f4926", "#ad3906", "#5f1628","#0a4226"]; // List of header colors
@@ -23,11 +28,18 @@ export function AppHeader() {
 
     useEffect(() => {
       loadOrders();
-        window.addEventListener('scroll', handleScroll)
-        return () => {
-            window.removeEventListener('scroll', handleScroll)
+      if (isHomePage) {
+        window.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+        if (isHomePage) {
+            window.removeEventListener('scroll', handleScroll);
         }
-    }, [orders])
+    };
+}, [isHomePage, orders]);
+
+
     async function loadOrders() {
       try {
           const buyerId = user._id;
@@ -44,7 +56,7 @@ export function AppHeader() {
   };
 
   const closeOnOutsideClick = (e) => {
-      if (isModalOpen && !document.querySelector(".modal").contains(e.target) && e.target.className !== "modal-button btn") {
+      if (isModalOpen && !document.querySelector(".modal").contains(e.target) && e.target.className !== "modal-button nav btn") {
           setIsModalOpen(false);
       }
   };
@@ -57,14 +69,17 @@ export function AppHeader() {
   }, [isModalOpen]);
 
     const handleScroll = () => {
-        if (window.scrollY > 50) {
+      if (isHomePage) {
+        if (window.scrollY > 30) {
           if (!showFilter) {
             // First scroll, change background to white
             setShowFilter(true);
+            setTextColor("black");
           }
-          if (window.scrollY > 100) {
+          if (window.scrollY > 60) {
             // Second scroll, show tag filter
             setShowTagFilter(true);
+            setTextColor("black");
           } else {
             // Scroll position between 100 and 200, hide tag filter
             setShowTagFilter(false);
@@ -73,8 +88,10 @@ export function AppHeader() {
           // Scroll position less than 100, hide both filter and tag filter
           setShowFilter(false);
           setShowTagFilter(false);
+          setTextColor("white");
         }
       };
+    }
       
       
       
@@ -109,14 +126,14 @@ export function AppHeader() {
     //     backgroundColor: headerColors[headerColorIndex],
     //   };
     return (
-        <header className={`app-header full ${showFilter ? 'white-background' : ''}`}>
+      <header className={`app-header full ${showFilter ? "white-background" : ""}`} style={{ color: textColor }}>
           <div className="gig-order">
             
 
             {isModalOpen && (
                 <div className="modal">
                     <div className="modal-content">
-                        <h2>All Orders</h2>
+                        <h2 className="title-orders">All Orders</h2>
                         <button onClick={toggleModal} className="modal-button">Close</button>
                         {orders.length === 0 ? (
                              <p className="no-orders-message">No orders yet</p>
@@ -124,7 +141,7 @@ export function AppHeader() {
                             <div className="orders-list">
                                 <ul>
                                     {orders.map((order) => (
-                                        <li key={order._id}>
+                                        <li className="order-txt" key={order._id}>
                                             <img className="order-img" src={order.imgs[0]} alt="" />
                                             GigId: {order.gigId}
                                             <br />
@@ -196,7 +213,7 @@ export function AppHeader() {
                         Join
                     </NavLink>
                     
-          <button onClick={toggleModal} className="modal-button btn">
+          <button onClick={toggleModal} className="modal-button nav btn">
                 {isModalOpen ? "Close Orders" : "Orders"}
             </button>
           <NavLink className="nav btn " title="orders" to="/gig/:gigId/order">
@@ -220,6 +237,7 @@ export function AppHeader() {
               {showTagFilter && <TagFilter onSetFilter={onSetFilterTag} />}
             </div>
 
+            <UserMsg/>
         </header>
     )
 }

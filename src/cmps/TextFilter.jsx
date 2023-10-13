@@ -80,7 +80,7 @@ export function TextFilter({ filterBy, onSetFilter }) {
             id="txt"
             name="txt"
           />
-          <button className="btn-search" type="button" onClick={handleSearch}>
+          <button className="btn-search-header" type="button" onClick={handleSearch}>
             <i className="fa-solid fa-magnifying-glass search-icon"></i>
           </button>
         </div>

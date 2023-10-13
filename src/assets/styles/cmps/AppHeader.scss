@@ -11,7 +11,7 @@
 
     &.white-background {
         background-color: white;
-        color: black; // Change text color to black
+        // color: black; // Change text color to black
       }
     
       &.black-text {
@@ -20,8 +20,10 @@
     
       .nav,
       .btn-join,
-      .option-header {
-        color: inherit; // Inherit text color from parent
+      .option-header
+      a {
+        text-decoration: none;
+        color: inherit ; // Inherit text color from parent
       }
 
         // .header {
@@ -70,5 +72,11 @@
     }
 
     option {
+        color: black;
+    }
+    .title-orders{
+        color: black;
+    }
+    .order-txt{
         color: black;
     }
