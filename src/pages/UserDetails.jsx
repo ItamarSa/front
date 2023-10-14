@@ -4,16 +4,21 @@ import { Link, useParams } from 'react-router-dom'
 
 import { loadUser } from '../store/action/user.actions'
 import { store } from '../store/store'
-import { showSuccessMsg } from '../services/event-bus.service'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from '../services/socket.service'
 import { utilService } from '../services/util.service'
+import { GigList } from './GigList'
+import { loadGigs, loadGigsUser } from '../store/action/gig.actions'
 
 export function UserDetails() {
 
   const params = useParams()
   const user = useSelector((storeState) => storeState.userModule.user)
+  const gigs = useSelector(storeState => storeState.gigModule.gigs)
+  const filterBy = useSelector(storeState => storeState.gigModule.filterBy)
   { console.log('user:', user) }
 
+  const userId = params.id
   useEffect(() => {
     loadUser(params.id)
 
@@ -25,6 +30,15 @@ export function UserDetails() {
     }
 
   }, [params.id])
+  useEffect(() => {
+    try {
+      loadGigsUser({ userId: params.id }); // Pass the filter object with userId
+    } catch (err) {
+      console.log('err:', err);
+      showErrorMsg('Cannot load gigs');
+    }
+  }, [params.id]);
+
 
   function onUserUpdate(user) {
     showSuccessMsg(`This user ${user.fullname} just got updated from socket, new score: ${user.score}`)
@@ -34,8 +48,10 @@ export function UserDetails() {
   return (
     <section className='user-details'>
       {console.log('user:', user)}
-      <h1 className='user-details-title'>User Details</h1>
-      <p className='user-info-item'>
+      <div>
+        <img className="img-user" src={user.imgUrl} alt={user.userName} />
+        <h1 className='user-details-title'>User Details</h1>
+        <p className='user-info-item'>
           <span className='user-info-label'>Name:</span> {user.userName}
         </p>
         <p className='user-info-item'>
@@ -44,10 +60,10 @@ export function UserDetails() {
         <p className='user-info-item'>
           <span className='user-info-label'>Member Since:</span> {utilService.timeAgo(new Date(user.joined))}
         </p>
-      <button className='user-details-button'>
-      <Link className='user-details-button' to='/edit' >Add Gig Customize</Link>
-      </button>
-      <div className='user-details-profile'>
+        <br />
+        
+      </div>
+      {/* <div className='user-details-profile'>
         <h3 className='user-details-subtitle'>{user.fullname}</h3>
         <div
           className='user-img'
@@ -56,6 +72,15 @@ export function UserDetails() {
           }}
         />
         <pre className='user-details-json'>{JSON.stringify(user, null, 2)}</pre>
+      </div> */}
+      <div>
+        <GigList
+          gigs={gigs}
+        />
+        <br />
+      <button className='user-details-button'>
+          <Link className='user-details-button' to='/edit' >Add Gig Customize</Link>
+        </button>
       </div>
     </section>
   )

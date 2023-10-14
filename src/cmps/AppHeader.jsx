@@ -216,16 +216,19 @@ export function AppHeader() {
           <button onClick={toggleModal} className="modal-button nav btn">
                 {isModalOpen ? "Close Orders" : "Orders"}
             </button>
-          <NavLink className="nav btn " title="orders" to="/gig/:gigId/order">
+          {/* <NavLink className="nav btn " title="orders" to="/gig/:gigId/order">
                         Orders
-                    </NavLink>
+                    </NavLink> */}
                     {user && (
             <span className="btn user-info">
-              <Link to={`user/${user._id}`}>
-                {user.imgUrl && <img src={user.imgUrl} />}
-                {user.email}
-              </Link>
-            </span>
+            <Link to={`user/${user._id}`}>
+              {user.imgUrl && (
+                <img className="img-user" src={user.imgUrl} alt={user.userName} />
+              )}
+              {!user.imgUrl && user.userName}
+            </Link>
+          </span>
+          
           )}
                 </div>
                 

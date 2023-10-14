@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
 import { login, logout, signup } from '../store/action/user.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+import { ImgUploader } from './ImgUploader'
 // import { ImgUploader } from './ImgUploader'
 
 export function LoginSignup(props) {
-    const [credentials, setCredentials] = useState({ username: '', password: '', email: '',createdAt: new Date()})
+    const [credentials, setCredentials] = useState({ username: '', password: '', email: '',createdAt: new Date(),imgUrl:''})
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
 
@@ -72,9 +73,9 @@ export function LoginSignup(props) {
         setIsSignup(!isSignup)
     }
 
-    // function onUploaded(imgUrl) {
-    //     setCredentials({ ...credentials, imgUrl })
-    // }
+    function onUploaded(imgUrl) {
+        setCredentials({ ...credentials, imgUrl })
+    }
 
     return (
         <div className='login-page'>
@@ -136,7 +137,7 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     />
-                    {/* <ImgUploader onUploaded={onUploaded} /> */}
+                    <ImgUploader onUploaded={onUploaded} />
                     <button >Signup!</button>
                 </form>}
             </div>
