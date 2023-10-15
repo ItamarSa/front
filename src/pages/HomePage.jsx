@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CHANGE_COUNT } from '../store/reducer/user.reducer';
 import { PopularServiceCarousel } from '../cmps/PopularServiceCarousel';
@@ -14,6 +14,57 @@ export function HomePage() {
   const count = useSelector((storeState) => storeState.userModule.count);
   const [filterText, setFilterText] = useState(""); // Local state for text filter
   const [filterTags, setFilterTags] = useState([]); 
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const mainImg = [
+    {
+      imgSrc:
+      'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616487/jenny-2x.jpg',
+      altTxt: 'Jenny Img',
+      class:'hero-jenny hero-background'
+    },
+    {
+      imgSrc:
+        'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616493/colin-2x.jpg',
+      altTxt: 'Colin Img',
+      class:'hero-colin hero-background'
+    },
+    {
+      imgSrc:
+      'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616487/scarlett-2x.jpg',
+      altTxt: 'Scarlet Img',
+      class:'hero-scarlett hero-background'
+
+    },
+    {
+      imgSrc:
+      'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616493/jordan-2x.jpg',
+      altTxt: 'Jordan Img ',
+      class:'hero-jordan hero-background'
+
+    },
+    {
+      imgSrc:
+      'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616497/christina-2x.jpg',
+      altTxt: 'Christina Img',
+      class:'hero-christina hero-background'
+
+    },
+  ];
+  const mainImgCount = mainImg.length;
+
+    const changeActiveImage = () => {
+      setActiveImageIndex((prevIndex) => (prevIndex + 1) % mainImgCount);
+    };
+
+    // Use setInterval to change the active image index every 4 seconds
+    useEffect(() => {
+        const intervalId = setInterval(changeActiveImage, 4000);
+
+        // Cleanup the interval on component unmount
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, []);
 
 
   function changeCount(diff) {
@@ -63,34 +114,7 @@ export function HomePage() {
       altTxt: 'PayPAl',
     },
   ];
-
-  const mainImg = [
-    {
-      imgSrc:
-        'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616493/colin-2x.jpg',
-      altTxt: 'Colin Img',
-    },
-    {
-      imgSrc:
-        'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616493/jordan-2x.jpg',
-      altTxt: 'Jordan Img ',
-    },
-    {
-      imgSrc:
-        'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616497/christina-2x.jpg',
-      altTxt: 'Christina Img',
-    },
-    {
-      imgSrc:
-        'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616487/scarlett-2x.jpg',
-      altTxt: 'Scarlet Img',
-    },
-    {
-      imgSrc:
-        'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616487/jenny-2x.jpg',
-      altTxt: 'Jenny Img',
-    },
-  ];
+  
 
   const settings = {
     autoplaySpeed: 4000,
@@ -116,53 +140,43 @@ export function HomePage() {
 //     console.log('Searching for:', searchText);
 //   };
 
-  return (
-    <>
-      <section className=" main full">
-        <Slider {...settings} ref={(c) => (slider = c)}>
-          {mainImg.map((img) => (
-            <div key={img.altTxt} className="main-img-container">
-              <img className='hero' src={img.imgSrc} alt={img.altTxt} />
-              <div className="img-title-overlay">
-                <div className="content-container">
-                  <h1 className="img-title">
-                    Find the right <i>freelance</i>
-                    <br />
-                    service, right away
-                  </h1>
-                  <TextFilterMain onSetFilter={onSetFilterText} />
-                  <TagFilterMain onSetFilter={onSetFilterTag} />
-                  {/* <form className="search-form" onSubmit={handleSearch}>
-                    <div className="search-input-container"> */}
-                      {/* <input
-                        type="text"
-                        className="search-input"
-                        placeholder="Search for any services..."
-                        value={searchText} // Bind the input value to the state
-                        onChange={handleSearchInputChange} // Handle input change
-                      />
-                      <button className="btn-search">
-                        <i className="fa-solid fa-magnifying-glass search-icon"></i>
-                      </button> */}
-                    {/* </div>
-                  </form> */}
-                </div>
-              </div>
-            </div>
-          ))}
-        </Slider>
-        <div className="sponsor">
-          <ul>
-            <span className="sponsor-title">Trusted by:</span>
-            {sponsors.map((sponsor, index) => (
-              <li key={index}>
-                <img src={sponsor.imgSrc} alt={sponsor.altTxt} />
-              </li>
-            ))}
-          </ul>
+return (
+  <>
+    <section className="main full">
+      <div className="image-slides-container">
+        {mainImg.map((img, index) => (
+          <div
+            key={img.altTxt}
+            className={`image-slide ${index === activeImageIndex ? 'active' : ''}`}
+            style={{
+              backgroundImage: `url(${img.imgSrc})`,
+            }}
+          ></div>
+        ))}
+      </div>
+      <div className="img-title-overlay">
+        <div className="content-container">
+          <h1 className="img-title">
+            Find the right <i>freelance</i>
+            <br />
+            service, right away
+          </h1>
+          <TextFilterMain onSetFilter={onSetFilterText} />
+          <TagFilterMain onSetFilter={onSetFilterTag} />
         </div>
-      </section>
-      <PopularServiceCarousel />
-    </>
-  );
+      </div>
+      <div className="sponsor">
+        <ul>
+          <span className="sponsor-title">Trusted by:</span>
+          {sponsors.map((sponsor, index) => (
+            <li key={index}>
+              <img src={sponsor.imgSrc} alt={sponsor.altTxt} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+    <PopularServiceCarousel />
+  </>
+);
 }
