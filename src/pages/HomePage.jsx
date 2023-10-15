@@ -17,11 +17,11 @@ export function HomePage() {
 
 
   function changeCount(diff) {
-    console.log('Changing count by:', diff);
+    // console.log('Changing count by:', diff);
     dispatch({ type: CHANGE_COUNT, diff });
   }
   function onSetFilterTag(filterBy) {
-    console.log("filterBy tags:", filterBy);
+    // console.log("filterBy tags:", filterBy);
     // Update local state for tags filter
     setFilterTags(filterBy.tags);
     // Update the store filter with both text and tags
@@ -29,7 +29,7 @@ export function HomePage() {
   }
 
   function onSetFilterText(filterBy) {
-    console.log("filterBy text:", filterBy);
+    // console.log("filterBy text:", filterBy);
     // Update local state for text filter
     setFilterText(filterBy.txt);
     // Update the store filter with both text and tags

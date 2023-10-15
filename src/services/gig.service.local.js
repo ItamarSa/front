@@ -66,7 +66,15 @@ async function query(filterBy = {}) {
             return gig.tags.some((tag) => filterBy.tags.includes(tag));
         });
     }
+    if (filterBy.userId) {
+        gigToDisplay = gigToDisplay.filter((gig) => gig.owner._id === filterBy.userId);
+    }
+    // if (filterBy.buyerId) {
+    //     orders = orders.filter((order) => order.buyer._id === filterBy.buyerId);
+    //     }
 
+
+console.log('gigToDisplay:', gigToDisplay)
     return gigToDisplay;
 }
 function getDefaultFilter() {
@@ -124,7 +132,7 @@ function getDemoGig() {
         title: utilService.makeLorem(5),
         price: utilService.getRandomIntInclusive(100, 300),
         rate: parseFloat((utilService.getRandomIntInclusive(20, 50) * 0.1).toPrecision(2)),
-        createdAt: (Date.now()),
+        createdAt: utilService.formatDateForTimeAgo(new Date()),
         tags: utilService.makeTag(1),
         owner: userService.getLoggedinUser(),
         // inStock: utilService.randomTrueFalse(),
@@ -133,13 +141,15 @@ function getDemoGig() {
 }
 function getEmptyGig() {
     return {
+        imgs: gigService.getImgs(),
         name: '',
         title: '',
-        price: 0,
-        rate: 0,
+        price: '',
+        tags:utilService.makeTag(1),
+        rate: parseFloat((utilService.getRandomIntInclusive(20, 50) * 0.1).toPrecision(2)),
         createdAt: (Date.now()),
-        // inStock: utilService.randomTrueFalse(),
-        // icon: utilService.makeImage()
+        tags: utilService.makeTag(1),
+        owner: userService.getLoggedinUser(),
     }
 }
 function getGigTags() {

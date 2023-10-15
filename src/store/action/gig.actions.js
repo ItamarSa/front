@@ -48,6 +48,22 @@ export async function loadGigs() {
     }
 
 }
+export async function loadGigsUser(filterBy = {}) {
+    try {
+      const { userId } = filterBy; // Destructure the userId from filterBy
+      const gigs = await gigService.query(filterBy);
+      console.log('filterBy:', filterBy);
+      console.log('gigs:', gigs);
+      console.log('Gigs from DB:', gigs);
+      store.dispatch({
+        type: SET_GIGS,
+        gigs
+      });
+    } catch (err) {
+      console.log('Cannot load gigs', err);
+      throw err;
+    }
+  }
 
 export async function addGig(gig) {
     try {

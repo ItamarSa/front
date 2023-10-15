@@ -11,7 +11,8 @@ export const utilService = {
     getEmptyReview,
     timeAgo,
     makeFlag,
-    getEmptyOrder
+    getEmptyOrder,
+    formatDateForTimeAgo
 }
 function makeFlag(size = 1) {
     let flag = ''; // Change from const to let
@@ -204,6 +205,9 @@ function timeAgo(timestamp) {
         return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
     }
 }
+function formatDateForTimeAgo(date) {
+    return date.toISOString();
+  }
 
 
 

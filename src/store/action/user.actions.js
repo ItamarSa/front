@@ -4,7 +4,7 @@ import { store } from '../../store/store.js'
 
 import { showErrorMsg } from '../../services/event-bus.service.js'
 import { LOADING_DONE, LOADING_START } from './../reducer/system.reducer.js'
-import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER } from './../reducer/user.reducer.js'
+import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER, UPDATE_USER_IMAGE_URL } from './../reducer/user.reducer.js'
 
 export async function loadUsers() {
     try {
@@ -41,6 +41,13 @@ export async function login(credentials) {
         throw err
     }
 }
+export function updateUserImageUrl(imgUrl) {
+    return {
+        type: UPDATE_USER_IMAGE_URL,
+        imgUrl,
+    };
+}
+
 
 export async function signup(credentials) {
     try {

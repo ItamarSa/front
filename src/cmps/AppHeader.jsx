@@ -19,7 +19,7 @@ export function AppHeader() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const location = useLocation();
     const isHomePage = location.pathname === "/";
-    const [textColor, setTextColor] = useState("white"); // Check if it's the home page
+    const [textColor, setTextColor] = useState("black"); // Check if it's the home page
 
 
     //   const [headerColorIndex, setHeaderColorIndex] = useState(0); // Index for selecting header colors
@@ -70,13 +70,13 @@ export function AppHeader() {
 
     const handleScroll = () => {
       if (isHomePage) {
-        if (window.scrollY > 30) {
+        if (window.scrollY > 50) {
           if (!showFilter) {
             // First scroll, change background to white
             setShowFilter(true);
             setTextColor("black");
           }
-          if (window.scrollY > 60) {
+          if (window.scrollY > 100) {
             // Second scroll, show tag filter
             setShowTagFilter(true);
             setTextColor("black");
@@ -98,7 +98,7 @@ export function AppHeader() {
 
 
     function onSetFilterTag(filterBy) {
-        console.log("filterBy tags:", filterBy)
+        // console.log("filterBy tags:", filterBy)
         // Update local state for tags filter
         setFilterTags(filterBy.tags);
         // Update the store filter with both text and tags
@@ -106,7 +106,7 @@ export function AppHeader() {
     }
 
     function onSetFilterText(filterBy) {
-        console.log("filterBy text:", filterBy)
+        // console.log("filterBy text:", filterBy)
         // Update local state for text filter
         setFilterText(filterBy.txt)
         // Update the store filter with both text and tags
@@ -216,16 +216,19 @@ export function AppHeader() {
           <button onClick={toggleModal} className="modal-button nav btn">
                 {isModalOpen ? "Close Orders" : "Orders"}
             </button>
-          <NavLink className="nav btn " title="orders" to="/gig/:gigId/order">
+          {/* <NavLink className="nav btn " title="orders" to="/gig/:gigId/order">
                         Orders
-                    </NavLink>
+                    </NavLink> */}
                     {user && (
             <span className="btn user-info">
-              <Link to={`user/${user._id}`}>
-                {user.imgUrl && <img src={user.imgUrl} />}
-                {user.email}
-              </Link>
-            </span>
+            <Link to={`user/${user._id}`}>
+              {user.imgUrl && (
+                <img className="img-user" src={user.imgUrl} alt={user.userName} />
+              )}
+              {!user.imgUrl && user.userName}
+            </Link>
+          </span>
+          
           )}
                 </div>
                 

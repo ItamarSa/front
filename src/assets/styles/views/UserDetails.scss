@@ -1,7 +1,63 @@
+/* UserDetails.scss */
+
 .user-details {
-    .user-img {
-        height: 200px;
-        width: 200px;
-        background-size: contain;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f9f9f9;
+
+    .user-details-title {
+        font-size: 24px;
+        margin-bottom: 20px;
     }
+
+    .user-info {
+        font-size: 16px;
+        margin-bottom: 10px;
+
+        .user-info-item {
+            margin-bottom: 10px;
+
+            .user-info-label {
+                font-weight: bold;
+            }
+        }
+
+        
+
+    .user-details-profile {
+        text-align: center;
+
+        .user-details-subtitle {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .user-img {
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+
+        .user-details-json {
+            font-size: 14px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+    }
+}
+.user-details-button {
+    background-color:$clr8;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 5px;
+}
 }

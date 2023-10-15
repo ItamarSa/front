@@ -3,18 +3,15 @@ import { gigService } from '../services/gig.service.local'
 import { useNavigate, useParams } from 'react-router'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { utilService } from '../services/util.service'
+import { useSelector } from 'react-redux'
 
 export function GigEdit(onAddGig) {
     
     const navigate = useNavigate()
     const params = useParams()
 
-    const [gigToAdd, setGigToAdd] = useState({
-        name: '',
-        title: '',
-        price: 0,
-        tags:utilService.makeTag(1)
-    })
+    const [gigToAdd, setGigToAdd] = useState(gigService.getEmptyGig())
+    const user = useSelector((storeState) => storeState.userModule.user)
 
     useEffect(() => {
         if (params.gigId) loadGig()
@@ -58,7 +55,7 @@ export function GigEdit(onAddGig) {
             console.log('gigToAdd:', gigToAdd)
             await gigService.save(gigToAdd)
             showSuccessMsg(`Gig saved successfully`)
-            navigate('/gig')
+            navigate(`/user/${user._id}`)
         } catch (error) {
             console.log('Had issues saving gig', error)
             showErrorMsg('Couldn\'t save gig')
@@ -66,7 +63,7 @@ export function GigEdit(onAddGig) {
     }
 
     function onBack() {
-        navigate('/gig')
+        navigate(`/user/${user._id}`)
     }
 
     return (
