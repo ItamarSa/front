@@ -137,7 +137,7 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     />
-                    <ImgUploader onUploaded={onUploaded} />
+                    {/* <ImgUploader onUploaded={onUploaded} /> */}
                     <button >Signup!</button>
                 </form>}
             </div>

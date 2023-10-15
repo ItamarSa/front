@@ -42,6 +42,7 @@ export function GigPayment() {
         try {
             const savedOrder = await addOrder(order)
             showSuccessMsg(`Order added (id: ${savedOrder._id})`)
+            navigate('/gig')
         } catch (err) {
             showErrorMsg('Cannot add order')
         }

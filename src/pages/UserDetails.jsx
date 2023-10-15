@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 
@@ -9,14 +9,39 @@ import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from
 import { utilService } from '../services/util.service'
 import { GigList } from './GigList'
 import { loadGigs, loadGigsUser } from '../store/action/gig.actions'
+import { ImgUploader } from '../cmps/ImgUploader'
+import { userService } from '../services/user.service'
 
 export function UserDetails() {
+  const [newImgUrl, setNewImgUrl] = useState('');
 
   const params = useParams()
-  const user = useSelector((storeState) => storeState.userModule.user)
+  // const user = useSelector((storeState) => storeState.userModule.user)
   const gigs = useSelector(storeState => storeState.gigModule.gigs)
   const filterBy = useSelector(storeState => storeState.gigModule.filterBy)
+  const [user, setUser] = useState(userService.getLoggedinUser());
+
   { console.log('user:', user) }
+
+  async function handleImageUpload(uploadedImgUrl) {
+    setNewImgUrl(uploadedImgUrl);
+    console.log('New image URL:', uploadedImgUrl);
+
+    // Update the user's imgUrl in the local user state
+    setUser({ ...user, imgUrl: uploadedImgUrl });
+
+    // Update the user's imgUrl in the database
+    await userService.update({ _id: user._id, imgUrl: uploadedImgUrl });
+
+    // Show a success message or perform any other necessary actions
+    showSuccessMsg('User image updated successfully');
+  }
+
+  
+  
+  
+  
+
 
   const userId = params.id
   useEffect(() => {
@@ -61,6 +86,7 @@ export function UserDetails() {
           <span className='user-info-label'>Member Since:</span> {utilService.timeAgo(new Date(user.joined))}
         </p>
         <br />
+        <ImgUploader onUploaded={handleImageUpload} />
         
       </div>
       {/* <div className='user-details-profile'>
@@ -77,10 +103,11 @@ export function UserDetails() {
         <GigList
           gigs={gigs}
         />
-        <br />
       <button className='user-details-button'>
           <Link className='user-details-button' to='/edit' >Add Gig Customize</Link>
         </button>
+        
+
       </div>
     </section>
   )
