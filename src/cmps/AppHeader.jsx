@@ -70,13 +70,13 @@ export function AppHeader() {
 
     const handleScroll = () => {
       if (isHomePage) {
-        if (window.scrollY > 30) {
+        if (window.scrollY > 50) {
           if (!showFilter) {
             // First scroll, change background to white
             setShowFilter(true);
             setTextColor("black");
           }
-          if (window.scrollY > 60) {
+          if (window.scrollY > 100) {
             // Second scroll, show tag filter
             setShowTagFilter(true);
             setTextColor("black");

@@ -83,7 +83,7 @@ export function GigReview() {
             <h5 className="toy-description-heading">Reviews</h5>
             <ul>
                 {reviews.map((review) => (
-                    <li key={review._id}>
+                    <li className="clean-list" key={review._id}>
                         {review.byUser.userName + '   '} <img className="flag" src={review.flag[0]} alt="US" /> {review.flag[1]}
                         <div className="stars">
                             {Array.from({ length: 5 }).map((_, index) => (
