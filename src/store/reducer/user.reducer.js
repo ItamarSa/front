@@ -1,4 +1,4 @@
-import { userService } from '../../services/user.service' 
+import { userService } from '../../services/user.service'
 
 export const INCREMENT = 'INCREMENT'
 export const DECREMENT = 'DECREMENT'
@@ -15,7 +15,7 @@ const initialState = {
     count: 10,
     user: userService.getLoggedinUser(),
     users: [],
-    watchedUser : null
+    watchedUser: null
 }
 
 export function userReducer(state = initialState, action) {
@@ -42,19 +42,15 @@ export function userReducer(state = initialState, action) {
                 users: state.users.filter(user => user._id !== action.userId)
             }
             break
-        case SET_USERS:
-            newState = { ...state, users: action.users }
-            break
-            case UPDATE_USER_IMAGE_URL:
-                newState = {
-                    ...state,
-                    user: {
-                        ...state.user,
-                        imgUrl: action.imgUrl, // Update the imgUrl property
-                    },
-                };
-                break;
-            
+            // case SET_USERS:
+            //     newState = { ...state, users: action.users }
+            //break
+        case UPDATE_USER_IMAGE_URL:
+            newState = {...state,
+                user: {...state.user,imgUrl: action.imgUrl},
+            }
+            break;
+
         case SET_SCORE:
             newState = { ...state, user: { ...state.user, score: action.score } }
             break

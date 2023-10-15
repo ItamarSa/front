@@ -19,7 +19,7 @@ export function AppHeader() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const location = useLocation();
     const isHomePage = location.pathname === "/";
-    const [textColor, setTextColor] = useState("white"); // Check if it's the home page
+    const [textColor, setTextColor] = useState("black"); // Check if it's the home page
 
 
     //   const [headerColorIndex, setHeaderColorIndex] = useState(0); // Index for selecting header colors
