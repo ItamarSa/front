@@ -220,7 +220,19 @@ export function HomePage() {
         </div>
         {/* </div> */}
 
-        <div className="img-title-overlay">
+        
+        <div className="sponsor">
+          <ul>
+            <span className="sponsor-title">Trusted by:</span>
+            {sponsors.map((sponsor, index) => (
+              <li key={index}>
+                <img src={sponsor.imgSrc} alt={sponsor.altTxt} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      <div className="img-title-overlay">
           <div className="content-container">
             <h1 className="img-title">
               Find the right <i>freelance</i>
@@ -234,17 +246,6 @@ export function HomePage() {
             </div>
           </div>
         </div>
-        <div className="sponsor">
-          <ul>
-            <span className="sponsor-title">Trusted by:</span>
-            {sponsors.map((sponsor, index) => (
-              <li key={index}>
-                <img src={sponsor.imgSrc} alt={sponsor.altTxt} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
       <PopularServiceCarousel />
     </>
   );
