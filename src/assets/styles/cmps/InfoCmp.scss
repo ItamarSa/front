@@ -1,0 +1,65 @@
+.info-container {
+    display: flex;
+    align-items: center;
+    background: #f1fdf7;
+
+    .info-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        .info-txt {
+            flex: 1;
+            padding: 10px;
+
+            h2{
+                font-family: macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 32px;
+                line-height: 38.4px;
+                color: #404145;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    margin-bottom: 10px;
+                    color: #62646a;
+                   margin-bottom: 20px;
+
+                    h6 {
+                        font-size: 18px;
+                        line-height: 25.2px;
+                        font-family: macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        margin: 0px;
+                        margin-bottom: 5px;
+                    }
+
+                    p{
+                        margin: 0px;
+                    }
+                }
+            }
+        }
+
+        .video-modal {
+            flex: 1;
+        
+            .video-background {
+                width: 630px;
+                height: 400px;
+                background-image: url('https://fiverr-res.cloudinary.com/q_auto,f_auto,w_700,dpr_1.0/v1/attachments/generic_asset/asset/089e3bb9352f90802ad07ad9f6a4a450-1599517407052/selling-proposition-still-1400-x1.png');
+                background-size: cover;
+                background-position: center;
+        
+                iframe {
+                    width: 630px;
+                    height: 400px;
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+}
