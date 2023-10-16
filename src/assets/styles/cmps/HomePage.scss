@@ -27,46 +27,79 @@
     background-position: center; /* Center the image vertically and horizontally */
     opacity: 0;
     transition: opacity 1s;
-    max-width: 100%; /* Images will occupy full width of the container while preserving aspect ratio */
-    margin: 0 auto; /* Center align each image horizontally */
 }
-
-
-
 
 .image-slide.active {
     opacity: 1;
+
+
+    .hero-icon {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        grid-gap: 12px;
+        padding: 12px 24px 12px 12px;
+        border-radius: 1600px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.14);
+        box-shadow: 0 20px 30px 0 rgba(0, 37, 19, 0.2);
+        backdrop-filter: blur(30px);
+        color: #fff;
+
+        .user-icon {
+            display: block;
+            width: 40px;
+            height: 40px;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+            grid-gap: 4px;
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        .user-info {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 12px;
+        }
+
+        .user-rating {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-title {
+            line-height: 16px;
+        }
+    }
 }
 
 .img-title-overlay {
     position: absolute;
     top: 50%;
-    left: 29%;
+    left: 31%;
+    // height: 100px;
     transform: translate(-50%, -50%);
     padding: 20px;
     color: white;
     border-radius: 5px;
 
+
     .content-container {
         display: flex;
         flex-direction: column;
-        align-items: start;
+        align-items: center;
         justify-content: start;
         line-height: 56px;
 
-        .tag-filter-container {
-            display: flex;
-            align-items: center;
-            gap: 10px; /* Adjust the gap as needed */
-          }
-          
-          .popular-label {
-            font-weight: bold; /* Optional: Make the label bold */
-          }
-          
-
         .img-title {
-            // margin-bottom: 10px;
+            margin-bottom: 10px;
             font-size: 48px;
 
             i {
@@ -85,6 +118,7 @@
                     flex: 1;
                     padding: 10px;
                     border-radius: 4px;
+
                 }
 
                 .btn-search {
@@ -103,6 +137,8 @@
         }
     }
 }
+
+
 
 .sponsor {
     display: flex;
