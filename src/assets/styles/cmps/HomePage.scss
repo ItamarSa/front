@@ -80,14 +80,15 @@
 }
 
 .img-title-overlay {
-     position: fixed; /* Set it to a fixed position */
+    position: absolute;
     top: 50%;
-    left: 50%; /* Center it horizontally */
+    left: 31%;
+    // height: 100px;
     transform: translate(-50%, -50%);
     padding: 20px;
     color: white;
     border-radius: 5px;
-    max-width: 100%;
+    max-width: 1400px;
 
 
     .content-container {
