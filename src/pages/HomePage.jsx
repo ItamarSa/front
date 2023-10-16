@@ -10,6 +10,7 @@ import { setGigFilter } from '../store/action/gig.actions';
 import { TagFilterMain } from '../cmps/TagFilterMain';
 import '../assets/styles/setup/variables.scss'
 import { InfoCmp } from '../cmps/InfoCmp';
+import { CategoriesCmp } from '../cmps/CategoriesCmp';
 
 export function HomePage() {
   const dispatch = useDispatch();
@@ -248,6 +249,7 @@ export function HomePage() {
       </section>
       <PopularServiceCarousel />
       <InfoCmp />
+      <CategoriesCmp />
     </>
   );
 }
