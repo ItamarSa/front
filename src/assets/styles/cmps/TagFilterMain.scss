@@ -1,0 +1,21 @@
+.filter-group-main {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    
+button{
+    border: none;
+    background-color: transparent;
+    color: white;
+    border: white 1px solid !important;
+    border-radius:40px;
+    font-weight: 600;
+    padding: 1px 12px 0;
+    transition: all .2s;
+    &:hover{
+        background-color: white;
+        color: black;
+    }
+}
+}

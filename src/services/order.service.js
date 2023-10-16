@@ -31,7 +31,7 @@ async function query(filterBy = {}) {
 
 
   // Filter orders by gigId if provided
-
+console.log('orders:', orders)
   return orders;
 }
 
@@ -52,7 +52,7 @@ function getOrder(gig) {
     // rate: parseFloat((utilService.getRandomIntInclusive(20, 50) * 0.1).toPrecision(2)),
     createdAt: formatDateForTimeAgo(new Date()),
     status: 'pending',
-    seller: gig.owner.userName,
+    seller: gig.owner.username,
     gigId: gig._id
     // inStock: utilService.randomTrueFalse(),
     // icon: utilService.makeImage()

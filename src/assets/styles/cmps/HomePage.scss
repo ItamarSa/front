@@ -1,88 +1,108 @@
-.main{
+.main {
     position: relative;
-    top: -11%;
+    top: -16%;
 }
+
 .image-slides-container {
     position: relative;
     width: 100%;
-    height: 100vh;
+    /* Set the maximum width to 1400px */
+    margin: 0 auto; /* Center align the container horizontally */
+    height: 70vh;
     overflow: hidden;
-  }
-  
-  .image-slide {
+}
+.background-div{
+    height: 100vh;
+    width: 100wh;
+}
+
+.image-slide {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background-size: cover;
+    height: 70vh;
+    background-size: contain; /* Scale the image to fit the container */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center; /* Center the image vertically and horizontally */
     opacity: 0;
     transition: opacity 1s;
-  }
-  
-  .image-slide.active {
+    max-width: 100%; /* Images will occupy full width of the container while preserving aspect ratio */
+    margin: 0 auto; /* Center align each image horizontally */
+}
+
+
+
+
+.image-slide.active {
     opacity: 1;
-  }
+}
 
-    .img-title-overlay {
-        position: absolute;
-        top: 50%;
-        left: 31%;
-        // height: 100px;
-        transform: translate(-50%, -50%);
-        padding: 20px;
-        color: white;
-        border-radius: 5px;
+.img-title-overlay {
+    position: absolute;
+    top: 50%;
+    left: 29%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    color: white;
+    border-radius: 5px;
 
+    .content-container {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        line-height: 56px;
 
-        .content-container {
+        .tag-filter-container {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Adjust the gap as needed */
+          }
+          
+          .popular-label {
+            font-weight: bold; /* Optional: Make the label bold */
+          }
+          
+
+        .img-title {
+            // margin-bottom: 10px;
+            font-size: 48px;
+
+            i {
+                font-family: domnic-display;
+            }
+        }
+
+        .search-form {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: start;
-            line-height: 56px;
 
-            .img-title {
-                margin-bottom: 10px;
-                font-size: 48px;
-
-                i {
-                    font-family: domnic-display;
-                }
-            }
-
-            .search-form {
+            .search-input-container {
                 display: flex;
-                flex-direction: column;
 
-                .search-input-container {
-                    display: flex;
-            
-                    .search-input {
-                        flex: 1;
-                        padding: 10px;
-                        border-radius: 4px;
+                .search-input {
+                    flex: 1;
+                    padding: 10px;
+                    border-radius: 4px;
+                }
 
-                    }
+                .btn-search {
+                    background-color: $clr1;
+                    color: white;
+                    padding: 10px 20px;
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 4px;
 
-                    .btn-search {
-                        background-color: $clr1;
-                        color: white;
-                        padding: 10px 20px;
-                        border: none;
-                        cursor: pointer;
-                        border-radius: 4px;
-
-                        .search-icon {
-                            font-size: 20px;
-                        }
+                    .search-icon {
+                        font-size: 20px;
                     }
                 }
             }
         }
     }
-
-
+}
 
 .sponsor {
     display: flex;
@@ -98,7 +118,7 @@
         line-height: 24px;
         font-family: macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-        @media(max-width: 1100px) {
+        @media (max-width: 1100px) {
             display: none;
         }
     }

@@ -63,7 +63,7 @@ export function GigOrder() {
                                             <img className="order-img" src={order.imgs[0]} alt="" />
                                             GigId: {order.gigId}
                                             <br />
-                                            Buyer: {order.buyer.userName}
+                                            Buyer: {order.buyer.username}
                                             <br />
                                             Description: {order.title}
                                             <br />

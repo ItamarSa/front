@@ -21,7 +21,7 @@ export function RootCmp() {
 
     return (
         <Provider store={store}>
-        <div className='main-container '>
+        <div className='main-container full '>
             <AppHeader />
             {/* <main className='full'> */}
                 <Routes>
