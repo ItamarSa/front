@@ -74,10 +74,10 @@ export function UserDetails() {
     <section className='user-details'>
       {console.log('user:', user)}
       <div>
-        <img className="img-user" src={user.imgUrl} alt={user.userName} />
+        <img className="img-user" src={user.imgUrl} alt={user.username} />
         <h1 className='user-details-title'>User Details</h1>
         <p className='user-info-item'>
-          <span className='user-info-label'>Name:</span> {user.userName}
+          <span className='user-info-label'>Name:</span> {user.username}
         </p>
         <p className='user-info-item'>
           <span className='user-info-label'>Email:</span> {user.email}

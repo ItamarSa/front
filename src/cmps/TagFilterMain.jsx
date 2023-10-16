@@ -41,8 +41,7 @@ export function TagFilterMain({ filterBy, onSetFilter }) {
 
   return (
     <div>
-      <div className="filter-group">
-        <label></label>
+      <div className="filter-group-main">
         <br />
         {gigTags.slice(0, 4).map((tag) => ( // Slice the first 4 tags
           <button

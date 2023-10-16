@@ -70,15 +70,16 @@ export function AppHeader() {
 
     const handleScroll = () => {
       if (isHomePage) {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 25) {
           if (!showFilter) {
             // First scroll, change background to white
-            setShowFilter(true);
+            
             setTextColor("black");
           }
-          if (window.scrollY > 100) {
+          if (window.scrollY > 50) {
             // Second scroll, show tag filter
             setShowTagFilter(true);
+            setShowFilter(true);
             setTextColor("black");
           } else {
             // Scroll position between 100 and 200, hide tag filter
@@ -126,47 +127,7 @@ export function AppHeader() {
     //     backgroundColor: headerColors[headerColorIndex],
     //   };
     return (
-      <header className={`app-header full ${showFilter ? "white-background" : ""}`} style={{ color: textColor }}>
-          <div className="gig-order">
-            
-
-            {isModalOpen && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <h2 className="title-orders">All Orders</h2>
-                        <button onClick={toggleModal} className="modal-button">Close</button>
-                        {orders.length === 0 ? (
-                             <p className="no-orders-message">No orders yet</p>
-                        ) : (
-                            <div className="orders-list">
-                                <ul>
-                                    {orders.map((order) => (
-                                        <li className="order-txt" key={order._id}>
-                                            <img className="order-img" src={order.imgs[0]} alt="" />
-                                            GigId: {order.gigId}
-                                            <br />
-                                            Buyer: {order.buyer.userName}
-                                            <br />
-                                            Description: {order.title}
-                                            <br />
-                                            Price: {order.price}
-                                            <br />
-                                            Status: {order.status}
-                                            <br />
-                                            Seller: {order.seller}
-                                            <br />
-                                            Ordered: {utilService.timeAgo(new Date(order.createdAt))}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            
-                        )}
-                        
-                    </div>
-                </div>
-            )}
-        </div>
+      <header className={`main-container full app-header ${window.scrollY > 25 ? "white-background" : ""}`} style={{ color: textColor }}>
             <div className="main-nav">
                 <div className="logo">
                     <NavLink className="btn" title="home" to="/">
@@ -223,9 +184,9 @@ export function AppHeader() {
             <span className="btn user-info">
             <Link to={`user/${user._id}`}>
               {user.imgUrl && (
-                <img className="img-user" src={user.imgUrl} alt={user.userName} />
+                <img className="img-user" src={user.imgUrl} alt={user.username} />
               )}
-              {!user.imgUrl && user.userName}
+              {!user.imgUrl && user.username}
             </Link>
           </span>
           
@@ -239,6 +200,44 @@ export function AppHeader() {
             <div className='filter-container'>
               {showTagFilter && <TagFilter onSetFilter={onSetFilterTag} />}
             </div>
+            <div className="gig-order">
+            {isModalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <h2 className="title-orders">All Orders</h2>
+                        <button onClick={toggleModal} className="modal-button">Close</button>
+                        {orders.length === 0 ? (
+                             <p className="no-orders-message">No orders yet</p>
+                        ) : (
+                            <div className="orders-list">
+                                <ul>
+                                    {orders.map((order) => (
+                                        <li className="order-txt" key={order._id}>
+                                            <img className="order-img" src={order.imgs[0]} alt="" />
+                                            GigId: {order.gigId}
+                                            <br />
+                                            Buyer: {order.buyer.username}
+                                            <br />
+                                            Description: {order.title}
+                                            <br />
+                                            Price: {order.price}
+                                            <br />
+                                            Status: {order.status}
+                                            <br />
+                                            Seller: {order.seller}
+                                            <br />
+                                            Ordered: {utilService.timeAgo(new Date(order.createdAt))}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            
+                        )}
+                        
+                    </div>
+                </div>
+            )}
+        </div>
 
             <UserMsg/>
         </header>

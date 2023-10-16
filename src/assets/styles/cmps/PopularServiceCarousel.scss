@@ -3,6 +3,7 @@
     color: #404145;
     font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-weight: 700;
+    
 
 }
 
@@ -106,9 +107,12 @@ margin-top: 3px;
 
 
 .popular-services-slider {
+    position: relative;
+    top: -20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 1400px;
     // width: 132vh;
 
     .slide {
