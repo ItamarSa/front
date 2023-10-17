@@ -1,3 +1,6 @@
+.tag-filter-container{
+    display: flex;
+}
 .filter-group-main {
     display: flex;
     justify-content: start;
@@ -7,14 +10,14 @@
 button{
     border: none;
     background-color: transparent;
-    color: white;
-    border: white 1px solid !important;
+    color: $clr1;
+    border: $clr1 1px solid !important;
     border-radius:40px;
     font-weight: 600;
     padding: 1px 12px 0;
     transition: all .2s;
     &:hover{
-        background-color: white;
+        background-color: $clr1;
         color: black;
     }
 }

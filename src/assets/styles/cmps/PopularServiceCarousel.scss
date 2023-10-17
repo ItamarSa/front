@@ -103,21 +103,23 @@ margin-top: 3px;
     }
 }
 }
+.slick-slide{
+    padding:0 10px;
+}
 
 
 
 .popular-services-slider {
     position: relative;
-    top: -20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     max-width: 1400px;
-    // width: 132vh;
+   margin-bottom: 96px;
 
     .slide {
         text-align: start;
-        padding: 16px;
+       
         position: relative;
 
         img {
