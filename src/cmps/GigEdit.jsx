@@ -67,7 +67,7 @@ export function GigEdit(onAddGig) {
     }
 
     return (
-        <section className='edit-gig'>
+        <section className='edit-gig gigs'>
             <form onSubmit={onSubmitGig}>
                 <label htmlFor='name'>Name: </label>
                 <input

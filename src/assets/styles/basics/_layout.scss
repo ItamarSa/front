@@ -1,24 +1,7 @@
-// .main-container {
-//     display: grid;
-//     grid-template-columns: 32px 1fr 32px;
-//     justify-content: center;
-  
-//     .full {
-//       grid-column: 1 / -1;
-//     }
-  
-//     /* Apply max-width to elements not having the "full" class */
-//     :not(.full) {
-//       grid-column: 2;
-//     //   max-width: 1400px; /* Add this property */
-//     //   margin: 0 auto; /* Center-align the content */
-//     }
-//   }
+
 .main-container {
   display: grid;
   grid-template-columns: 1fr minmax(0, 1400px) 1fr;
-  // grid-template-columns: 32px 1fr 32px;
-  gap: 16px;
   justify-content: center;
 }
 
@@ -26,19 +9,12 @@
   grid-column: 1 / -1;
 }
 
-/* Remove grid-column property for elements not having the "full" class */
 :not(.full) {
   grid-column: 2;
 }
 
 
-// .main-container>* {
-//     grid-column: 2;
-// }
 
-// .main-container>*.full {
-//     grid-column: 1 / -1;
-// }
 
 
 // @include for-narrow-layout {
@@ -61,8 +37,8 @@
 // }
 
 
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
-}
+// .card-grid {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+//     grid-gap: 20px;
+// }

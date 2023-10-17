@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { CHANGE_COUNT } from '../store/reducer/user.reducer';
-import { PopularServiceCarousel } from '../cmps/PopularServiceCarousel';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { TextFilterMain } from '../cmps/TextFilterMain';
-import { setGigFilter } from '../store/action/gig.actions';
-import { TagFilterMain } from '../cmps/TagFilterMain';
-import '../assets/styles/setup/variables.scss'
-import { InfoCmp } from '../cmps/InfoCmp';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { CHANGE_COUNT } from '../store/reducer/user.reducer'
+import { PopularServiceCarousel } from '../cmps/PopularServiceCarousel'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import { TextFilterMain } from '../cmps/TextFilterMain'
+import { setGigFilter } from '../store/action/gig.actions'
+import { TagFilterMain } from '../cmps/TagFilterMain'
+import { InfoCmp } from '../cmps/InfoCmp'
 
 export function HomePage() {
-  const dispatch = useDispatch();
-  const count = useSelector((storeState) => storeState.userModule.count);
-  const [filterText, setFilterText] = useState(""); // Local state for text filter
-  const [filterTags, setFilterTags] = useState([]);
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const dispatch = useDispatch()
+  const [filterText, setFilterText] = useState("") 
+  const [filterTags, setFilterTags] = useState([])
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
   const mainImg = [
     {
       imgSrc:
@@ -76,42 +73,28 @@ export function HomePage() {
       job: 'jewelry Shop Owner',
       name: 'Christina'
     },
-  ];
-  const mainImgCount = mainImg.length;
+  ]
+  const mainImgCount = mainImg.length
 
   const changeActiveImage = () => {
-    setActiveImageIndex((prevIndex) => (prevIndex + 1) % mainImgCount);
-  };
-
-  // Use setInterval to change the active image index every 4 seconds
-  useEffect(() => {
-    const intervalId = setInterval(changeActiveImage, 4000);
-
-    // Cleanup the interval on component unmount
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
-
-
-  function changeCount(diff) {
-    // console.log('Changing count by:', diff);
-    dispatch({ type: CHANGE_COUNT, diff });
+    setActiveImageIndex((prevIndex) => (prevIndex + 1) % mainImgCount)
   }
+
+  useEffect(() => {
+    const intervalId = setInterval(changeActiveImage, 4000)
+
+    return () => {
+      clearInterval(intervalId)
+    }
+  }, [])
   function onSetFilterTag(filterBy) {
-    // console.log("filterBy tags:", filterBy);
-    // Update local state for tags filter
-    setFilterTags(filterBy.tags);
-    // Update the store filter with both text and tags
-    setGigFilter({ txt: filterText, tags: filterBy.tags });
+    setFilterTags(filterBy.tags)
+    setGigFilter({ txt: filterText, tags: filterBy.tags })
   }
 
   function onSetFilterText(filterBy) {
-    // console.log("filterBy text:", filterBy);
-    // Update local state for text filter
-    setFilterText(filterBy.txt);
-    // Update the store filter with both text and tags
-    setGigFilter({ txt: filterBy.txt, tags: filterTags });
+    setFilterText(filterBy.txt)
+    setGigFilter({ txt: filterBy.txt, tags: filterTags })
   }
 
   const sponsors = [
@@ -140,69 +123,22 @@ export function HomePage() {
         'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/paypal.305e264.png',
       altTxt: 'PayPAl',
     },
-  ];
-
-
-
-  //   const [searchText, setSearchText] = useState(''); // State for the input field
-
-  //   const handleSearchInputChange = (e) => {
-  //     // Update the state when the input value changes
-  //     setSearchText(e.target.value);
-  //   };
-
-  //   const handleSearch = (e) => {
-  //     e.preventDefault();
-  //     // Use the `searchText` state variable in your search logic
-  //     console.log('Searching for:', searchText);
-  //   };
-
-  // return (
-  //   <>
-  //     <section className="main">
-  // const settings = {
-  //   autoplaySpeed: 4000,
-  //   autoplay: true,
-  //   arrows: false,
-  //   fade: true,
-  //   speed: 700,
-  //   slidesToShow: 1,
-  //   slidesToScroll: 1,
-  // };
-  // let slider;
-
-  //   const [searchText, setSearchText] = useState(''); // State for the input field
-
-  //   const handleSearchInputChange = (e) => {
-  //     // Update the state when the input value changes
-  //     setSearchText(e.target.value);
-  //   };
-
-  //   const handleSearch = (e) => {
-  //     e.preventDefault();
-  //     // Use the `searchText` state variable in your search logic
-  //     console.log('Searching for:', searchText);
-  //   };
+  ]
 
   return (
     <>
-      <section className="main full">
-        {/* <div className="image-slides-grid full">
-    {mainImg.map((img, index) => (
-      
-    ))} */}
-        <div className="image-slides-container">
+      <section className="main main-container full">
+        <div className="image-slides-container full">
           {mainImg.map((img, index) => (
-            
-              <div
-                key={img.altTxt}
-                className={`image-slide ${index === activeImageIndex ? 'active' : ''}`}
-                style={{
-                  backgroundImage: `url(${img.imgSrc})`,
-                  backgroundColor: img.backgroundColor,
-                }}
-              >
-                <div className='hero-icon'>
+            <div
+              key={img.altTxt}
+              className={`image-slide ${index === activeImageIndex ? 'active' : ''}`}
+              style={{
+                backgroundImage: `url(${img.imgSrc})`,
+                backgroundColor: img.backgroundColor,
+              }}
+            >
+              {/* <div className='hero-icon'>
                   <div className='user-icon'>
                     <img src={img.iconImg} alt={img.altTxt} />
                   </div>
@@ -215,12 +151,10 @@ export function HomePage() {
                     </div>
                     <div className='user-title'><b>{img.job}</b></div>
                   </div>
-                </div>
-              </div>
+                </div> */}
+            </div>
           ))}
         </div>
-        {/* </div> */}
-
         <div className="img-title-overlay">
           <div className="content-container">
             <h1 className="img-title">
@@ -235,7 +169,7 @@ export function HomePage() {
             </div>
           </div>
         </div>
-        <div className="sponsor">
+        <div className="sponsor full">
           <ul>
             <span className="sponsor-title">Trusted by:</span>
             {sponsors.map((sponsor, index) => (
@@ -249,5 +183,5 @@ export function HomePage() {
       <PopularServiceCarousel />
       <InfoCmp />
     </>
-  );
+  )
 }
