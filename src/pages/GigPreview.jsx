@@ -10,6 +10,7 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
         slidesToShow: 1,
         slidesToScroll: 1,
         dots: true,
+        color:'white',
         dotsClass: 'slick-dots',
         speed: 350,
     }
