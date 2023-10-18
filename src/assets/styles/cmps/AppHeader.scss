@@ -1,91 +1,76 @@
 .app-header {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-between;
-    background-color: clear;
-    // padding: 10px;
+    background-color: transparent; // Use transparent as the default background color
     position: fixed;
     z-index: 999;
     top: 0;
     left: 0;
     width: 100%;
-    // margin-top: 10px;
+    transition: background-color 0.3s, color 0.3s; // Add transition properties
 
     &.white-background {
         background-color: white;
-        // color: black; // Change text color to black
-      }
-    
-      &.black-text {
-        color: white; // Change text color to white
-      }
-    
-      .nav,
-      .btn-join,
-      .option-header
-      a {
+        color: black; // Change text color to black
+        
+    }
+
+    .nav,
+    .btn-join,
+    .option-header,
+    a {
         text-decoration: none;
-        color: inherit ; // Inherit text color from parent
-      }
+        color: inherit; // Inherit text color from parent
+    }
 
-        // .header {
-        //     display: flex;
-        //     flex-direction: column;
+    .main-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 1400px;
 
-
-        .main-nav {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            // margin-top: 8px;
-            max-width: 1400px;
-
-            .nav {
-                padding: 15px;
-            }
-
-            .option-header {
-                display: none;
-            }
-
-            .btn-join {
-                border: solid 1px white;
-            }
-
-            .filter-container {
-                position: fixed;
-                top: -100%;
-                left: 0;
-                right: 0;
-                background-color: #fff;
-                transition: top 0.3s ease-in-out;
-                z-index: 1000;
-
-                &active {
-                    top: 0;
-                }
-
-                .filter {
-                    display: flex;
-                    flex-direction: column;
-                }
-            }
+        .nav {
+            padding: 15px;
         }
 
+        .option-header {
+            display: none;
+        }
+
+        .btn-join {
+            border: solid 1px white;
+        }
+
+        .filter-container {
+            position: fixed;
+            top: -100%;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            transition: top 0.3s ease-in-out;
+            z-index: 1000;
+
+            &active {
+                top: 0;
+            }
+
+            .filter {
+                display: flex;
+                flex-direction: column;
+            }
+        }
     }
 
     option {
         color: black;
     }
-    .title-orders{
+    .title-orders {
         color: black;
     }
-    .order-txt{
+    .order-txt {
         color: black;
-    }.img-user{
-        
+    }
+    .img-user {
         border-radius: 50%;
         height: 50px;
         width: 50px;
     }
-    
+}
