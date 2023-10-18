@@ -127,7 +127,7 @@ export function AppHeader() {
     //     backgroundColor: headerColors[headerColorIndex],
     //   };
     return (
-      <header className={`main-container full app-header ${window.scrollY > 25 ? "white-background" : ""}`} style={{ color: textColor }}>
+      <header className={`main-container full app-header ${isHomePage && window.scrollY > 25 ? "white-background" : ""}`} style={{ color: textColor }}>
             <div className="main-nav">
                 <div className="logo">
                     <NavLink className="btn" title="home" to="/">
