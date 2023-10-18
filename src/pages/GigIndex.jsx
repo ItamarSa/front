@@ -6,7 +6,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
 import { gigService } from '../services/gig.service.local.js'
 import { GigList } from './GigList.jsx'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 // import { GigFilter } from '../cmps/GigFilter.jsx'
 
 export function GigIndex() {
@@ -15,6 +15,9 @@ export function GigIndex() {
     const filterBy = useSelector(storeState => storeState.gigModule.filterBy)
 
     const gigCounts = gigs.length
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const tags = queryParams.get('tags');
 
     useEffect(() => {
         try {
@@ -75,6 +78,8 @@ export function GigIndex() {
             {/* <GigFilter filterBy={filterBy} onSetFilter={onSetFilter} /> */}
             
             <h3>Gig App</h3>
+            <h1>{tags}</h1> {/* Display the 'tags' parameter as an h1 element */}
+
             <main>
                 
                 <button onClick={onAddGig}>Add Gig ⛐</button>

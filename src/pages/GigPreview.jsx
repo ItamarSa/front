@@ -65,7 +65,7 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
             <Link className='gig-details' to={`/gig/${gig._id}`}><h4>{gig.title}</h4></Link>
             <h4>{starSymbol}{gig.rate}</h4>
             <Link className='gig-price' to={`/gig/${gig._id}`}>
-                <p>Price: <span>${gig.price.toLocaleString()}</span></p>
+                <p>From: <span>${gig.price.toLocaleString()}</span></p>
             </Link>
         </section>
     )
