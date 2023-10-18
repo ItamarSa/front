@@ -6,7 +6,7 @@ export function AboutSeller({ gig, user, starSymbol}) {
         <div className='about-seller'>
             <h2>About the seller</h2>
             <div className='seller-details'>
-                <img className='user-img' src={user.imgUrl} alt='user-img' />
+                <img className='user-img' src={gig.owner.imgUrl} alt='user-img' />
                 <div>
                 <h4>{gig.name} <span>{user.store}</span></h4>
                 <h4>{starSymbol}{gig.rate}(reviews.length)</h4>

@@ -38,9 +38,8 @@ function remove(userId) {
     // return httpService.delete(`user/${userId}`)
 }
 
-async function update({ _id, score, imgUrl }) {
+async function update({ _id, imgUrl }) {
     const user = await storageService.get(STORAGE_KEY, _id);
-    user.score = score;
 
     // Optionally, update the imgUrl if provided
     if (imgUrl) {
