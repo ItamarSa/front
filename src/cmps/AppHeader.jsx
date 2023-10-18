@@ -213,7 +213,7 @@ export function AppHeader() {
                                 <ul>
                                     {orders.map((order) => (
                                         <li className="order-txt" key={order._id}>
-                                            <img className="order-img" src={order.imgs[0]} alt="" />
+                                            <img className="order-img" src={order.imgUrl[0]} alt="" />
                                             GigId: {order.gigId}
                                             <br />
                                             Buyer: {order.buyer.username}

@@ -60,7 +60,7 @@ export function GigOrder() {
                                 <ul>
                                     {orders.map((order) => (
                                         <li key={order._id}>
-                                            <img className="order-img" src={order.imgs[0]} alt="" />
+                                            <img className="order-img" src={order.imgUrl[0]} alt="" />
                                             GigId: {order.gigId}
                                             <br />
                                             Buyer: {order.buyer.username}

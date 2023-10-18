@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { utilService } from '../services/util.service'
 import { useSelector } from 'react-redux'
+import { ImgUploader } from './ImgUploader'
 
 export function GigEdit(onAddGig) {
     
@@ -26,6 +27,9 @@ export function GigEdit(onAddGig) {
             console.log('Had issues loading gig', err)
             showErrorMsg('Cannot load gig')
         }
+    }
+    function onUploaded(imgUrl) {
+        setCredentials({ ...gigToAdd, imgUrl })
     }
 
     function handleChange({ target }) {
@@ -99,6 +103,7 @@ export function GigEdit(onAddGig) {
                     name='price'
                     required
                 />
+                <ImgUploader onUploaded={onUploaded} />
                 <button>Save</button>
             </form>
             <button onClick={onBack}>Back</button>

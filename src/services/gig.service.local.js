@@ -103,12 +103,12 @@ async function save(gig) {
     }
     return savedGig
 }
-async function update({ _id, imgs }) {
+async function update({ _id, imgUrl }) {
     const gig = await storageService.get(STORAGE_KEY, _id);
 
-    // Optionally, update the imgs if provided
-    if (imgs) {
-        gig.imgs = imgs;
+    // Optionally, update the imgUrl if provided
+    if (imgUrl) {
+        gig.imgUrl = imgUrl;
     }
 
     await storageService.put(STORAGE_KEY, gig); // Update the gig object in storage
@@ -141,7 +141,7 @@ async function addGigMsg(gigId, txt) {
 // }
 function getDemoGig() {
     return {
-        imgs: getImgs(),
+        imgUrl: getImgs(),
         name: utilService.makeLorem(1),
         title: utilService.makeLorem(5),
         price: utilService.getRandomIntInclusive(100, 300),
@@ -155,7 +155,7 @@ function getDemoGig() {
 }
 function getEmptyGig() {
     return {
-        imgs: gigService.getImgs(),
+        imgUrl: gigService.getImgs(),
         name: '',
         title: '',
         price: '',

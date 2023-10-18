@@ -50,7 +50,7 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
     return (
         <section className='gigs-card'>
             <Link className='gig-details' to={`/gig/${gig._id}`}> <Slider {...settings} ref={(c) => (slider = c)}>
-                {gig.imgs.map((img, index) => <img src={img} key={index} />)}
+                {gig.imgUrl.map((img, index) => <img src={img} key={index} />)}
             </Slider>
             </Link>
             <div className="mini-user">

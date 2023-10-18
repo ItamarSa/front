@@ -10,7 +10,7 @@ import { utilService } from '../services/util.service'
 
 export function GigCard({ gig, user, starSymbol}) {
 
-    const images = gig.imgs.map(img => ({
+    const images = gig.imgUrl.map(img => ({
         original: img,
         thumbnail: img,
     })

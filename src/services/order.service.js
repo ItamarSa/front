@@ -45,7 +45,7 @@ function formatDateForTimeAgo(date) {
 function getOrder(gig) {
   console.log('gig:', gig)
   return {
-    imgs: getImgs(),
+    imgUrl: getImgs(),
     buyer: userService.getLoggedinUser(),
     title: gig.title,
     price: gig.price,
