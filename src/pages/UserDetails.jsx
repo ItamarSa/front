@@ -21,7 +21,6 @@ export function UserDetails() {
   const filterBy = useSelector(storeState => storeState.gigModule.filterBy)
   const [user, setUser] = useState(userService.getLoggedinUser());
 
-  { console.log('user:', user) }
 
   async function handleImageUpload(uploadedImgUrl) {
     setNewImgUrl(uploadedImgUrl);
@@ -73,9 +72,8 @@ export function UserDetails() {
   return (
     <section className='user-details'>
        
-      {console.log('user:', user)}
       <div className='info'>
-        <img className="img-user" src={user.imgUrl} alt={user.username} />
+        <img className="user-img" src={user.imgUrl} alt={user.username} />
         <h1 className='user-details-title'>User Details</h1>
         <p className='user-info-item'>
           <span className='user-info-label'>Name:</span> {user.username}
@@ -101,12 +99,13 @@ export function UserDetails() {
         <pre className='user-details-json'>{JSON.stringify(user, null, 2)}</pre>
       </div> */}
       <div className='gigs'>
-        <GigList
-          gigs={gigs}
-        />
       <button className='user-details-button'>
           <Link className='user-details-button' to='/edit' >Add Gig Customize</Link>
         </button>
+        <br />
+        <GigList
+          gigs={gigs}
+        />
         
 
       </div>

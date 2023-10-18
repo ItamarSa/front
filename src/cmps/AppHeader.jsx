@@ -30,7 +30,10 @@ export function AppHeader() {
       loadOrders();
       if (isHomePage) {
         window.addEventListener('scroll', handleScroll);
-    }
+    } else {
+        setShowFilter(true); // Show the filter on non-home pages
+        setShowTagFilter(true); // Show the tag filter on non-home pages
+      }
 
     return () => {
         if (isHomePage) {
@@ -211,7 +214,7 @@ export function AppHeader() {
                         ) : (
                             <div className="orders-list">
                                 <ul>
-                                    {orders.map((order) => (
+                                    {orders?.map((order) => (
                                         <li className="order-txt" key={order._id}>
                                             <img className="order-img" src={order.imgUrl[0]} alt="" />
                                             GigId: {order.gigId}

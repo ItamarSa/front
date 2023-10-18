@@ -34,9 +34,6 @@ export async function loadGigs() {
     try {
         const { filterBy } = store.getState().gigModule
         const gigs = await gigService.query(filterBy)
-        console.log('filterBy:', filterBy)
-        console.log('gigs:', gigs)
-        console.log('Gigs from DB:', gigs)
         store.dispatch({
             type: SET_GIGS,
             gigs

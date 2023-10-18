@@ -8,13 +8,14 @@ import { utilService } from '../services/util.service'
 
 
 
-export function GigCard({ gig, user, starSymbol}) {
-
-    const images = gig.imgUrl.map(img => ({
-        original: img,
-        thumbnail: img,
-    })
-    )
+export function GigCard({ gig, user, starSymbol }) {
+    // Ensure that gig.imgUrl is an array, or provide a default empty array
+    const images = Array.isArray(gig.imgUrl)
+      ? gig.imgUrl.map((img) => ({
+          original: img,
+          thumbnail: img,
+        }))
+      : []
 
     const customFullscreenButton = (onClick, isFullscreen) => (
         <div className={`custom-fullscreen-button ${isFullscreen ? 'fullscreen-active' : ''}`} onClick={onClick}>

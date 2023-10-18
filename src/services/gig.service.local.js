@@ -75,7 +75,6 @@ async function query(filterBy = {}) {
     //     }
 
 
-console.log('gigToDisplay:', gigToDisplay)
     return gigToDisplay;
 }
 function getDefaultFilter() {
@@ -155,7 +154,7 @@ function getDemoGig() {
 }
 function getEmptyGig() {
     return {
-        imgUrl: gigService.getImgs(),
+        imgUrl: [],
         name: '',
         title: '',
         price: '',

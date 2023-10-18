@@ -31,7 +31,7 @@ async function query(filterBy = {}) {
 
 
   // Filter orders by gigId if provided
-console.log('orders:', orders)
+// console.log('orders:', orders)
   return orders;
 }
 
@@ -45,7 +45,7 @@ function formatDateForTimeAgo(date) {
 function getOrder(gig) {
   console.log('gig:', gig)
   return {
-    imgUrl: getImgs(),
+    imgUrl: gig.imgUrl,
     buyer: userService.getLoggedinUser(),
     title: gig.title,
     price: gig.price,

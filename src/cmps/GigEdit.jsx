@@ -4,10 +4,11 @@ import { useNavigate, useParams } from 'react-router'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { utilService } from '../services/util.service'
 import { useSelector } from 'react-redux'
-import { ImgUploader } from './ImgUploader'
+import { ImgUploader } from './ImgUploader' // Import ImgUploader here
+
 
 export function GigEdit(onAddGig) {
-    
+
     const navigate = useNavigate()
     const params = useParams()
 
@@ -28,9 +29,15 @@ export function GigEdit(onAddGig) {
             showErrorMsg('Cannot load gig')
         }
     }
-    function onUploaded(imgUrl) {
-        setCredentials({ ...gigToAdd, imgUrl })
+    function onUploaded(imgUrls) {
+        setGigToAdd((prevGigToAdd) => ({
+            ...prevGigToAdd,
+            imgUrl: imgUrls, // Replace the existing imgUrl with the new array
+        }));
     }
+    
+      
+
 
     function handleChange({ target }) {
         const field = target.name

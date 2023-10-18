@@ -49,12 +49,17 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
 
     return (
         <section className='gigs-card'>
-            <Link className='gig-details' to={`/gig/${gig._id}`}> <Slider {...settings} ref={(c) => (slider = c)}>
-                {gig.imgUrl.map((img, index) => <img src={img} key={index} />)}
-            </Slider>
+            <Link className='gig-details' to={`/gig/${gig._id}`}> 
+            <Slider {...settings} ref={(c) => (slider = c)}>
+      {Array.isArray(gig.imgUrl) ? (
+        gig.imgUrl.map((img, index) => <img src={img} key={index} />)
+      ) : (
+        <img src={gig.imgUrl} alt="Gig Image" />
+      )}
+    </Slider>
             </Link>
             <div className="mini-user">
-                <img src={user.imgUrl} alt="user-img" className='mini-img'/>
+                <img src={gig.owner.imgUrl} alt="user-img" className='mini-img'/>
                 <span>{gig.name}</span>
             </div>
             <Link className='gig-details' to={`/gig/${gig._id}`}><h4>{gig.title}</h4></Link>
