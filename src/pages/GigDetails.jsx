@@ -74,7 +74,7 @@ export function GigDetails() {
     if (!gig) return <div className='center-spinner'> <div className='lds-facebook'><div></div><div></div><div></div></div></div>
 
     return (
-        <div className='details-layout'>
+        <div className='details-layout gigs'>
 
             <div className='main-details'>
                 <Link to='/'>{homeSymbol}

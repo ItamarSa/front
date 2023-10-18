@@ -4,6 +4,7 @@ import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
 import 'react-image-gallery/styles/css/image-gallery.css'
 import fullscreenIcon from '../assets/img/fullscreen.svg'
+import { utilService } from '../services/util.service'
 
 
 
@@ -28,15 +29,18 @@ export function GigCard({ gig, user, starSymbol}) {
         </div>
     )
 
-
+    const randomValue = utilService.getRandomIntInclusive(50, 250);
     return (
         <div className='gig-card'>
-            <h1>{gig.title}</h1>
+            <br />
+            <h3>{gig.title}</h3>
+            <br />
             <div className="mini-user">
-                <img className='user-img' src={user.imgUrl} alt='user-img' />
+            <img className='user-img' src={gig.owner.imgUrl} alt='user-img' />
                 <div className='seller-details'>
-                    <h4>{gig.name} <span>{user.store}</span></h4>
-                    <h4>{starSymbol}{gig.rate}(reviews.length)</h4>
+                    <h4>{gig.owner.username} <span>{user.store}</span></h4>
+                    <br />
+                    <h4>{starSymbol}{gig.rate+" "}({randomValue})</h4>
                 </div>
             </div>
 

@@ -23,6 +23,7 @@ export const gigService = {
     getById,
     save,
     remove,
+    update,
     getEmptyGig,
     addGigMsg,
     getImgs,
@@ -102,6 +103,19 @@ async function save(gig) {
     }
     return savedGig
 }
+async function update({ _id, imgs }) {
+    const gig = await storageService.get(STORAGE_KEY, _id);
+
+    // Optionally, update the imgs if provided
+    if (imgs) {
+        gig.imgs = imgs;
+    }
+
+    await storageService.put(STORAGE_KEY, gig); // Update the gig object in storage
+
+    return gig;
+}
+
 
 async function addGigMsg(gigId, txt) {
     // Later, this is all done by the backend
