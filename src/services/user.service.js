@@ -1,5 +1,6 @@
 import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
+import { utilService } from './util.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 const STORAGE_KEY = 'userDB'
@@ -15,6 +16,7 @@ export const userService = {
     getById,
     remove,
     update,
+    formatDateForTimeAgo
 }
 
 window.userService = userService
@@ -66,6 +68,21 @@ async function login(userCred) {
 async function signup(userCred) {
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     // userCred.score = 10000
+    const flag = utilService.makeFlag();
+    userCred = {
+        _id: userCred._id,
+        email: userCred.email,
+        username: userCred.username,
+        createdAt: formatDateForTimeAgo(new Date()),
+        imgUrl: userCred.imgUrl,
+        from: flag[1],
+        level: userCred.level,
+        store: `@${userCred.username}shop'`,
+        level:utilService.getRandomIntInclusive(0,3)   , 
+        response:utilService.getRandomIntInclusive(1,3),   
+        delivery:utilService.getRandomIntInclusive(1,3),   
+    }
+    console.log('userCred:', userCred)
     const user = await storageService.post(STORAGE_KEY, userCred)
     // const user = await httpService.post('auth/signup', userCred)
     return saveLocalUser(user)
@@ -84,9 +101,12 @@ async function logout() {
 //     return user.score
 // }
 
-
+function formatDateForTimeAgo(date) {
+    return date.toISOString();
+}
 function saveLocalUser(user) {
-    user = { _id: user._id, email: user.email, username: user.username, joined: user.createdAt, imgUrl: user.imgUrl }
+    
+    
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }

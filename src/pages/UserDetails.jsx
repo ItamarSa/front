@@ -82,9 +82,17 @@ export function UserDetails() {
           <span className='user-info-label'>Email:</span> {user.email}
         </p>
         <p className='user-info-item'>
-          <span className='user-info-label'>Member Since:</span> {utilService.timeAgo(new Date(user.joined))}
+          <span className='user-info-label'>Member Since:</span>{utilService.timeAgo(new Date(user.createdAt))}
         </p>
-        <br />
+        <p className='user-info-item'>
+          <span className='user-info-label'>From:</span> {user.from}
+        </p>
+        <p className='user-info-item'>
+          <span className='user-info-label'>Avg. response time:</span> {user.response+' hour'}
+        </p>
+        <p className='user-info-item'>
+          <span className='user-info-label'>Last delivery:</span> {user.delivery+' days'}
+        </p>
         <ImgUploader onUploaded={handleImageUpload} />
         
       </div>

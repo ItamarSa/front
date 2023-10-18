@@ -10,7 +10,7 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
         slidesToShow: 1,
         slidesToScroll: 1,
         dots: true,
-        color:'white',
+        color: 'white',
         dotsClass: 'slick-dots',
         speed: 350,
     }
@@ -50,23 +50,29 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
 
     return (
         <section className='gigs-card'>
-            <Link className='gig-details' to={`/gig/${gig._id}`}> 
-            <Slider {...settings} ref={(c) => (slider = c)}>
-      {Array.isArray(gig.imgUrl) ? (
-        gig.imgUrl.map((img, index) => <img src={img} key={index} />)
-      ) : (
-        <img src={gig.imgUrl} alt="Gig Image" />
-      )}
-    </Slider>
+            <Link className='gig-details' to={`/gig/${gig._id}`}>
+                <Slider {...settings} ref={(c) => (slider = c)}>
+                    {Array.isArray(gig.imgUrl) ? (
+                        gig.imgUrl.map((img, index) => <img src={img} key={index} />)
+                    ) : (
+                        <img src={gig.imgUrl} alt="Gig Image" />
+                    )}
+                </Slider>
             </Link>
             <div className="mini-user">
-                <img src={gig.owner.imgUrl} alt="user-img" className='mini-img'/>
-                <span>{gig.name}</span>
+                <div>
+                <img src={gig.owner.imgUrl} alt="user-img" className="mini-img" />
+                <p className="user-name">{gig.owner.username}</p>
+                </div>
+                <p className="user-level">Level Seller {'  ' + gig.owner.level}</p>
             </div>
+
+
+
             <Link className='gig-details' to={`/gig/${gig._id}`}><h4>{gig.title}</h4></Link>
             <h4>{starSymbol}{gig.rate}</h4>
             <Link className='gig-price' to={`/gig/${gig._id}`}>
-                <p>From: <span>${gig.price.toLocaleString()}</span></p>
+                <p>From: <span>{gig.owner.from}</span></p>
             </Link>
         </section>
     )
