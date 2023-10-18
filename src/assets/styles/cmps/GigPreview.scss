@@ -1,53 +1,53 @@
 
-.slick-dots li button:before {
-    color: #fff;
-    opacity: 1;
-    font-size:8px ;
+// .slick-dots li button:before {
+//     color: #fff;
+//     opacity: 1;
+//     font-size:8px ;
 
-}
-.slick-dots li.slick-active button:before {
-    color: #fff;
-    opacity: 1;
-   font-size:12px ;
-}
+// }
+// .slick-dots li.slick-active button:before {
+//     color: #fff;
+//     opacity: 1;
+//    font-size:12px ;
+// }
 
-.slick-dots {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 40px;
-    align-items: center;
-    padding: 4px;
+// .slick-dots {
+//     display: flex;
+//     justify-content: center;
+//     position: absolute;
+//     bottom: 0;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     height: 40px;
+//     align-items: center;
+//     padding: 4px;
  
 
-    .li {
-        display: inline;
-        padding: 0 2px;
-        transform: scale(.8);
-        transition: 0.3s;
-        color: #fff;
+//     .li {
+//         display: inline;
+//         padding: 0 2px;
+//         transform: scale(.8);
+//         transition: 0.3s;
+//         color: #fff;
 
 
-        &:after {
-            content: '\25CF';
-        }
+//         &:after {
+//             content: '\25CF';
+//         }
 
-        &.active {
-            transform: scale(1.2);
-        }
+//         &.active {
+//             transform: scale(1.2);
+//         }
 
-        &.edge {
-            transform: scale(.5);
-        }
+//         &.edge {
+//             transform: scale(.5);
+//         }
 
-        &.hide {
-            display: none;
-        }
-    }
-}
+//         &.hide {
+//             display: none;
+//         }
+//     }
+// }
 .details-gallery{
     width: 60vh;
 
@@ -58,3 +58,34 @@
     border-radius: 50%;
 
 }
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    img{
+        border-radius:15px ;
+    }
+  }
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    display: none;
+  }
+  .carousel-container:hover .carousel-button {
+    display: block;
+  }
+  
+  .carousel-button.left {
+    left: 10px;
+  }
+  
+  .carousel-button.right {
+    right: 10px;
+  }
