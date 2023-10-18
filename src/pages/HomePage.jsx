@@ -84,7 +84,7 @@ export function HomePage() {
   }
 
   useEffect(() => {
-    const intervalId = setInterval(changeActiveImage, 4000)
+    const intervalId = setInterval(changeActiveImage, 7000)
 
     return () => {
       clearInterval(intervalId)
