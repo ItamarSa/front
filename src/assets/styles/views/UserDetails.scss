@@ -1,5 +1,11 @@
 /* UserDetails.scss */
-
+.info{
+    margin-top: 150px;
+    margin-right: 150px;
+}
+.gigs{
+    margin-top: 150px;
+}
 .user-details {
     display: flex;
     justify-content: space-between;
@@ -39,7 +45,7 @@
             background-size: cover;
             background-position: center;
             border-radius: 50%;
-            margin-top: 20px;
+            margin-top: 200px;
         }
 
         .user-details-json {

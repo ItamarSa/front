@@ -2,12 +2,14 @@
     display: flex;
     align-items: center;
     background: #f1fdf7;
+    margin-bottom: 96px;
 
     .info-section {
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
+        padding: 96px 32px;
 
         .info-txt {
             flex: 1;

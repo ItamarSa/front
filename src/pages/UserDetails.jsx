@@ -72,8 +72,9 @@ export function UserDetails() {
 
   return (
     <section className='user-details'>
+       
       {console.log('user:', user)}
-      <div>
+      <div className='info'>
         <img className="img-user" src={user.imgUrl} alt={user.username} />
         <h1 className='user-details-title'>User Details</h1>
         <p className='user-info-item'>
@@ -99,7 +100,7 @@ export function UserDetails() {
         />
         <pre className='user-details-json'>{JSON.stringify(user, null, 2)}</pre>
       </div> */}
-      <div>
+      <div className='gigs'>
         <GigList
           gigs={gigs}
         />

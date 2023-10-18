@@ -78,7 +78,7 @@ export function LoginSignup(props) {
     }
 
     return (
-        <div className='login-page'>
+        <div className='login-page gigs'>
             <p>
                 <button className='btn-link' onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
             </p>

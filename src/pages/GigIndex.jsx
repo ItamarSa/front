@@ -72,10 +72,12 @@ export function GigIndex() {
     // }
 
     return (
-        <div>
+        <div className='gigs'>
             {/* <GigFilter filterBy={filterBy} onSetFilter={onSetFilter} /> */}
+            
             <h3>Gig App</h3>
             <main>
+                
                 <button onClick={onAddGig}>Add Gig ⛐</button>
                 <button>
                     <Link to='/edit'>Add Gig Customize</Link>
