@@ -6,14 +6,13 @@
 
     .info-section {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         width: 100%;
         padding: 96px 32px;
 
         .info-txt {
-            flex: 1;
-            padding: 10px;
+            padding: 0 158px 0 16px;
 
             h2{
                 font-family: macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -47,7 +46,6 @@
         }
 
         .video-modal {
-            flex: 1;
         
             .video-background {
                 width: 630px;
