@@ -151,7 +151,7 @@ export function AppHeader() {
                         <option value="Contact sales">Contact sales</option>
                     </select>
 
-                    <NavLink className="nav btn" title="gig" to="/gig">
+                    <NavLink className="nav btn" title="gig" to="/gigs">
                     Explore
                     </NavLink>
                     {/* <select className="nav btn" name="Explore" value="Explore" >

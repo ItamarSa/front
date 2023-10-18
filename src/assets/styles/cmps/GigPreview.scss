@@ -1,4 +1,16 @@
 
+.slick-dots li button:before {
+    color: #fff;
+    opacity: 1;
+    font-size:8px ;
+
+}
+.slick-dots li.slick-active button:before {
+    color: #fff;
+    opacity: 1;
+   font-size:12px ;
+}
+
 .slick-dots {
     display: flex;
     justify-content: center;
@@ -9,6 +21,7 @@
     height: 40px;
     align-items: center;
     padding: 4px;
+ 
 
     .li {
         display: inline;
@@ -37,6 +50,7 @@
 }
 .details-gallery{
     width: 60vh;
+
 }
 
 .mini-img{

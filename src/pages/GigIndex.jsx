@@ -3,18 +3,14 @@ import { useSelector } from 'react-redux'
 import { loadGigs, addGig, updateGig, removeGig, setGigFilter } from '../store/action/gig.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { userService } from '../services/user.service.js'
 import { gigService } from '../services/gig.service.local.js'
 import { GigList } from './GigList.jsx'
 import { Link, useLocation } from 'react-router-dom'
-// import { GigFilter } from '../cmps/GigFilter.jsx'
 
 export function GigIndex() {
 
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
     const filterBy = useSelector(storeState => storeState.gigModule.filterBy)
-
-    const gigCounts = gigs.length
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const tags = queryParams.get('tags');
@@ -27,12 +23,6 @@ export function GigIndex() {
             showErrorMsg('Cannot load toys')
         }
     }, [filterBy])
-
-    // function onSetFilter(filterBy) {
-    //     console.log('filterBy:', filterBy)
-    //     setGigFilter(filterBy)
-    // }
-
     async function onRemoveGig(gigId) {
         try {
             await removeGig(gigId)
@@ -41,7 +31,6 @@ export function GigIndex() {
             showErrorMsg('Cannot remove gig')
         }
     }
-
     async function onAddGig() {
         const gig = gigService.getDemoGig()
         try {
@@ -51,7 +40,6 @@ export function GigIndex() {
             showErrorMsg('Cannot add gig')
         }
     }
-
     async function onUpdateGig(gig) {
         const price = +prompt('New price?')
         const gigToSave = { ...gig, price }
@@ -75,19 +63,14 @@ export function GigIndex() {
 
     return (
         <div className='gigs'>
-            {/* <GigFilter filterBy={filterBy} onSetFilter={onSetFilter} /> */}
-            
-            <h3>Gig App</h3>
-            <h1>{tags}</h1> {/* Display the 'tags' parameter as an h1 element */}
-
+            <h1>{tags}</h1>
             <main>
-                
                 <button onClick={onAddGig}>Add Gig ⛐</button>
                 <button>
                     <Link to='/edit'>Add Gig Customize</Link>
                 </button>
                 <div>
-                    {gigCounts}services available
+                    {gigs.length}services available
                 </div>
                 <GigList
                     gigs={gigs}

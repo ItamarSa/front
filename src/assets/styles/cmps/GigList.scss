@@ -2,7 +2,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-
+    list-style: none;
+    li {
+        background-color:transparent;
+        color: $clr7;
+        padding: 5px;
+        margin: 5px;
+    }
+    a {
+        color: $clr2;
+    }     
     .gig-preview {
         max-width: 326px;
         max-height: 361px;
