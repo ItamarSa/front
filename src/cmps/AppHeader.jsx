@@ -29,6 +29,7 @@ export function AppHeader() {
     useEffect(() => {
       loadOrders();
       if (isHomePage) {
+        setTextColor("white");
         window.addEventListener('scroll', handleScroll);
     } else {
         setShowFilter(true); // Show the filter on non-home pages
