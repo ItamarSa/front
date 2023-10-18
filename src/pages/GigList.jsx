@@ -2,10 +2,12 @@ import { GigPreview } from './GigPreview'
 
 export function GigList({ gigs, onRemoveGig, onUpdateGig }) {
 
+    
 
     return (
         <>
-            <h1> Gigs List</h1>
+       
+            <small>{gigs.length} services available</small>
             <ul className='gig-list'>
                 {gigs.map(gig =>
                     <li className='gig-preview' key={gig._id}>
