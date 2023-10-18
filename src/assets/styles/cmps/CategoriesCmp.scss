@@ -1,0 +1,78 @@
+$icn-size: 48px;
+$line-transition: border-color 0.2s ease-in-out, padding 0.2s ease-in-out;
+
+.main-catagories {
+    h2 {
+        font-family: macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 32px;
+        line-height: 38.4px;
+        margin-bottom: 40px;
+        color: #404145;
+    }
+
+    .catagories-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; // Ensure equal spacing between items
+        list-style: none;
+        margin-left: -109px; // Create space on the left side
+
+        li {
+            width: calc(20% - 109px); // Adjusted width to account for left margin
+            margin-bottom: 94px; // Adjusted spacing between rows
+            box-sizing: border-box;
+            text-align: center;
+            margin-left: 109px; // Create space between items
+
+            > a {
+                color: #222325;
+                text-align: center;
+                position: relative;
+                display: inline-block;
+                text-decoration: none;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: $icn-size - 3;
+                    right: 50%;
+                    transform: translateX(50%);
+                    padding: 0 0 8px;
+                    width: $icn-size;
+                    transition: $line-transition;
+                    border-bottom: 2px solid #c5c6c9;
+                }
+
+                &:hover {
+                    &::after {
+                        padding: 0 20px 8px;
+                        border-color: #1dbf73;
+                        transition: $line-transition;
+                    }
+                }
+
+                img {
+                    display: block;
+                    width: $icn-size;
+                    height: $icn-size;
+                    margin: 0 auto 15px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .catagories-list {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 0; // Reset margin for small screens
+
+            li {
+                width: 100%;
+                margin-left: 0; // Reset margin for small screens
+                margin-bottom: 20px; // Adjust spacing between rows for small screens
+            }
+        }
+    }
+}

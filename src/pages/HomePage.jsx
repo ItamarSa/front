@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { CHANGE_COUNT } from '../store/reducer/user.reducer'
-import { PopularServiceCarousel } from '../cmps/PopularServiceCarousel'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-import { TextFilterMain } from '../cmps/TextFilterMain'
-import { setGigFilter } from '../store/action/gig.actions'
-import { TagFilterMain } from '../cmps/TagFilterMain'
-import { InfoCmp } from '../cmps/InfoCmp'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { CHANGE_COUNT } from '../store/reducer/user.reducer';
+import { PopularServiceCarousel } from '../cmps/PopularServiceCarousel';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { TextFilterMain } from '../cmps/TextFilterMain';
+import { setGigFilter } from '../store/action/gig.actions';
+import { TagFilterMain } from '../cmps/TagFilterMain';
+import '../assets/styles/setup/variables.scss'
+import { InfoCmp } from '../cmps/InfoCmp';
+import { CategoriesCmp } from '../cmps/CategoriesCmp';
 
 export function HomePage() {
   const dispatch = useDispatch()
@@ -182,6 +185,7 @@ export function HomePage() {
       </section>
       <PopularServiceCarousel />
       <InfoCmp />
+      <CategoriesCmp />
     </>
   )
 }
