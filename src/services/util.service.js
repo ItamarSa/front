@@ -206,8 +206,9 @@ function timeAgo(timestamp) {
     }
 }
 function formatDateForTimeAgo(date) {
-    return date.toISOString();
+    return date.getTime(); // Return the Unix timestamp
   }
+  
 
 
 
