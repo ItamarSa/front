@@ -77,10 +77,12 @@ async function signup(userCred) {
         imgUrl: userCred.imgUrl,
         from: flag[1],
         level: userCred.level,
-        store: `@${userCred.username}shop'`,
-        level:utilService.getRandomIntInclusive(0,3)   , 
-        response:utilService.getRandomIntInclusive(1,3),   
-        delivery:utilService.getRandomIntInclusive(1,3),   
+        store: `@${userCred.username}shop`,
+        level:utilService.getRandomIntInclusive(1,5)   , 
+        response:utilService.getRandomIntInclusive(1,7),   
+        delivery:utilService.getRandomIntInclusive(1,14),   
+        queue:utilService.getRandomIntInclusive(1,45),   
+        reviews:utilService.getRandomIntInclusive(150,450),   
     }
     console.log('userCred:', userCred)
     const user = await storageService.post(STORAGE_KEY, userCred)
