@@ -32,6 +32,7 @@ export function AppHeader() {
         setTextColor("white");
         window.addEventListener('scroll', handleScroll);
     } else {
+        setTextColor("black");
         setShowFilter(true); // Show the filter on non-home pages
         setShowTagFilter(true); // Show the tag filter on non-home pages
       }

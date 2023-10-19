@@ -6,7 +6,20 @@ import { ImgUploader } from './ImgUploader'
 // import { ImgUploader } from './ImgUploader'
 
 export function LoginSignup(props) {
-    const [credentials, setCredentials] = useState({ username: '', password: '', email: '',CreateAt: new Date(),imgUrl:'',store:'',from:[],level:'',response:'',delivery:''})
+    const [credentials, setCredentials] = useState({
+        username: '',
+        password: '',
+        email: '',
+        CreateAt: new Date(),
+        imgUrl: '',
+        store: '',
+        from: [],
+        level: '',
+        response: '',
+        delivery: '',
+        queue: '',
+        reviews: ''
+    })
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
 

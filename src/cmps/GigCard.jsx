@@ -8,14 +8,14 @@ import { utilService } from '../services/util.service'
 
 
 
-export function GigCard({ gig, user, starSymbol }) {
+export function GigCard({ gig, starSymbol }) {
     // Ensure that gig.imgUrl is an array, or provide a default empty array
     const images = Array.isArray(gig.imgUrl)
-      ? gig.imgUrl.map((img) => ({
-          original: img,
-          thumbnail: img,
+        ? gig.imgUrl.map((img) => ({
+            original: img,
+            thumbnail: img,
         }))
-      : []
+        : []
 
     const customFullscreenButton = (onClick, isFullscreen) => (
         <div className={`custom-fullscreen-button ${isFullscreen ? 'fullscreen-active' : ''}`} onClick={onClick}>
@@ -34,15 +34,47 @@ export function GigCard({ gig, user, starSymbol }) {
     return (
         <div className='gig-card'>
             <br />
-            <h3>{gig.title}</h3>
+            <h3 className='title'>{gig.title}</h3>
             <br />
-            <div className="mini-user">
-            <img className='user-img' src={gig.owner.imgUrl} alt='user-img' />
-                <div className='seller-details'>
-                    <h4>{gig.owner.username} <span>{user.store}</span></h4>
-                    <br />
-                    <h4>{starSymbol}{gig.rate+" "}({randomValue})</h4>
+            <div className='user-review'>
+                <div className='review'>
+                    <div className='all'>
+                        <div className="mini-user">
+                            <div className='seller-details'>
+                                <div className='img'>
+                                    <img className='user-img' src={gig.owner.imgUrl} alt='user-img' />
+                                </div>
+                            </div>
+                        </div>
+                        <div className='user-info'>
+                            <div className="infor">
+                                <div className='name'>
+                                    <div className='owner'>
+                                        {gig.owner.username}{'   '}
+                                    </div>
+                                    <div className='store'> {gig.owner.store}</div>
+
+                                </div>
+                                <div className='rate'>
+                                    <div className='star'>
+                                        {starSymbol}
+                                    </div>
+                                    <div className='rating-score' >{gig.rate + " "}</div>
+                                    <div className='review'>
+                                        ({gig.owner.reviews})
+                                    </div>
+                                    <div
+                                     className='line'>{'|'}
+                                      </div>
+                                    <div className='queue'>
+                                        {' ' + gig.owner.queue + ' Orders in Queue'}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
             <div className='details-gallery'>
