@@ -60,15 +60,22 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
                 </Slider>
             </Link>
             <div className="mini-user">
-                <div>
-                <img src={gig.owner.imgUrl} alt="user-img" className="mini-img" />
-                <p className="user-name">{gig.owner.username}</p>
+                <div className="left-content">
+                    <div>
+                        <img src={gig.owner.imgUrl} alt="user-img" className="mini-img" />
+                        {/* <span className="user-name">{'          '+gig.owner.username}</span> */}
+                        <Link className='gig-details' to={`/user/${gig.owner._id}`}><span>{gig.owner.username}</span></Link>
+                    </div>
                 </div>
-                <p className="user-level">Level Seller {'  ' + gig.owner.level}</p>
+                <div className="right-content">
+                    <span className="user-level">Level Seller {'  ' + gig.owner.level}</span>
+                </div>
             </div>
 
 
 
+
+            
             <Link className='gig-details' to={`/gig/${gig._id}`}><h4>{gig.title}</h4></Link>
             <h4>{starSymbol}{gig.rate}</h4>
             <Link className='gig-price' to={`/gig/${gig._id}`}>
