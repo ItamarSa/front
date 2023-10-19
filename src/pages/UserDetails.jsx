@@ -9,6 +9,7 @@ import { GigList } from './GigList'
 import { loadGigsUser } from '../store/action/gig.actions'
 import { ImgUploader } from '../cmps/ImgUploader'
 import { userService } from '../services/user.service'
+import { updateUserImageUrl } from '../store/action/user.actions'
 
 export function UserDetails() {
   const params = useParams()
@@ -22,6 +23,7 @@ export function UserDetails() {
         const userData = await userService.getById(params.id)
         setUser(userData)
       } catch (error) {
+        console.log('error:', error)
       }
     }
 
@@ -43,6 +45,8 @@ export function UserDetails() {
     setUser({ ...user, imgUrl: uploadedImgUrl })
 
     await userService.update({ _id: user._id, imgUrl: uploadedImgUrl })
+    store.dispatch(updateUserImageUrl(uploadedImgUrl));
+
 
     showSuccessMsg('User image updated successfully')
   }

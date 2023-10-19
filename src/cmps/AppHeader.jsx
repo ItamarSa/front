@@ -24,12 +24,18 @@ export function AppHeader() {
 
     //   const [headerColorIndex, setHeaderColorIndex] = useState(0); // Index for selecting header colors
     //   const headerColors = ["#a7445a", "#0f4926", "#ad3906", "#5f1628","#0a4226"]; // List of header colors
-
+    useEffect(() => {
+        // You can add a condition here to make sure user.imgUrl is not empty
+        if (user.imgUrl) {
+            // The user's imgUrl has changed, re-render the component
+            // You can also trigger some action here if needed
+        }
+    }, [user.imgUrl]);
 
     useEffect(() => {
       loadOrders();
       if (isHomePage) {
-        setTextColor("white");
+        // setTextColor("white");
         window.addEventListener('scroll', handleScroll);
     } else {
         setTextColor("black");
