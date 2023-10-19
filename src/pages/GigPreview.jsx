@@ -36,13 +36,26 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
                 </button>
             </div>
             <div className="mini-user">
-                <img src={gig.owner.imgUrl} alt="user-img" className='mini-img' />
-                <span>{gig.name}</span>
+                <div className="left-content">
+                    <div>
+                        <img src={gig.owner.imgUrl} alt="user-img" className="mini-img" />
+                        {/* <span className="user-name">{'          '+gig.owner.username}</span> */}
+                        <Link className='gig-details' to={`/user/${gig.owner._id}`}><span>{gig.owner.username}</span></Link>
+                    </div>
+                </div>
+                <div className="right-content">
+                    <span className="user-level">Level Seller {'  ' + gig.owner.level}</span>
+                </div>
             </div>
+
+
+
+
+            
             <Link className='gig-details' to={`/gig/${gig._id}`}><h4>{gig.title}</h4></Link>
             <h4>{starSymbol}{gig.rate}</h4>
             <Link className='gig-price' to={`/gig/${gig._id}`}>
-                <p>From: <span>${gig.price.toLocaleString()}</span></p>
+                <p>From: <span>{gig.owner.from}</span></p>
             </Link>
         </section>
     )
