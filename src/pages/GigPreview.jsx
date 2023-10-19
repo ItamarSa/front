@@ -35,27 +35,26 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
                     {rightArrowSymbol}
                 </button>
             </div>
-            <div className="mini-user">
+            <div className="mini-user-preview">
                 <div className="left-content">
-                    <div>
+                    <div className='left-user flex'>
                         <img src={gig.owner.imgUrl} alt="user-img" className="mini-img" />
-                        {/* <span className="user-name">{'          '+gig.owner.username}</span> */}
-                        <Link className='gig-details' to={`/user/${gig.owner._id}`}><span>{gig.owner.username}</span></Link>
+                        <Link className='gig-details' to={`/user/${gig.owner._id}`}><span className='user-name'>{gig.owner.username}</span></Link>
                     </div>
                 </div>
                 <div className="right-content">
-                    <span className="user-level">Level Seller {'  ' + gig.owner.level}</span>
+                    <span className="user-level">Level{'  ' + gig.owner.level}</span>
                 </div>
             </div>
 
-
-
-
-            
-            <Link className='gig-details' to={`/gig/${gig._id}`}><h4>{gig.title}</h4></Link>
-            <h4>{starSymbol}{gig.rate}</h4>
-            <Link className='gig-price' to={`/gig/${gig._id}`}>
-                <p>From: <span>{gig.owner.from}</span></p>
+            <Link className='gig-details' to={`/gig/${gig._id}`}><span className='gig-title'>{gig.title}</span></Link>
+            <div className='gig-rate flex'>
+                <div className='stars flex'><span>{starSymbol}</span></div>
+                <b> {gig.rate} </b>
+                <span className="review-length">(156)</span> 
+            </div>
+            <Link  to={`/gig/${gig._id}`}>
+                <p className='gig-price'>From <span>US${gig.price}</span></p>
             </Link>
         </section>
     )

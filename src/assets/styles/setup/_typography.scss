@@ -1,15 +1,39 @@
 @font-face {
-    font-family: macan-regular;
-    src: url(../../fonts/macan-regular.woff2);
-}
-@font-face {
-    font-family: macan-bold;
-    src: url(../../fonts/macan-bold\ .woff2);
-}
-@font-face {
+    font-display: swap;
     font-family: macan-light;
-    src: url(../../fonts/macan-light.woff2);
+    font-style: normal;
+    font-weight: 300;
+    src: url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-light.eot);
+    src: local("Macan-Light"),url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-light.eot) format("embedded-opentype"),url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-light.woff2) format("woff2"),url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-light.woff) format("woff")
 }
+
+@font-face {
+    font-display: swap;
+    font-family: macan-regular;
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-regular.eot);
+    src: local("Macan-Regular"), url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-regular.eot) format("embedded-opentype"), url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-regular.woff2) format("woff2"), url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-regular.woff) format("woff")
+}
+
+@font-face {
+    font-display: swap;
+    font-family: macan-semibold;
+    font-style: normal;
+    font-weight: 600;
+    src: url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-semibold.eot);
+    src: local("Macan-Semibold"),url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-semibold.eot) format("embedded-opentype"),url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-semibold.woff2) format("woff2"),url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-semibold.woff) format("woff")
+}
+
+@font-face {
+    font-display: swap;
+    font-family: macan-bold;
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-bold.eot);
+    src: local("Macan-Bold"), url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-bold.eot) format("embedded-opentype"), url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-bold.woff2) format("woff2"), url(https://npm-assets.fiverrcdn.com/assets/uploads/macan-bold.woff) format("woff")
+}
+
 @font-face {
     font-family: domnic-display;
     src: url(../../fonts/domaine-display-web-medium-italic.woff2);
