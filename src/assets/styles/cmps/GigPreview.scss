@@ -1,56 +1,68 @@
 
-.slick-dots li button:before {
-    color: #fff;
-    opacity: 1;
-    font-size:8px ;
+.mini-img {
+    width: 24px;
+    border-radius: 50%;
 
 }
-.slick-dots li.slick-active button:before {
-    color: #fff;
-    opacity: 1;
-   font-size:12px ;
-}
 
-.slick-dots {
+.carousel-container {
     display: flex;
-    justify-content: center;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 40px;
     align-items: center;
-    padding: 4px;
- 
+    justify-content: center;
+    position: relative;
 
-    .li {
-        display: inline;
-        padding: 0 2px;
-        transform: scale(.8);
-        transition: 0.3s;
-        color: #fff;
+    img {
+        border-radius: 15px;
+    }
 
 
-        &:after {
-            content: '\25CF';
+    .carousel-button {
+        position: absolute;
+        top: 30%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 24px;
+        opacity: 0;
+        transform: translateX(-100%);
+        transition: transform 0.2s ease-in-out;
+
+        &.left {
+            left: 0;
+            transform: translateX(-10%);
         }
 
-        &.active {
-            transform: scale(1.2);
+        &.right {
+            right: 0;
+            transform: translateX(10%);
+        }
+    }
+
+    &:hover {
+        .carousel-button.left {
+            opacity: 1;
+            transform: translateX(10%);
         }
 
-        &.edge {
-            transform: scale(.5);
-        }
-
-        &.hide {
-            display: none;
+        .carousel-button.right {
+            opacity: 1;
+            transform: translateX(-10%);
         }
     }
 }
-.details-gallery{
-    width: 60vh;
+.mini-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // padding: 10px;
+}
 
+.left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .mini-img{
