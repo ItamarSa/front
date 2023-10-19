@@ -55,6 +55,9 @@ export function UserDetails() {
     return <div>Loading user data...</div>
   }
 
+  const loggedInUser = userService.getLoggedinUser(); 
+  const isCurrentUser = loggedInUser && loggedInUser._id === user._id; 
+
   return (
     <section className='user-details'>
        
@@ -82,7 +85,7 @@ export function UserDetails() {
         <p className='user-info-item'>
           <span className='user-info-label'>Level:</span> {user.level}
         </p>
-        <ImgUploader onUploaded={handleImageUpload} />
+        {isCurrentUser && <ImgUploader onUploaded={handleImageUpload} />} {/* Render ImgUploader only for the logged-in user */}
         
       </div>
       <div className='gigs'>
