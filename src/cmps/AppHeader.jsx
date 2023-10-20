@@ -78,7 +78,7 @@ export function AppHeader() {
 
     const handleScroll = () => {
         if (isHomePage) {
-            if (window.scrollY > 20) {
+            if (window.scrollY > 30) {
                 if (!showFilter) {
                     document.querySelector(".app-header").classList.add("scrolling")
                     setTextColor("black")
