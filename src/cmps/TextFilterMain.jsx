@@ -68,7 +68,7 @@ export function TextFilterMain({ filterBy, onSetFilter }) {
           <label htmlFor="txt"></label>
           <br />
           <input
-            className="search-input"
+            className="search-input-main"
             value={filterByText.txt}
             onChange={(e) => setFilterByText({ txt: e.target.value })}
             type="text"
