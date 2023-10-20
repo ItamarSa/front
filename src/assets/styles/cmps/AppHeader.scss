@@ -5,19 +5,22 @@
     left: 0;
     width: 100%;
     transition: background-color 0.3s, color 0.3s; // Add transition properties
-  
+
     &.fixed-header {
-      position: fixed;
-    //   background-color: white;
-      color: #62646a; // Change text color to #62646a
-      transition: background-color 0.3s, color 0.3s; // Add transition properties for the fixed header
+        position: fixed;
+        //   background-color: white;
+        color: #62646a; // Change text color to #62646a
+        transition: background-color 0.3s, color 0.3s; // Add transition properties for the fixed header
     }
-  
-    &.scrolling { // This class controls the background color when scrolling starts
-      background-color: white;
+
+    &.scrolling {
+        // This class controls the background color when scrolling starts
+        background-color: white;
     }
 
     .nav,
+    select,
+    button,
     .btn-join,
     .btn,
     .option-header,
@@ -32,10 +35,42 @@
         justify-content: space-between;
         align-items: center;
         max-width: 1400px;
-        margin-bottom: 20px;
+        height: em(80px);
+        border-bottom: 1px solid transparent;
+        /* Set a transparent border by default */
+
+
+
+
+
+        .nav-bar {
+            display: flex;
+            flex-direction: row;
+
+            .ul {
+                display: flex;
+                align-items: center;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+
+                li {
+                    cursor: pointer;
+                    padding: 0 24px 0 0;
+                    line-height: em(24px);
+
+                    .nav {
+                        font-size: em(16px);
+                        font-weight: 600;
+                    }
+                }
+
+            }
+        }
 
         .nav {
-            padding: 15px;
+            padding: 10px;
         }
 
         .option-header {
@@ -44,43 +79,63 @@
 
         .btn-join {
             border: solid 1px white;
-        }
-
-        .filter-container {
-            position: fixed;
-            top: -100%;
-            left: 0;
-            right: 0;
-            background-color: #fff;
-            transition: top 0.3s ease-in-out;
-            z-index: 1000;
-
-            &active {
-                top: 0;
-            }
-
-            .filter {
-                display: flex;
-                flex-direction: column;
+            border-radius: 4%;
+            height: 38px; /* Use "px" for specifying the height */
+            line-height: 16px; /* Use "px" for specifying the line height */
+        
+            &:hover {
+                background-color: #1dbf73; /* Change text color to #1dbf73 on hover */
             }
         }
+        
+
+            .filter-container {
+                position: fixed;
+                top: -100%;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                transition: top 0.3s ease-in-out;
+                z-index: 1000;
+
+                &active {
+                    top: 0;
+                }
+
+                .filter {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+
+        option {
+            color: #62646a;
+        }
+
+        .title-orders {
+            color: #62646a;
+        }
+
+        .order-txt {
+            color: #62646a;
+        }
+
+        .img-user {
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+        }
     }
 
-    option {
-        color: #62646a;
+    .filter-container {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        // height: em(40px);
     }
-    .title-orders {
-        color: #62646a;
+
+    .main-nav.scrolling {
+        border-bottom: 1px solid #e4e5e7;
+        /* Add the border-bottom property for scrolling */
     }
-    .order-txt {
-        color: #62646a;
-    }
-    .img-user {
-        border-radius: 50%;
-        height: 50px;
-        width: 50px;
-    }
-}
-.main-nav.scrolling {
-    border-bottom: 1px solid #e4e5e7; /* Add the border-bottom property for scrolling */
-}
