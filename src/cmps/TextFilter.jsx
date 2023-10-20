@@ -76,7 +76,7 @@ export function TextFilter({ filterBy, onSetFilter }) {
             value={filterByText.txt}
             onChange={(e) => setFilterByText({ txt: e.target.value })}
             type="text"
-            placeholder="By txt"
+            placeholder="What service are you looking for today?"
             id="txt"
             name="txt"
           />

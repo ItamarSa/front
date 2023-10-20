@@ -37,6 +37,7 @@
         max-width: 1400px;
         height: em(80px);
         border-bottom: 1px solid transparent;
+        width: 100%;
         /* Set a transparent border by default */
 
 
@@ -46,6 +47,7 @@
         .nav-bar {
             display: flex;
             flex-direction: row;
+            // margin-left: 32px;
 
             .ul {
                 display: flex;
@@ -57,7 +59,7 @@
 
                 li {
                     cursor: pointer;
-                    padding: 0 24px 0 0;
+                    padding: 0 12px 0 0;
                     line-height: em(24px);
 
                     .nav {
