@@ -84,7 +84,7 @@ export function AppHeader() {
             if (window.scrollY > 20) {
                 if (!showFilter) {
                     document.querySelector(".app-header").classList.add("scrolling")
-                    document.querySelector(".main-nav").classList.add("scrolling");
+                    // document.querySelector(".main-nav").classList.add("scrolling");
                     setTextColor("#62646a")
                 }
                 if (window.scrollY > 60) {
@@ -96,6 +96,8 @@ export function AppHeader() {
 
                 } else {
                     setShowTagFilter(false)
+                    document.querySelector(".main-nav").classList.remove("scrolling");
+
                 }
             } else {
                 setShowFilter(false)
