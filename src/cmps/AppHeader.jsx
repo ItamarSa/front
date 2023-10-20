@@ -25,30 +25,32 @@ export function AppHeader() {
     //   const [headerColorIndex, setHeaderColorIndex] = useState(0); // Index for selecting header colors
     //   const headerColors = ["#a7445a", "#0f4926", "#ad3906", "#5f1628","#0a4226"]; // List of header colors
     useEffect(() => {
-        // You can add a condition here to make sure user.imgUrl is not empty
-        if (user.imgUrl) {
-            // The user's imgUrl has changed, re-render the component
-            // You can also trigger some action here if needed
+        // Check if user and user.imgUrl are both defined before proceeding
+        if (user && user.imgUrl) {
+          // The user's imgUrl has changed, re-render the component or trigger actions
         }
-    }, [user.imgUrl]);
+      }, [user && user.imgUrl]);
 
-    useEffect(() => {
-      loadOrders();
-      if (isHomePage) {
-        // setTextColor("white");
-        window.addEventListener('scroll', handleScroll);
-    } else {
-        setTextColor("black");
-        setShowFilter(true); // Show the filter on non-home pages
-        setShowTagFilter(true); // Show the tag filter on non-home pages
-      }
-
-    return () => {
+      useEffect(() => {
+        loadOrders();
         if (isHomePage) {
-            window.removeEventListener('scroll', handleScroll);
+            window.addEventListener('scroll', handleScroll);
+        } else {
+            setTextColor("black");
+            setShowFilter(true);
+            setShowTagFilter(true);
         }
-    };
-}, [isHomePage, orders]);
+    
+        return () => {
+            if (isHomePage) {
+                window.removeEventListener('scroll', handleScroll);
+            } else {
+                // Reset the filter states when leaving the home page
+                setShowFilter(false);
+                setShowTagFilter(false);
+            }
+        };
+    }, [isHomePage, orders]);
 
 
     async function loadOrders() {
@@ -191,17 +193,14 @@ export function AppHeader() {
           {/* <NavLink className="nav btn " title="orders" to="/gig/:gigId/order">
                         Orders
                     </NavLink> */}
-                    {user && (
-            <span className="btn user-info">
-            <Link to={`user/${user._id}`}>
-              {user.imgUrl && (
-                <img className="img-user" src={user.imgUrl} alt={user.username} />
-              )}
-              {!user.imgUrl && user.username}
-            </Link>
-          </span>
-          
-          )}
+                   {user && user.imgUrl && (
+  <span className="btn user-info">
+    <Link to={`user/${user._id}`}>
+      <img className="img-user" src={user.imgUrl} alt={user.username} />
+    </Link>
+  </span>
+)}
+
                 </div>
                 
                 
