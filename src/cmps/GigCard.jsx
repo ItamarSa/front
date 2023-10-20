@@ -57,9 +57,9 @@ export function GigCard({ gig, starSymbol }) {
                                 </div>
                                 <div className='rate'>
                                     <div className='star'>
-                                        {starSymbol}
+                                       <span> {starSymbol}</span>
                                     </div>
-                                    <div className='rating-score' >{gig.rate + " "}</div>
+                                    <b  className='rating-score' >{gig.rate + " "}</b>
                                     <div className='review'>
                                         ({gig.owner.reviews})
                                     </div>

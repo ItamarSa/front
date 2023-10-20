@@ -51,7 +51,7 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
             <div className='gig-rate flex'>
                 <div className='stars flex'><span>{starSymbol}</span></div>
                 <b> {gig.rate} </b>
-                <span className="review-length">(156)</span> 
+                <span className="review-length">({gig.owner.reviews})</span> 
             </div>
             <Link  to={`/gig/${gig._id}`}>
                 <p className='gig-price'>From <span>US${gig.price}</span></p>

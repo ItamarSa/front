@@ -55,12 +55,12 @@ export function UserDetails() {
     return <div>Loading user data...</div>
   }
 
-  const loggedInUser = userService.getLoggedinUser(); 
-  const isCurrentUser = loggedInUser && loggedInUser._id === user._id; 
+  const loggedInUser = userService.getLoggedinUser();
+  const isCurrentUser = loggedInUser && loggedInUser._id === user._id;
 
   return (
     <section className='user-details'>
-       
+
       <div className='info'>
         <img className="user-img" src={user.imgUrl} alt={user.username} />
         <h1 className='user-details-title'>User Details</h1>
@@ -77,21 +77,22 @@ export function UserDetails() {
           <span className='user-info-label'>From:</span> {user.from}
         </p>
         <p className='user-info-item'>
-          <span className='user-info-label'>Avg. response time:</span> {user.response+' hour'}
+          <span className='user-info-label'>Avg. response time:</span> {user.response + ' hour'}
         </p>
         <p className='user-info-item'>
-          <span className='user-info-label'>Last delivery:</span> {user.delivery+' days'}
+          <span className='user-info-label'>Last delivery:</span> {user.delivery + ' days'}
         </p>
         <p className='user-info-item'>
           <span className='user-info-label'>Level:</span> {user.level}
         </p>
         {isCurrentUser && <ImgUploader onUploaded={handleImageUpload} />} {/* Render ImgUploader only for the logged-in user */}
-        
+
       </div>
       <div className='gigs'>
-      <button className='user-details-button'>
+        {isCurrentUser && <button className='user-details-button'>
           <Link className='user-details-button' to='/edit' >Add Gig Customize</Link>
-        </button>
+        </button>}
+
         <br />
         <GigList
           gigs={gigs}

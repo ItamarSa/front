@@ -60,18 +60,21 @@ export function GigIndex() {
     //     if (user.isAdmin) return true
     //     return gig.owner?._id === user._id
     // }
+    const loggedInUser = userService.getLoggedinUser(); 
 
     return (
         <div className='gigs'>
             <h1>{tags}</h1>
             <main>
-                <button onClick={onAddGig}>Add Gig ⛐</button>
-                <button>
-                    <Link to='/edit'>Add Gig Customize</Link>
-                </button>
-                <div>
-                    {gigs.length}services available
-                </div>
+                {loggedInUser && (
+                    <>
+                        <button onClick={onAddGig}>Add Gig ⛐</button>
+                        <button>
+                            <Link to='/edit'>Add Gig Customize</Link>
+                        </button>
+                    </>
+                )}
+                <div>{gigs.length} services available</div>
                 <GigList
                     gigs={gigs}
                     onRemoveGig={onRemoveGig}
@@ -79,5 +82,5 @@ export function GigIndex() {
                 />
             </main>
         </div>
-    )
+    );
 }
