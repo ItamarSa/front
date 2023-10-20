@@ -19,7 +19,7 @@ export function AppHeader() {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const location = useLocation()
     const isHomePage = location.pathname === "/"
-    const [textColor, setTextColor] = useState("black")
+    const [textColor, setTextColor] = useState("#62646a")
 
 
     useEffect(() => {
@@ -28,24 +28,25 @@ export function AppHeader() {
     }, [user && user.imgUrl])
 
     useEffect(() => {
-        loadOrders()
+        loadOrders();
         if (isHomePage) {
-            window.addEventListener('scroll', handleScroll)
+            window.addEventListener('scroll', handleScroll);
+            setTextColor(window.scrollY > 30 ? "#62646a" : "white");
         } else {
-            setTextColor("black")
-            setShowFilter(true)
-            setShowTagFilter(true)
+            setTextColor("#62646a");
+            setShowFilter(true);
+            setShowTagFilter(true);
         }
-
+    
         return () => {
             if (isHomePage) {
-                window.removeEventListener('scroll', handleScroll)
+                window.removeEventListener('scroll', handleScroll);
             } else {
-                setShowFilter(false)
-                setShowTagFilter(false)
+                setShowFilter(false);
+                setShowTagFilter(false);
             }
-        }
-    }, [isHomePage, orders])
+        };
+    }, [isHomePage, orders]);
 
 
     async function loadOrders() {
@@ -81,12 +82,12 @@ export function AppHeader() {
             if (window.scrollY > 30) {
                 if (!showFilter) {
                     document.querySelector(".app-header").classList.add("scrolling")
-                    setTextColor("black")
+                    setTextColor("#62646a")
                 }
                 if (window.scrollY > 60) {
                     setShowTagFilter(true)
                     setShowFilter(true)
-                    setTextColor("black")
+                    // setTextColor("#62646a")
                     document.querySelector(".app-header").classList.add("scrolling")
                 } else {
                     setShowTagFilter(false)
