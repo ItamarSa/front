@@ -9,7 +9,7 @@
     &.fixed-header {
       position: fixed;
     //   background-color: white;
-      color: black; // Change text color to black
+      color: #62646a; // Change text color to #62646a
       transition: background-color 0.3s, color 0.3s; // Add transition properties for the fixed header
     }
   
@@ -19,6 +19,7 @@
 
     .nav,
     .btn-join,
+    .btn,
     .option-header,
     a {
         text-decoration: none;
@@ -66,17 +67,20 @@
     }
 
     option {
-        color: black;
+        color: #62646a;
     }
     .title-orders {
-        color: black;
+        color: #62646a;
     }
     .order-txt {
-        color: black;
+        color: #62646a;
     }
     .img-user {
         border-radius: 50%;
         height: 50px;
         width: 50px;
     }
+}
+.main-nav.scrolling {
+    border-bottom: 1px solid #e4e5e7; /* Add the border-bottom property for scrolling */
 }
