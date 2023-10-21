@@ -22,6 +22,8 @@ export function AppHeader() {
     const [textColor, setTextColor] = useState("#62646a")
     const [showBorder, setShowBorder] = useState(false)
     const [scrolling, setScrolling] = useState(false);
+    const [scrollingOnHomePage, setScrollingOnHomePage] = useState(false);
+
 
 
 
@@ -84,33 +86,30 @@ export function AppHeader() {
 
     const handleScroll = () => {
         if (isHomePage) {
-            if (window.scrollY > 20) {
-                if (!showFilter) {
-                    document.querySelector(".app-header").classList.add("scrolling")
-                    // document.querySelector(".main-nav").classList.add("scrolling");
-                    setTextColor("#62646a")
-                    setScrolling(true);
-                }
-                if (window.scrollY > 60) {
-                    setShowTagFilter(true)
-                    setShowFilter(true)
-                    // setTextColor("#62646a")
-                    document.querySelector(".app-header").classList.add("scrolling")
-                    setScrolling(true);
-                } else {
-                    setShowTagFilter(false)
-                    setScrolling(false);
-                }
-            } else {
-                setShowFilter(false)
-                setScrolling(false);
-                setShowTagFilter(false)
-                setTextColor("white")
-                document.querySelector(".app-header").classList.remove("scrolling")
-
+          if (window.scrollY > 30) {
+            if (!showFilter) {
+              document.querySelector(".app-header").classList.add("scrolling");
+              setScrollingOnHomePage(true);
+              setTextColor("#62646a");
             }
+            if (window.scrollY > 60) {
+              setShowTagFilter(true);
+              setShowFilter(true);
+              setScrollingOnHomePage(true);
+            } else {
+              setShowTagFilter(false);
+              setScrollingOnHomePage(false);
+            }
+          } else {
+            setShowFilter(false);
+            setScrollingOnHomePage(false);
+            setShowTagFilter(false);
+            setTextColor("white");
+            document.querySelector(".app-header").classList.remove("scrolling");
+          }
         }
-    }
+      };
+      
 
 
 
@@ -130,7 +129,7 @@ export function AppHeader() {
     return (
         <header
             className={`main-container full app-header ${isHomePage ? "fixed-header" : ""
-                } ${isHomePage && window.scrollY > 25 ? "white-background" : ""}`}
+                } ${isHomePage && scrollingOnHomePage  ? "white-background" : ""}`}
             style={{ color: textColor, borderBottom: showBorder ? "1px solid #e4e5e7" : "none" }}
 
         >            <div className={`main-nav ${scrolling ? "scrolling" : ""}`}>
