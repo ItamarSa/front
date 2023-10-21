@@ -133,9 +133,13 @@
     .filter-container {
         display: flex;
         align-items: center;
-        padding: 10px;
+        padding-top: 10px; /* Top padding */
+        padding-bottom: 10px; /* Bottom padding */
+        padding-left: 0; /* Left padding set to 0 */
+        padding-right: 0; /* Right padding set to 0 */
         // height: em(40px);
     }
+    
 
     .main-nav.scrolling {
         border-bottom: 1px solid #e4e5e7;
