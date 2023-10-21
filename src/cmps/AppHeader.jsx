@@ -21,6 +21,7 @@ export function AppHeader() {
     const isHomePage = location.pathname === "/"
     const [textColor, setTextColor] = useState("#62646a")
     const [showBorder, setShowBorder] = useState(false)
+    const [scrolling, setScrolling] = useState(false);
 
 
 
@@ -34,10 +35,12 @@ export function AppHeader() {
         if (isHomePage) {
             window.addEventListener('scroll', handleScroll);
             setTextColor(window.scrollY > 30 ? "#62646a" : "white");
+            setScrolling(window.scrollY > 30);
         } else {
             setTextColor("#62646a");
             setShowFilter(true);
             setShowTagFilter(true);
+            setScrolling(true);
         }
     
         return () => {
@@ -86,6 +89,7 @@ export function AppHeader() {
                     document.querySelector(".app-header").classList.add("scrolling")
                     // document.querySelector(".main-nav").classList.add("scrolling");
                     setTextColor("#62646a")
+                    setScrolling(true);
                 }
                 if (window.scrollY > 60) {
                     setShowTagFilter(true)
@@ -101,6 +105,7 @@ export function AppHeader() {
                 }
             } else {
                 setShowFilter(false)
+                setScrolling(false); 
                 setShowTagFilter(false)
                 setTextColor("white")
                 document.querySelector(".app-header").classList.remove("scrolling")
@@ -164,7 +169,7 @@ export function AppHeader() {
                 <li><NavLink className="nav  btn sigin-in" title="Login" to="/login">
                     Sign in
                 </NavLink></li>
-                <li><NavLink className="nav btn btn-join" title="Login" to="/login">
+                <li><NavLink className={`nav btn btn-join ${scrolling ? "green-color":''}`} title="Login" to="/login">
                     Join
                 </NavLink></li>
                 
