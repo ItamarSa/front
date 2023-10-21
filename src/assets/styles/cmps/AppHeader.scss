@@ -26,8 +26,8 @@
     .option-header,
     a {
         text-decoration: none;
-        color: inherit; // Inherit text color from parent
-    }
+        color: inherit;
+        font-family: macan-regular;    }
 
     .main-nav {
         display: flex;
@@ -38,7 +38,7 @@
         height: em(80px);
         border-bottom: 1px solid transparent;
         width: 100%;
-        margin-left: 0px; /* Move Div 3 50px into the space of Div 2 */
+        margin-left: 25px; /* Move Div 3 50px into the space of Div 2 */
         width: calc(100% + 50px); /* Adjust the width to fill the space */
       
         /* Set a transparent border by default */
@@ -64,8 +64,9 @@
                     cursor: pointer;
                     padding: 0 24px 0 0;
                     line-height: em(24px);
-
+                    
                     .nav {
+                        font-family: macan-semibold;
                         font-size: em(16px);
                         font-weight: 600;
                     }
@@ -75,7 +76,7 @@
         }
 
         .nav {
-            padding: 10px;
+            // padding: 5px;
         }
 
         .option-header {
@@ -85,8 +86,10 @@
         .btn-join {
             border: solid 1px white;
             border-radius: 4%;
-            height: 38px; /* Use "px" for specifying the height */
+            height: 36px;
+            width: 63px; /* Use "px" for specifying the height */
             line-height: 16px; /* Use "px" for specifying the line height */
+            padding: 10px 16px;
         
             &:hover {
                 background-color: #1dbf73; /* Change text color to #1dbf73 on hover */
@@ -141,6 +144,7 @@
         padding-left: 0; /* Left padding set to 0 */
         padding-right: 0; /* Right padding set to 0 */
         // height: em(40px);
+        font-family: macan-semibold;
     }
     
 
@@ -148,3 +152,6 @@
         border-bottom: 1px solid #e4e5e7;
         /* Add the border-bottom property for scrolling */
     }
+    .logo{
+        margin: -25px;
+}
