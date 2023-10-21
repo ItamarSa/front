@@ -146,7 +146,7 @@ export function AppHeader() {
             <ul className="ul">
                 <li>
                     <select className="nav btn" name="BusinessSolution" >
-                        <option className="option-header" value="Business Solution">Business Solution</option>
+                        <option className="option-header" value="Business solution">Business solution</option>
                         <option value="Fiverr Certified">Fiverr Certified</option>
                         <option value="Fiverr Enterprise">Fiverr Enterprise</option>
                         <option value="Contact sales">Contact sales</option>
@@ -157,6 +157,9 @@ export function AppHeader() {
                         Explore
                     </NavLink>
                 </li>
+                <li> <button onClick={toggleModal} className="modal-button nav btn">
+                    {isModalOpen ? "Close Orders" : "Orders"}
+                </button></li>
                 <li><button className="nav btn sigin-in">Become a Seller</button></li>
                 <li><NavLink className="nav  btn sigin-in" title="Login" to="/login">
                     Sign in
@@ -164,9 +167,7 @@ export function AppHeader() {
                 <li><NavLink className="nav btn btn-join" title="Login" to="/login">
                     Join
                 </NavLink></li>
-                <li> <button onClick={toggleModal} className="modal-button nav btn">
-                    {isModalOpen ? "Close Orders" : "Orders"}
-                </button></li>
+                
             </ul>
 
 

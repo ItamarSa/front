@@ -38,6 +38,9 @@
         height: em(80px);
         border-bottom: 1px solid transparent;
         width: 100%;
+        margin-left: 0px; /* Move Div 3 50px into the space of Div 2 */
+        width: calc(100% + 50px); /* Adjust the width to fill the space */
+      
         /* Set a transparent border by default */
 
 
@@ -59,7 +62,7 @@
 
                 li {
                     cursor: pointer;
-                    padding: 0 12px 0 0;
+                    padding: 0 24px 0 0;
                     line-height: em(24px);
 
                     .nav {
