@@ -84,36 +84,33 @@ export function AppHeader() {
 
     const handleScroll = () => {
         if (isHomePage) {
-            if (window.scrollY > 20) {
+            if (window.scrollY > 30) {
+                setTextColor("#62646a");
+                setScrolling(true);
+                document.querySelector(".app-header").classList.add("scrolling");
+
                 if (!showFilter) {
-                    document.querySelector(".app-header").classList.add("scrolling")
-                    // document.querySelector(".main-nav").classList.add("scrolling");
-                    setTextColor("#62646a")
-                    setScrolling(true);
+                    document.querySelector(".app-header").classList.add("scrolling");
                 }
                 if (window.scrollY > 60) {
-                    setShowTagFilter(true)
-                    setShowFilter(true)
-                    // setTextColor("#62646a")
-                    document.querySelector(".app-header").classList.add("scrolling")
+                    setShowTagFilter(true);
+                    setShowFilter(true);
+                    document.querySelector(".app-header").classList.add("scrolling");
                     document.querySelector(".main-nav").classList.add("scrolling");
-
                 } else {
-                    setShowTagFilter(false)
+                    setShowTagFilter(false);
                     document.querySelector(".main-nav").classList.remove("scrolling");
-
                 }
             } else {
-                setShowFilter(false)
-                setScrolling(false); 
-                setShowTagFilter(false)
-                setTextColor("white")
-                document.querySelector(".app-header").classList.remove("scrolling")
+                setShowFilter(false);
+                setScrolling(false);
+                setShowTagFilter(false);
+                setTextColor("white");
+                document.querySelector(".app-header").classList.remove("scrolling");
                 document.querySelector(".main-nav").classList.remove("scrolling");
-
-            }
-        }
+      }
     }
+    };
 
 
 
