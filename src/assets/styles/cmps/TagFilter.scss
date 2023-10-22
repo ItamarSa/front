@@ -5,6 +5,10 @@
     gap: em(39px);
     border: none;
     margin-right: 0;
+    .tag{
+        display: flex;
+        white-space: nowrap;
+    }
 }
 
 // .filter-group > :last-child {
