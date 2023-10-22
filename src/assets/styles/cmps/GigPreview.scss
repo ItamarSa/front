@@ -4,8 +4,61 @@
     justify-content: center;
     position: relative;
 
-    img {
+    a {
+        border: 1px solid #e4e5e7;
         border-radius: 8px;
+        
+        .image-container {
+            position: relative;
+            // height: 100vh;
+            // overflow: hidden;
+            border-radius: 8px;
+            
+            &:after {
+                border-radius: 8px;
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, .3), hsla(0, 0%, 100%, 0));
+                bottom: 0;
+                content: "";
+                height: 40px;
+                left: 0;
+                position: absolute;
+                width: 100%;
+                z-index: 0;
+            }
+
+            img {
+                border-radius: 8px;
+                background: linear-gradient(180deg, #fff, #b5b6ba);
+                object-fit: contain;
+            }
+
+            .dot-container {
+                position: absolute;
+                bottom: 18px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 4;
+            }
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            background: #fff;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            width: 11px;
+            height: 11px;
+        }
+
     }
 
 
@@ -36,31 +89,47 @@
         .carousel-button.left {
             opacity: 1;
             transform: translateX(10%);
+            z-index: 3;
         }
 
         .carousel-button.right {
             opacity: 1;
             transform: translateX(-10%);
+            z-index: 3;
+        }
+    }
+
+    .save {
+        position: absolute;
+        right: 6px;
+        top: 6px;
+
+        button {
+            background-color: transparent;
+            border: 0;
+            cursor: pointer;
+
+            .heart {
+                background-image: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/search_perseus/collect.9f36825.svg);
+                background-size: cover;
+                height: 32px;
+                width: 34px;
+                background-position: left;
+
+                &.clicked {
+                    background-position: right;
+                }
+            }
         }
     }
 }
 
 
-.left-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .mini-img {
     width: 24px;
     border-radius: 50%;
     max-width: 100px;
-    /* Set the maximum width for the image */
     height: auto;
-    /* Maintain aspect ratio */
-
 }
 
 .mini-user-preview {
@@ -70,7 +139,6 @@
     margin-top: 12px;
     margin-bottom: 12px;
 
-    // padding: 10px;
     .left-content {
         display: flex;
         flex-direction: column;
@@ -111,21 +179,22 @@ p.gig-price {
     font-weight: 700;
     color: #222325;
     margin-top: 8px;
-    // background-color: blue;
-
 }
 
 .gig-rate {
     align-items: center;
     margin-top: 8px;
-    .stars{
+
+    .stars {
         padding-bottom: 4px;
-        
+
     }
-    b{
+
+    b {
         padding-left: 4px;
     }
-    span{
+
+    span {
         padding-left: 4px;
 
     }
