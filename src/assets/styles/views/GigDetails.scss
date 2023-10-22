@@ -1,8 +1,9 @@
 .details-layout{
-  display: grid;
-  grid-template-columns: 5fr 1fr 4fr;
+  display: flex;
   .main-details {
     grid-column: 1;
+    margin-right: 9.15%;
+    width: 57.42%;
     
   }
   

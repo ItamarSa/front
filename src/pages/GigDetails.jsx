@@ -74,13 +74,16 @@ export function GigDetails() {
     if (!gig) return <div className='center-spinner'> <div className='lds-facebook'><div></div><div></div><div></div></div></div>
 
     return (
-        <div className='details-layout gigs'>
+        <div className='details-layout'>
 
             <div className='main-details'>
                 <Link to='/'>{homeSymbol}
                 </Link>  <small> / </small> <Link to={`/gigs?tags=${gig.tags}`}>{gig.tags}</Link>
                 <GigCard gig={gig} starSymbol={starSymbol} />
                 <AboutSeller gig={gig} starSymbol={starSymbol} />
+                <div className="gig-reviews">
+                <GigReview />
+            </div>
                 
             </div>
 
@@ -89,9 +92,7 @@ export function GigDetails() {
                 <GigCart gig={gig} />
                 
             </div>
-            <div className="gig-reviews">
-                <GigReview />
-            </div>
+            
         </div>
     )
 }
