@@ -5,24 +5,30 @@
     left: 0;
     width: 100%;
     transition: background-color 0.3s, color 0.3s; // Add transition properties
-  
+
     &.fixed-header {
-      position: fixed;
-    //   background-color: white;
-      color: black; // Change text color to black
-      transition: background-color 0.3s, color 0.3s; // Add transition properties for the fixed header
+        position: fixed;
+        //   background-color: white;
+        color: #62646a; // Change text color to #62646a
+        transition: background-color 0.3s, color 0.3s; // Add transition properties for the fixed header
     }
-  
-    &.scrolling { // This class controls the background color when scrolling starts
-      background-color: white;
+
+    &.scrolling {
+        // This class controls the background color when scrolling starts
+        background-color: white;
     }
 
     .nav,
+    select,
+    button,
     .btn-join,
+    .btn,
     .option-header,
-    a {
+    a,
+    li {
         text-decoration: none;
-        color: inherit; // Inherit text color from parent
+        color: inherit;
+        font-family: macan-semibold;
     }
 
     .main-nav {
@@ -31,10 +37,51 @@
         justify-content: space-between;
         align-items: center;
         max-width: 1400px;
-        margin-bottom: 20px;
+        height: em(80px);
+        
+        width: 100%;
+        margin-left: 25px;
+        /* Move Div 3 50px into the space of Div 2 */
+        width: calc(100% + 50px);
+        /* Adjust the width to fill the space */
+
+        /* Set a transparent border by default */
+
+
+
+
+
+        .nav-bar {
+            display: flex;
+            flex-direction: row;
+            // margin-left: 32px;
+
+            .ul {
+                display: flex;
+                align-items: center;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+
+                li {
+                    cursor: pointer;
+                    padding: 0 24px 0 0;
+                    line-height: em(24px);
+                    list-style: none;
+
+                    .nav {
+                        font-family: macan-semibold;
+                        font-size: em(16px);
+                        font-weight: 600;
+                    }
+                }
+
+            }
+        }
 
         .nav {
-            padding: 15px;
+            // padding: 5px;
         }
 
         .option-header {
@@ -43,7 +90,21 @@
 
         .btn-join {
             border: solid 1px white;
+            border-radius: 4px;
+            height: 36px;
+            width: 63px;
+            /* Use "px" for specifying the height */
+            line-height: 24px;
+            /* Use "px" for specifying the line height */
+            padding: 10px 16px;
+            font-size: em(14px) !important;
+
+            &:hover {
+                background-color: $clr8;
+                /* Change text color to $clr8 on hover */
+            }
         }
+
 
         .filter-container {
             position: fixed;
@@ -66,17 +127,58 @@
     }
 
     option {
-        color: black;
+        color: #62646a;
     }
+
     .title-orders {
-        color: black;
+        color: #62646a;
     }
+
     .order-txt {
-        color: black;
+        color: #62646a;
     }
+
     .img-user {
         border-radius: 50%;
         height: 50px;
         width: 50px;
     }
+}
+
+.filter-container {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    /* Top padding */
+    padding-bottom: 10px;
+    /* Bottom padding */
+    padding-left: 0;
+    /* Left padding set to 0 */
+    padding-right: 0;
+    /* Right padding set to 0 */
+    // height: em(40px);
+    font-family: macan-semibold;
+
+    &.scrolling {
+        border-bottom: 1px solid #e4e5e7;
+}
+}
+
+
+
+.logo {
+    margin: -25px;
+}
+
+.green-color {
+    color: $clr8 !important;
+    border: solid 1px $clr8 !important;
+}
+
+
+.header{
+&.scrolling {
+    border-bottom: 1px solid #e4e5e7;
+    /* Add the border-bottom property for scrolling */
+}
 }
