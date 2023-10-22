@@ -17,24 +17,27 @@
                 font-family: macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
                 font-size: 32px;
                 line-height: 38.4px;
-                color: #404145;
             }
-
+            
             ul {
                 list-style: none;
                 padding: 0;
-
+                
                 li {
                     margin-bottom: 10px;
-                    color: #62646a;
+                    color: $clr9;
                     margin-bottom: 20px;
-
+                    
                     h6 {
+                        color: $clr2;
                         font-size: 18px;
                         line-height: 25.2px;
                         font-family: macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
                         margin: 0px;
                         margin-bottom: 5px;
+                        span{
+                            margin-right: 10px;
+                        }
                     }
 
                     p {
