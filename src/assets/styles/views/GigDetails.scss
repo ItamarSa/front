@@ -1,5 +1,9 @@
 .details-layout{
   display: flex;
+  max-width: em(1304px);
+    padding: 32px 24px 0;
+  padding-left: em(32px);
+    padding-right: em(32px);
   .main-details {
     grid-column: 1;
     margin-right: 9.15%;

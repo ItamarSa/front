@@ -1,6 +1,6 @@
 .cart-option {
-    grid-column: 3;
-    grid-row: 1/3;
+    // grid-column: 3;
+    // grid-row: 1/3;
     width: 33.6%;
 
 }
@@ -98,6 +98,8 @@
                     color: #62646a;
                     margin-bottom: 8px;
 
+                    
+
                     .delivery-container {
                         display: flex;
 
@@ -142,12 +144,18 @@
                 }
 
                 .collapsable-package-item {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
                     margin-bottom: em(20px);
                     color: #404145;
                     cursor: pointer;
                     font-size: em(14px);
                     line-height: 130%;
                     font-family: macan-bold, "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    .collapsable-header{
+                        margin: 0;
+                    }
 
                 }
             }
