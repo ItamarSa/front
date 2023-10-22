@@ -4,8 +4,17 @@
     justify-content: center;
     position: relative;
 
-    img {
+    a {
+        border: 1px solid #e4e5e7;
         border-radius: 8px;
+        // z-index: 0;
+
+        img {
+            border-radius: 8px;
+
+            background: linear-gradient(180deg, #fff, #b5b6ba);
+            object-fit: contain;
+        }
     }
 
 
@@ -41,6 +50,30 @@
         .carousel-button.right {
             opacity: 1;
             transform: translateX(-10%);
+        }
+    }
+
+    .save {
+        position: absolute;
+        right: 6px;
+        top: 6px;
+        
+            button{
+                background-color: transparent;
+                border: 0;
+                cursor: pointer;
+                
+                .heart {
+                    background-image: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/search_perseus/collect.9f36825.svg);
+                    background-size: cover;
+                    height: 32px;
+                    width: 34px;
+                    background-position: left;
+              
+                    &.clicked {
+                      background-position: right;
+                    }
+                }
         }
     }
 }
@@ -118,14 +151,17 @@ p.gig-price {
 .gig-rate {
     align-items: center;
     margin-top: 8px;
-    .stars{
+
+    .stars {
         padding-bottom: 4px;
-        
+
     }
-    b{
+
+    b {
         padding-left: 4px;
     }
-    span{
+
+    span {
         padding-left: 4px;
 
     }
