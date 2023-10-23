@@ -139,10 +139,12 @@ async function addGigMsg(gigId, txt) {
 //     }
 // }
 function getDemoGig() {
+    const randomIdx = utilService.getRandomIntInclusive(0, 21)
     return {
         imgUrl: getImgs(),
-        name: utilService.makeLorem(1),
-        title: utilService.makeLorem(5),
+        // name: utilService.makeLorem(1),
+        title: utilService.makeRandomGigTitle(randomIdx),
+        about: utilService.makeRandomGigAbout(randomIdx),
         price: utilService.getRandomIntInclusive(100, 300),
         rate: parseFloat((utilService.getRandomIntInclusive(20, 50) * 0.1).toPrecision(2)),
         createdAt: utilService.formatDateForTimeAgo(new Date()),
@@ -155,7 +157,7 @@ function getDemoGig() {
 function getEmptyGig() {
     return {
         imgUrl: [],
-        name: '',
+        // name: '',
         title: '',
         price: '',
         tags:utilService.makeTag(1),

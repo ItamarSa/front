@@ -33,29 +33,26 @@ export function GigCard({ gig, starSymbol }) {
     const randomValue = utilService.getRandomIntInclusive(50, 250);
     return (
         <div className='gig-card'>
-            <br />
             <h3 className='title'>{gig.title}</h3>
-            <br />
             <div className='user-review'>
-                <div className='review'>
-                    <div className='all'>
-                        <div className="mini-user">
-                            <div className='seller-details'>
-                                <div className='img'>
+                <div className='review flex-space-between'>
+                    <div className='all flex'>
+                        <div className="mini-user flex-align-center">
+                            <div className='seller-details flex-align-center'>
+                                <div className='img flex'>
                                     <img className='user-img' src={gig.owner.imgUrl} alt='user-img' />
                                 </div>
                             </div>
                         </div>
                         <div className='user-info'>
-                            <div className="infor">
-                                <div className='name'>
+                                <div className='name flex'>
                                     <div className='owner'>
                                         {gig.owner.username}{'   '}
                                     </div>
                                     <div className='store'> {gig.owner.store}</div>
 
                                 </div>
-                                <div className='rate'>
+                                <div className='rate flex'>
                                     <div className='star'>
                                        <span> {starSymbol}</span>
                                     </div>
@@ -63,14 +60,11 @@ export function GigCard({ gig, starSymbol }) {
                                     <div className='review'>
                                         ({gig.owner.reviews})
                                     </div>
-                                    <div
-                                     className='line'>{'|'}
-                                      </div>
+                                    <div className='line'>{'|'}</div>
                                     <div className='queue'>
                                         {' ' + gig.owner.queue + ' Orders in Queue'}
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -87,7 +81,7 @@ export function GigCard({ gig, starSymbol }) {
 
             <div className='mini-review'>
                 <h2>What people loved about this seller</h2>
-                <a href=''>See all reviews</a>
+                <button href=''>See all reviews</button>
             </div>
             <div className='details-mini-review'> add mini reviews </div>
             <p className='gig-description'>gig.description</p>
