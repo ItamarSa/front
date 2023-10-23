@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom"
 export function GigCart({ gig }) {
     const navigate = useNavigate()
     const [list, setList] = useState(true)
+    const [activeTab, setActiveTab] = useState("basic");
 
 
     const vSymbol = <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentFill"><path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z" /></svg>
@@ -19,18 +20,38 @@ export function GigCart({ gig }) {
     const handleClick = () => {
         setList(!list)
     }
+    const handleTabClick = (tab) => {
+        setActiveTab(tab);
+    };
+
 
     return (
         <section className='main-cart'>
             <div className='cart-details'>
 
                 <div className='nav-container'>
-                    <label className="package-tab-1" htmlFor="package-tab">Basic</label>
-                    <label className="package-tab-2" htmlFor="package-tab">Standard</label>
-                    <label className="package-tab-3" htmlFor="package-tab">Premium</label>
+                    <label
+                        className={`package-tab-1 ${activeTab === "basic" ? "active" : ""}`}
+                        onClick={() => handleTabClick("basic")}
+                    >
+                        Basic
+                    </label>
+                    <label
+                        className={`package-tab-2 ${activeTab === "standard" ? "active" : ""}`}
+                        onClick={() => handleTabClick("standard")}
+                    >
+                        Standard
+                    </label>
+                    <label
+                        className={`package-tab-3 ${activeTab === "premium" ? "active" : ""}`}
+                        onClick={() => handleTabClick("premium")}
+                    >
+                        Premium
+                    </label>
                 </div>
 
-                <div className="content-container" >
+
+                {/* <div className="content-container" >
                     <div className="content">
                         <div className="title-content">
                             <div className="type"><b>Basic</b></div>
@@ -67,6 +88,126 @@ export function GigCart({ gig }) {
 
                         </article>
                     </div>
+                </div> */}
+                <div className="content-container">
+                    {activeTab === "basic" && (
+                        <article>
+                            <div className="content">
+                            <div className="title-content">
+                                <div className="type"><b>Basic</b></div>
+                                <div className="price"><span>{'$' + gig.price}</span></div>
+                            </div>
+                            <p>1 Page Website (1-3 sections), Basic SEO optimized, Responsive Design, Social Media</p>
+
+                            <div className="additional-info">
+                                <div className="delivery-container">
+                                    <span className="clock">
+                                        {clockSymbol}
+                                    </span>
+                                    <b className="delivery">{' ' + gig.owner.delivery + '  Day Delivery'}</b>
+                                </div>
+                                <div className="revisions-container">
+                                    <span className="revisions-icon">{unlimitedSymbol}</span>
+                                    <b className="revisions">3 Revisions</b></div>
+                            </div>
+                            <div className="collapsable-package-item" onClick={handleClick}>
+                                <h4 className="collapsable-header" >What's Included </h4><span>{ContactSymbol}</span></div>
+                            {list && (
+                                <ul className="clean-list">
+                                    <li>{vSymbol} 1 concept included</li>
+                                    <li>{vSymbol} Logo transparency</li>
+                                    <li>{vSymbol} Vector file</li>
+                                    <li>{vSymbol} Printable file</li>
+                                    <li>{vSymbol} Include 3D mockup</li>
+                                    <li>{vSymbol} Include source file</li>
+                                </ul>
+                            )}
+                            </div>
+
+
+                        </article>
+                    )}
+
+                    {activeTab === "standard" && (
+                        <article>
+                            <div className="content">
+                            <div className="title-content">
+                                <div className="type"><b>Standard</b></div>
+                                <div className="price"><span>{'$' + gig.price*2}</span></div>
+                            </div>
+                            <p>3 Page Website (1-3 sections), Basic SEO optimized, Responsive Design, Social Media</p>
+
+                            <div className="additional-info">
+                                <div className="delivery-container">
+                                    <span className="clock">
+                                        {clockSymbol}
+                                    </span>
+                                    <b className="delivery">{' ' + gig.owner.delivery + '  Day Delivery'}</b>
+                                </div>
+                                <div className="revisions-container">
+                                    <span className="revisions-icon">{unlimitedSymbol}</span>
+                                    <b className="revisions">3 Revisions</b></div>
+                            </div>
+                            <div className="collapsable-package-item" onClick={handleClick}>
+                                <h4 className="collapsable-header" >What's Included </h4><span>{ContactSymbol}</span></div>
+                            {list && (
+                                <ul className="clean-list">
+                                    <li>{vSymbol} 2 concept included</li>
+                                    <li>{vSymbol} Logo transparency</li>
+                                    <li>{vSymbol} Vector file</li>
+                                    <li>{vSymbol} Printable file</li>
+                                    <li>{vSymbol} Include 3D mockup</li>
+                                    <li>{vSymbol} Include source file</li>
+                                    <li>{vSymbol} Include 3D mockup</li>
+                                    <li>{vSymbol} Include source file</li>
+                                </ul>
+                            )}
+                            </div>
+
+
+                        </article>
+                    )}
+
+                    {activeTab === "premium" && (
+                        <article>
+                            <div className="content">
+                            <div className="title-content">
+                                <div className="type"><b>Premium</b></div>
+                                <div className="price"><span>{'$' + gig.price*3}</span></div>
+                            </div>
+                            <p>5 Page Website (1-3 sections), Basic SEO optimized, Responsive Design, Social Media</p>
+
+                            <div className="additional-info">
+                                <div className="delivery-container">
+                                    <span className="clock">
+                                        {clockSymbol}
+                                    </span>
+                                    <b className="delivery">{' ' + gig.owner.delivery + '  Day Delivery'}</b>
+                                </div>
+                                <div className="revisions-container">
+                                    <span className="revisions-icon">{unlimitedSymbol}</span>
+                                    <b className="revisions">3 Revisions</b></div>
+                            </div>
+                            <div className="collapsable-package-item" onClick={handleClick}>
+                                <h4 className="collapsable-header" >What's Included </h4><span>{ContactSymbol}</span></div>
+                            {list && (
+                                <ul className="clean-list">
+                                    <li>{vSymbol} 3 concept included</li>
+                                    <li>{vSymbol} Logo transparency</li>
+                                    <li>{vSymbol} Vector file</li>
+                                    <li>{vSymbol} Printable file</li>
+                                    <li>{vSymbol} Include 3D mockup</li>
+                                    <li>{vSymbol} Include source file</li>
+                                    <li>{vSymbol} Printable file</li>
+                                    <li>{vSymbol} Include 3D mockup</li>
+                                    <li>{vSymbol} Include source file</li>
+                                </ul>
+                            )}
+
+</div>
+                        </article>
+                    )}
+                    
                 </div>
                 <footer className="cart-footer">
                     {/* <button>Continue {arrowSymbol} </button> */}

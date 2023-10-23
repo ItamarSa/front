@@ -23,36 +23,25 @@
             font-family: macan-bold, "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-size: em(16px);
 
-            .package-tab-1 {
-                border: 1px solid #dadbdd;
-                border-left: none;
-                color: #222325;
-                cursor: pointer;
-                flex: 1 1;
-                padding: 16px;
-                text-align: center;
-                border-bottom: 3px solid #222325;
-            }
+            .package-tab-1,
+.package-tab-2,
+.package-tab-3 {
+    border: 1px solid #dadbdd;
+    border-left: none;
+    cursor: pointer;
+    flex: 1 1;
+    padding: 16px;
+    text-align: center;
+    border-bottom: 1px solid #dadbdd; // Set a default border for all tabs
+    color: #74767e;
+}
 
-            .package-tab-2 {
-                border: 1px solid #dadbdd;
-                border-left: none;
-                color: #74767e;
-                cursor: pointer;
-                flex: 1 1;
-                padding: 16px;
-                text-align: center;
-            }
-
-            .package-tab-3 {
-                border: 1px solid #dadbdd;
-                border-left: none;
-                color: #74767e;
-                cursor: pointer;
-                flex: 1 1;
-                padding: 16px;
-                text-align: center;
-            }
+.package-tab-1.active,
+.package-tab-2.active,
+.package-tab-3.active {
+    color: #222325;
+    border-bottom: 3px solid #222325; // Add a thicker border to the active tab
+}
         }
 
         .content-container {
