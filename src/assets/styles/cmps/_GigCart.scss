@@ -287,3 +287,15 @@
         }
     }
 }
+.rotate-up,
+.rotate-down {
+  transition: transform 0.3s ease-in-out;
+}
+
+.rotate-up {
+  transform: rotate(180deg);
+}
+
+.rotate-down {
+  transform: rotate(0deg);
+}
