@@ -6,31 +6,7 @@ export function GigDescription({ gig }) {
             <div className='about-gig'>
 
                 <h2>About this gig</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, rem architecto! Consequuntur ad sint facere excepturi libero cum dolorum architecto.</p>
-                <p>Lorem ipsum dolor sit amet!</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati alias a quisquam temporibus beatae quibusdam ex eos dignissimos dolorem impedit, in aliquid exercitationem mollitia! Necessitatibus?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quod deserunt est. Dolore, repudiandae ad.</p>
-                <p>My Services</p>
-                <ul>
-                    <li>Lorem ipsum dolor sit.</li>
-                    <li>Lorem ipsum dolor sit.</li>
-                    <li>Lorem ipsum dolor sit.</li>
-                    <li>Lorem ipsum dolor sit.</li>
-                    <li>Lorem ipsum dolor sit.</li>
-                    <li>Lorem ipsum dolor sit.</li>
-                    <li>Lorem ipsum dolor sit.</li>
-                </ul>
-                <p>Why me?</p>
-                <ul>
-                    <li>Lorem ipsum dolor sit.</li>
-                    <li>Lorem ipsum dolor sit.</li>
-                    <li>Lorem ipsum dolor sit.</li>
-                    <li>Lorem ipsum dolor sit.</li>
-                    <li>Lorem ipsum dolor sit.</li>
-                    <li>Lorem ipsum dolor sit.</li>
-                    <li>Lorem ipsum dolor sit.</li>
-                </ul>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi pariatur illo repellendus corporis eaque autem dicta tenetur perferendis.</p>
+                <p>{gig.about}</p>
             </div>
             <hr />
             <div>
