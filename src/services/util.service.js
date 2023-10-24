@@ -14,7 +14,9 @@ export const utilService = {
     getEmptyOrder,
     formatDateForTimeAgo,
     makeRandomGigTitle,
-    makeRandomGigAbout
+    makeRandomGigAbout,
+    makeRandomLanguages,
+    makeRandomUserAbout
 }
 function makeFlag(size = 1) {
     let flag = ''; // Change from const to let
@@ -103,6 +105,64 @@ function makeRandomGigAbout(index) {
         "Welcome to my gig! I'm your dedicated provider of manual vector tracing and logo design services, with 5+ years of experience and a flawless client satisfaction record. My expertise includes converting any logo, image, text, or sketch into a premium vector format. If you're looking for a unique and minimalistic logo design, you're in the right place. I can also assist in logo editing, background removal for transparency, and I provide all the necessary source files (AI, EPS, PSD, SVG, PDF, DST, PNG, JPG). Custom changes are my specialty, tailored to your specific requirements. When you select me, you can expect fast and clean work, all at an unbeatable price. Your package includes print-ready files and unlimited revisions. Your satisfaction is my top priority. Feel free to send me your logo, image, text, or sketch, and let's embark on a creative journey together. I firmly stand behind a fully refundable policy. If you have any questions, drop me a direct message. Best Regards",
     ]
     return gigDescriptions[index]
+}
+
+function makeRandomLanguages() {
+    const userLanguages = [
+        ", French",
+        ", Spanish",
+        ", Chinese (Mandarin)",
+        ", Arabic",
+        ", Hindi",
+        ", Russian",
+        ", German",
+        ", Portuguese",
+        ", Japanese",
+        ", Italian",
+        ", Dutch",
+        ", Korean",
+        ", Turkish",
+        ", Swedish",
+        ", Greek",
+        ", Polish",
+        ", Hebrew",
+        ", Vietnamese",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+    ]
+
+    return userLanguages[getRandomIntInclusive(0,22)]
+}
+
+function makeRandomUserAbout(){
+    const aboutUser = [
+        "Greetings! I'm a seasoned graphic designer proficient in crafting logos, print materials, web designs, and illustrations. I specialize in creating iconic logos for tech giants, non-profits, fitness and health brands, entertainment ventures, and real estate businesses. Place an order to get your standout logo design!",
+        "Hello there! As a graphic designer, I offer a wealth of experience in developing logos, print designs, web solutions, and eye-catching illustrations. My portfolio includes logos for top-tier tech corporations, charitable organizations, wellness enterprises, entertainment firms, and real estate enterprises. Don't hesitate to request your stunning logo today!",
+        "Hi, I'm a graphic designer with expertise in crafting logos, print assets, web graphics, and illustrations. I've worked with global tech companies, nonprofits, fitness and wellness businesses, entertainment industry players, and real estate enterprises, delivering exceptional logo designs. Get in touch to elevate your brand with a superb logo!",
+        "Welcome! I'm a graphic designer with a track record of creating logos, print designs, web graphics, and compelling illustrations. My client list includes major tech firms, charitable institutions, fitness and health ventures, entertainment enterprises, and real estate companies. Order now for a remarkable logo!",
+        "Hey, I'm a graphic designer skilled in producing logos, print materials, web visuals, and striking illustrations. I've designed logos for prominent tech organizations, charitable causes, fitness and wellness companies, entertainment projects, and real estate developments. Let's bring your logo vision to life!",
+        "Greetings! I'm an experienced graphic designer adept at producing logos, print designs, web graphics, and captivating illustrations. My clientele spans global tech leaders, nonprofits, fitness and health brands, entertainment entities, and real estate enterprises. Secure your exceptional logo design today!",
+        "Hello, I'm a graphic designer with a strong background in creating logos, print designs, web visuals, and unique illustrations. I've collaborated with prominent tech companies, charitable foundations, fitness and wellness brands, entertainment outlets, and real estate ventures. Transform your brand with a remarkable logo – order now!",
+        "Hi there! I'm a graphic designer specializing in logos, print designs, web graphics, and creative illustrations. My portfolio includes logos designed for leading tech corporations, nonprofits, fitness and health enterprises, entertainment companies, and real estate developments. Don't miss out on an outstanding logo – place your order today!",
+        "Welcome to my profile! I'm a skilled graphic designer with a knack for crafting logos, print materials, web designs, and captivating illustrations. I've created logos for renowned tech companies, charities, fitness and wellness businesses, entertainment ventures, and real estate projects. Elevate your brand with a remarkable logo – order now!",
+        "Hey, I'm a graphic designer with a wealth of experience in logo design, print materials, web graphics, and imaginative illustrations. My client base includes top tech companies, nonprofits, fitness and health brands, entertainment industry players, and real estate businesses. Secure your standout logo today!",
+        "I'm at the helm of a dynamic, small-scale digital marketing agency, currently headquartered in Greece. Previously, we operated out of Miami for 5 years and London for 13 years. Our unwavering commitment is to assist small and medium-sized enterprises in fulfilling their online requirements. Notable achievements include serving as the Official Web Designers for the Chicago Thanksgiving Parade and TEDx Events for 3 years.",
+        "Greetings! I'm the leader of a highly creative digital marketing agency, and we're presently situated in Greece. Previously, we called Miami our home for 5 years and London for 13 years. Our primary mission is to empower small and medium-sized businesses with their online endeavors. Our portfolio includes prestigious projects such as being the Official Web Designers for the Chicago Thanksgiving Parade and TEDx Events for 3 consecutive years.",
+        "Hello, I head a small yet highly innovative digital marketing agency, with our current base in Greece. Before that, we had a 5-year stint in Miami and 13 years in London. Our core focus is assisting small and medium-sized businesses in their online ventures. Our achievements include serving as the Official Web Designers for the Chicago Thanksgiving Parade and TEDx Events for 3 years.",
+        "Hi there! I'm the driving force behind a small, highly creative digital marketing agency, currently operating from Greece. We previously called Miami our home for 5 years and London for 13 years. We're wholeheartedly dedicated to supporting small and medium-sized businesses with their online requirements. Notable mentions in our portfolio include being the Official Web Designers for the Chicago Thanksgiving Parade and TEDx Events for 3 years.",
+        "Hey, I'm the leader of a dynamic digital marketing agency, and we're currently based in Greece. Before that, we spent 5 years in Miami and 13 years in London. Our primary mission is to assist small and medium-sized businesses with their online needs. Our outstanding projects include serving as the Official Web Designers for the Chicago Thanksgiving Parade and TEDx Events for 3 years.",
+        "I'm the head of a small, highly creative digital marketing agency, with our current base in Greece. Prior to this, we operated from Miami for 5 years and London for 13 years. Our unwavering commitment is to help small and medium-sized businesses fulfill their online requirements. Notable achievements include being the Official Web Designers for the Chicago Thanksgiving Parade and TEDx Events for 3 years.",
+        "Welcome to our agency! I lead a forward-thinking digital marketing firm, now situated in Greece. Previously, we were based in Miami for 5 years and London for 13 years. Our central focus is supporting small and medium-sized enterprises in their online endeavors. Our impressive portfolio features projects like being the Official Web Designers for the Chicago Thanksgiving Parade and TEDx Events for 3 consecutive years.",
+        "Hello, I'm the leader of a small yet highly innovative digital marketing agency, and we're currently headquartered in Greece. Before this, we had a presence in Miami for 5 years and London for 13 years. Our primary mission is to assist small and medium-sized businesses in their online ventures. Notable mentions in our portfolio include being the Official Web Designers for the Chicago Thanksgiving Parade and TEDx Events for 3 years.",
+        "Hi there! I'm at the helm of a creative digital marketing agency, currently based in Greece. Our previous homes include Miami for 5 years and London for 13 years. We're committed to helping small and medium-sized businesses with their online needs. Our achievements include serving as the Official Web Designers for the Chicago Thanksgiving Parade and TEDx Events for 3 years.",
+        "Greetings! I lead a small, highly creative digital marketing agency. We're currently located in Greece, but we have a history in Miami for 5 years and London for 13 years. Our core dedication is to assist small and medium-sized businesses in fulfilling their online requirements. We take pride in being the Official Web Designers for the Chicago Thanksgiving Parade and TEDx Events for 3 years."
+    
+    ]
+    return aboutUser[getRandomIntInclusive(0,19)]
 }
 
 

@@ -45,7 +45,7 @@ export function GigCard({ gig, starSymbol }) {
                             </div>
                         </div>
                         <div className='user-info'>
-                                <div className='name flex'>
+                                <div className='name flex align-center'>
                                     <div className='owner'>
                                         {gig.owner.username}{'   '}
                                     </div>
