@@ -82,7 +82,9 @@ async function signup(userCred) {
         response:utilService.getRandomIntInclusive(1,7),   
         delivery:utilService.getRandomIntInclusive(1,14),   
         queue:utilService.getRandomIntInclusive(1,45),   
-        reviews:utilService.getRandomIntInclusive(150,450),   
+        reviews:utilService.getRandomIntInclusive(150,450), 
+        languages:utilService.makeRandomLanguages(),
+        aboutMe:utilService.makeRandomUserAbout()  
     }
     console.log('userCred:', userCred)
     const user = await storageService.post(STORAGE_KEY, userCred)
