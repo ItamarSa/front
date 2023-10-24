@@ -1,13 +1,13 @@
 .details-layout{
   display: flex;
   max-width: em(1304px);
-    padding: 32px 24px 0;
-  padding-left: em(32px);
-    padding-right: em(32px);
+  margin: 0;
+  padding: 32px 32px 64px;
   .main-details {
     grid-column: 1;
     margin-right: 9.15%;
     width: 57.42%;
+   
     
   }
   

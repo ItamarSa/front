@@ -1,11 +1,14 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router"
 import { NavLink } from "react-router-dom"
 
 export function GigCart({ gig }) {
     const navigate = useNavigate()
     const [list, setList] = useState(true)
-    const [activeTab, setActiveTab] = useState("basic");
+    const [activeTab, setActiveTab] = useState("basic")
+    const [modalText, setModalText] = useState('')
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const modalRef = useRef(null)
 
 
     const vSymbol = <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentFill"><path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z" /></svg>
@@ -21,10 +24,46 @@ export function GigCart({ gig }) {
         setList(!list)
     }
     const handleTabClick = (tab) => {
-        setActiveTab(tab);
-    };
+        setActiveTab(tab)
+    }
+    const openModal = (text) => {
+        setModalText(text)
+        setIsModalOpen(true)
+    }
 
-    const arrowClass = list ? "rotate-up" : "rotate-down";
+    // Function to close the modal
+    const closeModal = () => {
+        setIsModalOpen(false)
+    }
+
+    const handleComparePackagesClick = () => {
+        openModal('Soon.....')
+    }
+
+    const handleContactMeClick = () => {
+        openModal('Soon.....')
+    }
+
+    useEffect(() => {
+        const closeOnOutsideClick = (e) => {
+            if (isModalOpen && modalRef.current && !modalRef.current.contains(e.target)) {
+                closeModal()
+            }
+        }
+
+        document.addEventListener('mousedown', closeOnOutsideClick)
+
+        return () => {
+            document.removeEventListener('mousedown', closeOnOutsideClick)
+        }
+    }, [isModalOpen])
+    function onContinue(selectedPlan) {
+        navigate(`/gig/${gig._id}/payment?planType=${selectedPlan.type}&planPrice=${selectedPlan.price}&planDelivery=${gig.owner.delivery}`);
+    }
+
+
+
+    const arrowClass = list ? "rotate-up" : "rotate-down"
 
 
     return (
@@ -51,46 +90,6 @@ export function GigCart({ gig }) {
                         Premium
                     </label>
                 </div>
-
-
-                {/* <div className="content-container" >
-                    <div className="content">
-                        <div className="title-content">
-                            <div className="type"><b>Basic</b></div>
-                            <div className="price"><span >{'$' + gig.price}</span></div>
-                        </div >
-                        <p >1 Page Website (1-3 sections), Basic SEO optimized, Responsive Design, Social Media</p>
-
-
-
-                        <article>
-                            <div className="additional-info">
-                                <div className="delivery-container">
-                                    <span className="clock">
-                                        {clockSymbol}
-                                    </span>
-                                    <b className="delivery">{' ' + gig.owner.delivery + '  Day Delivery'}</b>
-                                </div>
-                                <div className="revisions-container">
-                                    <span className="revisions-icon">{unlimitedSymbol}</span>
-                                    <b className="revisions">3 Revisions</b></div>
-                            </div>
-                            <div className="collapsable-package-item" onClick={handleClick}>
-                                <h4 className="collapsable-header" >What's Included </h4><span>{ContactSymbol}</span></div>
-                            {list && (
-                                <ul className="clean-list">
-                                    <li>{vSymbol} 1 concept included</li>
-                                    <li>{vSymbol} Logo transparency</li>
-                                    <li>{vSymbol} Vector file</li>
-                                    <li>{vSymbol} Printable file</li>
-                                    <li>{vSymbol} Include 3D mockup</li>
-                                    <li>{vSymbol} Include source file</li>
-                                </ul>
-                            )}
-
-                        </article>
-                    </div>
-                </div> */}
                 <div className="content-container">
                     {activeTab === "basic" && (
                         <article>
@@ -213,25 +212,37 @@ export function GigCart({ gig }) {
 
                 </div>
                 <footer className="cart-footer">
-                    {/* <button>Continue {arrowSymbol} </button> */}
                     <button className="continue">
                         <NavLink gig={gig} title="gig" to={`/gig/${gig._id}/payment`}>
                             Continue
                         </NavLink>
                         <span className="arrow">{arrowSymbol}</span>
                     </button>
-                    <button className="compare">Compare Packages </button>
+                    <button className="compare" onClick={handleComparePackagesClick}>
+                        Compare Packages
+                    </button>
                 </footer>
             </div>
 
             <div className="contact-me">
 
                 <span className="seller-popover-content">
-                    <button className="seller-options">Contact me <span className="arrow-contact">{ContactSymbol}</span></button>
-
+                    <button className="seller-options" onClick={handleContactMeClick}>
+                        Contact me <span className="arrow-contact">{ContactSymbol}</span>
+                    </button>
                 </span>
 
             </div>
+            {isModalOpen && (
+                <div className="modal-overlay">
+                    <div className="modal-content-small" ref={modalRef}>
+                        <p>{modalText}</p>
+                        <button onClick={closeModal} className="modal-button-buying">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </section>
     )
 }
