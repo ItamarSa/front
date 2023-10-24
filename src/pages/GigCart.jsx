@@ -57,9 +57,23 @@ export function GigCart({ gig }) {
             document.removeEventListener('mousedown', closeOnOutsideClick)
         }
     }, [isModalOpen])
-    function onContinue(selectedPlan) {
-        navigate(`/gig/${gig._id}/payment?planType=${selectedPlan.type}&planPrice=${selectedPlan.price}&planDelivery=${gig.owner.delivery}`);
-    }
+    function onContinue() {
+        const lowerCaseActiveTab = activeTab.toLowerCase();
+        let planPrice;
+      
+        if (lowerCaseActiveTab === "basic") {
+          planPrice = gig.price;
+        } else if (lowerCaseActiveTab === "standard") {
+          planPrice = gig.price * 2;
+        } else if (lowerCaseActiveTab === "premium") {
+          planPrice = gig.price * 3;
+        }
+      
+        navigate(`/gig/${gig._id}/payment?planType=${lowerCaseActiveTab}&planPrice=${planPrice}&planDelivery=${gig.owner.delivery}`);
+      }
+      
+
+
 
 
 
@@ -212,12 +226,11 @@ export function GigCart({ gig }) {
 
                 </div>
                 <footer className="cart-footer">
-                    <button className="continue">
-                        <NavLink gig={gig} title="gig" to={`/gig/${gig._id}/payment`}>
-                            Continue
-                        </NavLink>
+                    <button className="continue" onClick={() => onContinue(gig)}>
+                        Continue
                         <span className="arrow">{arrowSymbol}</span>
                     </button>
+
                     <button className="compare" onClick={handleComparePackagesClick}>
                         Compare Packages
                     </button>

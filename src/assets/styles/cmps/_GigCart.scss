@@ -182,17 +182,15 @@
                 font-weight: 600;
                 line-height: 100%;
                 transition: 70ms cubic-bezier(.75, 0, .25, 1);
+                text-decoration: none;
+                font-family: macan-semibold, "Helvetica Neue", Helvetica, Arial, sans-serif;
+                color: $clr1 !important;
 
                 &:hover {
                     background-color: #404145;
                 }
 
-                a {
-                    text-decoration: none;
-                    font-family: macan-semibold, "Helvetica Neue", Helvetica, Arial, sans-serif;
-                    color: $clr1 !important;
-
-                }
+                a {}
 
                 .arrow {
                     width: 16px;
@@ -325,24 +323,24 @@
     justify-content: center;
 
 
-.modal-button-buying {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: 1px solid $clr8;
-    font-family: macan-semibold, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    
-    background-color: $clr8;
-        color: $clr1;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 4px;
+    .modal-button-buying {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: 1px solid $clr8;
+        font-family: macan-semibold, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-    &:hover {
-        background-color: $clr1;
-        color: $clr8;
+        background-color: $clr8;
+        color: $clr1;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: $clr1;
+            color: $clr8;
+        }
     }
-}
 }
