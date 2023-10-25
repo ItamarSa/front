@@ -10,7 +10,8 @@ import { utilService } from "../services/util.service"
 import { UserMsg } from "./UserMsg"
 
 export function AppHeader() {
-    const user = useSelector((storeState) => storeState.userModule.user)
+    const user = userService.getLoggedinUser()
+    // const user = useSelector((storeState) => storeState.userModule.user)
     const [showFilter, setShowFilter] = useState(false)
     const [filterText, setFilterText] = useState("")
     const [filterTags, setFilterTags] = useState([])
@@ -62,6 +63,7 @@ export function AppHeader() {
 
     async function loadOrders() {
         try {
+            // console.log('user:', user)
             const buyerId = user._id
             const orders = await orderService.query({ buyerId })
             setOrders(orders)

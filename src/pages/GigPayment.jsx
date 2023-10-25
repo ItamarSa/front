@@ -27,8 +27,20 @@ export function GigPayment() {
 
 
     const planType = params.get("planType");
-    const planPrice = params.get("planPrice");
     const planDelivery = params.get("planDelivery");
+    let planPrice = params.get("planPrice");
+    planPrice = Number(planPrice);
+    let fee = (planPrice / 11.5)
+    fee=Number(fee)
+    let vat = (planPrice / 17)
+    vat=Number(vat)
+    let total = planPrice + fee + vat;
+    let formattedTotal = total.toFixed(2);
+
+    console.log("Total:", total.toFixed(2));
+    console.log("price "+typeof planPrice);
+    console.log("vat "+typeof vat);
+    console.log("fee "+typeof fee);
 
     console.log(planType, planPrice, planDelivery)
 
@@ -125,7 +137,6 @@ export function GigPayment() {
     };
 
 
-    console.log('gig:', gig)
     return (
 
         <div className="main-gig-payment">
@@ -386,7 +397,7 @@ export function GigPayment() {
                                             )}
                                         </div>
                                         </span>
-                                        <span class="price">{"$" + (planPrice / 11.5).toFixed(2)}</span>
+                                        <span class="price">{"$" + (fee).toFixed(2)}</span>
                                     </div>
                                     <div class="table-row tax-row">
                                         <span class="row-title">VAT<div class="W46fKfn +cX12Jm k-kBZXW tooltip"
@@ -408,13 +419,13 @@ export function GigPayment() {
                                             )}
                                         </div>
                                         </span>
-                                        <span class="price">{"$" + (planPrice / 17).toFixed(2)}</span>
+                                        <span class="price">{"$" + (vat).toFixed(2)}</span>
                                     </div>
                                 </div>
                                 <div class="summary-footer">
                                     <div class="table-row total-price">
                                         <span class="row-title">Total</span>
-                                        <span class="price">{"$" + planPrice}</span>
+                                        <span class="price"> US${formattedTotal}</span>
                                     </div>
                                     <div class="table-row delivery-date">
                                         <span class="row-title">Total delivery time</span>
@@ -429,13 +440,13 @@ export function GigPayment() {
                                 >
                                     {isLabelClicked === 'Oh4QBmH-radio-paypal' ? (
                                         <iframe
-                                        src={paypal}
-                                        title="paypal checkout"
-                                        width="200"
-                                        height="40"
-                                        style={{ pointerEvents: 'none', zIndex: 0 }}
-                                        id="paypal"
-                                    />
+                                            src={paypal}
+                                            title="paypal checkout"
+                                            width="200"
+                                            height="40"
+                                            style={{ pointerEvents: 'none', zIndex: 0 }}
+                                            id="paypal"
+                                        />
                                     ) : (
                                         "Confirm & Pay"
                                     )}

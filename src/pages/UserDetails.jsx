@@ -10,6 +10,7 @@ import { loadGigsUser } from '../store/action/gig.actions'
 import { ImgUploader } from '../cmps/ImgUploader'
 import { userService } from '../services/user.service'
 import { updateUserImageUrl } from '../store/action/user.actions'
+import { orderService } from '../services/order.service'
 
 export function UserDetails() {
   const params = useParams()
@@ -17,6 +18,9 @@ export function UserDetails() {
   const [newImgUrl, setNewImgUrl] = useState(null)
   const gigs = useSelector(storeState => storeState.gigModule.gigs)
   const [orders, setOrders] = useState([])
+  const seller = userService.getLoggedinUser()
+  const [status, setStatus] = useState({ status: "pending" });
+  
 
   useEffect(() => {
     async function getUserData() {
@@ -54,21 +58,45 @@ export function UserDetails() {
   }
   async function loadOrders() {
     try {
-        const sellerId = user._id
-        const orders = await orderService.query({ sellerId })
-        setOrders(orders)
+      const sellerId = seller?._id
+      console.log('seller:', seller)
+      const orders = await orderService.query({ sellerId })
+      setOrders(orders)
     } catch (err) {
-        console.log('Had issues loading orders', err)
-        showErrorMsg('Cannot load orders')
+      console.log('Had issues loading orders', err)
+      showErrorMsg('Cannot load orders')
     }
-}
+  }
+  async function handleStatusChange(e, orderId) {
+    const newStatus = e.target.value;
+    console.log('orderId:', orderId); // Check if orderId is correct
+    console.log('newStatus:', newStatus); // Check if newStatus is correct
+  
+    // Update the order's status in the component state
+    setOrders((prevOrders) =>
+      prevOrders.map((order) =>
+        order._id === orderId ? { ...order, status: newStatus } : order
+      )
+    );
+  
+    try {
+      // Send the updated status to your service
+      await orderService.updateStatus(orderId, newStatus);
+    } catch (error) {
+      console.error('Error updating status:', error);
+      // Handle any errors or error responses
+    }
+  }
+  
 
+
+  const loggedInUser = userService.getLoggedinUser();
+  const isCurrentUser = loggedInUser && loggedInUser._id === user?._id;
   if (user === null) {
     return <div>Loading user data...</div>
   }
 
-  const loggedInUser = userService.getLoggedinUser();
-  const isCurrentUser = loggedInUser && loggedInUser._id === user._id;
+console.log('orders:', orders)
 
   return (
     <section className='user-details'>
@@ -100,16 +128,50 @@ export function UserDetails() {
         {isCurrentUser && <ImgUploader onUploaded={handleImageUpload} />} {/* Render ImgUploader only for the logged-in user */}
 
       </div>
-      <div className='gigs'>
-        {isCurrentUser && <button className='user-details-button'>
-          <Link className='user-details-button' to='/edit' >Add Gig Customize</Link>
-        </button>}
+      <div className='main-content'>
+        <div className='gigs'>
+          {isCurrentUser && <button className='user-details-button'>
+            <Link className='user-details-button' to='/edit' >Add Gig Customize</Link>
+          </button>}
 
-        <br />
-        <GigList
-          gigs={gigs}
-        />
+          <br />
+          <GigList
+            gigs={gigs}
+          />
+        </div>
+        <ul className='order-container'>
+          <h5 className="order-description"> Costumers Orders</h5>
+          <div className='order-grid'>
+            {orders?.map((order) => (
+              <li className="order-txt" key={order._id}>
+                <img className="order-img" src={order.imgUrl[0]} alt="" />
+                GigId: {order.gigId}
+                <br />
+                Buyer: {order.buyer.username}
+                <br />
+                Description: {order.title}
+                <br />
+                Price: {order.price}
+                <br />
+                Status:
+                <select
+                  value={order.status}
+                  onChange={(e) => handleStatusChange(e, order._id)}
+                >
+                  <option value="pending">Pending</option>
+                  <option value="approve">Approve</option>
+                  <option value="decline">Decline</option>
+                </select>
+                <br />
+                Seller: {order.seller.username}
+                <br />
+                Ordered: {utilService.timeAgo(new Date(order.createdAt))}
+              </li>
+            ))}
+          </div>
+        </ul>
       </div>
+
     </section>
   )
 }
