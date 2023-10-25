@@ -1,11 +1,13 @@
 /* UserDetails.scss */
-.info{
-    margin-top: 150px;
-    margin-right: 150px;
-}
+// .info {
+//     margin-top: 150px;
+//     margin-right: 150px;
+// }
+
 // .gigs{
 //     margin-top: 150px;
 // }
+
 .user-details {
     display: flex;
     justify-content: space-between;
@@ -29,45 +31,65 @@
             }
         }
 
-        
+        .user-details-profile {
+            text-align: center;
 
-    .user-details-profile {
-        text-align: center;
+            .user-details-subtitle {
+                font-size: 20px;
+                margin-top: 20px;
+            }
 
-        .user-details-subtitle {
-            font-size: 20px;
-            margin-top: 20px;
-        }
+            .user-img {
+                width: 10px;
+                height: 10px;
+                background-size: cover;
+                background-position: center;
+                border-radius: 50%;
+                margin-top: 200px;
+            }
 
-        .user-img {
-            width: 10px;
-            height: 10px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 50%;
-            margin-top: 200px;
-        }
-
-        .user-details-json {
-            font-size: 14px;
-            margin-top: 20px;
-            white-space: pre-wrap;
+            .user-details-json {
+                font-size: 14px;
+                margin-top: 20px;
+                white-space: pre-wrap;
+            }
         }
     }
+
+    .user-img {
+        width: 96px;
+        border-radius: 50%;
+    }
+
+    .user-details-button {
+        background-color: $clr8;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 5px;
+    }
 }
-.user-img {
-    width: 96px;
-    border-radius: 50%;
-}
-.user-details-button {
-    background-color:$clr8;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 5px;
-}
-}
+
+.order-container {
+    text-align: left;
+  }
+  
+  .order-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Creates 3 items in a row */
+    list-style: none; /* Remove default list styles */
+  }
+  
+  .order-txt {
+    flex: 0 0 calc(33.33% - 20px);
+    margin-bottom: 20px; /* Optional: Add margin between rows */
+    padding: 10px;
+    border: 1px solid #ccc; /* Optional: Add borders for clarity */
+    /* Your other styles for individual order items */
+  }
+  

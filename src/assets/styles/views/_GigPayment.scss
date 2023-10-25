@@ -756,7 +756,7 @@
 
                 }
 
-                .gig {
+                .order-details-container {
                     border-top-left-radius: 4px;
                     border-top-right-radius: 4px;
                     background-color: #fafafa;
@@ -767,129 +767,136 @@
                     border-width: 1px;
                     width: 377px;
 
-                    .order-details-header {
-                        display: flex;
-                        padding-bottom: 16px;
-                        border-bottom: 1px solid #eee;
-                        align-items: flex-start;
-                        justify-content: flex-start;
+                    .gig {
 
 
-                        .image-container {
-                            position: relative;
+                        .order-details-header {
+                            display: flex;
+                            padding-bottom: 16px;
+                            // border-bottom: 1px solid #eee;
+                            align-items: flex-start;
+                            justify-content: flex-start;
 
-                            .order-image {
-                                width: 110px;
-                                height: 70px;
-                                -o-object-fit: fill;
-                                object-fit: fill;
-                                border-radius: 4px;
-                                margin-right: 16px;
-                            }
-                        }
 
-                        .order-title {
-                            margin: 0;
-                            font-weight: 600;
-                            color: #62646a;
-                            text-align: left;
-                            margin-bottom: 4px;
-                            font-size: 16px;
-                            line-height: 140%;
-                        }
-                    }
+                            .image-container {
+                                position: relative;
 
-                    .order-details-general {
-
-                        display: flex;
-                        // width: 377px;
-                        justify-content: space-between;
-                        padding: 16px 0;
-                        font-weight: 500;
-                        background-color: transparent;
-                        margin-bottom: 0;
-                        text-align: left;
-                        border: none;
-
-                        .order-details-general-title {
-                            color: #62646a;
-                            font-size: 16px;
-                            line-height: 140%;
-                            font-family: macan-semibold;
-
-                            .quantity-price-container {
-
-                                display: flex;
-
-                                flex-basis: 40%;
-
-                                justify-content: space-between;
-
-                                .order-details-general-price {
-                                    color: #62646a;
-                                    text-align: right;
-                                    white-space: nowrap;
-                                    margin-left: 4px;
-
+                                .order-image {
+                                    width: 110px;
+                                    height: 70px;
+                                    -o-object-fit: fill;
+                                    object-fit: fill;
+                                    border-radius: 4px;
+                                    margin-right: 16px;
                                 }
                             }
-                        }
-                    }
 
-                    .order-details-items-container {
-                        list-style: none;
-                        list-style-image: none;
-                        padding: 0;
-
-                        .order-details-item:first-child {
-                            padding-top: 0;
+                            .order-title {
+                                margin: 0;
+                                font-weight: 600;
+                                color: #62646a;
+                                text-align: left;
+                                margin-bottom: 4px;
+                                font-size: 16px;
+                                line-height: 140%;
+                            }
                         }
-                        .order-details-item {
+
+                        .order-details-general {
 
                             display: flex;
-
+                            // width: 377px;
                             justify-content: space-between;
-                            padding: 6px 0;
-                            line-height: 140%;
-                            .item-title {
-                                display: flex;
-                                align-items: flex-start;
-                                .order-details-item-icon {
-                                    margin-right: 9px;
-                                    margin-top: 2px;
+                            padding: 16px 0;
+                            font-weight: 500;
+                            background-color: transparent;
+                            margin-bottom: 0;
+                            text-align: left;
+                            border: none;
 
-                                    svg {
-                                        float: left;
-                                        height: 100%;
-                                        width: 100%;
+                            .order-details-general-title {
+                                color: #62646a;
+                                font-size: 16px;
+                                line-height: 140%;
+                                font-family: macan-semibold;
+
+                                .quantity-price-container {
+
+                                    display: flex;
+
+                                    flex-basis: 40%;
+
+                                    justify-content: space-between;
+
+                                    .order-details-general-price {
+                                        color: #62646a;
+                                        text-align: right;
+                                        white-space: nowrap;
+                                        margin-left: 4px;
+
                                     }
-
                                 }
                             }
+                        }
 
-                            
+                        .order-details-items-container {
+                            list-style: none;
+                            list-style-image: none;
+                            padding: 0;
+
+                            .order-details-item:first-child {
+                                padding-top: 0;
+                            }
 
                             .order-details-item {
+
                                 display: flex;
 
                                 justify-content: space-between;
                                 padding: 6px 0;
                                 line-height: 140%;
 
-                                
+                                .item-title {
+                                    display: flex;
+                                    align-items: flex-start;
 
+                                    .order-details-item-icon {
+                                        margin-right: 9px;
+                                        margin-top: 2px;
+
+                                        svg {
+                                            float: left;
+                                            height: 100%;
+                                            width: 100%;
+                                        }
+
+                                    }
+                                }
+
+
+
+                                .order-details-item {
+                                    display: flex;
+
+                                    justify-content: space-between;
+                                    padding: 6px 0;
+                                    line-height: 140%;
+
+
+
+                                }
                             }
+
+                            .order-details-item-title {
+                                -webkit-box-flex: 2;
+                                -ms-flex: 2;
+                                flex: 2 1;
+                                margin-right: 9px;
+                                text-align: left;
+                            }
+
+
                         }
-
-                        .order-details-item-title {
-                            -webkit-box-flex: 2;
-                            -ms-flex: 2;
-                            flex: 2 1;
-                            margin-right: 9px;
-                            text-align: left;
-                        }
-
-
                     }
                 }
             }
