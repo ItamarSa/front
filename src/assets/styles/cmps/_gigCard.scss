@@ -1,0 +1,145 @@
+.gig-card {
+    .title {
+        padding-bottom: 16px;
+        margin: 0;
+        font-size: em(28px);
+        overflow-wrap: break-word;
+        color: #404145;
+        font-family: macan-bold, Helvetica Neue, Helvetica, Arial, sans-serif;
+    }
+}
+
+.user-review {
+    margin-bottom: 24px;
+
+    .user-img {
+        width: 64px;
+        border-radius: 50%;
+    }
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: 10px;
+        cursor: pointer;
+
+        .star {
+            width: 15px;
+            height: 15px;
+            fill: #404145;
+
+            svg {
+                float: left;
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        .rating-score {
+            color: #404145;
+            padding-left: 2px;
+            padding-right: 8px;
+        }
+
+        .review {
+            text-decoration-line: underline;
+            color: #74767e;
+        }
+
+        .line {
+            color: #e4e5e7;
+            padding-right: 12px;
+            padding-left: 12px;
+            width: 1px;
+            height: 15px;
+        }
+
+        .queue {
+            color: #74767e;
+            margin-right: 8px;
+        }
+
+        .owner {
+            color: #404145;
+            margin-right: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .store {
+            color: #74767e;
+            // font-weight: 400;
+        }
+    }
+}
+
+.details-gallery {
+    cursor: pointer;
+    width: 60vh;
+    padding-bottom: 64px;
+
+    .custom-fullscreen-button {
+        position: absolute;
+        top: 20px; // Adjust top position as needed
+        right: 20px; // Adjust right position as needed
+        background-color: opacify($color: #000000, $amount: 0.5);
+        color: #fff;
+        box-shadow: none;
+        border-radius: 8px;
+        // padding: 5px 10px;
+        transition: opacity 0.3s;
+        opacity: 0; // Hide the button by default
+
+
+        font-family: Macan, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+        // &.fullscreen-active {
+        //     background-color: #ff5722; // Change the background color when in fullscreen mode
+        //     color: #fff; // Change the text color when in fullscreen mode
+        // }
+    }
+
+    &:hover .custom-fullscreen-button {
+        opacity: 1; // Show the button on hover
+    }
+
+    .fullscreen-icon {
+        margin-right: 5px; // Adjust the spacing between the icon and text
+    }
+}
+
+.seller-details h4 {
+    margin-right: 10px;
+    /* Add some right margin to separate items */
+}
+
+
+
+
+.mini-review {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h2 {
+        font-size: 20px;
+        padding-bottom: 25px;
+        line-height: 28px;
+        margin: 0;
+        font-family: macan-bold, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: $clr2;
+    }
+
+    button{
+        color: #222325;
+        font-size: 16px;
+        font-family: macan-semibold, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        padding: 0 0 28px;
+        background: transparent;
+        border: none;
+        cursor:pointer;
+    }
+}

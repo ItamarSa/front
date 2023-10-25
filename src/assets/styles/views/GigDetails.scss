@@ -1,4 +1,4 @@
-.details-layout{
+.details-layout {
   display: flex;
   max-width: em(1304px);
   margin: 0;
@@ -7,17 +7,22 @@
     grid-column: 1;
     margin-right: 9.15%;
     width: 57.42%;
-   
-    
-  }
-  
-  .flag{
-    height: 20px;
-    width: 20px;
-  }
-  .gig-reviews{
-    grid-column: 1;
-    
+
+    .nav-links {
+      padding-top: 12px;
+      margin: 0 0 32px;
+
+      small {
+        color: #c5c6c9;
+        padding: 0 5px;
+      }
+
+      a {
+        font-size: 14px;
+        color: $clr7;
+        text-decoration: none;
+      }
+    }
   }
 }
 
@@ -27,71 +32,72 @@
 
 
 .center-spinner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: em(80px);
+  height: em(80px);
+}
+
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: em(8px);
+  width: em(16px);
+  background: $clr3;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
   }
-  
-  .lds-facebook {
-    display: inline-block;
-    position: relative;
-    width: em(80px);
-    height: em(80px);
+
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
   }
-  
-  .lds-facebook div {
-    display: inline-block;
-    position: absolute;
-    left: em(8px);
-    width: em(16px);
-    background:$clr3;
-    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
-  }
-  
-  .lds-facebook div:nth-child(1) {
-    left: 8px;
-    animation-delay: -0.24s;
-  }
-  
-  .lds-facebook div:nth-child(2) {
-    left: 32px;
-    animation-delay: -0.12s;
-  }
-  
-  .lds-facebook div:nth-child(3) {
-    left: 56px;
-    animation-delay: 0;
-  }
-  
-  @keyframes lds-facebook {
-    0% {
-      top: 8px;
-      height: 64px;
-    }
-  
-    50%,
-    100% {
-      top: 24px;
-      height: 32px;
-    }
-  }
-  .stars {
-    display: flex;
-    font-size: 24px; // Adjust the font size to control star size
-  }
-  
-  .star-frame {
-    color: gold; // Star frame color
-    margin-right: 5px; // Adjust the spacing between stars
-  }
-  
-  .star {
-    color: black; // Filled star color
-    margin-right: 5px; // Adjust the spacing between stars
-  }
-  
-  .star-empty {
-    color: transparent; // Empty star color (transparent)
-    margin-right: 5px; // Adjust the spacing between stars
-  }
+}
+
+.stars {
+  display: flex;
+  font-size: 24px; // Adjust the font size to control star size
+}
+
+.star-frame {
+  color: gold; // Star frame color
+  margin-right: 5px; // Adjust the spacing between stars
+}
+
+.star {
+  color: black; // Filled star color
+  margin-right: 5px; // Adjust the spacing between stars
+}
+
+.star-empty {
+  color: transparent; // Empty star color (transparent)
+  margin-right: 5px; // Adjust the spacing between stars
+}
