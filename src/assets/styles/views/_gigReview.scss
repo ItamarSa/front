@@ -1,0 +1,52 @@
+.gig-review {
+    margin-bottom: 64px;
+
+    .review-heading {
+        margin-bottom: 16px;
+        font-family: macan-bold, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        line-height: 28px;
+        color: $clr2;
+    }
+
+    .reviews-header {
+        padding-bottom: 12px;
+        line-height: 140%;
+
+        .review-head{
+            gap: 12px;
+            font-family: macan-bold, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: $clr2;
+
+            .review-rating{
+                font-size: 14px;
+                line-height: 21px;
+
+                .star{
+                    display: inline-flex;
+                    margin: 0;
+                    padding-bottom: 4px;
+                    fill: $clr2;
+
+                    span:not(:first-child){
+                        padding-left: 4px;
+                    }
+                }
+
+                .rating-score{
+                    padding-left: 4px;
+
+                }
+            }
+
+        }
+    }
+
+
+
+}
+
+.flag {
+    height: 20px;
+    width: 20px;
+  }

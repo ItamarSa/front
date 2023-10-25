@@ -80,7 +80,7 @@ export function GigEdit(onAddGig) {
     return (
         <section className='edit-gig gigs'>
             <form onSubmit={onSubmitGig}>
-                <label htmlFor='name'>Name: </label>
+                {/* <label htmlFor='name'>Name: </label>
                 <input
                     value={gigToAdd.name}
                     onChange={handleChange}
@@ -89,7 +89,7 @@ export function GigEdit(onAddGig) {
                     id='name'
                     name='name'
                     required
-                />
+                /> */}
                 <label htmlFor='title'>Title: </label>
                 <input
                     value={gigToAdd.title}

@@ -1,0 +1,72 @@
+.gig-description {
+    margin-bottom: 64px;
+
+    .about-gig {
+        padding-bottom: 20px;
+        font-family: macan-bold, Helvetica Neue, Helvetica, Arial, sans-serif;
+
+        h2 {
+            font-size: 20px;
+            line-height: 28px;
+            margin: 0;
+            padding-bottom: 25px;
+            color: $clr2;
+        }
+
+        p {
+            font-family: macan-regular, Helvetica Neue, Helvetica, Arial, sans-serif;
+            color: $clr9;
+            margin: 0;
+            line-height: 24px;
+        }
+    }
+}
+
+.metadata {
+    flex-flow: row wrap;
+    border-top: 1px solid #dadbdd;
+    padding-top: 20px;
+
+    .metadata-attribute {
+        padding-right: 20px;
+        width: 33%;
+
+        p {
+            color: #95979d;
+        }
+
+        ul {
+            padding: 0 0 20px;
+            flex-wrap: wrap;
+            color: $clr9;
+        }
+    }
+}
+
+.disclaimer {
+    margin-top: -32px;
+    margin-bottom: 64px;
+    border: 1px solid #dadbdd;
+    font-size: 14px;
+    line-height: 140%;
+    padding: 20px;
+
+    h6 {
+        color: #222325;
+        font-size: 14px;
+        font-family: macan-semibold, Helvetica Neue, Helvetica, Arial, sans-serif;
+        margin:0;
+        margin-bottom: 10px;
+
+        span {
+            margin-right: 5px;
+        }
+
+    }
+
+    p{
+        margin: 0;
+        color:$clr9;
+    }
+
+}

@@ -18,6 +18,11 @@
 @import "views/UserDetails";
 @import "views/GigDetails";
 @import "views/GigPayment";
+@import "views/gigReview";
+@import "views/GigOrder";
+@import "views/UserDetails";
+
+
 
 // Components
 @import "cmps/AppHeader";
@@ -28,19 +33,18 @@
 @import "cmps/PopularServiceCarousel";
 @import "cmps/GigList.scss";
 @import "cmps/GigPreview.scss";
-@import "cmps/GitCard";
+@import "cmps/gigCard";
 @import "cmps/HomePage.scss";
 @import "cmps/TextFilter.scss";
 @import "cmps/TextFilterMain.scss";
-@import "cmps/TagFilter.scss";
-@import "cmps/TagFilterMain.scss";
-@import "cmps/GigCart.scss";
+@import "cmps/TagFilter";
+@import "cmps/TagFilterMain";
+@import "cmps/GigCart";
 @import "cmps/AboutSeller";
-@import "cmps/imgUploader.scss";
-@import "views/GigOrder.scss";
-@import "views/UserDetails.scss";
+@import "cmps/imgUploader";
 @import "cmps/InfoCmp.scss";
-@import"cmps/CategoriesCmp.scss";
+@import"cmps/CategoriesCmp";
+@import"cmps/gigDescription";
 
 
 
