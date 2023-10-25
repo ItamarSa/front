@@ -11,7 +11,8 @@ export const orderService = {
   remove,
   save,
   getOrder,
-  updateStatus
+  updateStatus,
+  getStatusColor
 }
 
 const gigImgs = ['https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/292332178/original/18841f3470f65b26636437baa1fd560438fb1a51.jpeg', 'https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs3/292332178/original/ed187afc7d0fee831dcc1aed3857375ae78756cf.jpeg', 'https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs2/292332178/original/748f0d7770acaa93f8e7734a78252dd0359ce24b.jpeg', 'https://fiverr-res.cloudinary.com/t_gig_card_delivery_image_1x,q_auto,f_auto/attachments/delivery/asset/3046f6f5c099faab8a772c4bf3d28310-1696391924/MOCK.jpg', 'https://fiverr-res.cloudinary.com/t_gig_card_delivery_image_1x,q_auto,f_auto/attachments/delivery/asset/04195b1a525cb5e3122149b24590fe50-1696390373/1moc.jpg']
@@ -47,19 +48,36 @@ function formatDateForTimeAgo(date) {
   return date.toISOString();
 }
 function getOrder(gig) {
-  console.log('gig:', gig)
+  console.log('gig:', gig);
+  const status = 'pending'; // Default status
+  const statusColor = getStatusColor(status); // Get the color for the default status
+
   return {
     imgUrl: gig.imgUrl,
     buyer: userService.getLoggedinUser(),
     title: gig.title,
     price: gig.price,
     createdAt: formatDateForTimeAgo(new Date()),
-    status: 'pending',
+    status: status,
+    statusColor: statusColor, // Include the color in the order object
     seller: gig.owner,
-    gigId: gig._id
-   
+    gigId: gig._id,
+  };
+}
+
+function getStatusColor(status) {
+  switch (status) {
+    case 'pending':
+      return 'orange';
+    case 'approve':
+      return 'green';
+    case 'decline':
+      return 'red';
+    default:
+      return 'black'; // Default color for other statuses
   }
 }
+
 async function updateStatus(orderId, newStatus) {
   try {
     if (!orderId) {

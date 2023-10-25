@@ -90,6 +90,17 @@
     margin-bottom: 20px; /* Optional: Add margin between rows */
     padding: 10px;
     border: 1px solid #ccc; /* Optional: Add borders for clarity */
-    /* Your other styles for individual order items */
-  }
+
+    &.status-pending {
+      color: orange; /* Text color for pending status */
+    }
+
+    &.status-approve {
+      color: green; /* Text color for approved status */
+    }
+
+    &.status-decline {
+      color: red; /* Text color for declined status */
+    }
+}
   

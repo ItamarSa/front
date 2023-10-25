@@ -19,8 +19,8 @@ export function UserDetails() {
   const gigs = useSelector(storeState => storeState.gigModule.gigs)
   const [orders, setOrders] = useState([])
   const seller = userService.getLoggedinUser()
-  const [status, setStatus] = useState({ status: "pending" });
-  
+
+
 
   useEffect(() => {
     async function getUserData() {
@@ -71,14 +71,14 @@ export function UserDetails() {
     const newStatus = e.target.value;
     console.log('orderId:', orderId); // Check if orderId is correct
     console.log('newStatus:', newStatus); // Check if newStatus is correct
-  
+
     // Update the order's status in the component state
     setOrders((prevOrders) =>
       prevOrders.map((order) =>
         order._id === orderId ? { ...order, status: newStatus } : order
       )
     );
-  
+
     try {
       // Send the updated status to your service
       await orderService.updateStatus(orderId, newStatus);
@@ -87,7 +87,7 @@ export function UserDetails() {
       // Handle any errors or error responses
     }
   }
-  
+
 
 
   const loggedInUser = userService.getLoggedinUser();
@@ -96,7 +96,7 @@ export function UserDetails() {
     return <div>Loading user data...</div>
   }
 
-console.log('orders:', orders)
+  console.log('orders:', orders)
 
   return (
     <section className='user-details'>
@@ -158,14 +158,17 @@ console.log('orders:', orders)
                   value={order.status}
                   onChange={(e) => handleStatusChange(e, order._id)}
                 >
-                  <option value="pending">Pending</option>
-                  <option value="approve">Approve</option>
-                  <option value="decline">Decline</option>
+                  <option className='pending' value="pending">Pending</option>
+                  <option className='approve' value="approve">Approve</option>
+                  <option className='decline' value="decline">Decline</option>
                 </select>
                 <br />
                 Seller: {order.seller.username}
                 <br />
                 Ordered: {utilService.timeAgo(new Date(order.createdAt))}
+                <br />
+                <span style={{ color: orderService.getStatusColor(order.status) }}>{order.status}</span>
+
               </li>
             ))}
           </div>
