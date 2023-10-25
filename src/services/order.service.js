@@ -55,7 +55,7 @@ function getOrder(gig) {
     // rate: parseFloat((utilService.getRandomIntInclusive(20, 50) * 0.1).toPrecision(2)),
     createdAt: formatDateForTimeAgo(new Date()),
     status: 'pending',
-    seller: gig.owner.username,
+    seller: gig.owner,
     gigId: gig._id
     // inStock: utilService.randomTrueFalse(),
     // icon: utilService.makeImage()

@@ -254,7 +254,7 @@ export function AppHeader() {
                                                 <br />
                                                 Status: {order.status}
                                                 <br />
-                                                Seller: {order.seller}
+                                                Seller: {order.seller.username}
                                                 <br />
                                                 Ordered: {utilService.timeAgo(new Date(order.createdAt))}
                                             </li>
