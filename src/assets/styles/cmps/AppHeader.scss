@@ -5,6 +5,9 @@
     left: 0;
     width: 100%;
     transition: background-color 0.3s, color 0.3s; // Add transition properties
+    .header{
+        padding: 1rem 0;
+    }
 
     &.fixed-header {
         position: fixed;
@@ -35,13 +38,13 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        max-width: 1400px;
-        height: em(80px);
+        // max-width: 1400px;
+        // height: em(80px);
         
         width: 100%;
         margin-left: 25px;
         /* Move Div 3 50px into the space of Div 2 */
-        width: calc(100% + 50px);
+        // width: calc(100% + 50px);
         /* Adjust the width to fill the space */
 
         /* Set a transparent border by default */
