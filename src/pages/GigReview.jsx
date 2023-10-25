@@ -4,7 +4,7 @@ import { utilService } from '../services/util.service'
 import { reviewService } from '../services/review.service'
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 
-export function GigReview({gig, starSymbol}) {
+export function GigReview({ gig, starSymbol }) {
     const { gigId } = useParams()
     const [review, setReview] = useState(utilService.getEmptyReview())
     const [reviews, setReviews] = useState([])
@@ -95,13 +95,114 @@ export function GigReview({gig, starSymbol}) {
                                 <span>{starSymbol}</span>
                                 <span>{starSymbol}</span>
                                 <span>{starSymbol}</span>
-                                </div>
+                            </div>
                             <b className="rating-score">5</b>
                         </div>
                     </span>
-
                 </header>
-                <span></span>
+                <div className="breakdown-wrapper flex">
+                    <div className="rate-left">
+                        <table className="star-counter">
+                            <tbody>
+                                <tr>
+                                    <td className="star-num">
+                                        <span>5 Stars</span>
+                                    </td>
+                                    <td className="progress-bar">
+                                        <div className="test flex align-center">
+
+                                        <div className="progress-background">
+                                            <span></span>
+                                        </div>
+                                        </div>
+                                    </td>
+                                    <td className="rate-count">({gig.owner.reviews})</td>
+                                </tr>
+                                <tr>
+                                    <td className="star-num">
+                                        <span>4 Stars</span>
+                                    </td>
+                                    <td className="progress-bar">
+                                        <div className="test flex align-center">
+
+                                        <div className="progress-background">
+                                            <span></span>
+                                        </div>
+                                        </div>
+                                    </td>
+                                    <td className="rate-count">({gig.owner.reviews})</td>
+                                </tr>
+                                <tr>
+                                    <td className="star-num">
+                                        <span>3 Stars</span>
+                                    </td>
+                                    <td className="progress-bar">
+                                        <div className="test flex align-center">
+
+                                        <div className="progress-background">
+                                            <span></span>
+                                        </div>
+                                        </div>
+                                    </td>
+                                    <td className="rate-count">({gig.owner.reviews})</td>
+                                </tr>
+                                <tr>
+                                    <td className="star-num">
+                                        <span>2 Stars</span>
+                                    </td>
+                                    <td className="progress-bar">
+                                        <div className="test flex align-center">
+
+                                        <div className="progress-background">
+                                            <span></span>
+                                        </div>
+                                        </div>
+                                    </td>
+                                    <td className="rate-count">({gig.owner.reviews})</td>
+                                </tr>
+                                <tr>
+                                    <td className="star-num">
+                                        <span>1 Stars</span>
+                                    </td>
+                                    <td className="progress-bar">
+                                        <div className="test flex align-center">
+
+                                        <div className="progress-background">
+                                            <span></span>
+                                        </div>
+                                        </div>
+                                    </td>
+                                    <td className="rate-count">({gig.owner.reviews})</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="rate-right">
+                        <h6 className="ranking-head">Rating Breakdown</h6>
+                        <ul className="clean-list">
+                            <li className="flex space-between">Seller communication level
+                                <div className="rating flex align-center">
+                                    <div className="stars flex ">{starSymbol}</div>
+                                    <b className="rate-score">4.9</b>
+                                </div>
+                            </li>
+                            <li className="flex space-between">Recommend to a friend
+                                <div className="rating flex align-center">
+                                    <div className="stars flex">{starSymbol}</div>
+                                    <b className="rate-score">4.9</b>
+                                </div>
+                            </li>
+                            <li className="flex space-between">Service as described
+                                <div className="rating flex align-center">
+                                    <div className="stars flex">{starSymbol}</div>
+                                    <b className="rate-score">4.9</b>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
                 <div className="reviews-wrap">
                     <ul>
                         {reviews.map((review) => (
