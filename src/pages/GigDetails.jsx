@@ -56,7 +56,7 @@ export function GigDetails() {
                 <GigCard gig={gig} starSymbol={starSymbol} />
                 <AboutSeller gig={gig} starSymbol={starSymbol} />
                 <div className="gig-reviews">
-                    <GigReview />
+                    <GigReview gig={gig} starSymbol={starSymbol}/>
                 </div>
 
             </div>

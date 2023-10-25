@@ -18,6 +18,11 @@
 @import "views/UserDetails";
 @import "views/GigDetails";
 @import "views/GigPayment";
+@import "views/gigReview";
+@import "views/GigOrder";
+@import "views/UserDetails";
+
+
 
 // Components
 @import "cmps/AppHeader";
@@ -37,8 +42,6 @@
 @import "cmps/GigCart";
 @import "cmps/AboutSeller";
 @import "cmps/imgUploader";
-@import "views/GigOrder";
-@import "views/UserDetails";
 @import "cmps/InfoCmp.scss";
 @import"cmps/CategoriesCmp";
 @import"cmps/gigDescription";
