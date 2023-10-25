@@ -30,25 +30,31 @@
         flex-wrap: wrap;
         padding-top: 16px;
 
-        .social{
+        .social {
             justify-content: flex-start;
             padding-bottom: 0;
             padding-right: 32px;
             width: auto;
-            
+
             li:not(:last-of-type) {
                 margin-right: 24px;
             }
         }
-        .accessability-button{
+
+        .accessability-button {
             background: none;
             border: none;
             padding-left: 8px;
             cursor: pointer;
 
         }
-
     }
 
-
+    &::before {
+        background-color: #e4e5e7;
+        content: "";
+        height: 1px;
+        margin: 0 6px;
+        width: 100%;
+    }
 }
