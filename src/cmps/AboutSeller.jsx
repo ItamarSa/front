@@ -12,7 +12,7 @@ export function AboutSeller({ gig, starSymbol }) {
                     <div className="mini-user flex">
                         <div className="seller-img flex">
                             <img className='user-img' src={gig.owner.imgUrl} alt='user-img' />
-                            <span className={'_'+ gig.owner.level}></span>
+                            <span className={'_' + gig.owner.level}></span>
                         </div>
                         <div className="seller-info flex column justify-center ">
                             <div className="seller-name flex">
@@ -21,11 +21,17 @@ export function AboutSeller({ gig, starSymbol }) {
                             </div>
                             <p className="one-line">Design is a solution to a problem</p>
                             <div className="seller-rate flex align-center">
-                                <div className="star flex">
-                                    <span>{starSymbol}</span>
+                                <div className="seller-rating flex align-center">
+                                    <div className="star flex">
+                                        <span>{starSymbol}</span>
+                                    </div>
+                                    <b className="rate-score">{gig.rate}</b>
+                                    <span className="review-length">({gig.owner.reviews})</span>
                                 </div>
-                                <b className="rate-score">{gig.rate}</b>
-                                <span className="review-length">({gig.owner.reviews})</span>
+                                <div className="line-between">
+                                    <div className="line"></div>
+                                </div>
+                                {/* <div className="level flex align-center justify-center">Level {gig.owner.level}</div> */}
                             </div>
                         </div>
 
