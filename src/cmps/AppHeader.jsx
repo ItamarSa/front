@@ -246,19 +246,19 @@ export function AppHeader() {
                                         {orders?.map((order) => (
                                             <li className="order-txt" key={order._id}>
                                                 <img className="order-img" src={order.imgUrl[0]} alt="" />
-                                                GigId: {order.gigId}
+                                                {/* GigId: {order.gigId} */}
                                                 <br />
                                                 Buyer: {order.buyer.username}
                                                 <br />
-                                                Description: {order.title}
+                                                Description: <br />{order.title}
                                                 <br />
                                                 Price: {order.price}
                                                 <br />
-                                                Status: {order.status}
+                                                Status: <span style={{ color: orderService.getStatusColor(order.status) }}>{order.status}</span>
                                                 <br />
                                                 Seller: {order.seller.username}
                                                 <br />
-                                                Ordered: {utilService.timeAgo(new Date(order.createdAt))}
+                                                {/* Ordered: {utilService.timeAgo(new Date(order.createdAt))} */}
                                             </li>
                                         ))}
                                     </ul>

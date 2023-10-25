@@ -67,11 +67,11 @@ function getOrder(gig) {
 
 function getStatusColor(status) {
   switch (status) {
-    case 'pending':
+    case 'Pending':
       return 'orange';
-    case 'approve':
+    case 'Approve':
       return 'green';
-    case 'decline':
+    case 'Decline':
       return 'red';
     default:
       return 'black'; // Default color for other statuses

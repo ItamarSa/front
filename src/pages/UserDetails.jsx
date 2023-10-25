@@ -158,9 +158,9 @@ export function UserDetails() {
                   value={order.status}
                   onChange={(e) => handleStatusChange(e, order._id)}
                 >
-                  <option className='pending' value="pending">Pending</option>
-                  <option className='approve' value="approve">Approve</option>
-                  <option className='decline' value="decline">Decline</option>
+                  <option className='pending' value="Pending">Pending</option>
+                  <option className='approve' value="Approve">Approve</option>
+                  <option className='decline' value="Decline">Decline</option>
                 </select>
                 <br />
                 Seller: {order.seller.username}
