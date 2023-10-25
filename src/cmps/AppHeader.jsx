@@ -39,8 +39,8 @@ export function AppHeader() {
             window.addEventListener('scroll', handleScroll)
             setTextColor(window.scrollY > 30 ? "#62646a" : "white")
             setScrolling(window.scrollY > 30)
-            setScrollingNav( window.scrollY > 30)
-            setScrollingHeader( window.scrollY >30)
+            setScrollingNav(window.scrollY > 30)
+            setScrollingHeader(window.scrollY > 30)
         } else {
             setTextColor("#62646a")
             setShowFilter(true)
@@ -218,7 +218,7 @@ export function AppHeader() {
                         {/* <NavLink className="nav btn " title="orders" to="/gig/:gigId/order">
                 Orders
             </NavLink> */}
-                        
+
 
                     </div>
 
@@ -244,21 +244,22 @@ export function AppHeader() {
                                 <div className="orders-list">
                                     <ul>
                                         {orders?.map((order) => (
-                                            <li className="order-txt" key={order._id}>
-                                                <img className="order-img" src={order.imgUrl[0]} alt="" />
-                                                {/* GigId: {order.gigId} */}
-                                                <br />
-                                                Buyer: {order.buyer.username}
-                                                <br />
-                                                Description: <br />{order.title}
-                                                <br />
-                                                Price: {order.price}
-                                                <br />
-                                                Status: <span style={{ color: orderService.getStatusColor(order.status) }}>{order.status}</span>
-                                                <br />
-                                                Seller: {order.seller.username}
-                                                <br />
-                                                {/* Ordered: {utilService.timeAgo(new Date(order.createdAt))} */}
+                                            <li className="order-item" key={order._id}>
+                                                <div className="order-img-container">
+                                                    <img className="order-imgs" src={order.imgUrl[0]} alt="" />
+                                                </div>
+                                                <div className="order-details">
+                                                    <div className="order-info">
+                                                        <span>Description : {order.title}</span>
+                                                        <span>Price : {order.price}</span>
+                                                        <div className="order-info-section">
+                                                            <br />
+                                                            <span>Seller : {' ' + order.seller.username}</span>
+                                                            <br />
+                                                            <span>Status : <span style={{ color: orderService.getStatusColor(order.status) }}>{order.status}</span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </li>
                                         ))}
                                     </ul>

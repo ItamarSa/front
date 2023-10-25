@@ -49,7 +49,7 @@ function formatDateForTimeAgo(date) {
 }
 function getOrder(gig) {
   console.log('gig:', gig);
-  const status = 'pending'; // Default status
+  const status = 'Pending'; // Default status
   const statusColor = getStatusColor(status); // Get the color for the default status
 
   return {
