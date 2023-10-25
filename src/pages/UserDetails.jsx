@@ -16,6 +16,7 @@ export function UserDetails() {
   const [user, setUser] = useState(null)
   const [newImgUrl, setNewImgUrl] = useState(null)
   const gigs = useSelector(storeState => storeState.gigModule.gigs)
+  const [orders, setOrders] = useState([])
 
   useEffect(() => {
     async function getUserData() {
@@ -33,6 +34,7 @@ export function UserDetails() {
   useEffect(() => {
     try {
       loadGigsUser({ userId: params.id })
+      loadOrders()
     } catch (err) {
       console.log('err:', err)
       showErrorMsg('Cannot load gigs')
@@ -50,6 +52,16 @@ export function UserDetails() {
 
     showSuccessMsg('User image updated successfully')
   }
+  async function loadOrders() {
+    try {
+        const sellerId = user._id
+        const orders = await orderService.query({ sellerId })
+        setOrders(orders)
+    } catch (err) {
+        console.log('Had issues loading orders', err)
+        showErrorMsg('Cannot load orders')
+    }
+}
 
   if (user === null) {
     return <div>Loading user data...</div>

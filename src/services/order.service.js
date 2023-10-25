@@ -28,6 +28,9 @@ async function query(filterBy = {}) {
   if (filterBy.buyerId) {
   orders = orders.filter((order) => order.buyer._id === filterBy.buyerId);
   }
+  if (filterBy.sellerId) {
+  orders = orders.filter((order) => order.seller._id === filterBy.sellerId);
+  }
 
 
   // Filter orders by gigId if provided
