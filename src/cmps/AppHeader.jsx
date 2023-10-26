@@ -214,21 +214,21 @@ export function AppHeader() {
                                                 <figure className="fig">
                                                     <img className="img-user" src={user.imgUrl} alt={user.username} />
                                                 </figure>
-                                                <div class="cCSTnnY rHv1-nv" style={{ bottom: "2px", right: "2px" }}>
+                                                <div className="cCSTnnY rHv1-nv" style={{ bottom: "2px", right: "2px" }}>
                                                     <div style={{ borderWidth: "2px", width: "11px", height: "11px" }}
-                                                        class="G1NyNb1 fQXZI8+">
+                                                        className="G1NyNb1 fQXZI8+">
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <aside class="bottom place-left">
-                                                <div class="tip" style={{ left: "calc(100% - 16px)" }}>
+                                            <aside className="bottom place-left">
+                                                <div className="tip" style={{ left: "calc(100% - 16px)" }}>
                                                 </div>
                                                 {
                                                     isMenuOpen &&
-                                                    <ul class="nav-popover-items-content" style={{ width: "auto" }}>
+                                                    <ul className="nav-popover-items-content" style={{ width: "auto" }}>
                                                         <li className="profile">
-                                                            {/* <a href="/my_profile" class="nav-link">Profile</a> */}
+                                                            {/* <a href="/my_profile" className="nav-link">Profile</a> */}
                                                             <Link className="nav-link" to={`user/${user?._id}`}>
                                                                 Profile
                                                             </Link>
