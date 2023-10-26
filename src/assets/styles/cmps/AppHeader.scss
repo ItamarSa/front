@@ -72,6 +72,213 @@
                     padding: 0 24px 0 0;
                     line-height: em(24px);
                     list-style: none;
+                    display: block;
+
+                    .toggler-popover {
+                        position: relative;
+                        display: block;
+
+                        .target-wrap {
+                            box-sizing: border-box;
+
+                            .uy3dNJC {
+                                background: none;
+                                border: none;
+                                color: inherit;
+                                display: block;
+                                font: inherit;
+                                margin: 0;
+                                padding: 0;
+                                position: relative;
+                                display: inline-flex;
+                                position: relative;
+                                color: #74767e;
+                                font-size: 16px;
+                                font-weight: 600;
+                                font-family: macan-semibold;
+                                border-radius: 50%;
+                                display: inline-flex;
+                                position: relative;
+
+                                .fig {
+                                    font-size: 32px;
+                                    background-color: #A866EC;
+                                    align-items: center;
+                                    border-radius: 50%;
+                                    height: 1.5em;
+                                    -webkit-justify-content: center;
+                                    justify-content: center;
+                                    margin: 0;
+                                    min-width: 1em;
+                                    overflow: hidden;
+
+                                    .img-user {
+                                        height: 100%;
+                                        object-fit: cover;
+                                        width: 100%;
+                                    }
+
+
+                                }
+
+                                .cCSTnnY {
+                                    position: absolute;
+
+                                    z-index: 200;
+
+                                    .G1NyNb1 {
+
+                                        border-width: 2px;
+                                        width: 11px;
+                                        height: 11px;
+                                        border-color: #fff;
+                                        border-radius: 50%;
+                                        border-style: solid;
+                                        background-color: #1dbf73 !important;
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                        .place-left {
+                            display: block;
+                            right: 0;
+                            margin-top: 33px;
+                            position: absolute;
+                            top: 50%;
+                            z-index: 100;
+                            background-color: #fff;
+                            border: 1px solid #dadbdd;
+                            border-radius: 3px;
+                            box-shadow: 0 0 5px 1px rgba(0, 0, 0, .05);
+                            position: absolute;
+                            z-index: 1001;
+
+                            .tip {
+                                left: calc(100% - 16px);
+                                border-bottom-color: rgba(0, 0, 0, .25);
+                                border-top-width: 0;
+                                top: -11px;
+                                border-width: 10px;
+                                border-color: transparent;
+                                border-style: solid;
+                                content: "";
+                                display: block;
+                                height: 0;
+                                position: absolute;
+                                width: 0;
+
+                                &::after {
+                                    border-bottom-color: #fff;
+                                    top: 1px;
+                                    border-top-width: 0;
+                                    transform: translateX(-50%);
+                                    border-width: 10px;
+                                    border-color: transparent;
+                                    border-style: solid;
+                                    content: "";
+                                    display: block;
+                                    height: 0;
+                                    position: absolute;
+                                    width: 0;
+
+
+                                }
+                            }
+
+                            .nav-popover-items-content {
+                                width: auto;
+                                box-sizing: border-box;
+                                min-width: 180px;
+                                padding: 5px 15px;
+                                list-style: none;
+                                list-style-image: none;
+                                margin: 0;
+                                outline: 0;
+                                border: 0;
+
+
+                                li {
+                                    padding: 5px 0;
+                                    white-space: nowrap;
+                                    color: #74767e;
+                                    text-decoration: none;
+                                    white-space: nowrap;
+                                    font-weight: 600;
+                                    font-size: 16px;
+                                    cursor: pointer;
+
+
+
+
+                                    a {
+                                        display: block;
+                                        font-weight: 600;
+                                        font-size: 16px;
+                                        color: #74767e;
+                                        text-decoration: none;
+
+                                        &:hover {
+                                            color: #1dbf73;
+                                            transition: color .2s;
+
+                                        }
+
+                                    }
+
+                                    .out {
+                                        padding: 0;
+                                        font-weight: 600;
+                                        font-size: 16px;
+                                        border: none;
+                                        white-space: nowrap;
+                                        background-color: transparent;
+
+                                        &:hover {
+                                            color: #1dbf73;
+                                            transition: color .2s;
+
+                                        }
+
+                                        &::after {
+                                            border-bottom: #74767e;
+                                        }
+                                    }
+
+
+                                }
+                            }
+                        }
+                    }
+
+                    .menu {
+                        display: block;
+                        position: absolute;
+                        top: 70px;
+                        right: 250px;
+                        background: white;
+                        border: 1px solid #ccc;
+                        padding: 10px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+                        button {
+                            display: block;
+                            margin: 5px 0;
+                            padding: 5px 10px;
+                            background: none;
+                            color: inherit;
+                            border: black;
+                            cursor: pointer;
+
+                            &:hover {
+                                background: #14a865;
+                            }
+                        }
+                    }
+
 
                     .nav {
                         font-family: macan-semibold;
@@ -222,11 +429,13 @@
             margin-bottom: 4px;
             font-size: 20px;
             line-height: 140%;
-            .order-info-section{
-                display: flex;
-                justify-content: space-between;
-                margin-left: -45px;
 
+            .order-info-section {
+                display: flex;
+
+                .seller {
+                    margin-right: 45px;
+                }
             }
         }
     }

@@ -73,6 +73,10 @@
         margin-top: 5px;
     }
 }
+.main-content{
+    display: flex;
+    flex-direction: column;
+}
 
 .order-container {
     text-align: left;

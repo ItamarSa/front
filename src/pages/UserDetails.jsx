@@ -9,7 +9,7 @@ import { GigList } from './GigList'
 import { loadGigsUser } from '../store/action/gig.actions'
 import { ImgUploader } from '../cmps/ImgUploader'
 import { userService } from '../services/user.service'
-import { updateUserImageUrl } from '../store/action/user.actions'
+import { logout, updateUserImageUrl } from '../store/action/user.actions'
 import { orderService } from '../services/order.service'
 
 export function UserDetails() {
@@ -88,6 +88,8 @@ export function UserDetails() {
     }
   }
 
+  
+
 
 
   const loggedInUser = userService.getLoggedinUser();
@@ -125,7 +127,9 @@ export function UserDetails() {
         <p className='user-info-item'>
           <span className='user-info-label'>Level:</span> {user.level}
         </p>
-        {isCurrentUser && <ImgUploader onUploaded={handleImageUpload} />} {/* Render ImgUploader only for the logged-in user */}
+        {isCurrentUser && <ImgUploader onUploaded={handleImageUpload} />}
+        
+
 
       </div>
       <div className='main-content'>
@@ -139,13 +143,14 @@ export function UserDetails() {
             gigs={gigs}
           />
         </div>
+        
         <ul className='order-container'>
           <h5 className="order-description"> Costumers Orders</h5>
           <div className='order-grid'>
             {orders?.map((order) => (
               <li className="order-txt" key={order._id}>
                 <img className="order-img" src={order.imgUrl[0]} alt="" />
-                GigId: {order.gigId}
+                {/* GigId: {order.gigId} */}
                 <br />
                 Buyer: {order.buyer.username}
                 <br />
@@ -163,7 +168,7 @@ export function UserDetails() {
                   <option className='decline' value="Decline">Decline</option>
                 </select>
                 <br />
-                Seller: {order.seller.username}
+                {/* Seller: {order.seller.username} */}
                 <br />
                 Ordered: {utilService.timeAgo(new Date(order.createdAt))}
                 <br />
