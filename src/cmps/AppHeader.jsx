@@ -214,8 +214,8 @@ export function AppHeader() {
                                                 <figure className="fig">
                                                     <img className="img-user" src={user.imgUrl} alt={user.username} />
                                                 </figure>
-                                                <div className="cCSTnnY rHv1-nv" style={{ bottom: "2px", right: "2px" }}>
-                                                    <div style={{ borderWidth: "2px", width: "11px", height: "11px" }}
+                                                <div className="cCSTnnY rHv1-nv" style={{ bottom: "-2px", right: "-2px" }}>
+                                                    <div style={{ borderWidth: "2px", width: "10px", height: "10px" }}
                                                         className="G1NyNb1 fQXZI8+">
                                                     </div>
                                                 </div>
