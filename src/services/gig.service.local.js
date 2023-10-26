@@ -35,10 +35,14 @@ export const gigService = {
 window.bs = gigService
 
 const gigImgs = ['https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/292332178/original/18841f3470f65b26636437baa1fd560438fb1a51.jpeg', 'https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs3/292332178/original/ed187afc7d0fee831dcc1aed3857375ae78756cf.jpeg', 'https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs2/292332178/original/748f0d7770acaa93f8e7734a78252dd0359ce24b.jpeg', 'https://fiverr-res.cloudinary.com/t_gig_card_delivery_image_1x,q_auto,f_auto/attachments/delivery/asset/3046f6f5c099faab8a772c4bf3d28310-1696391924/MOCK.jpg', 'https://fiverr-res.cloudinary.com/t_gig_card_delivery_image_1x,q_auto,f_auto/attachments/delivery/asset/04195b1a525cb5e3122149b24590fe50-1696390373/1moc.jpg']
-// const gigImgs=['https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/327590710/original/f64c53e2a06cc996368097c22a4b37cc2bd64c3b.jpg']
+const gigImages = [
+    ['https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/0f1b5e6ec7eb22920025104af1eab9af-1694674627/KENMAN%20DESIGN/do-modern-minimalist-business-logo-design-and-branding.jpg', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/07f29f3eb40628f942a34779ca914907-1695137958/RINGGER%20ARCHITEKTUR%20/do-modern-minimalist-business-logo-design-and-branding.jpg', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/e9316ca7ab39a63cbe961396956852aa-1694918421/EDMEE/do-modern-minimalist-business-logo-design-and-branding.jpg', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/193a0d1808861534b1e4327b8400e93e-1694757454/WYLD/do-modern-minimalist-business-logo-design-and-branding.jpg'],
+    ['https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/234808196/original/d5df4c282212d9efb6a1a579cd48155e4bffb1ae/design-premium-and-trendy-minimal-logo-design-within-24-hour.jpg', 'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/234808196/original/7f92c0bad6ba38b1968f99537962ebe35ee64f7d/design-premium-and-trendy-minimal-logo-design-within-24-hour.jpg', 'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/234808196/original/160f2df38250e10839949d7deaf973e42b76281f/design-premium-and-trendy-minimal-logo-design-within-24-hour.jpg', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/5acb4ce8f640333a7ad8ac85ff66c017-1698252423/Owens%20Knife%20Works%20modi_1-01/design-premium-and-trendy-minimal-logo-design-within-24-hour.jpg', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/52a84db3ea8ffa08333b5b1d396b65d4-1698092617/Hairextensions%20by%20Zuhal-02/design-premium-and-trendy-minimal-logo-design-within-24-hour.jpg', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/e0ccd0151d5dc097b4fcdd5921c3cab8-1698149425/EMPOWER-M1/design-premium-and-trendy-minimal-logo-design-within-24-hour.jpg']
+]
 
 function getImgs() {
-    return gigImgs
+
+    return gigImages[utilService.getRandomIntInclusive(0,1)]
 }
 // async function query(filterBy = { txt: '', price: 0 }) {
 //     var gigs = await storageService.query(STORAGE_KEY)}
@@ -78,7 +82,7 @@ async function query(filterBy = {}) {
     return gigToDisplay;
 }
 function getDefaultFilter() {
-    return { txt: '', tags: []}
+    return { txt: '', tags: [] }
 }
 
 
@@ -160,7 +164,7 @@ function getEmptyGig() {
         // name: '',
         title: '',
         price: '',
-        tags:utilService.makeTag(1),
+        tags: utilService.makeTag(1),
         rate: parseFloat((utilService.getRandomIntInclusive(20, 50) * 0.1).toPrecision(2)),
         createdAt: (Date.now()),
         tags: utilService.makeTag(1),
