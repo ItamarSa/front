@@ -138,28 +138,30 @@ export function AppHeader() {
         }
     }
     function onSetFilterTag(filterBy) {
+        console.log('filterBy:', filterBy)
         setFilterTags(filterBy.tags)
         setGigFilter({ txt: filterText, tags: filterBy.tags })
     }
     function onSetFilterText(filterBy) {
+        console.log('filterBy:', filterBy)
         setFilterText(filterBy.txt)
         setGigFilter({ txt: filterBy.txt, tags: filterTags })
     }
     function onSetFilterBudget(filterBy) {
         // Create a copy of the filterBy object
-        const gigFilter = { ...filterBy };
+        // const gigFilter = { ...filterBy };
       
-        // Delete fromPrice and toPrice from the filter
-        delete gigFilter.fromPrice;
-        delete gigFilter.toPrice;
+        // // Delete fromPrice and toPrice from the filter
+        // delete gigFilter.fromPrice;
+        // delete gigFilter.toPrice;
       
         // Set local state for the budget filter
         setFilterBudget(filterBy);
-    
+        setGigFilter({ txt: filterBy.txt, tags: filterTags })
         // Update the gigFilter to include text, tags, and budget
         setGigFilter({
-            txt: gigFilter.txt,
-            tags: gigFilter.tags,
+            txt: filterText,
+            tags: filterTags,
             budget: { fromPrice: filterBy.fromPrice, toPrice: filterBy.toPrice }
         });
     
