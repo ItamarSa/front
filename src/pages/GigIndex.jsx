@@ -72,10 +72,10 @@ export function GigIndex() {
 
                 {loggedInUser && (
                     <>
-                        <button onClick={onAddGig}>Add Gig ⛐</button>
-                        <button>
+                        <button onClick={onAddGig}>Add Gig ⛐</button><br />
+                        {/* <button>
                             <Link to='/edit'>Add Gig Customize</Link>
-                        </button>
+                        </button> */}
                     </>
                 )}
                 <GigList

@@ -160,6 +160,15 @@ export function UserDetails() {
                         <span>Price : {order.price}</span><br />
                         <span >Seller : {' ' + order.seller.username}</span>
                       </div>
+                      Status:
+                      <select
+                        value={order.status}
+                        onChange={(e) => handleStatusChange(e, order._id)}
+                      >
+                        <option className='pending' value="Pending">Pending</option>
+                        <option className='approve' value="Approve">Approve</option>
+                        <option className='decline' value="Decline">Decline</option>
+                      </select>
                       <div className="status">
                         <span >Status : <span style={{ color: orderService.getStatusColor(order.status) }}>{order.status}</span></span>
                       </div>
