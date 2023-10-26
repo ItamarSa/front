@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link, NavLink, useLocation } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { setGigFilter } from "../store/action/gig.actions"
 import { TextFilter } from "./TextFilter"
 import { TagFilter } from "./TagFilter"
@@ -9,13 +9,17 @@ import { showErrorMsg } from "../services/event-bus.service"
 import { utilService } from "../services/util.service"
 import { UserMsg } from "./UserMsg"
 import { logout } from "../store/action/user.actions"
+import { BudgetFilter } from "../pages/BudgetFilter"
 
 export function AppHeader() {
     const user = userService.getLoggedinUser()
+    const dispatch = useDispatch(); // Add useDispatch to dispatch actions
+
     // const user = useSelector((storeState) => storeState.userModule.user)
     const [showFilter, setShowFilter] = useState(false)
     const [filterText, setFilterText] = useState("")
     const [filterTags, setFilterTags] = useState([])
+    const [filterBudget, setFilterBudget] = useState({ fromPrice: "", toPrice: "" });
     const [showTagFilter, setShowTagFilter] = useState(false)
     const [orders, setOrders] = useState([])
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -141,6 +145,31 @@ export function AppHeader() {
         setFilterText(filterBy.txt)
         setGigFilter({ txt: filterBy.txt, tags: filterTags })
     }
+    function onSetFilterBudget(filterBy) {
+        // Create a copy of the filterBy object
+        const gigFilter = { ...filterBy };
+      
+        // Delete fromPrice and toPrice from the filter
+        delete gigFilter.fromPrice;
+        delete gigFilter.toPrice;
+      
+        // Set local state for the budget filter
+        setFilterBudget(filterBy);
+    
+        // Update the gigFilter to include text, tags, and budget
+        setGigFilter({
+            txt: gigFilter.txt,
+            tags: gigFilter.tags,
+            budget: { fromPrice: filterBy.fromPrice, toPrice: filterBy.toPrice }
+        });
+    
+        // You can use the combined gigFilter in your component as needed
+        // For example, if you want to use it in your loadGigs function:
+        // const { userId } = gigFilter; // Destructure the userId from gigFilter
+        // Then, use gigFilter in your query or action calls as needed.
+    }
+    
+    
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
@@ -297,6 +326,8 @@ export function AppHeader() {
             <div className={`filter-container main-container full ${scrollingNav ? 'scrolling' : ""}`}>
                 <div>
                     {showTagFilter && <TagFilter onSetFilter={onSetFilterTag} />}
+                    {showFilter && <BudgetFilter onSetFilter={onSetFilterBudget} />} {/* Add the BudgetFilter component */}
+
                 </div>
             </div>
             <div className="gig-order">

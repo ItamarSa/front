@@ -47,7 +47,8 @@ async function query(filterBy = {}) {
     var gigs = await storageService.query(STORAGE_KEY, filterBy);
 
     let gigToDisplay = [...gigs];
-
+    
+    console.log('filterBy:', filterBy)
     if (filterBy.txt) {
         const regex = new RegExp(filterBy.txt, 'i');
         gigToDisplay = gigToDisplay.filter((gig) => {
@@ -58,24 +59,26 @@ async function query(filterBy = {}) {
         });
     }
 
-    if (filterBy.price) {
-        gigToDisplay = gigToDisplay.filter((gig) => gig.price <= filterBy.price);
+    if (filterBy.budget && filterBy.budget.fromPrice && filterBy.budget.toPrice) {
+        const fromPrice = parseFloat(filterBy.budget.fromPrice);
+        const toPrice = parseFloat(filterBy.budget.toPrice);
+    
+        gigToDisplay = gigToDisplay.filter((gig) => {
+            return gig.price >= fromPrice && gig.price <= toPrice;
+        });
     }
+    
 
     if (filterBy.tags && filterBy.tags.length > 0) {
         gigToDisplay = gigToDisplay.filter((gig) => {
             return gig.tags.some((tag) => filterBy.tags.includes(tag));
         });
     }
+    
     if (filterBy.userId) {
         gigToDisplay = gigToDisplay.filter((gig) => gig.owner._id === filterBy.userId);
     }
-    // if (filterBy.buyerId) {
-    //     orders = orders.filter((order) => order.buyer._id === filterBy.buyerId);
-    //     }
-
-
-    return gigToDisplay;
+    return gigToDisplay;
 }
 function getDefaultFilter() {
     return { txt: '', tags: []}
