@@ -11,12 +11,35 @@
 .user-details {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    background-color: #f9f9f9;
+    span{
+        padding: 5px;
+    }
+
+    // min-height: 2000px;
+    // overflow-x: hidden;
+    // background-color: #f9f9f9;
+    .user-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .info {
+        min-width: 400px;
+        
+
+    }
 
     .user-details-title {
         font-size: 24px;
         margin-bottom: 20px;
+        .is-online {
+            position: absolute;
+            right: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
     }
 
     .user-info {
@@ -74,22 +97,58 @@
     }
 }
 
+.main-content {
+    display: flex;
+    flex-direction: column;
+    // align-items: center
+}
+
 .order-container {
-    text-align: left;
-  }
-  
-  .order-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Creates 3 items in a row */
-    list-style: none; /* Remove default list styles */
-  }
-  
-  .order-txt {
-    flex: 0 0 calc(33.33% - 20px);
-    margin-bottom: 20px; /* Optional: Add margin between rows */
+    text-align: left;
+}
+
+.order-grid {
+    // display: grid;
+    // grid-auto-flow: row;
+    // grid-template-columns: repeat(3,1fr);
+    // flex-wrap: wrap;
+    // justify-content: space-between;
+    // /* Creates 3 items in a row */
+    // list-style: none;
+    // /* Remove default list styles */
+}
+
+.order-txt {
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    border: 1px solid #3b3737;
+    margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid #ccc; /* Optional: Add borders for clarity */
-    /* Your other styles for individual order items */
-  }
-  
+    background-color: white !important;
+    height: 200px;
+
+
+
+    &.status-pending {
+        color: orange;
+    }
+
+    &.status-approve {
+        color: green;
+        /* Text color for approved status */
+    }
+
+    &.status-decline {
+        color: red;
+        /* Text color for declined status */
+    }
+
+    img {
+        border: 1px black solid;
+        margin-bottom: 10px;
+    }
+}

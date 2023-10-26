@@ -8,6 +8,7 @@ import { orderService } from "../services/order.service"
 import { showErrorMsg } from "../services/event-bus.service"
 import { utilService } from "../services/util.service"
 import { UserMsg } from "./UserMsg"
+import { logout } from "../store/action/user.actions"
 
 export function AppHeader() {
     const user = userService.getLoggedinUser()
@@ -25,6 +26,8 @@ export function AppHeader() {
     const [scrolling, setScrolling] = useState(false)
     const [scrollingNav, setScrollingNav] = useState(false)
     const [scrollingHeader, setScrollingHeader] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 
 
 
@@ -39,8 +42,8 @@ export function AppHeader() {
             window.addEventListener('scroll', handleScroll)
             setTextColor(window.scrollY > 30 ? "#62646a" : "white")
             setScrolling(window.scrollY > 30)
-            setScrollingNav( window.scrollY > 30)
-            setScrollingHeader( window.scrollY >30)
+            setScrollingNav(window.scrollY > 30)
+            setScrollingHeader(window.scrollY > 30)
         } else {
             setTextColor("#62646a")
             setShowFilter(true)
@@ -79,7 +82,11 @@ export function AppHeader() {
 
     const closeOnOutsideClick = (e) => {
         if (isModalOpen && !document.querySelector(".modal").contains(e.target) && e.target.className !== "modal-button nav btn") {
-            setIsModalOpen(false)
+            setIsModalOpen(false);
+        }
+
+        if (isMenuOpen && !document.querySelector(".toggler-popover").contains(e.target)) {
+            setIsMenuOpen(false);
         }
     }
 
@@ -88,7 +95,7 @@ export function AppHeader() {
         return () => {
             document.removeEventListener("mousedown", closeOnOutsideClick)
         }
-    }, [isModalOpen])
+    }, [isModalOpen,isMenuOpen])
 
     const handleScroll = () => {
         if (isHomePage) {
@@ -134,6 +141,23 @@ export function AppHeader() {
         setFilterText(filterBy.txt)
         setGigFilter({ txt: filterBy.txt, tags: filterTags })
     }
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+    async function onLogout() {
+        try {
+            await logout()
+            showSuccessMsg(`Bye now`)
+        } catch (err) {
+            showErrorMsg('Cannot logout')
+        }
+    }
+
+
+
+
+
+
     return (
         <header
             className={`main-container full app-header ${isHomePage ? "fixed-header" : ""
@@ -169,26 +193,69 @@ export function AppHeader() {
                                 </NavLink>
                             </li>
                             <li onClick={toggleModal} className="modal-button nav btn">
-                                {isModalOpen ? "Close Orders" : "Orders"}
+                                {isModalOpen ? "Orders" : "Orders"}
                             </li>
                             <li className="nav btn sigin-in">
                                 Become a Seller
                             </li>
-                            <li><NavLink className="nav  btn sigin-in" title="Login" to="/login">
+                            {!user && <li><NavLink className="nav  btn sigin-in" title="Login" to="/login">
                                 Sign in
-                            </NavLink></li>
-                            <li><NavLink className={`nav btn btn-join ${scrolling ? "green-color" : ''}`} title="Login" to="/login">
+                            </NavLink></li>}
+
+                            {!user && <li><NavLink className={`nav btn btn-join ${scrolling ? "green-color" : ''}`} title="Login" to="/login">
                                 Join
-                            </NavLink></li>
+                            </NavLink></li>}
+
                             <li>
-                                {user && user.imgUrl && (
-                                    <span className="btn user-info">
-                                        <Link to={`user/${user._id}`}>
-                                            <img className="img-user" src={user.imgUrl} alt={user.username} />
-                                        </Link>
-                                    </span>
-                                )}
+                                <div className="toggler-popover">
+                                    {user && user.imgUrl && (
+                                        <span className="target-wrap" onClick={toggleMenu}>
+                                            <div className="uy3dNJC">
+                                                <figure className="fig">
+                                                    <img className="img-user" src={user.imgUrl} alt={user.username} />
+                                                </figure>
+                                                <div class="cCSTnnY rHv1-nv" style={{ bottom: "2px", right: "2px" }}>
+                                                    <div style={{ borderWidth: "2px", width: "11px", height: "11px" }}
+                                                        class="G1NyNb1 fQXZI8+">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <aside class="bottom place-left">
+                                                <div class="tip" style={{ left: "calc(100% - 16px)" }}>
+                                                </div>
+                                                {
+                                                    isMenuOpen &&
+                                                    <ul class="nav-popover-items-content" style={{ width: "auto" }}>
+                                                        <li className="profile">
+                                                            {/* <a href="/my_profile" class="nav-link">Profile</a> */}
+                                                            <Link className="nav-link" to={`user/${user?._id}`}>
+                                                                Profile
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <button className="out" onClick={onLogout}>Logout</button>
+                                                        </li>
+                                                    </ul>
+                                                }
+
+                                            </aside>
+                                        </span>
+
+
+                                    )}
+
+                                    {/* {isMenuOpen && (
+                                        <div className="menu">
+                                            <Link className="nav-link" to={`user/${user?._id}`}>
+                                                <button>Visit Profile</button>
+                                            </Link>
+                                            <button onClick={onLogout}>Logout</button>
+                                        </div>
+                                    )} */}
+                                </div>
                             </li>
+
 
                         </ul>
 
@@ -218,7 +285,7 @@ export function AppHeader() {
                         {/* <NavLink className="nav btn " title="orders" to="/gig/:gigId/order">
                 Orders
             </NavLink> */}
-                        
+
 
                     </div>
 
@@ -236,29 +303,34 @@ export function AppHeader() {
                 {isModalOpen && (
                     <div className="modal">
                         <div className="modal-content">
-                            <h2 className="title-orders">All Orders</h2>
-                            <button onClick={toggleModal} className="modal-button">Close</button>
+                            {/* <h2 className="title-orders">All Orders</h2> */}
+                            {/* <button onClick={toggleModal} className="modal-button">Close</button> */}
                             {orders.length === 0 ? (
                                 <p className="no-orders-message">No orders yet</p>
                             ) : (
                                 <div className="orders-list">
                                     <ul>
                                         {orders?.map((order) => (
-                                            <li className="order-txt" key={order._id}>
-                                                <img className="order-img" src={order.imgUrl[0]} alt="" />
-                                                GigId: {order.gigId}
-                                                <br />
-                                                Buyer: {order.buyer.username}
-                                                <br />
-                                                Description: {order.title}
-                                                <br />
-                                                Price: {order.price}
-                                                <br />
-                                                Status: {order.status}
-                                                <br />
-                                                Seller: {order.seller.username}
-                                                <br />
-                                                Ordered: {utilService.timeAgo(new Date(order.createdAt))}
+                                            <li className="order-item" key={order._id}>
+                                                <div className="order-img-container">
+                                                    <img className="order-imgs" src={order.imgUrl[0]} alt="" />
+                                                </div>
+                                                <div className="order-details">
+                                                    <div className="order-info">
+                                                        <span>Description : {order.title}</span>
+                                                        <span>Price : {order.price}</span>
+                                                        <div className="order-info-section">
+                                                            <br />
+                                                            <div className="seller" >
+                                                            <span >Seller : {' ' + order.seller.username}</span>
+                                                            </div>
+                                                            <br />
+                                                            <div className="status">
+                                                            <span >Status : <span style={{ color: orderService.getStatusColor(order.status) }}>{order.status}</span></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </li>
                                         ))}
                                     </ul>
