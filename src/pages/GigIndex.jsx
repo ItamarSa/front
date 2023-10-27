@@ -28,6 +28,36 @@ export function GigIndex() {
             showErrorMsg('Cannot load toys')
         }
     }, [filterBy])
+    const filterGigs = () => {
+    const filtered = gigs.filter(gig => {
+        // Filter based on tags from the AppHeader component
+        const tagFilters = filterBy.tags;
+        const gigTags = gig.tags.map(tag => tag.toLowerCase());
+
+        if (tagFilters.length > 0) {
+            if (!tagFilters.every(tag => gigTags.includes(tag.toLowerCase()))) {
+                return false;
+            }
+        }
+
+        // Filter based on budget
+        if (fromPrice && toPrice) {
+            const gigPrice = parseFloat(gig.price);
+            if (gigPrice < parseFloat(fromPrice) || gigPrice > parseFloat(toPrice)) {
+                return false;
+            }
+        }
+
+        return true; // Include gig if it passes all filters
+    });
+
+    setFilteredGigs(filtered);
+};
+
+    // Handle filter changes when tags or budget change
+    useEffect(() => {
+        filterGigs();
+    }, [filterBy, fromPrice, toPrice]);
     async function onRemoveGig(gigId) {
         try {
             await removeGig(gigId)
