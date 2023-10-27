@@ -14,6 +14,7 @@ export function GigIndex() {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const tags = queryParams.get('tags');
+    const textFilter = queryParams.get('textFilter');
     const [fromPrice, setFromPrice] = useState(''); // State variable for "from price"
     const [toPrice, setToPrice] = useState('');     // State variable for "to price"
     const [filteredGigs, setFilteredGigs] = useState(gigs); // Initialize with all gigs
@@ -47,9 +48,18 @@ export function GigIndex() {
                 return false;
             }
         }
+        if (textFilter) {
+            // Match by title or tags
+            if (!gig.title.match(regex) && !gig.tags.some((tag) => tag.match(regex))) {
+                return false;
+            }
+        }
+
+        
 
         return true; // Include gig if it passes all filters
     });
+    
 
     setFilteredGigs(filtered);
 };
