@@ -138,12 +138,12 @@ export function AppHeader() {
         }
     }
     function onSetFilterTag(filterBy) {
-        console.log('filterBy:', filterBy)
+        // console.log('filterBy:', filterBy)
         setFilterTags(filterBy.tags)
         setGigFilter({ txt: filterText, tags: filterBy.tags })
     }
     function onSetFilterText(filterBy) {
-        console.log('filterBy:', filterBy)
+        // console.log('filterBy:', filterBy)
         setFilterText(filterBy.txt)
         setGigFilter({ txt: filterBy.txt, tags: filterTags })
     }

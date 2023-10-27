@@ -48,7 +48,7 @@ async function query(filterBy = {}) {
 
     let gigToDisplay = [...gigs];
     
-    console.log('filterBy:', filterBy)
+    // console.log('filterBy:', filterBy)
     if (filterBy.txt) {
         const regex = new RegExp(filterBy.txt, 'i');
         gigToDisplay = gigToDisplay.filter((gig) => {
