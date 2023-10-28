@@ -104,6 +104,13 @@
                         }
                     }
                 }
+                .clean-list{
+                    .serve{
+                        display: flex;
+                        align-items: flex-end;
+
+                    }
+                }
 
                 .revisions-container {
                     margin-left: em(16px);

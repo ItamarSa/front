@@ -19,6 +19,14 @@ export function GigIndex() {
     const [toPrice, setToPrice] = useState('');     // State variable for "to price"
     const [filteredGigs, setFilteredGigs] = useState(gigs); // Initialize with all gigs
     const [areFiltersActive, setFiltersActive] = useState(false);
+    const [delivery, setDelivery] = useState('Any time'); // Set 'Any time' as the default value
+    const deliveryOptionMap = {
+        '1 day': 1,
+        'Up to 3 days': 3,
+        'Up to 7 days': 7,
+        'Any time': null, // Use null to indicate any time
+    };
+
 
     const homeSymbol = <svg width="14" height="14" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#404145"><path d="M12.773 14.5H3.227a.692.692 0 0 1-.482-.194.652.652 0 0 1-.2-.468V7.884H.5l7.041-6.212a.694.694 0 0 1 .918 0L15.5 7.884h-2.046v5.954a.652.652 0 0 1-.2.468.692.692 0 0 1-.481.194Zm-4.091-1.323h3.409V6.664L8 3.056 3.91 6.664v6.513h3.408v-3.97h1.364v3.97Z"></path></svg>
 
@@ -35,7 +43,7 @@ export function GigIndex() {
     const filterGigs = () => {
         const filtered = gigs.filter(gig => {
 
-            
+
 
             // Filter based on tags from the AppHeader component
             const tagFilters = filterBy.tags;
@@ -60,6 +68,13 @@ export function GigIndex() {
                     return false;
                 }
             }
+            if (delivery !== 'Any time') {
+                const selectedDeliveryOption = deliveryOptionMap[delivery];
+                if (selectedDeliveryOption !== null && gig.owner && gig.owner.delivery !== selectedDeliveryOption) {
+                    return false;
+                }
+            }
+
             const activeFilters = fromPrice || toPrice || (tagFilters.length > 0) || textFilter;
             setFiltersActive(activeFilters);
 
@@ -92,7 +107,7 @@ export function GigIndex() {
         // You may also want to reset tag filters and textFilter here if needed.
         // Example: dispatch(setGigFilter({ tags: [], textFilter: '' }));
     };
-    
+
     async function onAddGig() {
         const gig = gigService.getDemoGig()
         try {
@@ -134,6 +149,16 @@ export function GigIndex() {
             setFilteredGigs(filtered);
         }
     }
+    const applyFilter = () => {
+        // Apply the filter based on the selected delivery option
+        filterGigs();
+      };
+      
+      const clearAllFilters = () => {
+        // Clear all filters
+        setDelivery('Any time');
+        // You can add additional code to clear other filters if needed
+      };
 
     // function onAddGigMsg(gig) {
     //     console.log(`TODO Adding msg to gig`)
@@ -176,6 +201,19 @@ export function GigIndex() {
                     <button onClick={onSearch}>Search</button>
                     <button onClick={clearFilters}>Clear Filters</button>
                 </div>
+                <select
+                    value={delivery}
+                    onChange={e => setDelivery(e.target.value)}
+                >
+                    <option value="">Delivery time</option> {/* No default value selected */}
+                    <option value="1 day">Express 24H</option>
+                    <option value="Up to 3 days">Up to 3 days</option>
+                    <option value="Up to 7 days">Up to 7 days</option>
+                    <option value="Any time">Any time</option>
+                </select>
+                <button onClick={applyFilter}>Apply</button>
+                <button onClick={clearAllFilters}>Clear All</button>
+                <br />
                 <GigList
                     gigs={filteredGigs} // Pass filtered gigs to GigList
                     onRemoveGig={onRemoveGig}

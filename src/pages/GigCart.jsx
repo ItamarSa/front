@@ -131,12 +131,12 @@ export function GigCart({ gig }) {
                                 </div>
                                 {list && (
                                     <ul className="clean-list">
-                                        <li>{vSymbol} 1 concept included</li>
-                                        <li>{vSymbol} Logo transparency</li>
-                                        <li>{vSymbol} Vector file</li>
-                                        <li>{vSymbol} Printable file</li>
-                                        <li>{vSymbol} Include 3D mockup</li>
-                                        <li>{vSymbol} Include source file</li>
+                                        <li className="serve" >{vSymbol} 1 concept included</li>
+                                        <li className="serve" >{vSymbol} Logo transparency</li>
+                                        <li className="serve" >{vSymbol} Vector file</li>
+                                        <li className="serve" >{vSymbol} Printable file</li>
+                                        <li className="serve" >{vSymbol} Include 3D mockup</li>
+                                        <li className="serve" >{vSymbol} Include source file</li>
                                     </ul>
                                 )}
                             </div>
@@ -169,14 +169,14 @@ export function GigCart({ gig }) {
                                     <h4 className="collapsable-header" >What's Included </h4><span className={arrowClass}>{ContactSymbol}</span></div>
                                 {list && (
                                     <ul className="clean-list">
-                                        <li>{vSymbol} 2 concept included</li>
-                                        <li>{vSymbol} Logo transparency</li>
-                                        <li>{vSymbol} Vector file</li>
-                                        <li>{vSymbol} Printable file</li>
-                                        <li>{vSymbol} Include 3D mockup</li>
-                                        <li>{vSymbol} Include source file</li>
-                                        <li>{vSymbol} Include 3D mockup</li>
-                                        <li>{vSymbol} Include source file</li>
+                                        <li className="serve" >{vSymbol} 2 concept included</li>
+                                        <li className="serve" >{vSymbol} Logo transparency</li>
+                                        <li className="serve" >{vSymbol} Vector file</li>
+                                        <li className="serve" >{vSymbol} Printable file</li>
+                                        <li className="serve" >{vSymbol} Include 3D mockup</li>
+                                        <li className="serve" >{vSymbol} Include source file</li>
+                                        <li className="serve" >{vSymbol} Include 3D mockup</li>
+                                        <li className="serve" >{vSymbol} Include source file</li>
                                     </ul>
                                 )}
                             </div>
@@ -209,15 +209,15 @@ export function GigCart({ gig }) {
                                     <h4 className="collapsable-header" >What's Included </h4><span className={arrowClass}>{ContactSymbol}</span></div>
                                 {list && (
                                     <ul className="clean-list">
-                                        <li>{vSymbol} 3 concept included</li>
-                                        <li>{vSymbol} Logo transparency</li>
-                                        <li>{vSymbol} Vector file</li>
-                                        <li>{vSymbol} Printable file</li>
-                                        <li>{vSymbol} Include 3D mockup</li>
-                                        <li>{vSymbol} Include source file</li>
-                                        <li>{vSymbol} Printable file</li>
-                                        <li>{vSymbol} Include 3D mockup</li>
-                                        <li>{vSymbol} Include source file</li>
+                                        <li className="serve" >{vSymbol} 3 concept included</li>
+                                        <li className="serve" >{vSymbol} Logo transparency</li>
+                                        <li className="serve" >{vSymbol} Vector file</li>
+                                        <li className="serve" >{vSymbol} Printable file</li>
+                                        <li className="serve" >{vSymbol} Include 3D mockup</li>
+                                        <li className="serve" >{vSymbol} Include source file</li>
+                                        <li className="serve" >{vSymbol} Printable file</li>
+                                        <li className="serve" >{vSymbol} Include 3D mockup</li>
+                                        <li className="serve" >{vSymbol} Include source file</li>
                                     </ul>
                                 )}
 
