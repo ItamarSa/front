@@ -18,6 +18,7 @@ export function GigIndex() {
     const [fromPrice, setFromPrice] = useState(''); // State variable for "from price"
     const [toPrice, setToPrice] = useState('');     // State variable for "to price"
     const [filteredGigs, setFilteredGigs] = useState(gigs); // Initialize with all gigs
+    const [areFiltersActive, setFiltersActive] = useState(false);
 
     const homeSymbol = <svg width="14" height="14" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#404145"><path d="M12.773 14.5H3.227a.692.692 0 0 1-.482-.194.652.652 0 0 1-.2-.468V7.884H.5l7.041-6.212a.694.694 0 0 1 .918 0L15.5 7.884h-2.046v5.954a.652.652 0 0 1-.2.468.692.692 0 0 1-.481.194Zm-4.091-1.323h3.409V6.664L8 3.056 3.91 6.664v6.513h3.408v-3.97h1.364v3.97Z"></path></svg>
 
@@ -29,46 +30,53 @@ export function GigIndex() {
             showErrorMsg('Cannot load toys')
         }
     }, [filterBy])
+
+
     const filterGigs = () => {
-    const filtered = gigs.filter(gig => {
-        // Filter based on tags from the AppHeader component
-        const tagFilters = filterBy.tags;
-        const gigTags = gig.tags.map(tag => tag.toLowerCase());
+        const filtered = gigs.filter(gig => {
 
-        if (tagFilters.length > 0) {
-            if (!tagFilters.every(tag => gigTags.includes(tag.toLowerCase()))) {
-                return false;
+            
+
+            // Filter based on tags from the AppHeader component
+            const tagFilters = filterBy.tags;
+            const gigTags = gig.tags.map(tag => tag.toLowerCase());
+
+            if (tagFilters.length > 0) {
+                if (!tagFilters.every(tag => gigTags.includes(tag.toLowerCase()))) {
+                    return false;
+                }
             }
-        }
 
-        // Filter based on budget
-        if (fromPrice && toPrice) {
-            const gigPrice = parseFloat(gig.price);
-            if (gigPrice < parseFloat(fromPrice) || gigPrice > parseFloat(toPrice)) {
-                return false;
+            // Filter based on budget
+            if (fromPrice && toPrice) {
+                const gigPrice = parseFloat(gig.price);
+                if (gigPrice < parseFloat(fromPrice) || gigPrice > parseFloat(toPrice)) {
+                    return false;
+                }
             }
-        }
-        if (textFilter) {
-            const regex = new RegExp(textFilter, 'i');
-            if (!gig.title.match(regex) && !gig.tags.some(tag => tag.match(regex))) {
-                return false;
+            if (textFilter) {
+                const regex = new RegExp(textFilter, 'i');
+                if (!gig.title.match(regex) && !gig.tags.some(tag => tag.match(regex))) {
+                    return false;
+                }
             }
-        }
+            const activeFilters = fromPrice || toPrice || (tagFilters.length > 0) || textFilter;
+            setFiltersActive(activeFilters);
 
 
-        
 
-        return true; // Include gig if it passes all filters
-    });
-    
 
-    setFilteredGigs(filtered);
-};
+            return true; // Include gig if it passes all filters
+        });
+
+
+        setFilteredGigs(filtered);
+    };
 
     // Handle filter changes when tags or budget change
     useEffect(() => {
         filterGigs();
-    }, [filterBy, fromPrice, toPrice,textFilter]);
+    }, [filterBy, fromPrice, toPrice, textFilter]);
     async function onRemoveGig(gigId) {
         try {
             await removeGig(gigId)
@@ -77,6 +85,14 @@ export function GigIndex() {
             showErrorMsg('Cannot remove gig')
         }
     }
+    const clearFilters = () => {
+        setFromPrice('');
+        setToPrice('');
+        setFiltersActive(false);
+        // You may also want to reset tag filters and textFilter here if needed.
+        // Example: dispatch(setGigFilter({ tags: [], textFilter: '' }));
+    };
+    
     async function onAddGig() {
         const gig = gigService.getDemoGig()
         try {
@@ -144,26 +160,27 @@ export function GigIndex() {
                         </button> */}
                     </>
                 )}
-                 <div className="price-filter">
-                <input
-                    type="number"
-                    placeholder="From Price"
-                    value={fromPrice}
-                    onChange={(e) => setFromPrice(e.target.value)}
+                <div className="price-filter">
+                    <input
+                        type="number"
+                        placeholder="From Price"
+                        value={fromPrice}
+                        onChange={(e) => setFromPrice(e.target.value)}
+                    />
+                    <input
+                        type="number"
+                        placeholder="To Price"
+                        value={toPrice}
+                        onChange={(e) => setToPrice(e.target.value)}
+                    />
+                    <button onClick={onSearch}>Search</button>
+                    <button onClick={clearFilters}>Clear Filters</button>
+                </div>
+                <GigList
+                    gigs={filteredGigs} // Pass filtered gigs to GigList
+                    onRemoveGig={onRemoveGig}
+                    onUpdateGig={onUpdateGig}
                 />
-                <input
-                    type="number"
-                    placeholder="To Price"
-                    value={toPrice}
-                    onChange={(e) => setToPrice(e.target.value)}
-                />
-                <button onClick={onSearch}>Search</button>
-            </div>
-            <GigList
-                gigs={filteredGigs} // Pass filtered gigs to GigList
-                onRemoveGig={onRemoveGig}
-                onUpdateGig={onUpdateGig}
-            />
             </main>
         </div>
     );
