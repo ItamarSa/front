@@ -80,8 +80,9 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig, isCurrentUser }) {
             </Link>
             {isCurrentUser && (
                 <>
-                    <button onClick={() => { onRemoveGig(gig._id) }}>x</button>
-                    <button onClick={() => { onUpdateGig(gig) }}>Edit</button>
+                    <button>
+                        <Link to={`/edit/${gig._id}`}>Edit</Link>
+                    </button>
                 </>
             )}
         </section>
