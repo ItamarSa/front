@@ -49,11 +49,12 @@ export function GigIndex() {
             }
         }
         if (textFilter) {
-            // Match by title or tags
-            if (!gig.title.match(regex) && !gig.tags.some((tag) => tag.match(regex))) {
+            const regex = new RegExp(textFilter, 'i');
+            if (!gig.title.match(regex) && !gig.tags.some(tag => tag.match(regex))) {
                 return false;
             }
         }
+
 
         
 
@@ -67,7 +68,7 @@ export function GigIndex() {
     // Handle filter changes when tags or budget change
     useEffect(() => {
         filterGigs();
-    }, [filterBy, fromPrice, toPrice]);
+    }, [filterBy, fromPrice, toPrice,textFilter]);
     async function onRemoveGig(gigId) {
         try {
             await removeGig(gigId)
