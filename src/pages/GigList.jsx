@@ -1,6 +1,6 @@
 import { GigPreview } from './GigPreview'
 
-export function GigList({ gigs, onRemoveGig, onUpdateGig }) {
+export function GigList({ gigs, onRemoveGig, onUpdateGig,isCurrentUser }) {
 
     
 
@@ -15,7 +15,8 @@ export function GigList({ gigs, onRemoveGig, onUpdateGig }) {
                             gig={gig}
                             onRemoveGig={onRemoveGig}
                             onUpdateGig={onUpdateGig}
-                        />
+                            isCurrentUser={isCurrentUser}
+                        /> 
                     </li>)
                 }
             </ul>

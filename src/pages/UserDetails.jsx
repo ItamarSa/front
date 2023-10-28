@@ -140,7 +140,7 @@ export function UserDetails() {
 
             <br />
             <GigList
-              gigs={gigs}
+              gigs={gigs} isCurrentUser={isCurrentUser}
             />
           </div>
 
@@ -180,37 +180,7 @@ export function UserDetails() {
                 </li>
               ))}
             </ul>
-            {/* <ul className='order-grid'>
-            {orders?.map((order) => (
-              <li className="order-txt" key={order._id}>
-                <img className="order-img" src={order.imgUrl[0]} alt="" />
-                GigId: {order.gigId}
-                <br />
-                Buyer: {order.buyer.username}
-                <br />
-                Description: {order.title}
-                <br />
-                Price: {order.price}
-                <br />
-                Status:
-                <select
-                  value={order.status}
-                  onChange={(e) => handleStatusChange(e, order._id)}
-                >
-                  <option className='pending' value="Pending">Pending</option>
-                  <option className='approve' value="Approve">Approve</option>
-                  <option className='decline' value="Decline">Decline</option>
-                </select>
-                <br />
-                Seller: {order.seller.username}
-                <br />
-                Ordered: {utilService.timeAgo(new Date(order.createdAt))}
-                <br />
-                <span style={{ color: orderService.getStatusColor(order.status) }}>{order.status}</span>
-
-              </li>
-            ))}
-          </ul> */}
+           
           </div>
         </div>
       </div>
