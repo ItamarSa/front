@@ -1,8 +1,9 @@
 
 .main-container {
   display: grid;
-  grid-template-columns: 1fr minmax(0, 1400px) 1fr;
+  grid-template-columns: minmax(em(24px),1fr) minmax(0, 1400px) minmax(em(24px),1fr);
   justify-content: center;
+  align-items: center;
 }
 
 .full {

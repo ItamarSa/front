@@ -66,7 +66,14 @@ async function login(userCred) {
 }
 
 async function signup(userCred) {
-    if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+    // if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+    if (!userCred.imgUrl && userCred.username) {
+        userCred.imgUrl = `https://via.placeholder.com/128/A866EC/fff?text=${userCred.username[0].toUpperCase()}`;
+      } else if (!userCred.imgUrl) {
+        userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png';
+      }
+      
+      
     // userCred.score = 10000
     const flag = utilService.makeFlag();
     userCred = {

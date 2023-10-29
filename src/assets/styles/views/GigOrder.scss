@@ -5,92 +5,116 @@
         padding: 0;
     }
 
-    li {
-        border: 1px solid #e0e0e0;
-        margin: 10px 0;
-        padding: 10px;
+    //     li {
+    //         border: 1px solid #e0e0e0;
+    //         margin: 10px 0;
+    //         padding: 10px;
+    //         display: flex;
+    //         flex-wrap: wrap;
+    //         justify-content: space-between;
+    //         align-items: center;
+    //         border: rgb(49, 47, 47) 1px solid;
+
+    //         &:hover {
+    //             background-color: #dbdbd1;
+    //         }
+    //     }
+
+    //     h5.order-description {
+    //         font-size: 1.2rem;
+    //     }
+
+    //     p {
+    //         margin: 0;
+    //     }
+
+    //     .order-img {
+    //         height: 200px;
+    //         width: 450px;
+    //         margin: 10px;
+    //     }
+
+    //     button {
+    //         background-color: transparent;
+    //         border: none;
+    //         cursor: pointer;
+    //         font-size: 1.2rem;
+    //     }
+    // }
+
+    /* Modal Styles */
+    /* Modal Styles */
+    .modal {
+        position: fixed;
+        top: 8%;
+        /* 10% from the top */
+        bottom: 5%;
+        /* 15% from the bottom */
+        left: 55%;
+        width: 30%;
+        background-color: rgba(215, 223, 224, 0.97);
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        border: rgb(49, 47, 47) 1px solid;
+        justify-content: center;
+        // align-items: center;
+        border: black 1px solid;
 
-        &:hover {
-            background-color: #dbdbd1;
-        }
-    }
-
-    h5.order-description {
-        font-size: 1.2rem;
-    }
-
-    p {
-        margin: 0;
-    }
-
-    .order-img {
-        height: 200px;
-        width: 450px;
-        margin: 10px;
-    }
-
-    button {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        font-size: 1.2rem;
-    }
-}
-
-/* Modal Styles */
-/* Modal Styles */
-.modal {
-    position: fixed;
-    top: 8%;
-    /* 10% from the top */
-    bottom: 5%;
-    /* 15% from the bottom */
-    left: 65%;
-    width: 30%;
-    background-color: rgba(215, 223, 224, 0.97);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: black 1px solid;
-
-    /* Add styles to the "No orders yet" message */
-    .no-orders-message {
-        font-size: 1.2rem;
-        color: #999;
-        /* Change the color to your preference */
-        margin: 10px 0;
-        text-align: center;
-        /* You can add more styling as needed */
-    }
-
-
-
-    .modal-content {
-        background-color: #fff;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 0 1px rgba(255, 255, 255, 0.8);
-        /* Smaller and whiter shadow */
-        max-height: 100%;
-        /* Adjust as needed to fit your content */
-        overflow-y: auto;
-        /* Enable vertical scrolling if content overflows */
-
-        /* Hide the scrollbar when not needed */
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-
-        /* Hide the scrollbar thumb and track */
-        &::-webkit-scrollbar {
-            width: 0;
-            height: 0;
+        /* Add styles to the "No orders yet" message */
+        .no-orders-message {
+            font-size: 1.2rem;
+            color: #999;
+            /* Change the color to your preference */
+            margin: 10px 0;
+            text-align: center;
+            /* You can add more styling as needed */
         }
 
-        /* Add more styling as needed */
+
+
+        .modal-content {
+            // background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 1px rgba(255, 255, 255, 0.8);
+            /* Smaller and whiter shadow */
+            max-height: 100%;
+            /* Adjust as needed to fit your content */
+            overflow-y: auto;
+            /* Enable vertical scrolling if content overflows */
+
+            /* Hide the scrollbar when not needed */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+
+            /* Hide the scrollbar thumb and track */
+            &::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+            }
+
+            .modal-button {
+               
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    background: none;
+                    border: 1px solid $clr8;
+                    font-family: macan-semibold, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+                    background-color: $clr8;
+                    color: $clr1;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    font-size: 16px;
+
+                    &:hover {
+                        background-color: $clr1;
+                        color: $clr8;
+                    }
+                }
+            }
+
+            /* Add more styling as needed */
+        }
     }
-}
