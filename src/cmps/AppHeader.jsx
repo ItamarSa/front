@@ -202,7 +202,7 @@ export function AppHeader() {
                                 Sign in
                             </NavLink></li>}
 
-                            {!user && <li><NavLink className={`nav btn btn-join ${scrolling ? "green-color" : ''}`} title="Login" to="/login">
+                            {!user && <li><NavLink className={`nav btn btn-join ${scrolling ? "green-color" : ''}`} title="Login" to="/login" >
                                 Join
                             </NavLink></li>}
 

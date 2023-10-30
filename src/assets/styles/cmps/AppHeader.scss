@@ -69,14 +69,19 @@
 
                 li {
                     cursor: pointer;
-                    padding: 0 24px 0 0;
                     line-height: em(24px);
                     list-style: none;
                     display: block;
+                    &:not(:nth-child(6)){
+                    padding: 0 24px 0 0;}
+                    &:not(:nth-child(6)):hover {
+                        color: $clr8;
+                      }
 
                     .toggler-popover {
                         position: relative;
                         display: block;
+                        padding-right: 3px;
 
                         .target-wrap {
                             box-sizing: border-box;
@@ -106,13 +111,14 @@
                                     align-items: center;
                                     border-radius: 50%;
                                     height: 1em;
-                                    -webkit-justify-content: center;
+                                   
                                     justify-content: center;
                                     margin: 0;
                                     min-width: 1em;
                                     overflow: hidden;
 
                                     .img-user {
+                                       
                                         height: 100%;
                                         object-fit: cover;
                                         width: 100%;
@@ -310,6 +316,7 @@
             font-size: em(14px) !important;
 
             &:hover {
+                color: $clr1!important;
                 background-color: $clr8;
                 /* Change text color to $clr8 on hover */
             }
