@@ -66,7 +66,7 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
                     </div>
                 </div>
                 <div className="right-content">
-                    <span className="user-level">Level{'  ' + gig.owner.level}</span>
+                    <span className="user-level">{gig.owner.level}</span>
                 </div>
             </div>
 
@@ -76,9 +76,18 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
                 <b> {gig.rate} </b>
                 <span className="review-length">({gig.owner.reviews})</span>
             </div>
+            <div className='price-edit flex'>
             <Link to={`/gig/${gig._id}`}>
                 <p className='gig-price'>From <span>US${gig.price}</span></p>
             </Link>
+            {isCurrentUser && (
+                <>
+                    <button className='edit'>
+                        <Link to={`/edit/${gig._id}`}><i class="fa-sharp fa-regular fa-pen-to-square"></i></Link>
+                    </button>
+                </>
+            )}
+            </div>
         </section>
     )
 }

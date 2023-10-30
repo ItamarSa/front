@@ -295,9 +295,9 @@ export function AppHeader() {
                 </div>
             </div>
             <div className={`filter-container main-container full ${scrollingNav ? 'scrolling' : ""}`}>
-                <div>
+                
                     {showTagFilter && <TagFilter onSetFilter={onSetFilterTag} />}
-                </div>
+                
             </div>
             <div className="gig-order">
                 {isModalOpen && (
