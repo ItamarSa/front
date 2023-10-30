@@ -201,7 +201,7 @@ export function GigIndex() {
                     <button onClick={onSearch}>Search</button>
                     <button onClick={clearFilters}>Clear Filters</button>
                 </div>
-                <select className='custom-select'
+                <select 
                     value={delivery}
                     onChange={e => setDelivery(e.target.value)}
                 >
