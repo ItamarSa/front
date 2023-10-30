@@ -6,7 +6,7 @@ const starSymbol = <svg width="16" height="15" viewBox="0 0 16 15" xmlns="http:/
 const rightArrowSymbol = <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><g clipPath="url(#clip0_1_32)"><path d="M32.5 48c0-8.56 6.94-15.5 15.5-15.5 8.56 0 15.5 6.94 15.5 15.5 0 8.56-6.94 15.5-15.5 15.5-8.56 0-15.5-6.94-15.5-15.5z" fill="#F5F5F5" /><path opacity=".8" d="M52.28 48.06l-4.91-4.9a.525.525 0 00-.75 0l-.46.46a.529.529 0 000 .76l4.05 4.06-4.05 4.07a.529.529 0 000 .76l.46.46c.1.1.24.16.38.16s.27-.05.38-.16l4.9-4.92c.21-.21.21-.54 0-.75z" fill="#222325" /><path d="M32.5 48c0-8.56 6.94-15.5 15.5-15.5 8.56 0 15.5 6.94 15.5 15.5 0 8.56-6.94 15.5-15.5 15.5-8.56 0-15.5-6.94-15.5-15.5z" stroke="#EFEFF0" /></g></svg>
 const leftArrowSymbol = <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><g clipPath="url(#clip1_1_32)"><path d="M31.5 48c0-8.56-6.94-15.5-15.5-15.5C7.44 32.5.5 39.44.5 48c0 8.56 6.94 15.5 15.5 15.5 8.56 0 15.5-6.94 15.5-15.5z" fill="#F5F5F5" /><path opacity=".8" d="M11.72 48.06l4.91-4.9c.21-.21.54-.21.75 0l.46.46a.529.529 0 010 .76l-4.05 4.06 4.05 4.07a.529.529 0 010 .76l-.46.46c-.1.1-.24.16-.38.16s-.27-.05-.38-.16l-4.9-4.92a.525.525 0 010-.75z" fill="#222325" /><path d="M31.5 48c0-8.56-6.94-15.5-15.5-15.5C7.44 32.5.5 39.44.5 48c0 8.56 6.94 15.5 15.5 15.5 8.56 0 15.5-6.94 15.5-15.5z" stroke="#EFEFF0" /></g></svg>
 
-export function GigPreview({ gig, onRemoveGig, onUpdateGig }) {
+export function GigPreview({ gig, onRemoveGig, onUpdateGig ,isCurrentUser }) {
 
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
