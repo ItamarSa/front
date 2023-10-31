@@ -231,30 +231,39 @@ export function UserDetails() {
                       <img className="seller-imgs" src={order.seller.imgUrl} alt="" />
                     </div> */}
               </div>
-              <div className="main-detils-profile">
-                <div className="order-profile-info">
-                  <div className='txt-review'><span ><b>Description  </b> <br />{' ' + order.title}</span></div>
-                  <div className='txt-review  '> <span ><b>Price  </b> {' ' + order.price}$</span></div>
+              <div className="description">
+                <div className="order-desc-info">
+                  <div className='txt-review'>
+                    <div className="txt-review ">
+                      <span><b>Description{'    '}</b></span>
+                      <span style={{ fontFamily: 'macan-regular', fontWeight: '400', color: '#404145', marginTop: '13px' }}>{order.title}</span>
+                    </div>
 
+                    <div className="txt-review ">
+                      <b>Ordered</b>
+                      <span style={{ fontFamily: 'macan-regular', fontWeight: '400', color: '#404145' }}>{'   ' + utilService.timeAgo(new Date(order.createdAt))}
+                      </span><br />
+                    </div>
+
+                    <div className="txt-review ">
+                      <span  ><b>Status</b><span style={{ color: orderService.getStatusColor(order.status) }}>{'  ' + order.status}</span></span>
+                    </div>
+
+                    <div className='txt-review ' ><span ><b>Buyer </b>
+                      <span style={{ fontFamily: 'macan-regular', fontWeight: '400', color: '#404145' }}>{' ' + order.buyer.username}</span>
+                    </span> </div>
+
+                    <div className='txt-review  '>
+                      <span >
+                        <b>Price  </b>
+                        <span style={{ fontFamily: 'macan-regular', fontWeight: '400', color: '#404145' }}>{' ' + order.price}$</span>
+                      </span></div>
+                  </div>
                 </div>
               </div>
-              <div className="main-detils-profile">
-                <div >
-                  <div className="txt-review "><span><b>Ordered</b>{'   ' + utilService.timeAgo(new Date(order.createdAt))}</span></div>
-                  <div className="txt-review ">
-                    <span  ><b>Status</b><span style={{ color: orderService.getStatusColor(order.status) }}>{'  ' + order.status}</span></span>
-                  </div>
-                  <div className='txt-review ' > <span ><b>Buyer  </b>{' ' + order.buyer.username}</span></div>
-                  {/* <div className="txt-review "></div>
-                    <div className="txt-review "></div> */}
-                  <div>
 
-                  </div>
-                </div>
-
-              </div>
               <div className='main-detils-profile' >
-                <div>
+                <div className='select-status'>
                   <select className='custom-select txt-review  '
                     value={order.status}
                     onChange={(e) => handleStatusChange(e, order._id)}
@@ -263,10 +272,18 @@ export function UserDetails() {
                     <option className='approve status' value="Approve">Approve</option>
                     <option className='decline status' value="Decline">Decline</option>
                   </select>
+                  {/* <div className='img-review  '>
+                    <div>
+                      <span><b>Byer Image</b></span> <img className='buyer-img' src={order.buyer.imgUrl} alt="" />
+                    </div>
+                  </div> */}
                 </div>
 
-
               </div>
+
+
+
+
 
             </li>
           ))}

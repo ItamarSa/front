@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { loadGigs, addGig, updateGig, removeGig, setGigFilter } from '../store/action/gig.actions.js'
 
@@ -15,19 +15,22 @@ export function GigIndex() {
     const queryParams = new URLSearchParams(location.search);
     const tags = queryParams.get('tags');
     const textFilter = queryParams.get('textFilter');
-    const [fromPrice, setFromPrice] = useState(''); // State variable for "from price"
-    const [toPrice, setToPrice] = useState('');     // State variable for "to price"
-    const [filteredGigs, setFilteredGigs] = useState(gigs); // Initialize with all gigs
+    const [fromPrice, setFromPrice] = useState('');
+    const [toPrice, setToPrice] = useState('');
+    const [filteredGigs, setFilteredGigs] = useState(gigs);
     const [areFiltersActive, setFiltersActive] = useState(false);
-    const [delivery, setDelivery] = useState('Any time'); // Set 'Any time' as the default value
+    const [delivery, setDelivery] = useState('Any time');
+    const [list, setList] = useState(false)
+    const [listTime, setTime] = useState(false)
+    const modalRef = useRef(null)
+    const arrowClass = list ? "rotate-up" : "rotate-down"
+    const timeClass = listTime ? "rotate-up" : "rotate-down"
     const deliveryOptionMap = {
         '1 day': 1,
         'Up to 3 days': 3,
         'Up to 7 days': 7,
-        'Any time': null, // Use null to indicate any time
+        'Any time': null,
     };
-
-
     const homeSymbol = <svg width="14" height="14" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#404145"><path d="M12.773 14.5H3.227a.692.692 0 0 1-.482-.194.652.652 0 0 1-.2-.468V7.884H.5l7.041-6.212a.694.694 0 0 1 .918 0L15.5 7.884h-2.046v5.954a.652.652 0 0 1-.2.468.692.692 0 0 1-.481.194Zm-4.091-1.323h3.409V6.664L8 3.056 3.91 6.664v6.513h3.408v-3.97h1.364v3.97Z"></path></svg>
 
     useEffect(() => {
@@ -39,13 +42,27 @@ export function GigIndex() {
         }
     }, [filterBy])
 
+    useEffect(() => {
+        const closeOnOutsideClick = (e) => {
+            if ((list || listTime) && modalRef.current && !modalRef.current.contains(e.target)) {
+                // Close both menus by setting list and time to false
+                setList(false);
+                setTime(false);
+            }
+        }
+
+        document.addEventListener('mousedown', closeOnOutsideClick);
+
+        return () => {
+            document.removeEventListener('mousedown', closeOnOutsideClick)
+        }
+    }, [list, listTime]);
+
+
 
     const filterGigs = () => {
         const filtered = gigs.filter(gig => {
 
-
-
-            // Filter based on tags from the AppHeader component
             const tagFilters = filterBy.tags;
             const gigTags = gig.tags.map(tag => tag.toLowerCase());
 
@@ -55,7 +72,6 @@ export function GigIndex() {
                 }
             }
 
-            // Filter based on budget
             if (fromPrice && toPrice) {
                 const gigPrice = parseFloat(gig.price);
                 if (gigPrice < parseFloat(fromPrice) || gigPrice > parseFloat(toPrice)) {
@@ -81,14 +97,14 @@ export function GigIndex() {
 
 
 
-            return true; // Include gig if it passes all filters
+            return true;
         });
 
 
         setFilteredGigs(filtered);
     };
 
-    // Handle filter changes when tags or budget change
+
     useEffect(() => {
         filterGigs();
     }, [filterBy, fromPrice, toPrice, textFilter]);
@@ -104,8 +120,7 @@ export function GigIndex() {
         setFromPrice('');
         setToPrice('');
         setFiltersActive(false);
-        // You may also want to reset tag filters and textFilter here if needed.
-        // Example: dispatch(setGigFilter({ tags: [], textFilter: '' }));
+
     };
 
     async function onAddGig() {
@@ -128,15 +143,15 @@ export function GigIndex() {
         }
     }
     async function onSearch() {
-        // Convert fromPrice and toPrice to numbers
+
         const fromPriceNumber = parseFloat(fromPrice);
         const toPriceNumber = parseFloat(toPrice);
 
         if (isNaN(fromPriceNumber) && isNaN(toPriceNumber)) {
-            // Both "From Price" and "To Price" are empty, send all gigs
+
             setFilteredGigs(gigs);
         } else {
-            // Filter gigs based on the price range
+
             const filtered = gigs.filter(gig => {
                 const gigPrice = parseFloat(gig.price);
                 return (
@@ -145,20 +160,44 @@ export function GigIndex() {
                 );
             });
 
-            // Update the filteredGigs state
+
             setFilteredGigs(filtered);
         }
     }
     const applyFilter = () => {
-        // Apply the filter based on the selected delivery option
+
         filterGigs();
-      };
-      
-      const clearAllFilters = () => {
-        // Clear all filters
+    };
+
+    const clearAllFilters = () => {
+
         setDelivery('Any time');
-        // You can add additional code to clear other filters if needed
-      };
+
+    };
+    const handleClick = (e) => {
+        if (!e.target.matches('input')) {
+            setList(!list);
+        }
+    }
+    const handleTimeClick = (e) => {
+        if (e.target.matches('label')) {
+            console.log('label:', e.target)
+            const input = e.target.querySelector('input');
+            if (input) {
+                input.click();
+                setDelivery(input.value);
+                console.log('setDelivery:', setDelivery)
+            }
+        }
+        setTime(!listTime);
+    }
+    // const handleClick = (e) => {
+    //     if (!e.target.closest('.menu-content')) {
+    //         setList(!list);
+    //     }
+    // }
+
+
 
     // function onAddGigMsg(gig) {
     //     console.log(`TODO Adding msg to gig`)
@@ -185,8 +224,8 @@ export function GigIndex() {
                         </button> */}
                     </>
                 )}
-                <div className="price-filter">
-                    <input
+                {/* <div className="price-filter"> */}
+                {/* <input
                         type="number"
                         placeholder="From Price"
                         value={fromPrice}
@@ -197,25 +236,172 @@ export function GigIndex() {
                         placeholder="To Price"
                         value={toPrice}
                         onChange={(e) => setToPrice(e.target.value)}
-                    />
-                    <button onClick={onSearch}>Search</button>
-                    <button onClick={clearFilters}>Clear Filters</button>
-                </div>
-                <select 
+                    /> */}
+                {/* <button onClick={onSearch}>Search</button>
+                    <button onClick={clearFilters}>Clear Filters</button> */}
+                {/* </div> */}
+
+                <div className='inside-filters'>
+                    <div className={`floating-menu time-select  ${listTime ? 'open' : ''}`} onClick={handleTimeClick}>
+                        <div className="menu-title filter-menu">Delivery time
+                            <span className={`glAQDp5 chevron-icon-down ${timeClass}`} style={{ width: '12px', height: '12px', ariaHidden: "true" }}>
+                                <svg width="16" height="16" viewBox="0 0 11 7" xmlns="http://www.w3.org/2000/svg" fill="currentFill">
+                                    <path d="M5.464 6.389.839 1.769a.38.38 0 0 1 0-.535l.619-.623a.373.373 0 0 1 .531 0l3.74 3.73L9.47.61a.373.373 0 0 1 .531 0l.619.623a.38.38 0 0 1 0 .535l-4.624 4.62a.373.373 0 0 1-.531 0Z"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        {listTime && (
+                            <div ref={modalRef} className="menu-content">
+                                <div className={`content-scroll ${listTime ? 'open' : ''}`} style={{ maxHeight: '440px' }}>
+
+
+                                    <div className="radio-list">
+                                        <div className="radio-item-wrapper">
+                                            <label htmlFor="expressDelivery" className={`smOJGAf BEEwUYW radio-item ${delivery === "1 day" ? 'selected' : ''}`}>
+                                                <input
+                                                    type="radio"
+                                                    id="expressDelivery"
+                                                    name="delivery_time"
+                                                    value="1 day"
+                                                    checked={delivery === "1 day"}
+                                                // onChange={() => {
+                                                //     console.log('Radio input clicked');
+                                                //     setDelivery("1 day");
+                                                // }}
+                                                />
+                                                <span className="ufdx0v7"></span>
+                                                <div className="inner-radio">
+                                                    <span>Express 24H</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div className="radio-item-wrapper">
+                                            <label className={`smOJGAf BEEwUYW radio-item ${delivery === "Up to 3 days" ? 'selected' : ''}`}>
+                                                <input
+                                                    type="radio"
+                                                    name="delivery_time"
+                                                    value="Up to 3 days"
+                                                    checked={delivery === "Up to 3 days"}
+                                                // onChange={e => setDelivery(e.target.value)}
+                                                />
+                                                <span className="ufdx0v7"></span>
+                                                <div className="inner-radio">
+                                                    <span>Up to 3 days</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div className="radio-item-wrapper">
+                                            <label className={`smOJGAf BEEwUYW radio-item ${delivery === "Up to 7 days" ? 'selected' : ''}`}>
+                                                <input
+                                                    type="radio"
+                                                    name="delivery_time"
+                                                    value="Up to 7 days"
+                                                    checked={delivery === "Up to 7 days"}
+                                                // onChange={e => setDelivery(e.target.value)}
+                                                />
+                                                <span className="ufdx0v7"></span>
+                                                <div className="inner-radio">
+                                                    <span>Up to 7 days</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div className="radio-item-wrapper">
+                                            <label className={`smOJGAf BEEwUYW radio-item ${delivery === "Any time" ? 'selected' : ''}`}>
+                                                <span className="ufdx0v7"></span>
+                                                <input
+                                                    type="radio"
+                                                    name="delivery_time"
+                                                    value="Any time"
+                                                    // checked={delivery === "Any time"}
+                                                onChange={() => setDelivery("Any time")}
+                                                />
+                                                <div className="inner-radio">
+                                                    <span>Any time</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="button-row">
+                                    <button className="sPdE5j4 EFWC9E5 a7588_a co-grey-1000 clear-all" onClick={clearAllFilters}>Clear All</button>
+                                    <button className="sPdE5j4 FmssW6b co-white apply bg-co-black" onClick={applyFilter}>Apply</button>
+                                </div>
+                            </div>
+                        )}
+
+                    </div>
+
+
+
+                    {/* <select
                     value={delivery}
                     onChange={e => setDelivery(e.target.value)}
                 >
-                    <option value="">Delivery time</option> {/* No default value selected */}
+                    <option value="">Delivery time</option>
                     <option value="1 day">Express 24H</option>
                     <option value="Up to 3 days">Up to 3 days</option>
                     <option value="Up to 7 days">Up to 7 days</option>
                     <option value="Any time">Any time</option>
                 </select>
                 <button onClick={applyFilter}>Apply</button>
-                <button onClick={clearAllFilters}>Clear All</button>
-                <br />
+                <button onClick={clearAllFilters}>Clear All</button> */}
+                    <br />
+                    <div className={`floating-menu ${list ? 'open' : ''}`} onClick={handleClick}>
+                        <div className="menu-title filter-menu">Budget<span className={`glAQDp5 chevron-icon-down ${arrowClass}`} style={{ width: '12px', height: '12px' }} aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 11 7" xmlns="http://www.w3.org/2000/svg" fill="currentFill">
+                                <path d="M5.464 6.389.839 1.769a.38.38 0 0 1 0-.535l.619-.623a.373.373 0 0 1 .531 0l3.74 
+                            3.73L9.47.61a.373.373 0 0 1 .531 0l.619.623a.38.38 0 0 1 0 .535l-4.624 4.62a.373.373 0 0 1-.531 0Z">
+                                </path>
+                            </svg>
+                        </span>
+                        </div>
+                        {list && (
+                            <div ref={modalRef} className="menu-content">
+                                <div className={`content-scroll ${list ? 'open' : ''}`}
+                                    style={{ maxHeight: '364px' }}>
+                                    <div className="budget-filter">
+                                        <div className="price-range-filter">
+                                            <div className="price-range-filter-inputs p-b-16">
+                                                <div className="input-wrapper">
+                                                    <label>MIN.</label>
+                                                    <input type="number"
+                                                        name="gig_price_range"
+                                                        className="min"
+                                                        placeholder="Any"
+                                                        min="0"
+                                                        max="50000"
+                                                        value={fromPrice}
+                                                        onChange={(e) => setFromPrice(e.target.value)} />
+                                                    {<i>$</i>}
+                                                </div>
+                                                <div className="input-wrapper">
+                                                    <label>MAX.</label>
+                                                    <input type="number"
+                                                        name="gig_price_range"
+                                                        id="gig_price_range_max"
+                                                        className="max"
+                                                        placeholder="Any"
+                                                        min="0"
+                                                        max="50000"
+                                                        value={toPrice}
+                                                        onChange={(e) => setToPrice(e.target.value)} />
+                                                    <i>$</i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="button-row">
+                                    <button onClick={clearFilters} className="sPdE5j4 EFWC9E5 a7588_a co-grey-1000 clear-all">Clear All</button>
+                                    <button onClick={onSearch} className="sPdE5j4 FmssW6b co-white apply bg-co-black">Apply</button>
+                                </div>
+                            </div>
+                        )}
+
+                    </div>
+                </div>
                 <GigList
-                    gigs={filteredGigs} // Pass filtered gigs to GigList
+                    gigs={filteredGigs}
                     onRemoveGig={onRemoveGig}
                     onUpdateGig={onUpdateGig}
                 />

@@ -49,6 +49,7 @@
         padding: 30px;
         font-size: 14px;
         line-height: 130%;
+        height: 500px;
 
         .user-img-container {
             display: flex;
@@ -62,8 +63,9 @@
                 margin-bottom: 15px;
                 border-radius: 50%;
 
-                
+
             }
+
             .upload {
                 display: flex;
                 justify-content: center;
@@ -357,20 +359,63 @@
     border: 1px solid #ddd;
     border-radius: 2px;
     margin-bottom: 30px;
-    .add-gig{
+
+    .add-gig {
         margin: 15px;
     }
 
     // align-items: center
     .gig-preview {
-        max-width: 200px!important;
-        max-height: 361px;
-        margin-bottom: 20px;
-        margin-right: 15px;
-        box-sizing: border-box;
+        padding: 0;
+        // max-width: 250px !important;
+        // max-height: 400px !important;
+        // margin-bottom: 20px;
+        // box-sizing: border-box;
         border: #62646a 1px solid;
-        width: calc(50% - 20px)!important;
+        // width: calc(30% - 1px) !important;
+        .mini-user-preview{
+            padding: 10px;
+            .left-user{
+                align-items: center;
+            }
+            .right-content{
+                display: flex;
+            }
+        }
+
+        .image-container {
+            .prev-img {
+                // height: 110px;
+                // width: 203px;
+                // object-fit: cover;
+                // border-top-left-radius: 0;
+                // border-top-right-radius: 0;
+                // border-bottom-right-radius: 0;
+                // border-bottom-left-radius: 0;
+
+            }
+
+            .dot {
+                width: 5px;
+                height: 5px;
+            }
+        }
+
         // background-color: blue;
+    }
+    .gig-rate{
+        justify-content: space-evenly;
+        padding: 0 10px;
+    }
+    .price-edit{
+        .gig-price{
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+        }
+        .edit{
+            padding-right: 15px;
+        }
     }
 }
 
@@ -398,7 +443,7 @@
             display: flex;
             align-items: center;
             border: none;
-            border-bottom: 1px solid rgb(98, 100, 106) ;
+            border-bottom: 1px solid rgb(98, 100, 106);
 
 
             .order-profile-img-container {
@@ -526,8 +571,15 @@
 
     .order-profile-item {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-between
+     
 
+    }
+    .description{
+        display: flex;
+        .order-desc-info{
+            margin-left: -100px;
+        }
     }
 
     .main-detils-profile {
@@ -536,11 +588,22 @@
         flex-direction: column;
         justify-content: space-between;
         width: 24%;
+        .select-status{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 110px;
+            
+        }
+        .buyer-img{
+            height: 50px;
+            width: 50px;
+
+        }
         /* You can adjust the width as needed */
     }
 
     .txt-review {
-        padding: 10px;
+        padding: 5px;
         margin: 5px;
     }
 }
