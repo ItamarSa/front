@@ -248,6 +248,9 @@
                         resize: none;
                         transition: .15s ease-in-out;
                         width: 100%;
+                        appearance: textfield;
+                        appearance: unset;
+                        appearance: none;
                     }
 
                     i {
@@ -326,6 +329,10 @@
             color: #fff;
         }
     }
+}
+input[type="number"] {
+    -webkit-appearance: textfield; /* Ensure spinner arrows are hidden on webkit-based browsers */
+    /* Other styles for your input */
 }
 
 

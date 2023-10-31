@@ -21,10 +21,10 @@ export function GigIndex() {
     const [areFiltersActive, setFiltersActive] = useState(false);
     const [delivery, setDelivery] = useState('Any time');
     const [list, setList] = useState(false)
-    const [time, setTime] = useState(false)
+    const [listTime, setTime] = useState(false)
     const modalRef = useRef(null)
     const arrowClass = list ? "rotate-up" : "rotate-down"
-    const timeClass = time ? "rotate-up" : "rotate-down"
+    const timeClass = listTime ? "rotate-up" : "rotate-down"
     const deliveryOptionMap = {
         '1 day': 1,
         'Up to 3 days': 3,
@@ -44,7 +44,7 @@ export function GigIndex() {
 
     useEffect(() => {
         const closeOnOutsideClick = (e) => {
-            if ((list || time) && modalRef.current && !modalRef.current.contains(e.target)) {
+            if ((list || listTime) && modalRef.current && !modalRef.current.contains(e.target)) {
                 // Close both menus by setting list and time to false
                 setList(false);
                 setTime(false);
@@ -56,7 +56,7 @@ export function GigIndex() {
         return () => {
             document.removeEventListener('mousedown', closeOnOutsideClick)
         }
-    }, [list, time]);
+    }, [list, listTime]);
 
 
 
@@ -189,7 +189,7 @@ export function GigIndex() {
                 console.log('setDelivery:', setDelivery)
             }
         }
-        setTime(!time);
+        setTime(!listTime);
     }
     // const handleClick = (e) => {
     //     if (!e.target.closest('.menu-content')) {
@@ -242,7 +242,7 @@ export function GigIndex() {
                 {/* </div> */}
 
                 <div className='inside-filters'>
-                    <div className={`floating-menu time-select  ${time ? 'open' : ''}`} onClick={handleTimeClick}>
+                    <div className={`floating-menu time-select  ${listTime ? 'open' : ''}`} onClick={handleTimeClick}>
                         <div className="menu-title filter-menu">Delivery time
                             <span className={`glAQDp5 chevron-icon-down ${timeClass}`} style={{ width: '12px', height: '12px', ariaHidden: "true" }}>
                                 <svg width="16" height="16" viewBox="0 0 11 7" xmlns="http://www.w3.org/2000/svg" fill="currentFill">
@@ -250,9 +250,9 @@ export function GigIndex() {
                                 </svg>
                             </span>
                         </div>
-                        {time && (
+                        {listTime && (
                             <div ref={modalRef} className="menu-content">
-                                <div className={`content-scroll ${time ? 'open' : ''}`} style={{ maxHeight: '440px' }}>
+                                <div className={`content-scroll ${listTime ? 'open' : ''}`} style={{ maxHeight: '440px' }}>
 
 
                                     <div className="radio-list">

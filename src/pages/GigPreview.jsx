@@ -33,7 +33,7 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig ,isCurrentUser }) {
 
                 <Link className='gig-details' to={`/gig/${gig._id}`}>
                     <div className="image-container">
-                        <img src={gig.imgUrl[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`} />
+                        <img className='prev-img' src={gig.imgUrl[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`} />
                         <div className="dot-container">
                             {gig.imgUrl.map((_, index) => (
                                 <div
@@ -78,12 +78,12 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig ,isCurrentUser }) {
             </div>
             <div className='price-edit flex'>
             <Link to={`/gig/${gig._id}`}>
-                <p className='gig-price'>From <span>US${gig.price}</span></p>
+                <p className='gig-price'>From <span>${gig.price}</span></p>
             </Link>
             {isCurrentUser && (
                 <>
                     <button className='edit'>
-                        <Link to={`/edit/${gig._id}`}><i class="fa-sharp fa-regular fa-pen-to-square"></i></Link>
+                        <Link to={`/edit/${gig._id}`}><i class="fa-sharp fa-solid fa-pen-to-square fa-lg"></i></Link>
                     </button>
                 </>
             )}
