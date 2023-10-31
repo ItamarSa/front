@@ -1,0 +1,154 @@
+.popular-service-title {
+    color: #404145;
+    font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+}
+
+
+
+$black_15: rgba(0, 0, 0, .15);
+
+$base_multiplier: 36px;
+
+$slide_gap: $base_multiplier;
+$slide_gap_half: calc($base_multiplier/2);
+
+$slide_gap_alt: 24px;
+$slide_gap_alt_half: calc($slide_gap_alt/2);
+
+
+
+$slide_arrow_size: 20px;
+$slide_small_arrow_size: 16px;
+$slide_arrow_button_size: 40px;
+$slide_small_arrow_button_size: 32px;
+
+.slick-arrow {
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    width: $slide_arrow_button_size;
+    height: $slide_arrow_button_size;
+    text-align: center;
+    box-shadow: 0 2px 5px 0 $black_15;
+    border: 0;
+    font-size: 16px;
+    line-height: 100%;
+    border-radius: 30px;
+    background-color: #fff;
+    
+    &:before {
+        display: none;
+    }
+    
+    &:after {
+        content: '';
+        display: inline-block;
+        margin-top: 3px;
+    }
+    &:focus{
+        background: #fff;
+    }
+    
+
+}
+
+.slick-slide {
+    padding-right: 36px;
+    
+}
+
+.slick-slider {
+    margin-inline-end: -35px;
+}
+
+.slick-next {
+    right: 15px;
+    background: #fff;
+
+    &:after {
+        background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/arrows.c651879.svg) no-repeat;
+        background-position: 0 -48px;
+        background-size: 16px 64px;
+        height: 16px;
+        width: 16px;
+        position: absolute;
+        transform: translateX(-150%);
+        margin: 0;
+    }
+
+    &:hover {
+        background-color: white;
+    }
+
+}
+
+.slick-prev {
+    left: -19px;
+
+    &:after {
+        background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/arrows.c651879.svg) no-repeat;
+        background-position: 0 -32px;
+        background-size: 16px 64px;
+        height: 16px;
+        width: 16px;
+        margin: 0;
+        position: absolute;
+        transform: translateX(-55%);
+        top: 32%;
+    }
+
+    &:hover {
+        background-color: white;
+    }
+}
+
+
+
+
+.popular-services-slider {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1400px;
+    margin-bottom: 96px;
+
+    .slide {
+        text-align: start;
+
+        position: relative;
+
+        img {
+            border-radius: 4px;
+            transition: opacity .3s;
+
+            &:hover {
+                opacity: .85;
+            }
+        }
+
+
+        h4 {
+            color: #fff;
+            font-family: "Macan", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 700;
+
+
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            padding: 16px;
+            margin: 0;
+            box-sizing: border-box;
+            z-index: 1;
+            font-size: 24px;
+            line-height: 110%;
+
+            small {
+                font-size: 14px;
+                font-weight: 400;
+            }
+        }
+    }
+}
