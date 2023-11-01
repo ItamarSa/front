@@ -179,6 +179,10 @@ function makeId(length = 6) {
 }
 function makeTag(size = 1) {
     var words = [
+        // 'Website-Design',
+        // 'WordPress',
+        // 'Logo-Design',
+        // 'AI-Services',
         'Graphics-Design',
         'Programming-Tech',
         'Digital-Marketing',
@@ -188,7 +192,6 @@ function makeTag(size = 1) {
         'Business',
         'Data',
         'Photography',
-
     ]
     var word = ''
     let tags = []

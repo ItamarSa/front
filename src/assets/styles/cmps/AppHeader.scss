@@ -296,10 +296,6 @@
             }
         }
 
-        .nav {
-            // padding: 5px;
-        }
-
         .option-header {
             display: none;
         }
@@ -385,6 +381,19 @@
 
 .logo {
     margin: -25px;
+    font-size: 2.3rem;
+    font-family: macan-bold, Helvetica Neue, Helvetica, Arial, sans-serif;
+    letter-spacing: -4px;
+
+    &::after{
+        content: ".";
+        font-size: 2.7rem;
+        color: #1dbf73;
+    }
+    &.scrolling {
+        color: $clr2;
+    }
+        
 }
 
 .green-color {
