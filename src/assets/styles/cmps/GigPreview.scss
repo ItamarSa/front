@@ -145,12 +145,13 @@
     margin-bottom: 12px;
 
     .left-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // justify-content: space-between;
 
         .left-user {
+            align-items: center;
             gap: 8px;
         }
 
@@ -191,7 +192,7 @@ p.gig-price {
     margin-top: 8px;
 
     .stars {
-        padding-bottom: 4px;
+        // padding-bottom: 4px;
 
     }
 
@@ -199,8 +200,9 @@ p.gig-price {
         padding-left: 4px;
     }
 
-    span {
+    .review-length {
         padding-left: 4px;
+        color:#74767e ;
 
     }
 }
