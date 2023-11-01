@@ -164,7 +164,7 @@ export function AppHeader() {
             await logout()
             showSuccessMsg(`Bye now`)
         } catch (err) {
-            showErrorMsg('Cannot logout')
+            // showErrorMsg('Cannot logout')
         }
     }
 
