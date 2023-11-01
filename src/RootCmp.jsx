@@ -16,13 +16,15 @@ import { GigOrder } from './pages/GigOrder'
 import { GigPayment } from './pages/GigPayment'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
+import { ModalProvider } from './cmps/ModalProvider'
 
 export function RootCmp() {
 
     return (
         <Provider store={store}>
         <div className='main-container full '>
-            <AppHeader />
+        <ModalProvider>
+            <AppHeader /> 
             {/* <main className='full'> */}
                 <Routes>
                     {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
@@ -39,6 +41,7 @@ export function RootCmp() {
                 </Routes>
             {/* </main> */}
             <AppFooter />
+            </ModalProvider>
             <UserMsg/>
         </div>
         </Provider>

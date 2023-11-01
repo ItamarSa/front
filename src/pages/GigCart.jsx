@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router"
 import { NavLink } from "react-router-dom"
+import { userService } from "../services/user.service"
+import { ModalProvider, useModal } from '../cmps/ModalProvider';
+import { LoginModal } from "../cmps/LoginModal"; 
 
 export function GigCart({ gig }) {
+    const user = userService.getLoggedinUser()
     const navigate = useNavigate()
     const [list, setList] = useState(true)
     const [activeTab, setActiveTab] = useState("basic")
@@ -10,6 +14,9 @@ export function GigCart({ gig }) {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const modalRef = useRef(null)
     const arrowClass = list ? "rotate-up" : "rotate-down"
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+
 
 
     const vSymbol = <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentFill"><path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z" /></svg>
@@ -21,6 +28,12 @@ export function GigCart({ gig }) {
     function onContinue() {
         navigate('/gig/:gigId/payment')
     }
+    const openLoginModal = () => {
+        setIsLoginModalOpen(true);
+    };
+    const closeLoginModal = () => {
+        setIsLoginModalOpen(false);
+    };
     const handleClick = () => {
         setList(!list)
     }
@@ -61,24 +74,24 @@ export function GigCart({ gig }) {
     function onContinue() {
         const lowerCaseActiveTab = activeTab.toLowerCase();
         let planPrice;
-      
+
         if (lowerCaseActiveTab === "basic") {
-          planPrice = gig.price;
+            planPrice = gig.price;
         } else if (lowerCaseActiveTab === "standard") {
-          planPrice = gig.price * 2;
+            planPrice = gig.price * 2;
         } else if (lowerCaseActiveTab === "premium") {
-          planPrice = gig.price * 3;
+            planPrice = gig.price * 3;
         }
-      
+
         navigate(`/gig/${gig._id}/payment?planType=${lowerCaseActiveTab}&planPrice=${planPrice}&planDelivery=${gig.owner.delivery}`);
-      }
-      
+    }
 
 
 
 
 
-    
+
+
 
 
     return (
@@ -227,10 +240,27 @@ export function GigCart({ gig }) {
 
                 </div>
                 <footer className="cart-footer">
-                    <button className="continue" onClick={() => onContinue(gig)}>
-                        Continue
-                        <span className="arrow">{arrowSymbol}</span>
-                    </button>
+                    {
+                        !user ? (
+                            <button className="continue" onClick={() => openLoginModal()}>
+                                Continue
+                                <span className="arrow">{arrowSymbol}</span>
+                            </button>
+                        ) : (
+                            <button className="continue" onClick={() => onContinue(gig)}>
+                                Continue
+                                <span className="arrow">{arrowSymbol}</span>
+                            </button>
+                        )
+                    }
+                     {isLoginModalOpen && <LoginModal closeModal={closeLoginModal} />}
+
+
+
+
+
+
+
 
                     <button className="compare" onClick={handleComparePackagesClick}>
                         Compare Packages

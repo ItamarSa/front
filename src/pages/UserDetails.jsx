@@ -108,7 +108,7 @@ export function UserDetails() {
         <div className='info'>
           <div className='user-img-container' onMouseEnter={() => setShowImgUploader(true)} onMouseLeave={() => setShowImgUploader(false)}>
             <div>
-              <img className="user-profile-img" src={user.imgUrl} alt={user.username} />
+              <img className="user-profile-img" src={user?.imgUrl} alt={user?.username} />
               <div className='upload'>
                 {showImgUploader && isCurrentUser && (
                   <ImgUploader onUploaded={handleImageUpload} />
@@ -120,7 +120,7 @@ export function UserDetails() {
             <div className='user-name'>
               <div className='name'>
                 <span>
-                  {user.username}
+                  {user?.username}
                 </span>
                 <div className="EMfXbxY">
                   <svg className='XQskgrQ' width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M15.3628 2.30102L13.6796 0.618553C12.8553 -0.205791 11.521 -0.205916 10.6965 0.618522L0.778434 10.4718L0.0102775 15.1279C-0.0733163 15.6346 0.365528 16.0736 0.872371 15.99L5.52846 15.2218L15.3824 5.30374C16.2052 4.4809 16.2131 3.15127 15.3628 2.30102ZM6.26384 9.7364C6.39809 9.87065 6.57406 9.93774 6.75 9.93774C6.92593 9.93774 7.1019 9.87065 7.23615 9.7364L10.9558 6.01671L11.8486 6.90949L6.5625 12.2301V10.9377H5.0625V9.43774H3.77012L9.09072 4.15165L9.9835 5.04443L6.26381 8.76408C5.9954 9.03258 5.9954 9.4679 6.26384 9.7364ZM2.56662 14.3169L1.6834 13.4336L2.06278 11.1341L2.63778 10.5627H3.9375V12.0627H5.4375V13.3624L4.86618 13.9375L2.56662 14.3169ZM14.4099 4.33146L14.4083 4.33305L14.4067 4.33465L12.9058 5.8454L10.1548 3.09446L11.6656 1.59352L11.6672 1.59196L11.6687 1.5904C11.9546 1.30458 12.418 1.30105 12.7073 1.59037L14.3903 3.2733C14.699 3.58196 14.7009 4.04046 14.4099 4.33146Z"></path></svg>
@@ -130,7 +130,7 @@ export function UserDetails() {
 
             </div>
             <div className='user-info-label'>
-              {user.store}
+              {user?.store}
             </div>
             <div class="oneliner-wrapper">
               <div class="liner-and-pen">
@@ -172,7 +172,7 @@ export function UserDetails() {
                 <span className='from-user'>
                   <span class="XQskgrQ user-stats-icon" aria-hidden="true" style={{ width: '13px', height: '13px', fill: 'rgb(98, 100, 106)' }}>
                     <svg width="12" height="16" viewBox="0 0 12 16" xmlns="http://www.w3.org/2000/svg">
-                      <g clip-path="url(#clip0)">
+                      <g clipPath="url(#clip0)">
                         <path d="M5.38338 15.6772C0.842813 9.09472 0 8.41916 0 6C0 2.68628 2.68628 0 6 0C9.31372 0 12 2.68628 12 6C12 8.41916 11.1572 9.09472 6.61662 15.6772C6.31866 16.1076 5.68131 16.1076 5.38338 15.6772ZM6 8.5C7.38072 8.5 8.5 7.38072 8.5 6C8.5 4.61928 7.38072 3.5 6 3.5C4.61928 3.5 3.5 4.61928 3.5 6C3.5 7.38072 4.61928 8.5 6 8.5Z">
                         </path>
                       </g>
@@ -184,7 +184,7 @@ export function UserDetails() {
                       </defs>
                     </svg>
                   </span>From</span>
-                <b>{user.from}</b>
+                <b>{user?.from}</b>
               </li>
               <li class="member-since">
                 <span className='since'>
@@ -194,7 +194,7 @@ export function UserDetails() {
                       </path>
                     </svg>
                   </span>Member since</span>
-                <b>{utilService.timeAgo(new Date(user.createdAt))}</b>
+                <b>{utilService.timeAgo(new Date(user?.createdAt))}</b>
               </li>
             </ul>
           </div>
@@ -236,7 +236,7 @@ export function UserDetails() {
                   <div className='txt-review'>
                     <div className="txt-review ">
                       <span><b>Description{'    '}</b></span>
-                      <span style={{ fontFamily: 'macan-regular', fontWeight: '400', color: '#404145', marginTop: '13px' }}>{order.title}</span>
+                      <span style={{ fontFamily: 'macan-regular', fontWeight: '400', color: '#404145', marginTop: '13px' }}>{'\u00A0'}{order.title}</span>
                     </div>
 
                     <div className="txt-review ">

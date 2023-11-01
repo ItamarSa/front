@@ -385,6 +385,7 @@
 
         .image-container {
             .prev-img {
+                border-radius: 0;
                 // height: 110px;
                 // width: 203px;
                 // object-fit: cover;
@@ -546,18 +547,24 @@
         img {
             border: 1px black solid;
             margin-bottom: 10px;
+            aspect-ratio: 1 / 0.6;
         }
     }
 
     .custom-select {
         // margin-left: 100px;
         background-color: #f2f2f2;
-        color: #333;
+        font-size: 16px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        padding: 10px;
+        padding: 15px;
         width: 200px;
         margin: 3px;
+        .username{
+
+            color: black !important
+            ;
+        }
 
         .status {
             font-size: 16px;
@@ -571,14 +578,15 @@
 
     .order-profile-item {
         display: flex;
-        justify-content: space-between
+        justify-content: flex-start
      
 
     }
     .description{
         display: flex;
         .order-desc-info{
-            margin-left: -100px;
+            // margin-left: -100px;
+            font-size: em(18px);
         }
     }
 
@@ -588,6 +596,10 @@
         flex-direction: column;
         justify-content: space-between;
         width: 24%;
+        .order-profile-imgs{
+            aspect-ratio: 1 / 0.6;
+            object-fit: cover;
+        }
         .select-status{
             display: flex;
             flex-direction: column;
