@@ -16,7 +16,8 @@ export const utilService = {
     makeRandomGigTitle,
     makeRandomGigAbout,
     makeRandomLanguages,
-    makeRandomUserAbout
+    makeRandomUserAbout,
+    makeLevel
 }
 function makeFlag(size = 1) {
     let flag = ''; // Change from const to let
@@ -197,6 +198,23 @@ function makeTag(size = 1) {
         tags.push(word)
     }
     return tags
+}
+function makeLevel(size = 1) {
+    var words = [
+        'Level 1',
+        'Level 2',
+        'Top Rated',
+        'VIP',
+        'Pro'
+    ]
+    var word = ''
+    let levels = []
+    while (size > 0) {
+        size--
+        word = words[Math.floor(Math.random() * words.length)] + ''
+        levels.push(word)
+    }
+    return levels
 }
 
 function makeLorem(size = 100) {

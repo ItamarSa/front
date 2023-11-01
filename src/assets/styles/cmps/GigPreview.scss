@@ -7,29 +7,33 @@
     a {
         border: 1px solid #e4e5e7;
         border-radius: 8px;
-        
+
         .image-container {
             position: relative;
             // height: 100vh;
             // overflow: hidden;
-            border-radius: 8px;
-            
+            border-radius: em(8px);
+
             &:after {
                 border-radius: 8px;
                 background-image: linear-gradient(0deg, rgba(0, 0, 0, .3), hsla(0, 0%, 100%, 0));
                 bottom: 0;
                 content: "";
-                height: 40px;
+                height: em(40px);
                 left: 0;
                 position: absolute;
                 width: 100%;
                 z-index: 0;
             }
 
-            img {
+            .prev-img {
                 border-radius: 8px;
                 background: linear-gradient(180deg, #fff, #b5b6ba);
                 object-fit: contain;
+                // height:em(185px) ;
+                // width: em(305px);
+                aspect-ratio: 1 / 0.6;
+                object-fit: cover;
             }
 
             .dot-container {
@@ -73,7 +77,7 @@
         opacity: 0;
         transform: translateX(-100%);
         transition: transform 0.2s ease-in-out;
-        
+
 
         &.left {
             left: 0;
@@ -212,5 +216,17 @@ span.gig-title {
 
     &:hover {
         text-decoration-line: underline;
+    }
+}
+
+.price-edit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .edit {
+        border: none;
+        background-color: transparent;
+        padding-bottom: 10px;
     }
 }

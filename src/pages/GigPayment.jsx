@@ -153,8 +153,8 @@ export function GigPayment() {
                                         <div class="payment-page-gap-16">
                                             <p class="payment-page-max-w-unset">Your invoice will be issued according to the details listed here.</p>
                                             <div className="texts">
-                                                <div class="semi">{user.username}</div>
-                                                <div class="deatil">{user.from}</div>
+                                                <div class="semi">{user?.username}</div>
+                                                <div class="deatil">{user?.from}</div>
                                             </div>
                                         </div>
                                         <div><button onClick={handleClickModal} class="FW1syM7 Af0hvld xaFER3a co-grey-1200 payment-page-h-42 payment-page-max-w-fit-content">Add details</button></div>
@@ -238,7 +238,7 @@ export function GigPayment() {
                                                     </label>
                                                     <div className="WvIqLXU eXfr7qm text-field-input-wrapper">
                                                         <div className="T1b6wH">
-                                                            <input placeholder={user.username} className="GD3asS text-field-input" type="text" />
+                                                            <input placeholder={user?.username} className="GD3asS text-field-input" type="text" />
                                                         </div>
                                                         <span className="error"></span>
                                                     </div>
