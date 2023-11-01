@@ -55,22 +55,37 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
+            position: relative; 
+          
             .user-profile-img {
-                width: 150px;
-                height: 150px;
-                font-size: 3em;
-                margin-bottom: 15px;
-                border-radius: 50%;
-
-
+              width: 150px;
+              height: 150px;
+              font-size: 3em;
+              margin-bottom: 15px;
+              border-radius: 50%;
+              &:hover{
+                opacity: 0.4;
+              }
             }
-
+          
             .upload {
-                display: flex;
-                justify-content: center;
+              position: absolute;
+              bottom: 50px; 
+              left: 49%;
+              transform: translateY((-50%));
+              display: flex;
+              justify-content: center;
+              opacity: 0; 
+              transition: opacity 0.3s;
+              width: 10px;
+
+              
             }
-        }
+          }
+          
+          .user-img-container:hover .upload {
+            opacity: 1; 
+          }
 
         .user-name-info {
             display: flex;
