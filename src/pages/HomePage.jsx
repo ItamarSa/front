@@ -167,7 +167,7 @@ export function HomePage() {
             </h1>
             <TextFilterMain onSetFilter={onSetFilterText} />
             <div className="tag-filter-container">
-              <span className="popular-label">Popular :</span>
+              <span className="popular-label">Popular:</span>
               <TagFilterMain onSetFilter={onSetFilterTag} />
             </div>
           </div>
