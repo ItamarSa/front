@@ -16,7 +16,7 @@
     background: #f7f7f7;
 
     span {
-        padding: 5px;
+        // padding: 5px;
     }
 
     // min-height: 2000px;
@@ -341,13 +341,16 @@
         background-color: $clr8;
         color: white;
         border: none;
-        padding: 5px 10px;
-        border-radius: 10px;
+        font-size: 16px;
+        padding: 7px 24px;
+        border-radius: 3px;
         cursor: pointer;
         text-decoration: none;
         display: inline-block;
-        margin-top: 5px;
-    }
+        text-align: center; 
+        font-family: macan-bold;
+        font-weight: 700;
+       }
 }
 
 .main-content {
@@ -359,6 +362,9 @@
     border: 1px solid #ddd;
     border-radius: 2px;
     margin-bottom: 30px;
+    .react-seller-gigs{
+        background-color: #fff;
+    }
 
     .add-gig {
         margin: 15px;
@@ -372,13 +378,16 @@
         // margin-bottom: 20px;
         // box-sizing: border-box;
         border: #62646a 1px solid;
+
         // width: calc(30% - 1px) !important;
-        .mini-user-preview{
+        .mini-user-preview {
             padding: 10px;
-            .left-user{
+
+            .left-user {
                 align-items: center;
             }
-            .right-content{
+
+            .right-content {
                 display: flex;
             }
         }
@@ -404,53 +413,53 @@
 
         // background-color: blue;
     }
-    .gig-rate{
+
+    .gig-rate {
         justify-content: space-evenly;
         padding: 0 10px;
     }
-    .price-edit{
-        .gig-price{
+
+    .price-edit {
+        
+        .gig-price {
+            margin: 0;
             display: flex;
             align-items: center;
-            padding-left: 15px;
+            padding-left: 10px;
+            font-weight: 400;
         }
-        .edit{
-            padding-right: 15px;
+
+        .edit {
+            padding-right: 10px;
         }
     }
 }
 
 .orders {
-    margin-inline-start: 65px;
 
     .order-profile-container {
         background-color: #fff;
-        display: flex;
         // justify-content: center;
-        flex-wrap: wrap;
         text-align: left;
         padding: 0;
-        margin: 15px;
-        max-width: 1240px;
+        // margin: 15px;
+        // max-width: 1240px;
         border: 1px solid #ddd;
-
-
-
-        span {
-            padding: 0;
-        }
 
         .order-profile-item {
             display: flex;
-            align-items: center;
-            border: none;
-            border-bottom: 1px solid rgb(98, 100, 106);
+            flex-direction: row;
+            .order-profile-imgs{
+                width: 10vw;
+            }
+            // align-items: center;
+            // border: none;
 
 
             .order-profile-img-container {
                 display: flex;
-                align-items: center;
-                flex-direction: column;
+                // align-items: center;
+                // flex-direction: column;
 
                 .order-profile-imgs {
                     width: 175px;
@@ -468,154 +477,186 @@
                 }
             }
 
-            .order-profile-details {
-                display: flex;
+            .order-info {
+                padding: 5px;
                 font-family: macan-regular !important;
-
-                .order-profile-info {
-                    display: flex;
-                    flex-direction: column;
-
-                    .txt-review {
-                        display: flex;
-                        flex-direction: column;
-                    }
-                }
-
-            }
-
-            .status {
                 display: flex;
                 flex-direction: column;
-                margin-left: 100px;
+                justify-content: space-between;
+                font-size: em(18px);
+                background-color: #fff;
+                border-bottom: 1px solid #dadbdd;
+                width: 100%;
+                width: 100%;
 
                 .txt-review {
-                    flex-direction: column;
+                    margin-bottom: 3px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    
+                      
+
+                    .place-start {
+                        width: 300px;
+                        font-family: macan-regular;
+                        font-weight: 400;
+                        color: #404145;
+                        
+                    }
+                    img{
+                        width: 10%;
+                    }
                 }
             }
 
-            .select-status {
-                display: flex
-            }
-
-            .custom-select {
-                display: flex;
-                // margin-left: 100px;
-            }
-        }
-    }
-
-    .order-grid {
-        // display: grid;
-        // grid-auto-flow: row;
-        // grid-template-columns: repeat(3,1fr);
-        // flex-wrap: wrap;
-        // justify-content: space-between;
-        // /* Creates 3 items in a row */
-        // list-style: none;
-        // /* Remove default list styles */
-    }
-
-    .order-txt {
-
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        border: 1px solid #ddd;
-        margin-bottom: 10px;
-        padding: 10px;
-        background-color: white !important;
-        height: 200px;
-
-
-
-        &.status-pending {
-
-            color: orange;
         }
 
-        &.status-approve {
-            color: green;
-            /* Text color for approved status */
-        }
+        // .status {
+        //     display: flex;
+        //     flex-direction: column;
+        //     margin-left: 100px;
 
-        &.status-decline {
-            color: red;
-            /* Text color for declined status */
-        }
+        //     .txt-review {
+        //         // flex-direction: column;
+        //     }
+        // }
 
-        img {
-            border: 1px black solid;
-            margin-bottom: 10px;
-            aspect-ratio: 1 / 0.6;
-        }
-    }
+        // .select-status {
+        //     display: flex
+        // }
 
-    .custom-select {
-        // margin-left: 100px;
-        background-color: #f2f2f2;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 15px;
-        width: 200px;
-        margin: 3px;
-        .username{
-
-            color: black !important
-            ;
-        }
-
-        .status {
-            font-size: 16px;
-            font-family: macan-semibold;
-            padding: 25px;
-
-        }
-
-        /* Add more custom styles as needed */
-    }
-
-    .order-profile-item {
-        display: flex;
-        justify-content: flex-start
-     
-
-    }
-    .description{
-        display: flex;
-        .order-desc-info{
-            // margin-left: -100px;
-            font-size: em(18px);
-        }
-    }
-
-    .main-detils-profile {
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 24%;
-        .order-profile-imgs{
-            aspect-ratio: 1 / 0.6;
-            object-fit: cover;
-        }
-        .select-status{
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 110px;
-            
-        }
-        .buyer-img{
-            height: 50px;
-            width: 50px;
-
-        }
-        /* You can adjust the width as needed */
-    }
-
-    .txt-review {
-        padding: 5px;
-        margin: 5px;
+        // .custom-select {
+        //     display: flex;
+        //     // margin-left: 100px;
+        // }
     }
 }
+
+
+
+.order-txt {
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: white !important;
+    height: 200px;
+
+
+
+    &.status-pending {
+
+        color: orange;
+    }
+
+    &.status-approve {
+        color: green;
+        /* Text color for approved status */
+    }
+
+    &.status-decline {
+        color: red;
+        /* Text color for declined status */
+    }
+
+    img {
+        border: 1px black solid;
+        margin-bottom: 10px;
+        aspect-ratio: 1 / 0.6;
+    }
+}
+
+.custom-select {
+    // margin-left: 100px;
+    background-color: #f2f2f2;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    // padding: 15px;
+    width: 200px;
+    margin: 0;
+
+    .username {
+
+        color: black !important;
+    }
+
+    .status {
+        font-size: 16px;
+        font-family: macan-semibold;
+        padding: 25px;
+
+    }
+
+    /* Add more custom styles as needed */
+}
+.gigs-profile{
+    .mini-user-preview{
+        display: none;
+    }
+    .gig-rate{
+        display: none;
+    }
+    .gig-title{
+        text-align: left;
+        padding-left: 10px;
+        padding-bottom: 5px;
+        height: inherit;
+    }
+    .gig-price-edit{
+        padding-left: 10px;
+    }
+}
+
+// .order-profile-item {
+//     display: flex;
+//     justify-content: flex-start
+// }
+
+// .description {
+//     display: flex;
+
+//     .order-desc-info {
+//         // margin-left: -100px;
+
+//     }
+// }
+
+// .main-detils-profile {
+//     padding: 10px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     width: 24%;
+
+//     .order-profile-imgs {
+//         aspect-ratio: 1 / 0.6;
+//         object-fit: cover;
+//     }
+
+//     .select-status {
+//         display: flex;
+//         flex-direction: column;
+//         margin-bottom: 110px;
+
+//     }
+
+//     .buyer-img {
+//         height: 50px;
+//         width: 50px;
+
+//     }
+
+//     /* You can adjust the width as needed */
+// }
+.truncate-text {
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px; /* Set a max-width as needed */
+  display: inline-block;
+  }
