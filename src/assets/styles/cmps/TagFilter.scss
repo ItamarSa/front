@@ -8,10 +8,11 @@
     position: relative; /* Ensure proper positioning context */
   }
   
-  .tag {
+  button.tag {
     display: flex;
     white-space: nowrap;
     position: relative; /* Ensure proper positioning context for the pseudo-element */
+    font-family:  macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;   
   
     &::before {
       content: "";
