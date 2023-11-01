@@ -341,13 +341,16 @@
         background-color: $clr8;
         color: white;
         border: none;
-        padding: 5px 10px;
-        border-radius: 10px;
+        font-size: 16px;
+        padding: 7px 24px;
+        border-radius: 3px;
         cursor: pointer;
         text-decoration: none;
         display: inline-block;
-        margin-top: 5px;
-    }
+        text-align: center; 
+        font-family: macan-bold;
+        font-weight: 700;
+       }
 }
 
 .main-content {
