@@ -9,6 +9,8 @@ import { showErrorMsg } from "../services/event-bus.service"
 import { utilService } from "../services/util.service"
 import { UserMsg } from "./UserMsg"
 import { logout } from "../store/action/user.actions"
+import { ModalProvider, useModal } from '../cmps/ModalProvider';
+import { LoginModal } from './LoginModal';
 
 export function AppHeader() {
     const user = userService.getLoggedinUser()
@@ -27,6 +29,18 @@ export function AppHeader() {
     const [scrollingNav, setScrollingNav] = useState(false)
     const [scrollingHeader, setScrollingHeader] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    // const { openModal, closeModal } = useModal();
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsLoginModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsLoginModalOpen(false);
+    };
+
+
 
 
 
@@ -72,7 +86,8 @@ export function AppHeader() {
             setOrders(orders)
         } catch (err) {
             console.log('Had issues loading orders', err)
-            showErrorMsg('Cannot load orders')
+            {user && showErrorMsg('Cannot load orders')}
+            
         }
     }
 
@@ -175,10 +190,11 @@ export function AppHeader() {
                         </NavLink>
                     </div>
 
+
                     <div className="search-text">
                         {showFilter && <TextFilter onSetFilter={onSetFilterText} />}
                     </div>
-
+                    
                     <div className="nav-bar">
                         <ul className="ul">
                             {/* <li>
@@ -200,13 +216,21 @@ export function AppHeader() {
                             <li className="nav btn sigin-in">
                                 Become a Seller
                             </li>
-                            {!user && <li><NavLink className="nav  btn sigin-in" title="Login" to="/login">
+                            {!user && <li onClick={openModal} className="nav  btn sigin-in">
                                 Sign in
-                            </NavLink></li>}
+                            </li>}
 
-                            {!user && <li><NavLink className={`nav btn btn-join ${scrolling ? "green-color" : ''}`} title="Login" to="/login" >
+                            {!user && <li onClick={openModal} className={`nav btn btn-join ${scrolling ? "green-color" : ''}`}>
                                 Join
-                            </NavLink></li>}
+                            </li>}
+                            <div>
+                        {/* <button onClick={openModal}>Open Modal</button> */}
+                        {/* // Inside your LoginModal component */}
+                        {/* <button onClick={closeModal}>Close</button> */}
+
+                        {isLoginModalOpen && <LoginModal closeModal={closeModal} />}
+                    </div>
+                            
 
                             <li>
                                 <div className="toggler-popover">
