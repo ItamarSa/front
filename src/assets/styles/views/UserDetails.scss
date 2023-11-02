@@ -70,7 +70,7 @@
           
             .upload {
               position: absolute;
-              bottom: 50px; 
+              bottom: 20px; 
               left: 49%;
               transform: translateY((-50%));
               display: flex;
@@ -78,6 +78,10 @@
               opacity: 0; 
               transition: opacity 0.3s;
               width: 10px;
+              fill: #fff;
+              &:hover{
+                fill: black;
+              }
 
               
             }
@@ -368,31 +372,30 @@
        }
 }
 
+
 .main-content {
     display: flex;
     flex-direction: column;
     width: 736px;
     background: #fff;
     text-align: center;
-    border: 1px solid #ddd;
     border-radius: 2px;
     margin-bottom: 30px;
-    .react-seller-gigs{
-        background-color: #fff;
-    }
+    
 
-    .add-gig {
-        margin: 15px;
-    }
+    
 
     // align-items: center
+    .gigs-profile{
+        border: 1px solid #dadbdd;
+      
     .gig-preview {
         padding: 0;
         // max-width: 250px !important;
         // max-height: 400px !important;
         // margin-bottom: 20px;
         // box-sizing: border-box;
-        border: #62646a 1px solid;
+        border: 1px solid #dadbdd;
 
         // width: calc(30% - 1px) !important;
         .mini-user-preview {
@@ -428,6 +431,7 @@
 
         // background-color: blue;
     }
+    
 
     .gig-rate {
         justify-content: space-evenly;
@@ -449,8 +453,13 @@
         }
     }
 }
+}
+
 
 .orders {
+    ul{
+    margin: 0;
+    }
 
     .order-profile-container {
         background-color: #fff;
@@ -675,3 +684,19 @@
   max-width: 250px; /* Set a max-width as needed */
   display: inline-block;
   }
+  
+  .grey{
+    padding: 20px;
+    // background-color: #404145;
+    background: #f7f7f7;
+   
+  }
+  .react-seller-gigs{
+    border: 1px solid #dadbdd !important;
+   
+    .add-gig {
+        margin: 15px;
+    }
+  }
+  
+  

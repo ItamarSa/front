@@ -111,7 +111,7 @@ export function UserDetails() {
               <img className="user-profile-img" src={user?.imgUrl} alt={user?.username} />
               <div className='upload'>
                 {showImgUploader && isCurrentUser && (
-                  <ImgUploader onUploaded={handleImageUpload} />
+                 <ImgUploader onUploaded={handleImageUpload} useCustomSVG={true} />
                 )}
               </div>
             </div>
@@ -222,7 +222,7 @@ export function UserDetails() {
 
         </div>
         <div className='main-content'>
-          <div id="react-seller-gigs">
+          <div className="react-seller-gigs">
             <div data-reactroot="">
               <section class="seller-gigs cf">
                 <figure class="empty-state">
@@ -297,7 +297,9 @@ export function UserDetails() {
               </section>
             </div>
           </div>
+          <div className='grey'></div>
           <div className='orders' >
+            
             <ul className='order-profile-container'>
               {orders?.map((order) => (
                 <li className="order-profile-item " key={order._id}>
@@ -357,7 +359,7 @@ export function UserDetails() {
                     </div>
                     <div className="txt-review ">
                       <div>
-                      <span style={{ color: orderService.getStatusColor(order.status) }}>{'  ' + order.status}</span>
+                      <span style={{ color: orderService.getStatusColor(order.status) }}>{<b>{order.status}</b>}</span>
                       </div>
                       <div className='place-start'>
                       <select className='custom-select txt-review  '
@@ -395,6 +397,7 @@ export function UserDetails() {
               ))}
             </ul>
           </div>
+          <div className='grey'></div>
           <div className='gigs-profile'>
             <GigList
               gigs={gigs} isCurrentUser={isCurrentUser}
