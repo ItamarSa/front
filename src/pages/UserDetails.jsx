@@ -166,7 +166,7 @@ export function UserDetails() {
               </div>
             </div>
           </div>
-          {/* <div className='user-stats-desc'>
+           <div className='user-stats-desc'>
             <ul class="user-stats with-border-top">
               <li class="location">
                 <span className='from-user'>
@@ -198,7 +198,7 @@ export function UserDetails() {
               </li>
             </ul>
           </div>
-          <div id="FiverrLearn-component">
+          {/*<div id="FiverrLearn-component">
             <div class="fiverr-learn fiverr_learn-package sv" data-reactroot="">
               <header>
                 <div class="W46fKfn k-kBZXW">
@@ -312,7 +312,7 @@ export function UserDetails() {
                     </div> */}
                   {/* </div> */}
 
-                  <div >
+                  <div className='img-main' >
                   <img className="order-profile-imgs" src={order.imgUrl[0]} alt="" />
                   </div>
                   <div className="order-info">
