@@ -51,12 +51,12 @@
 
             .content {
                 line-height: em(21px);
-                padding-bottom: em(10px);
-                color: #62646a;
+                
 
                 .title-content {
                     display: flex;
                     justify-content: space-between;
+                    color: $clr2;
 
                     .type {
                         flex: 1 1;
@@ -80,11 +80,17 @@
                     }
                 }
 
+                .cart-gig-title{
+                    color: $clr9;
+                    margin: 0;
+                    padding-bottom: 10px;
+                }
+
                 .additional-info {
                     display: flex;
                     line-height: em(24px);
-                    font-family: macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
-                    color: #62646a;
+                    font-family: macan-bold, "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    color: $clr9;
                     margin-bottom: 8px;
 
 
@@ -96,6 +102,7 @@
                             float: left;
                             width: 16px;
                             height: 16px;
+                            fill: $clr9;
                         }
 
                         .delivery {
@@ -104,10 +111,18 @@
                         }
                     }
                 }
-                .clean-list{
+
+                .package-include{
+                    padding-bottom: em(10px);
                     .serve{
-                        display: flex;
-                        align-items: flex-end;
+                        color: #95979d;
+                        font-size: 14px;
+                        line-height: 24px;
+                        .v-svg{
+                            padding-right: em(28px);
+                            width: 16px;
+                            height: 16px;  
+                        }
 
                     }
                 }
@@ -197,19 +212,12 @@
                     background-color: #404145;
                 }
 
-                a {}
-
                 .arrow {
                     width: 16px;
                     height: 16px;
                     fill: white;
                     float: right;
 
-                    svg {
-                        // float: left;
-                        // height: 100%;
-                        // width: 100%;
-                    }
                 }
             }
 
@@ -232,9 +240,6 @@
     }
 
 
-
-
-
     .contact-me {
         background-color: rgb(250, 250, 250);
         display: flex;
@@ -245,10 +250,6 @@
 
         .seller-popover-content {
             cursor: pointer;
-
-            // width: 100%;
-            // display: inline-flex;
-            // display: inline-flex;
 
             .seller-options {
                 color: #62646a;

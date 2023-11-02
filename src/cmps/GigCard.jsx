@@ -24,13 +24,12 @@ export function GigCard({ gig, starSymbol }) {
                 alt="Fullscreen Icon"
                 className="fullscreen-icon"
                 width="16"
-                height="16"
+                height="32"
             />
             {isFullscreen ? 'Exit Fullscreen' : 'Full Screen'}
         </div>
     )
 
-    const randomValue = utilService.getRandomIntInclusive(50, 250);
     return (
         <div className='gig-card'>
             <h3 className='title'>{gig.title}</h3>
@@ -68,7 +67,6 @@ export function GigCard({ gig, starSymbol }) {
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div className='details-gallery'>
@@ -83,8 +81,7 @@ export function GigCard({ gig, starSymbol }) {
                 <h2>What people loved about this seller</h2>
                 <button href=''>See all reviews</button>
             </div>
-            <div className='details-mini-review'> add mini reviews </div>
-            <p className='gig-description'>gig.description</p>
+            <div className='details-mini-review'> add mini reviews </div> <br /><br />
             <GigDescription gig={gig} />
         </div>
     )
