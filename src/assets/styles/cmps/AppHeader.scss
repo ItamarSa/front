@@ -60,9 +60,9 @@
                     line-height: em(24px);
                     list-style: none;
                     display: block;
-                    &:not(:nth-child(6)){
+                    &:not(:nth-child(5)){
                     padding: 0 24px 0 0;}
-                    &:not(:nth-child(6)):hover {
+                    &:not(:nth-child(5)):hover {
                         color: $clr8;
                       }
 
@@ -297,7 +297,7 @@
             /* Use "px" for specifying the height */
             line-height: 24px;
             /* Use "px" for specifying the line height */
-            padding: 10px 16px;
+            padding: 7px 16px;
             font-size: em(14px) !important;
 
             &:hover {
