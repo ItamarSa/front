@@ -38,7 +38,7 @@ export function TagFilter({ filterBy, onSetFilter }) {
     const queryString = new URLSearchParams(params).toString();
     navigate(`/gigs?${queryString}`);
   }
-
+  let newTag = ''
   return (
     
       <div className="filter-group">
@@ -49,7 +49,8 @@ export function TagFilter({ filterBy, onSetFilter }) {
             className={`btn tag ${filterByTags.tags.includes(tag) ? "selected" : ""}`}
             onClick={() => handleTagButtonClick(tag)}
           >
-            {tag}
+            {/* {tag} */}
+            {newTag=tag.replace('-', ' & ')}
           </button>
         ))}
       </div>

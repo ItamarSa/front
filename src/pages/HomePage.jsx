@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { PopularServiceCarousel } from '../cmps/PopularServiceCarousel';
+import { Carousel } from '../cmps/Carousel';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { TextFilterMain } from '../cmps/TextFilterMain';
@@ -167,7 +167,7 @@ export function HomePage() {
             </h1>
             <TextFilterMain onSetFilter={onSetFilterText} />
             <div className="tag-filter-container">
-              <span className="popular-label">Popular :</span>
+              <span className="popular-label">Popular:</span>
               <TagFilterMain onSetFilter={onSetFilterTag} />
             </div>
           </div>
@@ -183,7 +183,7 @@ export function HomePage() {
           </ul>
         </div>
       </section>
-      <PopularServiceCarousel />
+      <Carousel />
       <InfoCmp />
       <CategoriesCmp />
     </>

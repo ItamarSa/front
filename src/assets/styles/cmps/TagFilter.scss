@@ -1,16 +1,45 @@
 .filter-group {
     display: flex;
     justify-content: space-between;
-    align-items: end;
-    gap: em(39px);
-    border: none;
+    align-items: flex-end;
+    gap: em(30px);
     margin-right: 0;
-    .tag{
-        display: flex;
-        white-space: nowrap;
+    padding: 8px 0;
+    position: relative; /* Ensure proper positioning context */
+    max-width: 1400px;
+  }
+  
+  button.tag {
+    display: flex;
+    white-space: nowrap;
+    position: relative; /* Ensure proper positioning context for the pseudo-element */
+    font-family:  macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    
+    &:first-of-type{
+      padding-left: 0;
     }
-}
-
-// .filter-group > :last-child {
-//     margin-right: 0; /* Remove the gap for the last child */
-// }
+    &:last-of-type{
+      padding-right: 0;
+    }
+  
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px; /* Adjust to move the border to the center (half of 3.5px thickness) */
+      width: 90%; /* Full width of the .tag element */
+      border-bottom: 3.5px solid transparent; /* Set the border thickness */
+      transform: translateX(5%); /* Center the border-bottom horizontally */
+  
+    }
+  
+    &:hover::before {
+      border-color: $clr8; /* Change to your desired border color on hover */
+    }
+  
+    /* If you want to remove the gap for the last child */
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  

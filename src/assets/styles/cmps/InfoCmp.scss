@@ -11,48 +11,57 @@
         padding: 96px 0;
 
         .info-txt {
-            padding: 0 158px 0 16px;
+            padding-right:10%;
 
             h2 {
-                font-family: macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-family: macan-bold, "Helvetica Neue", Helvetica, Arial, sans-serif;
                 font-size: 32px;
-                line-height: 38.4px;
+                padding-bottom: 24px;
+                margin: 0;
+                line-height:120%;
+                color: $clr2;
             }
             
             ul {
-                list-style: none;
-                padding: 0;
+                // list-style: none;
+                // padding: 0;
                 
                 li {
-                    margin-bottom: 10px;
+                    padding-bottom: 24px;
                     color: $clr9;
-                    margin-bottom: 20px;
                     
                     h6 {
-                        color: $clr2;
+                        align-items: flex-start;
+
+                        font-family: macan-bold, "Helvetica Neue", Helvetica, Arial, sans-serif;
                         font-size: 18px;
-                        line-height: 25.2px;
-                        font-family: macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
-                        margin: 0px;
-                        margin-bottom: 5px;
+                        color: $clr2;
+                        
+                        line-height: 140%;
+                        margin: 0;
+                        padding-bottom: 8px;
+                        
                         span{
                             margin-right: 10px;
                         }
                     }
 
                     p {
-                        margin: 0px;
+                        font-size: 18px;
+                        line-height: 26px;
+                        margin: 0;
                     }
                 }
             }
         }
 
         .video-modal {
+            // padding: 0 16px;
+            width: 84%;
 
             .video-background {
                 position: relative;
-                width: 630px;
-                height: 400px;
+                height: 50vh;
                 background-image: url('https://fiverr-res.cloudinary.com/q_auto,f_auto,w_700,dpr_1.0/v1/attachments/generic_asset/asset/089e3bb9352f90802ad07ad9f6a4a450-1599517407052/selling-proposition-still-1400-x1.png');
                 background-size: cover;
                 background-position: center;

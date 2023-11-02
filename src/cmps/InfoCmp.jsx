@@ -13,22 +13,22 @@ export function InfoCmp() {
             <div className="info-section">
                 <div className="info-txt">
                     <h2 className="info-title">The best part? Everything.</h2>
-                    <ul>
+                    <ul className="clean-list">
                         <li>
-                            <h6><span>{viSymbol}</span>Stick to your budget</h6>
-                            <p>Find the right service for every price point. No hourly <br /> rates, just project-based pricing.</p>
+                            <h6 className="flex"><span>{viSymbol}</span>Stick to your budget</h6>
+                            <p>Find the right service for every price point. No hourly rates, just project-based pricing.</p>
                         </li>
                         <li>
-                            <h6><span>{viSymbol}</span>Get quality work done quickly</h6>
-                            <p>Hand your project over to a talented freelancer in <br /> minutes, get long-lasting results.</p>
+                            <h6 className="flex"><span>{viSymbol}</span>Get quality work done quickly</h6>
+                            <p>Hand your project over to a talented freelancer in minutes, get long-lasting results.</p>
                         </li>
                         <li>
-                            <h6><span>{viSymbol}</span>Pay when you're happy</h6>
-                            <p>Upfront quotes mean no surprises. Payments only get <br /> released when you approve.</p>
+                            <h6 className="flex"><span>{viSymbol}</span>Pay when you're happy</h6>
+                            <p>Upfront quotes mean no surprises. Payments only get released when you approve.</p>
                         </li>
                         <li>
-                            <h6><span>{viSymbol}</span>Count on 24/7 support</h6>
-                            <p>Our round-the-clock support team is available to help <br /> anytime, anywhere.</p>
+                            <h6 className="flex"><span>{viSymbol}</span>Count on 24/7 support</h6>
+                            <p>Our round-the-clock support team is available to help anytime, anywhere.</p>
                         </li>
 
                     </ul>
