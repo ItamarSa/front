@@ -2,17 +2,25 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    gap: 39px;
+    gap: em(30px);
     margin-right: 0;
     padding: 8px 0;
     position: relative; /* Ensure proper positioning context */
+    max-width: 1400px;
   }
   
   button.tag {
     display: flex;
     white-space: nowrap;
     position: relative; /* Ensure proper positioning context for the pseudo-element */
-    font-family:  macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;   
+    font-family:  macan-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    
+    &:first-of-type{
+      padding-left: 0;
+    }
+    &:last-of-type{
+      padding-right: 0;
+    }
   
     &::before {
       content: "";

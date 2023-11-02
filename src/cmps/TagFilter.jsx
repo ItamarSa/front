@@ -49,8 +49,8 @@ export function TagFilter({ filterBy, onSetFilter }) {
             className={`btn tag ${filterByTags.tags.includes(tag) ? "selected" : ""}`}
             onClick={() => handleTagButtonClick(tag)}
           >
-            {tag}
-            {/* {newTag=tag.replace('-', ' & ')} */}
+            {/* {tag} */}
+            {newTag=tag.replace('-', ' & ')}
           </button>
         ))}
       </div>
