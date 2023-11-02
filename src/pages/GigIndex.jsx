@@ -40,12 +40,16 @@ export function GigIndex() {
     useEffect(() => {
         try {
             loadGigs()
+            
         } catch (err) {
             console.log('err:', err)
             showErrorMsg('Cannot load toys')
         }
     }, [filterBy])
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    },[0])
 
     useClickOutside(deliveryMenuRef, handleClickOutSide)
     function handleClickOutSide() {
