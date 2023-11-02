@@ -254,13 +254,20 @@ export function GigIndex() {
 
     return (
         <div className='gigs'>
-            <Link className='home-nav' to='/'>{homeSymbol}</Link>
-            <h1>{tags}</h1>
+            <div className="list-head flex column ">
+                <div className='home-nav'>
+                    <Link  to='/'>{homeSymbol}</Link>
+                </div>
+                <h1 className='gig-list-title'>{tags}</h1>
+                <div className="explanation-video flex align-center">
+                    <p className="subtitle">Get a beautiful website design that people love to engage with.</p>
+                </div>
+            </div>
             <main>
 
                 {loggedInUser && (
                     <>
-                        <button onClick={onAddGig}>Add Gig ⛐</button><br />
+                        <button onClick={onAddGig}>Add Gig ⛐</button>
                         {/* <button>
                             <Link to='/edit'>Add Gig Customize</Link>
                         </button> */}

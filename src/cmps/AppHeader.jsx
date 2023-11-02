@@ -223,13 +223,13 @@ export function AppHeader() {
                             {!user && <li onClick={openModal} className={`nav btn btn-join ${scrolling ? "green-color" : ''}`}>
                                 Join
                             </li>}
-                            <div>
+                            {/* <div> */}
                         {/* <button onClick={openModal}>Open Modal</button> */}
                         {/* // Inside your LoginModal component */}
                         {/* <button onClick={closeModal}>Close</button> */}
 
                         {isLoginModalOpen && <LoginModal closeModal={closeModal} />}
-                    </div>
+                    {/* </div> */}
                             
 
                             <li>
