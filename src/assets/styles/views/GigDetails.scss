@@ -4,7 +4,6 @@
   margin: 0 auto;
   padding: 32px 32px 64px;
   .main-details {
-    // grid-column: 1;
     margin-right: 9.15%;
     width: 57.42%;
 
@@ -14,12 +13,12 @@
 
       small {
         color: #c5c6c9;
-        padding: 0 5px;
+        margin: 0 8px;
       }
 
       a {
         font-size: 14px;
-        color: $clr7;
+        color: $clr2;
         text-decoration: none;
       }
     }
