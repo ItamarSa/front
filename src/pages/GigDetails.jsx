@@ -20,7 +20,8 @@ export function GigDetails() {
 
     useEffect(() => {
         loadGigs()
-    }, [gigId])
+        window.scrollTo(0, 0)
+        }, [gigId])
 
 
 
