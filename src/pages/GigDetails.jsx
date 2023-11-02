@@ -51,8 +51,9 @@ export function GigDetails() {
 
             <div className='main-details '>
                 <div className="nav-links flex align-center">
-                    <Link to='/'>{homeSymbol}
-                    </Link>  <small> / </small> <Link to={`/gigs?tags=${gig.tags}`}>{gig.tags}</Link>
+                    <Link to='/'>{homeSymbol}</Link>
+                      <small> / </small> 
+                      <Link to={`/gigs?tags=${gig.tags}`}>{gig.tags}</Link>
                 </div>
                 <GigCard gig={gig} starSymbol={starSymbol} />
                 <AboutSeller gig={gig} starSymbol={starSymbol} />
