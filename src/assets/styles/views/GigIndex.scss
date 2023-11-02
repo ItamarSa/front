@@ -7,6 +7,20 @@
       .home-nav{
         padding-bottom: 21px;
         line-height: 18px;
+        .home-symbol{
+          padding-top: 4px;
+        }
+
+        small {
+          color: #c5c6c9;
+          margin: 0 8px;
+        }
+  
+        a {
+          font-size: 14px;
+          color: $clr2;
+          text-decoration: none;
+        }
       }
       .gig-list-title{
         margin: 0;
