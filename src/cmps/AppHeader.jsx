@@ -113,7 +113,7 @@ export function AppHeader() {
     }, [isModalOpen, isMenuOpen])
 
     const handleScroll = () => {
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < 800) {
             setShowFilter(true); // Always show filters when resolution is less than 768px
           } else if (isHomePage) {
         if (isHomePage) {

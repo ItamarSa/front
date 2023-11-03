@@ -17,6 +17,7 @@ export function GigListMobile({ gigs, onRemoveGig, onUpdateGig, isCurrentUser })
       
         return (
           <>
+              <h2 class="popular-service-title">Related to items you've viewed </h2>
             <div className="list-subtitle flex space-between">
               <div className='services-amount'>
                 {((gigs.length * 1000) + randomNum).toLocaleString()} services available

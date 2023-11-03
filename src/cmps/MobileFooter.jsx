@@ -11,21 +11,18 @@ export function MobileFooter() {
             <div class="container main-container">
                 <div className="footer-nav">
                     <Link className="nav-link" to='/'>
-                        <i class="fa-solid fa-house"></i>
+                    <i class="fa-solid fa-house-chimney"></i>
                     </Link>
                     <Link className="nav-link" to='/gigs'>
-                    <i class="fa-solid fa-table-list"></i>
+                        <i class="fa-solid fa-table-list"></i>
                     </Link>
-                    
                     <Link className="nav-link" to='/gig/category'>
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </Link>
-                    <div class="li"><i class="fa-solid fa-clipboard-list"></i> </div>
-                    <div class="li"><i class="fa-solid fa-circle-user"></i></div>
+                    <div class="li nav-link"><i class="fa-solid fa-clipboard-list"></i> </div>
+                    <div class="li nav-link"><i class="fa-solid fa-circle-user"></i></div>
                 </div>
-
             </div>
-
         </footer>
     )
 }
