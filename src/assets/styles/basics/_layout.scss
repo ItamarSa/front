@@ -14,6 +14,21 @@
     grid-column: 2;
   }
 }
+@media (max-width: 768px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: minmax(em(4px), 1fr) minmax(0, 400px) minmax(em(4px), 1fr);
+    justify-content: center;
+    align-items: center;
+    .full {
+      grid-column: 2;
+    }
+  
+    :not(.full) {
+      grid-column: 2;
+    }
+  }
+}
 
 
 

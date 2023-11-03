@@ -40,6 +40,7 @@
 
     }
 
+
     .info {
         min-width: 400px;
         margin-bottom: 30px;
@@ -375,6 +376,271 @@
 }
 
 
+
+
+
+.orders {
+    ul {
+        margin: 0;
+    }
+
+    .order-profile-container {
+        background-color: #fff;
+        // justify-content: center;
+        text-align: left;
+        padding: 0;
+        // margin: 15px;
+        // max-width: 1240px;
+        border: 1px solid #ddd;
+
+        .order-profile-item {
+            display: flex;
+            flex-direction: row;
+
+            .img-main {
+                // display: flex;
+                // align-items: center;
+                padding: 5px;
+                border-bottom: 2px solid #dadbdd;
+
+                .order-profile-imgs {
+                    width: 10vw;
+                    display: flex;
+                    align-items: center;
+                }
+            }
+
+            // align-items: center;
+            // border: none;
+
+
+            .order-profile-img-container {
+                display: flex;
+                // align-items: center;
+                // flex-direction: column;
+
+                .order-profile-imgs {
+                    width: 175px;
+                    height: 110px;
+                    object-fit: fill;
+                    border-radius: 4px;
+                    margin-right: 20px;
+                }
+
+                .seller-imgs {
+                    width: 100px;
+                    height: 100px;
+                    margin-top: 15px;
+                    border-radius: 50%
+                }
+            }
+
+            .order-info {
+                padding: 5px;
+                font-family: macan-regular !important;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                font-size: em(18px);
+                background-color: #fff;
+                border-bottom: 2px solid #dadbdd;
+                width: 100%;
+                width: 100%;
+
+                .txt-review {
+                    margin-bottom: 3px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    margin-left: 5px;
+
+
+
+                    .place-start {
+                        width: 300px;
+                        font-family: macan-regular;
+                        font-weight: 400;
+                        color: #404145;
+
+                    }
+
+                    img {
+                        width: 10%;
+                    }
+                }
+            }
+
+        }
+
+        // .status {
+        //     display: flex;
+        //     flex-direction: column;
+        //     margin-left: 100px;
+
+        //     .txt-review {
+        //         // flex-direction: column;
+        //     }
+        // }
+
+        // .select-status {
+        //     display: flex
+        // }
+
+        // .custom-select {
+        //     display: flex;
+        //     // margin-left: 100px;
+        // }
+    }
+}
+
+
+
+.order-txt {
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: white !important;
+    height: 200px;
+
+
+
+    &.status-pending {
+
+        color: orange;
+    }
+
+    &.status-approve {
+        color: green;
+        /* Text color for approved status */
+    }
+
+    &.status-decline {
+        color: red;
+        /* Text color for declined status */
+    }
+
+    img {
+        border: 1px black solid;
+        margin-bottom: 10px;
+        aspect-ratio: 1 / 0.6;
+    }
+}
+
+.custom-select {
+    // margin-left: 100px;
+    background-color: #f2f2f2;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    // padding: 15px;
+    width: 200px;
+    margin: 0;
+
+    .username {
+
+        color: black !important;
+    }
+
+    .status {
+        font-size: 16px;
+        font-family: macan-semibold;
+        padding: 25px;
+
+    }
+
+    /* Add more custom styles as needed */
+}
+
+.gigs-profile {
+    .mini-user-preview {
+        display: none;
+    }
+
+    .gig-rate {
+        display: none;
+    }
+
+    .gig-title {
+        text-align: left;
+        padding-left: 10px;
+        padding-bottom: 5px;
+        height: inherit;
+    }
+
+    .gig-price-edit {
+        padding-left: 10px;
+    }
+}
+
+// .order-profile-item {
+//     display: flex;
+//     justify-content: flex-start
+// }
+
+// .description {
+//     display: flex;
+
+//     .order-desc-info {
+//         // margin-left: -100px;
+
+//     }
+// }
+
+// .main-detils-profile {
+//     padding: 10px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     width: 24%;
+
+//     .order-profile-imgs {
+//         aspect-ratio: 1 / 0.6;
+//         object-fit: cover;
+//     }
+
+//     .select-status {
+//         display: flex;
+//         flex-direction: column;
+//         margin-bottom: 110px;
+
+//     }
+
+//     .buyer-img {
+//         height: 50px;
+//         width: 50px;
+
+//     }
+
+//     /* You can adjust the width as needed */
+// }
+.truncate-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    /* Set a max-width as needed */
+    display: inline-block;
+}
+
+.grey {
+    padding: 20px;
+    // background-color: #404145;
+    background: #f7f7f7;
+
+}
+
+.react-seller-gigs {
+    border: 1px solid #dadbdd !important;
+
+    .add-gig {
+        margin: 15px;
+    }
+}
+
 .main-content {
     display: flex;
     flex-direction: column;
@@ -457,265 +723,77 @@
     }
 }
 
-
-.orders {
-    ul {
-        margin: 0;
-    }
-
-    .order-profile-container {
-        background-color: #fff;
-        // justify-content: center;
-        text-align: left;
-        padding: 0;
-        // margin: 15px;
-        // max-width: 1240px;
-        border: 1px solid #ddd;
-
-        .order-profile-item {
-            display: flex;
-            flex-direction: row;
-
-            .img-main {
-                // display: flex;
-                // align-items: center;
-                padding: 5px;
-                border-bottom: 2px solid #dadbdd;
-
-                .order-profile-imgs {
-                    width: 10vw;
-                    display: flex;
-                    align-items: center;
-                }
-            }
-
-                // align-items: center;
-                // border: none;
-
-
-                .order-profile-img-container {
-                    display: flex;
-                    // align-items: center;
-                    // flex-direction: column;
-
-                    .order-profile-imgs {
-                        width: 175px;
-                        height: 110px;
-                        object-fit: fill;
-                        border-radius: 4px;
-                        margin-right: 20px;
-                    }
-
-                    .seller-imgs {
-                        width: 100px;
-                        height: 100px;
-                        margin-top: 15px;
-                        border-radius: 50%
-                    }
-                }
-
-                .order-info {
-                    padding: 5px;
-                    font-family: macan-regular !important;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    font-size: em(18px);
-                    background-color: #fff;
-                    border-bottom: 2px solid #dadbdd;
-                    width: 100%;
-                    width: 100%;
-
-                    .txt-review {
-                        margin-bottom: 3px;
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: space-between;
-                        margin-left: 5px;
-
-
-
-                        .place-start {
-                            width: 300px;
-                            font-family: macan-regular;
-                            font-weight: 400;
-                            color: #404145;
-
-                        }
-
-                        img {
-                            width: 10%;
-                        }
-                    }
-                }
-
-            }
-
-            // .status {
-            //     display: flex;
-            //     flex-direction: column;
-            //     margin-left: 100px;
-
-            //     .txt-review {
-            //         // flex-direction: column;
-            //     }
-            // }
-
-            // .select-status {
-            //     display: flex
-            // }
-
-            // .custom-select {
-            //     display: flex;
-            //     // margin-left: 100px;
-            // }
-        }
-    }
-
-
-
-    .order-txt {
-
+@media (max-width: 768px) {
+    .user-container {
         display: flex;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        border: 1px solid #ddd;
-        margin-bottom: 10px;
-        padding: 10px;
-        background-color: white !important;
-        height: 200px;
+        flex-direction: column-reverse;
+        max-width: 400px;
+        margin: 0 auto;
+        align-items: center;
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 400px;
 
 
+            .react-seller-gigs {
+                display: none;
 
-        &.status-pending {
 
-            color: orange;
-        }
+            }
 
-        &.status-approve {
-            color: green;
-            /* Text color for approved status */
-        }
+            .orders {
+                min-width: 350px;
 
-        &.status-decline {
-            color: red;
-            /* Text color for declined status */
-        }
+                .order-profile-container {
+                    // width: 100%;
 
-        img {
-            border: 1px black solid;
-            margin-bottom: 10px;
-            aspect-ratio: 1 / 0.6;
+                    .order-profile-item {
+                        .order-profile-imgs {
+                            width: 30vw;
+                        }
+
+                        .txt-review {
+                            margin: 0;
+                            font-size: 14px;
+
+                            &.stat {
+                                display: flex;
+                                align-items: center
+                            }
+
+                            .desc {
+                                display: none
+                            }
+
+                            .place-start {
+                                width: 90px;
+
+                                .custom-select {
+                                    max-width: 90px;
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
         }
     }
+}
 
-    .custom-select {
-        // margin-left: 100px;
-        background-color: #f2f2f2;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        // padding: 15px;
-        width: 200px;
-        margin: 0;
-
-        .username {
-
-            color: black !important;
-        }
-
-        .status {
-            font-size: 16px;
-            font-family: macan-semibold;
-            padding: 25px;
-
-        }
-
-        /* Add more custom styles as needed */
-    }
-
+@media (max-width: 768px) {
     .gigs-profile {
-        .mini-user-preview {
-            display: none;
-        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 350px;
 
-        .gig-rate {
-            display: none;
-        }
-
-        .gig-title {
-            text-align: left;
-            padding-left: 10px;
-            padding-bottom: 5px;
-            height: inherit;
-        }
-
-        .gig-price-edit {
-            padding-left: 10px;
+        .gig-list {
+            display: flex;
+            flex-direction: column;
         }
     }
-
-    // .order-profile-item {
-    //     display: flex;
-    //     justify-content: flex-start
-    // }
-
-    // .description {
-    //     display: flex;
-
-    //     .order-desc-info {
-    //         // margin-left: -100px;
-
-    //     }
-    // }
-
-    // .main-detils-profile {
-    //     padding: 10px;
-    //     display: flex;
-    //     flex-direction: column;
-    //     justify-content: space-between;
-    //     width: 24%;
-
-    //     .order-profile-imgs {
-    //         aspect-ratio: 1 / 0.6;
-    //         object-fit: cover;
-    //     }
-
-    //     .select-status {
-    //         display: flex;
-    //         flex-direction: column;
-    //         margin-bottom: 110px;
-
-    //     }
-
-    //     .buyer-img {
-    //         height: 50px;
-    //         width: 50px;
-
-    //     }
-
-    //     /* You can adjust the width as needed */
-    // }
-    .truncate-text {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 250px;
-        /* Set a max-width as needed */
-        display: inline-block;
-    }
-
-    .grey {
-        padding: 20px;
-        // background-color: #404145;
-        background: #f7f7f7;
-
-    }
-
-    .react-seller-gigs {
-        border: 1px solid #dadbdd !important;
-
-        .add-gig {
-            margin: 15px;
-        }
-    }
+}

@@ -17,6 +17,8 @@ import { GigPayment } from './pages/GigPayment'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
 import { ModalProvider } from './cmps/ModalProvider'
+import { MobileFooter } from './cmps/MobileFooter'
+import { CategoriesCmp } from './cmps/CategoriesCmp'
 
 export function RootCmp() {
 
@@ -38,9 +40,11 @@ export function RootCmp() {
                     <Route element={<GigPayment />} path='/gig/:gigId/payment' />
                     <Route element={<GigOrder />} path='/gig/:gigId/order' />
                     <Route element={<GigDetails />} path='/gig/:gigId' />
+                    <Route element={<CategoriesCmp />} path='/gig/category' />
                 </Routes>
             {/* </main> */}
             <AppFooter />
+            <MobileFooter/>
             </ModalProvider>
             <UserMsg/>
         </div>
