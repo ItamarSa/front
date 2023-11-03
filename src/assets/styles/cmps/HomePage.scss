@@ -270,9 +270,20 @@
         display: none;
     }
 }
+.mobile-gigs-seconde {
+    .slick-track {
+        display: flex;
+        justify-content: flex-end;
+      }
+   
+}
 
 .mobile-gigs-first {
-    margin-top: 150px;
+    margin-bottom: 25px;
+    .slick-track {
+        display: flex;
+        justify-content: flex-end;
+      }
 
     .gig-list {
         display: flex;
@@ -281,6 +292,7 @@
 }
 
 .mobile-gigs-seconde {
+    margin-bottom: 25px;
     .gig-list {
         display: flex;
         width: 350px;
@@ -288,7 +300,19 @@
 }
 
 .carusleMobile {
+     margin-top: 110px;
     .popular-services-slider {
         margin-bottom: 25px;
+        .slick-track {
+            display: flex;
+            justify-content: flex-end;
+          }
     }
 }
+
+  
+  
+  
+  
+  
+  

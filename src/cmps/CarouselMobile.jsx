@@ -89,8 +89,8 @@ export function CarouselMobile() {
     ]
 
     const settings = {
-        slidesToShow: 2,
-        slidesToScroll: 2,
+        slidesToShow: 2.5,
+        slidesToScroll: 3,
         speed: 500,
     }
 

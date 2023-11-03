@@ -197,16 +197,17 @@ export function HomePage() {
           </ul>
         </div>
       </section>
-      <div className='mobile-gigs-container'>
-        <div className='mobile-gigs-first'>
-          <GigListMobile gigs={gigs} />
-        </div>
-        <div className='carusleMobile'>
+      <div className='carusleMobile'>
           <div>
             <CarouselMobile />
           </div>
           
         </div>
+      <div className='mobile-gigs-container'>
+        <div className='mobile-gigs-first'>
+          <GigListMobile gigs={gigs} />
+        </div>
+        
         <div className='mobile-gigs-seconde'>
           <GigListMobile gigs={gigs} />
         </div>

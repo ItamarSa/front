@@ -10,8 +10,8 @@ export function GigListMobile({ gigs, onRemoveGig, onUpdateGig, isCurrentUser })
     
         // Configure the settings for the carousel
         const settings = {
-          slidesToShow: 2, // Display 2 slides at a time
-          slidesToScroll: 2, // Scroll 2 slides at a time
+          slidesToShow: 2.5, // Display 2 slides at a time
+          slidesToScroll: 3,
           infinite: true, // Infinite loop
         };
       
