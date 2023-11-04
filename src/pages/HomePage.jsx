@@ -204,13 +204,13 @@ export function HomePage() {
           
         </div>
       <div className='mobile-gigs-container'>
-        <div className='mobile-gigs-first'>
-          <GigListMobile gigs={gigs} />
-        </div>
-        
-        <div className='mobile-gigs-seconde'>
-          <GigListMobile gigs={gigs} />
-        </div>
+      <div className='mobile-gigs-first'>
+    <GigListMobile gigs={gigs} slidesToShow={1.5} slidesToScroll={3} gigsTitle={"Related to items you've viewed"} />
+  </div>
+  <div className='mobile-gigs-seconde'>
+    <GigListMobile gigs={gigs} slidesToShow={2.5} slidesToScroll={3} gigsTitle={'What new at Fiver?'}/>
+</div>
+
       </div>
       <div className='carusale'>
             <Carousel />
