@@ -730,12 +730,14 @@
         max-width: 400px;
         margin: 0 auto;
         align-items: center;
+        overflow-x: visible !important;
 
         .main-content {
+            padding-left: 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 400px;
+            max-width: 410px;
 
 
             .react-seller-gigs {
@@ -745,10 +747,11 @@
             }
 
             .orders {
-                min-width: 350px;
+                min-width: 405px;
 
                 .order-profile-container {
                     // width: 100%;
+                    margin-right: -5px;
 
                     .order-profile-item {
                         .order-profile-imgs {

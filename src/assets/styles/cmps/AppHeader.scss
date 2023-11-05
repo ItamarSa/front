@@ -346,12 +346,12 @@
     @media (max-width: 768px) {
         .main-nav {
             display: flex;
-            ;
+            background-color: #fff;
             flex-direction: column;
             align-items: flex-start;
             max-width: 400px;
             margin: 0;
-            grid-column: 2;
+            // grid-column: 2;
         }
     }
 
@@ -371,6 +371,12 @@
         border-radius: 50%;
         height: 50px;
         width: 50px;
+    }
+}
+@media (max-width: 768px) {
+    .app-header {
+       background-color: #fff;
+        // font-size: 24px;
     }
 }
 
@@ -421,7 +427,7 @@ a.btn {
 @media (max-width: 768px) {
     .logo {
         margin: 0;
-        font-size: 24px;
+        // font-size: 24px;
     }
 }
 

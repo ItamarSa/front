@@ -203,12 +203,18 @@ export function HomePage() {
           </div>
           
         </div>
+        <div className='explore'>
+          <img src='../../src/assets/img/explore.jpg' alt="" />
+        </div>
       <div className='mobile-gigs-container'>
       <div className='mobile-gigs-first'>
-    <GigListMobile gigs={gigs} slidesToShow={1.5} slidesToScroll={3} gigsTitle={"Related to items you've viewed"} />
+    <GigListMobile gigs={gigs} slidesToShow={1.5} slidesToScroll={3} gigsTitle={"Recently viewed & more"} />
   </div>
+  <div className='explore'>
+          <img src='../../src/assets/img/exp.jpg' alt="" />
+        </div>
   <div className='mobile-gigs-seconde'>
-    <GigListMobile gigs={gigs} slidesToShow={2.5} slidesToScroll={3} gigsTitle={'What new at Fiver?'}/>
+    <GigListMobile gigs={gigs} slidesToShow={2.5} slidesToScroll={3} gigsTitle={'What new on Fiver?'}/>
 </div>
 
       </div>

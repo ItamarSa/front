@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { CategoriesCmp } from "./CategoriesCmp";
 import { loadGigs } from "../store/action/gig.actions";
+import { userService } from "../services/user.service";
 
 export function MobileFooter() {
-
+const user =userService.getLoggedinUser()
 
 
     return (
@@ -20,7 +21,9 @@ export function MobileFooter() {
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </Link>
                     <div class="li nav-link"><i class="fa-solid fa-clipboard-list"></i> </div>
-                    <div class="li nav-link"><i class="fa-solid fa-circle-user"></i></div>
+                    <Link className="li nav-link" to={`user/${user?._id}`}>
+                        <i class="fa-solid fa-circle-user"></i>
+                    </Link>
                 </div>
             </div>
         </footer>
