@@ -144,20 +144,20 @@ export function GigPayment() {
                 <div className="payment-page-main-layout max-width-container">
                     <div className="grid-12 center-xs">
                         <div className="payment-container" >
-                            <section class="billing-info-wrapper">
-                                <header class="section-header">
-                                    <h6 class="text-display-7">Billing information</h6>
+                            <section className="billing-info-wrapper">
+                                <header className="section-header">
+                                    <h6 className="text-display-7">Billing information</h6>
                                 </header>
-                                <div class="p-20">
-                                    <div class="flex-col">
-                                        <div class="payment-page-gap-16">
-                                            <p class="payment-page-max-w-unset">Your invoice will be issued according to the details listed here.</p>
+                                <div className="p-20">
+                                    <div className="flex-col">
+                                        <div className="payment-page-gap-16">
+                                            <p className="payment-page-max-w-unset">Your invoice will be issued according to the details listed here.</p>
                                             <div className="texts">
-                                                <div class="semi">{user?.username}</div>
-                                                <div class="deatil">{user?.from}</div>
+                                                <div className="semi">{user?.username}</div>
+                                                <div className="deatil">{user?.from}</div>
                                             </div>
                                         </div>
-                                        <div><button onClick={handleClickModal} class="FW1syM7 Af0hvld xaFER3a co-grey-1200 payment-page-h-42 payment-page-max-w-fit-content">Add details</button></div>
+                                        <div><button onClick={handleClickModal} className="FW1syM7 Af0hvld xaFER3a co-grey-1200 payment-page-h-42 payment-page-max-w-fit-content">Add details</button></div>
 
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@ export function GigPayment() {
                                                 </div>
                                             </div>
                                             <div className="pay-name">
-                                                <div className="name-fields"><div class="field text-field">
+                                                <div className="name-fields"><div className="field text-field">
                                                     <label className="semibold first_name-label"
                                                     >First name
                                                     </label>
@@ -245,8 +245,8 @@ export function GigPayment() {
 
 
                                                 </div>
-                                                    <div class="field text-field">
-                                                        <label class=" semibold last_name-label">
+                                                    <div className="field text-field">
+                                                        <label className=" semibold last_name-label">
                                                             Last name
                                                         </label>
                                                         <div className="WvIqLXU eXfr7qm text-field-input-wrapper">
@@ -295,16 +295,16 @@ export function GigPayment() {
                             </section>
                         </div>
                         <div className="side-content">
-                            <div class="_1mm74yfy3 _1mm74yfxe _1mm74yf0 _1mm74yfs4 _1mm74yf1d3 _1mm74yf115">
-                                <div class="collect-wrapper">
-                                    <div class="collect-package nav-collect">
-                                        <div class="flex">
-                                            <div class="jEW3B9z yg0RnXN dqY4WuM">
-                                                <span class="HsyURQF">
-                                                    <div class="jEW3B9z Y_05slf">
-                                                        <span class="HsyURQF">
-                                                            <button class="mTBRWF_" delay="120" content="[object Object]" position="top" boxclassname="n8k5Ydl" boxcontentclassname="xZqc_Ec tooltip-box-content" containerclassname="collect-package-tooltip gig-page-nav-collect tooltip">
-                                                                <span class="glAQDp5 Dv4Gkfw" aria-hidden="true" style={{width: '16px', height: '16px'}}>
+                            <div className="_1mm74yfy3 _1mm74yfxe _1mm74yf0 _1mm74yfs4 _1mm74yf1d3 _1mm74yf115">
+                                <div className="collect-wrapper">
+                                    <div className="collect-package nav-collect">
+                                        <div className="flex">
+                                            <div className="jEW3B9z yg0RnXN dqY4WuM">
+                                                <span className="HsyURQF">
+                                                    <div className="jEW3B9z Y_05slf">
+                                                        <span className="HsyURQF">
+                                                            <button className="mTBRWF_" delay="120" content="[object Object]" position="top" boxclassname="n8k5Ydl" boxcontentclassname="xZqc_Ec tooltip-box-content" containerclassname="collect-package-tooltip gig-page-nav-collect tooltip">
+                                                                <span className="glAQDp5 Dv4Gkfw" aria-hidden="true" style={{width: '16px', height: '16px'}}>
                                                                     <svg width="16" height="13" viewBox="0 0 16 13" xmlns="http://www.w3.org/2000/svg">
                                                                         <path d="M15.0769 0H0.923077C0.413276 0 0 0.415736 0 0.928571C0 1.44141 0.413276 1.85714 0.923077 1.85714H15.0769C15.5867 1.85714 16 1.44141 16 0.928571C16 0.415736 15.5867 0 15.0769 0Z">
                                                                         </path>
@@ -320,10 +320,10 @@ export function GigPayment() {
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="jEW3B9z Y_05slf">
-                                            <span class="HsyURQF">
-                                                <button class="iyKO0_a" delay="120" content="[object Object]" position="top" boxclassname="n8k5Ydl" boxcontentclassname="xZqc_Ec tooltip-box-content" containerclassname="collect-package-tooltip gig-page-nav-collect tooltip">
-                                                    <span class="glAQDp5 WO3uerB" aria-hidden="true" style={{width: '16px', height: '16px'}}>
+                                        <div className="jEW3B9z Y_05slf">
+                                            <span className="HsyURQF">
+                                                <button className="iyKO0_a" delay="120" content="[object Object]" position="top" boxclassname="n8k5Ydl" boxcontentclassname="xZqc_Ec tooltip-box-content" containerclassname="collect-package-tooltip gig-page-nav-collect tooltip">
+                                                    <span className="glAQDp5 WO3uerB" aria-hidden="true" style={{width: '16px', height: '16px'}}>
                                                         <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M14.4469 1.95625C12.7344 0.496875 10.1875 0.759375 8.61561 2.38125L7.99999 3.01562L7.38436 2.38125C5.81561 0.759375 3.26561 0.496875 1.55311 1.95625C-0.409388 3.63125 -0.512513 6.6375 1.24374 8.45312L7.29061 14.6969C7.68124 15.1 8.31561 15.1 8.70624 14.6969L14.7531 8.45312C16.5125 6.6375 16.4094 3.63125 14.4469 1.95625Z">
                                                             </path>
@@ -333,18 +333,18 @@ export function GigPayment() {
                                             </span>
                                         </div>
                                     </div>
-                                    <span class="collect-count">907</span>
+                                    <span className="collect-count">907</span>
                                 </div>
-                                <span class="yvFG0X6">
-                                    <button data-testid="share_gig_test_id" role="button" class="kJEfvot B5ygUUj vunBc9H zle7n04d zle7n0wk">
+                                <span className="yvFG0X6">
+                                    <button data-testid="share_gig_test_id" role="button" className="kJEfvot B5ygUUj vunBc9H zle7n04d zle7n0wk">
                                         <svg width="16" height="16" viewBox="0 0 14 16" xmlns="http://www.w3.org/2000/svg" fill="currentFill">
                                             <path d="M11 10c-.707 0-1.356.244-1.868.653L5.929 8.651a3.017 3.017 0 0 0 0-1.302l3.203-2.002a3 3 0 1 0-1.06-1.696L4.867 5.653a3 3 0 1 0 0 4.694l3.203 2.002A3 3 0 1 0 11 10Z">
                                             </path>
                                         </svg>
                                     </button>
                                 </span>
-                                <div class="yvFG0X6">
-                                    <button data-testid="show_more_test_id" role="button" class="kJEfvot B5ygUUj vunBc9H zle7n04d zle7n0wk">
+                                <div className="yvFG0X6">
+                                    <button data-testid="show_more_test_id" role="button" className="kJEfvot B5ygUUj vunBc9H zle7n04d zle7n0wk">
                                         <svg width="16" height="16" viewBox="0 0 16 4" xmlns="http://www.w3.org/2000/svg" fill="currentFill">
                                             <circle cx="2" cy="2" r="2">
                                             </circle>
@@ -357,91 +357,91 @@ export function GigPayment() {
                                 </div>
                             </div>
                             <div className="order-details-container gig">
-                                <span class="gig">
-                                    <header class="order-details-header">
-                                        <span class="image-container">
-                                            <img class="order-image" src={gig?.imgUrl[0]}
+                                <span className="gig">
+                                    <header className="order-details-header">
+                                        <span className="image-container">
+                                            <img className="order-image" src={gig?.imgUrl[0]}
                                                 alt="I will do brand style guide and minimalist logo design" />
                                         </span>
                                         <div>
-                                            <h3 class="order-title text-display-7">{gig?.title}</h3>
+                                            <h3 className="order-title text-display-7">{gig?.title}</h3>
                                         </div>
                                     </header>
-                                    <article class="order-details-general">
-                                        <span class="order-details-general-title text-display-7">
+                                    <article className="order-details-general">
+                                        <span className="order-details-general-title text-display-7">
                                             {planType.charAt(0).toUpperCase() + planType.slice(1)} Package
                                         </span>
-                                        <div class="quantity-price-container ">
-                                            <span class="order-details-general-quantity hide">$</span>
-                                            <span class="price order-details-general-price">{planPrice}</span >
+                                        <div className="quantity-price-container ">
+                                            <span className="order-details-general-quantity hide">$</span>
+                                            <span className="price order-details-general-price">{planPrice}</span >
                                         </div>
                                     </article>
-                                    <ul class="order-details-items-container">
-                                        <li class="order-details-item">
-                                            <span class="item-title">
-                                                <span class="XQskgrQ order-details-item-icon" aria-hidden="true"
+                                    <ul className="order-details-items-container">
+                                        <li className="order-details-item">
+                                            <span className="item-title">
+                                                <span className="XQskgrQ order-details-item-icon" aria-hidden="true"
                                                     style={{ width: "16px", height: "16px", fill: "rgb(0, 0, 0)" }}>
                                                     <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M13.6202 2.6083L5.4001 10.8284L2.37973 7.80805C2.23329 7.66161 1.99585 7.66161 1.84939 7.80805L0.96551 8.69193C0.819073 8.83836 0.819073 9.0758 0.96551 9.22227L5.13492 13.3917C5.28135 13.5381 5.51879 13.5381 5.66526 13.3917L15.0344 4.02252C15.1809 3.87608 15.1809 3.63865 15.0344 3.49218L14.1505 2.6083C14.0041 2.46186 13.7667 2.46186 13.6202 2.6083Z">
                                                         </path>
                                                     </svg>
                                                 </span>
-                                                <span class="order-details-item-title">Logo usage guidelines</span>
+                                                <span className="order-details-item-title">Logo usage guidelines</span>
                                             </span>
-                                            <span class="item-details">
+                                            <span className="item-details">
                                             </span>
                                         </li>
-                                        <li class="order-details-item">
-                                            <span class="item-title">
-                                                <span class="XQskgrQ order-details-item-icon" aria-hidden="true"
+                                        <li className="order-details-item">
+                                            <span className="item-title">
+                                                <span className="XQskgrQ order-details-item-icon" aria-hidden="true"
                                                     style={{ width: "16px", height: "16px", fill: "rgb(0, 0, 0)" }}>
                                                     <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M13.6202 2.6083L5.4001 10.8284L2.37973 7.80805C2.23329 7.66161 1.99585 7.66161 1.84939 7.80805L0.96551 8.69193C0.819073 8.83836 0.819073 9.0758 0.96551 9.22227L5.13492 13.3917C5.28135 13.5381 5.51879 13.5381 5.66526 13.3917L15.0344 4.02252C15.1809 3.87608 15.1809 3.63865 15.0344 3.49218L14.1505 2.6083C14.0041 2.46186 13.7667 2.46186 13.6202 2.6083Z">
                                                         </path>
                                                     </svg>
                                                 </span>
-                                                <span class="order-details-item-title">Color palette</span>
-                                            </span><span class="item-details">
+                                                <span className="order-details-item-title">Color palette</span>
+                                            </span><span className="item-details">
                                             </span>
                                         </li>
-                                        <li class="order-details-item">
-                                            <span class="item-title">
-                                                <span class="XQskgrQ order-details-item-icon" aria-hidden="true" style={{ width: "16px", height: "16px", fill: "rgb(0, 0, 0)" }}>
+                                        <li className="order-details-item">
+                                            <span className="item-title">
+                                                <span className="XQskgrQ order-details-item-icon" aria-hidden="true" style={{ width: "16px", height: "16px", fill: "rgb(0, 0, 0)" }}>
                                                     <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M13.6202 2.6083L5.4001 10.8284L2.37973 7.80805C2.23329 7.66161 1.99585 7.66161 1.84939 7.80805L0.96551 8.69193C0.819073 8.83836 0.819073 9.0758 0.96551 9.22227L5.13492 13.3917C5.28135 13.5381 5.51879 13.5381 5.66526 13.3917L15.0344 4.02252C15.1809 3.87608 15.1809 3.63865 15.0344 3.49218L14.1505 2.6083C14.0041 2.46186 13.7667 2.46186 13.6202 2.6083Z"></path>
                                                     </svg>
                                                 </span>
-                                                <span class="order-details-item-title">Typography guidelines</span>
+                                                <span className="order-details-item-title">Typography guidelines</span>
                                             </span>
-                                            <span class="item-details">
+                                            <span className="item-details">
                                             </span>
                                         </li>
-                                        <li class="order-details-item">
-                                            <span class="item-title">
-                                                <span class="XQskgrQ order-details-item-icon" aria-hidden="true" style={{ width: "16px", height: "16px", fill: "rgb(0, 0, 0)" }}>
+                                        <li className="order-details-item">
+                                            <span className="item-title">
+                                                <span className="XQskgrQ order-details-item-icon" aria-hidden="true" style={{ width: "16px", height: "16px", fill: "rgb(0, 0, 0)" }}>
                                                     <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M13.6202 2.6083L5.4001 10.8284L2.37973 7.80805C2.23329 7.66161 1.99585 7.66161 1.84939 7.80805L0.96551 8.69193C0.819073 8.83836 0.819073 9.0758 0.96551 9.22227L5.13492 13.3917C5.28135 13.5381 5.51879 13.5381 5.66526 13.3917L15.0344 4.02252C15.1809 3.87608 15.1809 3.63865 15.0344 3.49218L14.1505 2.6083C14.0041 2.46186 13.7667 2.46186 13.6202 2.6083Z"></path>
                                                     </svg>
                                                 </span>
-                                                <span class="order-details-item-title">3 revisions</span>
+                                                <span className="order-details-item-title">3 revisions</span>
                                             </span>
-                                            <span class="item-details">
+                                            <span className="item-details">
                                             </span>
                                         </li>
                                     </ul>
-                                    <ul class="order-details-items-container">
+                                    <ul className="order-details-items-container">
                                     </ul>
                                 </span>
                             </div>
-                            <section class="summary">
-                                <div class="summary-table">
-                                    <div class="table-row fee-row">
-                                        <span class="row-title">Service fee<div class="W46fKfn +cX12Jm k-kBZXW tooltip"
+                            <section className="summary">
+                                <div className="summary-table">
+                                    <div className="table-row fee-row">
+                                        <span className="row-title">Service fee<div className="W46fKfn +cX12Jm k-kBZXW tooltip"
                                             onMouseEnter={() => handleMouseEnter("serviceFee")}
                                             onMouseLeave={() => handleMouseLeave("serviceFee")}
                                         >
-                                            <span class="_5-fo9i5">
-                                                <i class="fa fa-question-circle" delay="120" content="[object Object]" position="top" boxclassname="_8UHHk5Q" boxcontentclassname="Yn90o2E box-content">
+                                            <span className="_5-fo9i5">
+                                                <i className="fa fa-question-circle" delay="120" content="[object Object]" position="top" boxclassname="_8UHHk5Q" boxcontentclassname="Yn90o2E box-content">
                                                 </i>
                                             </span>
                                             {showServiceFeeTooltip && (
@@ -458,21 +458,21 @@ export function GigPayment() {
                                             )}
                                         </div>
                                         </span>
-                                        <span class="price">{"$" + (fee).toFixed(2)}</span>
+                                        <span className="price">{"$" + (fee).toFixed(2)}</span>
                                     </div>
-                                    <div class="table-row tax-row">
-                                        <span class="row-title">VAT<div class="W46fKfn +cX12Jm k-kBZXW tooltip"
+                                    <div className="table-row tax-row">
+                                        <span className="row-title">VAT<div className="W46fKfn +cX12Jm k-kBZXW tooltip"
                                             onMouseEnter={() => handleMouseEnter("VAT")}
                                             onMouseLeave={() => handleMouseLeave("VAT")}
                                         >
-                                            <span class="_5-fo9i5">
-                                                <i class="fa fa-question-circle" delay="120" content="[object Object]" position="top" boxclassname="_8UHHk5Q" boxcontentclassname="Yn90o2E box-content">
+                                            <span className="_5-fo9i5">
+                                                <i className="fa fa-question-circle" delay="120" content="[object Object]" position="top" boxclassname="_8UHHk5Q" boxcontentclassname="Yn90o2E box-content">
                                                 </i>
                                             </span>
                                             {showVATTooltip && (
-                                                <div class="k-kBZXW tooltip Gcze-fJ">
-                                                    <aside class="_77O-JH4 zBHi7jg _7t6M82a _8UHHk5Q" data-position="top" style={{ left: '-151.57px', top: '-74px', paddingBottom: '8px' }}>
-                                                        <div class="_5KluhlZ Yn90o2E box-content">
+                                                <div className="k-kBZXW tooltip Gcze-fJ">
+                                                    <aside className="_77O-JH4 zBHi7jg _7t6M82a _8UHHk5Q" data-position="top" style={{ left: '-151.57px', top: '-74px', paddingBottom: '8px' }}>
+                                                        <div className="_5KluhlZ Yn90o2E box-content">
                                                             <span>A 17% Value Added Tax (VAT) applies to the purchase of goods and services in Israel.</span>
                                                         </div>
                                                     </aside>
@@ -480,17 +480,17 @@ export function GigPayment() {
                                             )}
                                         </div>
                                         </span>
-                                        <span class="price">{"$" + (vat).toFixed(2)}</span>
+                                        <span className="price">{"$" + (vat).toFixed(2)}</span>
                                     </div>
                                 </div>
-                                <div class="summary-footer">
-                                    <div class="table-row total-price">
-                                        <span class="row-title">Total</span>
-                                        <span class="price"> US${formattedTotal}</span>
+                                <div className="summary-footer">
+                                    <div className="table-row total-price">
+                                        <span className="row-title">Total</span>
+                                        <span className="price"> US${formattedTotal}</span>
                                     </div>
-                                    <div class="table-row delivery-date">
-                                        <span class="row-title">Total delivery time</span>
-                                        <span class="date">{planDelivery + ' '} day/s</span>
+                                    <div className="table-row delivery-date">
+                                        <span className="row-title">Total delivery time</span>
+                                        <span className="date">{planDelivery + ' '} day/s</span>
                                     </div>
                                 </div>
                                 {/* <button className="pay-button" onClick={onAddOrder}>Confirm & Pay</button> */}
@@ -512,16 +512,16 @@ export function GigPayment() {
                                         "Confirm & Pay"
                                     )}
                                 </button>
-                                <div class="secure-payment"><i class="fa fa-lock"></i><span>SSL Secure Payment</span></div>
-                                <section class="currency-section">
-                                    <div class="currency-message tbody-6">You will be charged<span
-                                        class="price">{"  $" + planPrice}</span> Total amount includes currency conversion fees.</div></section>
+                                <div className="secure-payment"><i className="fa fa-lock"></i><span>SSL Secure Payment</span></div>
+                                <section className="currency-section">
+                                    <div className="currency-message tbody-6">You will be charged<span
+                                        className="price">{"  $" + planPrice}</span> Total amount includes currency conversion fees.</div></section>
                             </section>
                         </div>
                     </div>
                 </div>
                 <div className="loading-mask">
-                    {/* <span class="XQskgrQ spinner" aria-hidden="true" style="width: 32px; height: 32px;"><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.3786 11.6827L13.7279 11.307C13.5548 11.207 13.4923 10.9895 13.5822 10.8109C14.524 8.9395 14.4679 6.69681 13.4139 4.87512C12.3626 3.05031 10.4484 1.88034 8.35678 1.76025C8.15712 1.74878 8 1.58597 8 1.386V0.634656C8 0.418906 8.1815 0.249125 8.39697 0.260219C11.0081 0.394781 13.4021 1.84972 14.7129 4.12513C16.0274 6.39688 16.0904 9.1975 14.9014 11.5261C14.8033 11.7183 14.5654 11.7905 14.3786 11.6827Z"></path></svg></span> */}
+                    {/* <span className="XQskgrQ spinner" aria-hidden="true" style="width: 32px; height: 32px;"><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.3786 11.6827L13.7279 11.307C13.5548 11.207 13.4923 10.9895 13.5822 10.8109C14.524 8.9395 14.4679 6.69681 13.4139 4.87512C12.3626 3.05031 10.4484 1.88034 8.35678 1.76025C8.15712 1.74878 8 1.58597 8 1.386V0.634656C8 0.418906 8.1815 0.249125 8.39697 0.260219C11.0081 0.394781 13.4021 1.84972 14.7129 4.12513C16.0274 6.39688 16.0904 9.1975 14.9014 11.5261C14.8033 11.7183 14.5654 11.7905 14.3786 11.6827Z"></path></svg></span> */}
                 </div>
                 {/* <GigCart gig={gig} /> */}
 
