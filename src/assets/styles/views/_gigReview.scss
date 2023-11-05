@@ -88,14 +88,31 @@
 
                         span {
                             background-color: $clr7;
-                            width: 80%;
                             border-radius: 999px;
                             height: 100%;
                             left: 0;
                             position: absolute;
                             z-index: 1;
-
                         }
+                        
+                        .five-star{
+                            width: 80%;
+                        }
+                        .four-star{
+                            width: 15%;
+                        }
+                        .three-star{
+                            width: 5%;
+                        }
+                        .two-star{
+                            width: 0;
+                        }
+                        .one-star{
+                            width: 0;
+                        }
+
+
+
                     }
                 }
 
@@ -114,7 +131,7 @@
             width: 50%;
             padding: 1px 16px 0;
 
-            .ranking-head{
+            .ranking-head {
                 margin: 0;
                 font-family: macan-semibold, "Helvetica Neue", Helvetica, Arial, sans-serif;
                 font-size: 16px;
@@ -123,36 +140,165 @@
                 color: $clr2;
             }
 
-            li{
-                color:#95979d ;
+            li {
+                color: #95979d;
                 padding-bottom: 8px;
 
-                .rating{
+                .rating {
                     margin-left: 12px;
                     white-space: nowrap;
                     font-size: 14px;
                     line-height: 21px;
 
-                    .stars{
+                    .stars {
                         padding-bottom: 4px;
                         fill: #404145;
                     }
 
-                    .rate-score{
+                    .rate-score {
                         padding-left: 4px;
                         color: $clr2;
                     }
-                }    
+                }
+            }
+        }
+    }
+}
+
+.reviews-wrap {
+    margin-top: 40px;
+    color: $clr2;
+
+    .review-item-component {
+        padding: 40px 0;
+        border-top: 1px solid #dadbdd;
+
+        .user-img {
+            margin-right: 16px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+        }
+
+        .reviewer-detail {
+            line-height: 24px;
+            font-family: macan-bold, Helvetica Neue, Helvetica, Arial, sans-serif;
+        }
+
+        .reviewer-sub-detail {
+            margin-top: 8px;
+
+            .flag {
+                height: 20px;
+                width: 20px;
+            }
+
+            .country-name {
+                padding-left: 8px;
+                font-size: 14px;
+                line-height: 21px;
+                color: $clr9;
+            }
+        }
+    }
+
+    .review-details {
+        margin-left: 64px;
+        margin-top: 20px;
+
+        .review-details-head {
+            margin-top: 20px;
+            line-height: 21px;
+            font-size: 14px;
+
+            .stars-rate {
+                padding-bottom: 4px;
+
+                .star:not(:first-child) {
+                    padding-left: 4px;
+                }
+            }
+
+            .inline-divider {
+                border-right: 1px solid #e4e5e7;
+                margin: 2px 8px;
+            }
+
+            .rate-score {
+                padding-left: 4px;
+                padding-bottom: 5px;
+                font-family: macan-bold, Helvetica Neue, Helvetica, Arial, sans-serif;
+
+            }
+        }
+
+        .review-details-main{
+            margin-top: 12px;
+            margin-bottom: 0;
+            word-wrap: break-word;
+            line-height: 24px;
+            .expand-button{
+                background: transparent;
+                border: none;
+                color: #404145;
+                padding: 0;
+                cursor: pointer;
+                text-align: center;
+                font-family: macan, Helvetica Neue, Helvetica, Arial, sans-serif;
+                font-size: 16px;
+
+            }
+        }
+
+        .review-details-footer{
+            margin-top: 16px;
+            .helpful-footer{
+                font-family: macan-semibold, Helvetica Neue, Helvetica, Arial, sans-serif;
+                line-height: 25px;
+                font-size: 14px;
+
+                .helpful-txt{
+                    margin-right: 12px;
+                }
+                .helpful-thumb-yes{
+                    margin-right: 12px;
+                    cursor: pointer;
+                    padding: 2px 0;
+                    line-height: 21px;
+                    &.clicked{
+                        fill: #1dbf73;
+                        color: #1dbf73;
+                    }
+                    .thumb{
+                        width: 14px;
+                        height: 14px;
+                        padding-right: 20px;
+                    }
+                }
+                .helpful-thumb-no{
+                    margin-right: 12px;
+                    cursor: pointer;
+                    padding: 2px 0;
+                    line-height: 21px;
+                    &.clicked{
+                        fill: #f74040;;
+                        color: #f74040;;
+                    }
+                    .thumb{
+                        width: 14px;
+                        height: 14px;
+                        padding-right: 20px;
+                    }
+
+                }
+                .helpful-count{
+                    font-family: macan-regular, Helvetica Neue, Helvetica, Arial, sans-serif;
+                    color: #95979d;
+
+                }
+
             }
 
         }
     }
-
-
-
-}
-
-.flag {
-    height: 20px;
-    width: 20px;
 }
