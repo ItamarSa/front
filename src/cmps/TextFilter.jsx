@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { utilService } from "../services/util.service";
 
-export function TextFilter({ filterBy, onSetFilter }) {
+export function TextFilter({ filterBy, handleFilterChange }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const searchParams = new URLSearchParams(location.search);
-  const filterByFromURL = {
-    txt: searchParams.get("txt") || "",
-  };
+  const searchParams = new URLSearchParams(location.search)
+  const filterByFromURL =searchParams.get("txt") || ""
+  
 
   const [filterByText, setFilterByText] = useState(filterByFromURL);
   const [allOptions, setAllOptions] = useState([]); // Replace with your list of all available options
@@ -17,47 +16,55 @@ export function TextFilter({ filterBy, onSetFilter }) {
 
   const debouncedUpdateURL = utilService.debounce(updateURL, 500);
 
-  useEffect(() => {
-    onSetFilter(filterByText);
-  }, [filterByText, onSetFilter]);
+  // useEffect(() => {
+  //   onSetFilter(filterByText);
+  // }, [filterByText]);
 
-  useEffect(() => {
-    setFilterByText(filterByFromURL);
-  }, [location.search]);
+  // useEffect(() => {
+  //   setFilterByText(filterByFromURL);
+  // }, [location.search]);
 
   // Simulate fetching options from an API when the component mounts (you can replace this with your actual data fetching)
-  useEffect(() => {
-    // Replace this with your code to fetch options
-    // Example: const fetchedOptions = await fetchOptionsFromAPI();
-    const fetchedOptions = [
-      'Graphics-Design',
-      'Programming-Tech',
-      'Digital-Marketing',
-      'Video-Animation',
-      'Writing-Translation',
-      'Music-Audio',
-      'Business',
-      'Data',
-      'Photography',
-    ];
-    setAllOptions(fetchedOptions);
-  }, []);
+  // useEffect(() => {
+  //   // Replace this with your code to fetch options
+  //   // Example: const fetchedOptions = await fetchOptionsFromAPI();
+  //   const fetchedOptions = [
+  //     'Graphics-Design',
+  //     'Programming-Tech',
+  //     'Digital-Marketing',
+  //     'Video-Animation',
+  //     'Writing-Translation',
+  //     'Music-Audio',
+  //     'Business',
+  //     'Data',
+  //     'Photography',
+  //   ];
+  //   setAllOptions(fetchedOptions);
+  // }, []);
 
   // Filter options based on the text input
-  useEffect(() => {
-    const filtered = allOptions.filter((option) =>
-      option.toLowerCase().includes(filterByText.txt.toLowerCase())
-    );
-    setFilteredOptions(filtered);
-  }, [allOptions, filterByText.txt]);
-
-  function handleSearch() {
+  // useEffect(() => {
+  //   const filtered = allOptions.filter((option) =>
+  //     option.toLowerCase().includes(filterByText.txt.toLowerCase())
+  //   );
+  //   setFilteredOptions(filtered);
+  // }, [allOptions, filterByText.txt]);
+  // / Filter options based on the text input
+  // useEffect(() => {
+  // handleSearch()
+  // }, [filterByText]);
+  
+  function handleSearch(ev) {
+    if (ev)ev.preventDefault()
+    console.log('handle:')
     // Update URL parameters here
     const newSearchParams = new URLSearchParams(location.search);
-    newSearchParams.set("txt", filterByText.txt);
-    debouncedUpdateURL({ txt: filterByText.txt });
+    newSearchParams.set("txt", filterByText);
+    debouncedUpdateURL({ txt: filterByText});
+    // onSetFilter(filterByText)
     // Reset the filter value
-    setFilterByText({ txt: "" });
+    handleFilterChange(filterByText,"txt")
+    // setFilterByText({ txt: "" });
   }
 
   function updateURL(params) {
@@ -67,25 +74,25 @@ export function TextFilter({ filterBy, onSetFilter }) {
 
   return (
     <div>
-      <form className="search-form">
+      <form onSubmit={handleSearch} className="search-form">
         <div className="search-input-container">
           <label htmlFor="txt"></label>
           <br />
           <input
             className="search-input"
-            value={filterByText.txt}
-            onChange={(e) => setFilterByText({ txt: e.target.value })}
+            value={filterByText}
+            onChange={(e) => setFilterByText(e.target.value )}
             type="text"
             placeholder="What service are you looking for today?"
             id="txt"
             name="txt"
           />
-          <button className="btn-search-header" type="button" onClick={handleSearch}>
+          <button onClick={handleSearch} className="btn-search-header" type="button">
             <i className="fa-solid fa-magnifying-glass search-icon"></i>
           </button>
         </div>
         {/* Display the autocomplete suggestions */}
-        {filterByText.txt && (
+        {/* {filterByText.txt && (
           <div className="autocomplete-suggestions">
             {filteredOptions.map((option) => (
               <div
@@ -101,7 +108,7 @@ export function TextFilter({ filterBy, onSetFilter }) {
               </div>
             ))}
           </div>
-        )}
+        )} */}
       </form>
     </div>
   );

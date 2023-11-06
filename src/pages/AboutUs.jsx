@@ -95,7 +95,7 @@ export function AboutUs() {
 
 // Currently - no solution for using ErrorBoundaries with react hooks:
 // https://reactjs.org/docs/hooks-faq.html#do-hooks-cover-all-use-cases-for-classes
-// class MyErrorBoundary extends React.Component {
+// className MyErrorBoundary extends React.Component {
 //     state = { error: null, errorInfo: null }
 
 //     componentDidCatch(error, errorInfo) {

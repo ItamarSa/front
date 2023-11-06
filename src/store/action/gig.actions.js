@@ -32,6 +32,7 @@ export function getActionUpdateGig(gig) {
 
 export async function loadGigs() {
     try {
+
         const { filterBy } = store.getState().gigModule
         const gigs = await gigService.query(filterBy)
         store.dispatch({
@@ -40,7 +41,7 @@ export async function loadGigs() {
         })
 
     } catch (err) {
-        console.log('Cannot load gigs', err)
+        // console.log('Cannot load gigs', err)
         throw err
     }
 
@@ -49,9 +50,9 @@ export async function loadGigsUser(filterBy = {}) {
     try {
       const { userId } = filterBy; // Destructure the userId from filterBy
       const gigs = await gigService.query(filterBy);
-      console.log('filterBy:', filterBy);
-      console.log('gigs:', gigs);
-      console.log('Gigs from DB:', gigs);
+    //   console.log('filterBy:', filterBy);
+    //   console.log('gigs:', gigs);
+    //   console.log('Gigs from DB:', gigs);
       store.dispatch({
         type: SET_GIGS,
         gigs
@@ -121,6 +122,7 @@ export async function onRemoveGigOptimistic(gigId) {
 
 export function setGigFilter(filterBy = gigService.getDefaultFilter()) {
     // dispatch
+    console.log("store changed",filterBy);
     store.dispatch({ type: SET_FILTER, filterBy })
     // return Promise.resolve(filterBy)
     // return loadToys()

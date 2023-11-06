@@ -39,17 +39,18 @@ export function GigIndex() {
 
     useEffect(() => {
         try {
-            loadGigs()
+              loadGigs()
             
         } catch (err) {
             console.log('err:', err)
             showErrorMsg('Cannot load toys')
         }
+      
     }, [filterBy])
 
     useEffect(() => {
         window.scrollTo(0, 0)
-    },[0])
+    },[])
 
     useClickOutside(deliveryMenuRef, handleClickOutSide)
     function handleClickOutSide() {
@@ -92,9 +93,11 @@ export function GigIndex() {
 
             const tagFilters = filterBy.tags;
             const gigTags = gig.tags.map(tag => tag.toLowerCase());
+            console.log('gigTags:', gigTags)
 
-            if (tagFilters.length > 0) {
-                if (!tagFilters.every(tag => gigTags.includes(tag.toLowerCase()))) {
+            if (tagFilters && typeof tagFilters === 'string') {
+                // Check if the gigTags array includes the single tag filter
+                if (!gigTags.includes(tagFilters.toLowerCase())) {
                     return false;
                 }
             }
@@ -107,7 +110,7 @@ export function GigIndex() {
             }
             if (textFilter) {
                 const regex = new RegExp(textFilter, 'i');
-                if (!gig.title.match(regex) && !gig.tags.some(tag => tag.match(regex))) {
+                if (!gig.title.match(regex) || !gig.tags.some(tag => tag.match(regex))) {
                     return false;
                 }
             }
@@ -119,7 +122,7 @@ export function GigIndex() {
 
             }
 
-            const activeFilters = fromPrice || toPrice || (tagFilters.length > 0) || textFilter;
+            const activeFilters = fromPrice || toPrice || tagFilters || textFilter;
             setFiltersActive(activeFilters);
 
 
@@ -135,7 +138,7 @@ export function GigIndex() {
 
     useEffect(() => {
         filterGigs();
-    }, [filterBy, textFilter]);
+    }, [filterBy, textFilter,gigs]);
 
 
     async function onRemoveGig(gigId) {
@@ -448,7 +451,7 @@ export function GigIndex() {
                     </div>
                 </div>
                 <GigList
-                    gigs={filteredGigs}
+                     gigs={filteredGigs}
                     onRemoveGig={onRemoveGig}
                     onUpdateGig={onUpdateGig}
                 />

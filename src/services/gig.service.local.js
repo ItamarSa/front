@@ -2,7 +2,10 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import { httpService } from './http.service.js'
 
+
+const BASE_URL = 'gig/'
 const STORAGE_KEY = 'gigDB'
 const tags = [
     // 'Website-Design',
@@ -64,41 +67,42 @@ function getImgs() {
 //     var gigs = await storageService.query(STORAGE_KEY)}
 
 async function query(filterBy = {}) {
-    var gigs = await storageService.query(STORAGE_KEY, filterBy);
+    console.log('filterByFrom the front', filterBy)
+    return httpService.get(BASE_URL, filterBy);
 
-    let gigToDisplay = [...gigs];
+    // let gigToDisplay = [...gigs];
 
-    if (filterBy.txt) {
-        const regex = new RegExp(filterBy.txt, 'i');
-        gigToDisplay = gigToDisplay.filter((gig) => {
-            return (
-                gig.title.match(regex) || // Match by title
-                gig.tags.some((tag) => tag.match(regex)) // Match by tags
-            );
-        });
-    }
+    // if (filterBy.txt) {
+    //     const regex = new RegExp(filterBy.txt, 'i');
+    //     gigToDisplay = gigToDisplay.filter((gig) => {
+    //         return (
+    //             gig.title.match(regex) || // Match by title
+    //             gig.tags.some((tag) => tag.match(regex)) // Match by tags
+    //         );
+    //     });
+    // }
 
-    if (filterBy.price) {
-        gigToDisplay = gigToDisplay.filter((gig) => gig.price <= filterBy.price);
-    }
+    // if (filterBy.price) {
+    //     gigToDisplay = gigToDisplay.filter((gig) => gig.price <= filterBy.price);
+    // }
 
-    if (filterBy.tags && filterBy.tags.length > 0) {
-        gigToDisplay = gigToDisplay.filter((gig) => {
-            return gig.tags.some((tag) => filterBy.tags.includes(tag));
-        });
-    }
-    if (filterBy.userId) {
-        gigToDisplay = gigToDisplay.filter((gig) => gig.owner._id === filterBy.userId);
-    }
+    // if (filterBy.tags && filterBy.tags.length > 0) {
+    //     gigToDisplay = gigToDisplay.filter((gig) => {
+    //         return gig.tags.some((tag) => filterBy.tags.includes(tag));
+    //     });
+    // }
+    // if (filterBy.userId) {
+    //     gigToDisplay = gigToDisplay.filter((gig) => gig.owner._id === filterBy.userId);
+    // }
     // if (filterBy.buyerId) {
     //     orders = orders.filter((order) => order.buyer._id === filterBy.buyerId);
     //     }
 
 
-    return gigToDisplay;
+    // return gigToDisplay;
 }
 function getDefaultFilter() {
-    return { txt: '', tags: [] }
+    return { txt: '', tags: ''}
 }
 
 
@@ -112,13 +116,14 @@ async function remove(gigId) {
 }
 
 async function save(gig) {
+    console.log('gig:', gig)
     var savedGig
     if (gig._id) {
-        savedGig = await storageService.put(STORAGE_KEY, gig)
+        savedGig = await httpService.put(BASE_URL, gig)
     } else {
         // Later, owner is set by the backend
         gig.owner = userService.getLoggedinUser()
-        savedGig = await storageService.post(STORAGE_KEY, gig)
+        savedGig = await httpService.post(BASE_URL, gig)
     }
     return savedGig
 }

@@ -5,33 +5,45 @@ import { gigService } from "../services/gig.service.local";
 
 const gigTags = gigService.getGigTags();
 
-export function TagFilterMain({ filterBy, onSetFilter }) {
+export function TagFilterMain({ filterBy, handleFilterChange }) {
   const location = useLocation();
   const navigate = useNavigate();
 
   const searchParams = new URLSearchParams(location.search);
-  const filterByFromURL = {
-    tags: searchParams.getAll("tags") || [],
-  };
+  const filterByFromURL = searchParams.get("tags") ||''
 
   const [filterByTags, setFilterByTags] = useState(filterByFromURL);
 
   const debouncedUpdateURL = utilService.debounce(updateURL, 500);
 
-  useEffect(() => {
-    onSetFilter(filterByTags);
-  }, [filterByTags, onSetFilter]);
+  // useEffect(() => {
+  //   onSetFilter(filterByTags);
+  // }, [filterByTags, onSetFilter]);
 
-  useEffect(() => {
-    setFilterByTags(filterByFromURL);
-  }, [location.search]);
+  // useEffect(() => {
+  //   setFilterByTags(filterByFromURL);
+  // }, [location.search]);
 
+  // function handleTagButtonClick(tag) {
+  //   const updatedTags = [tag];
+  //   setFilterByTags({ tags: updatedTags });
+  //   debouncedUpdateURL({ tags: updatedTags });
+  //   // Reset the filter value
+  //   setFilterByTags({ tags: [] });
+  // }
+
+  // function updateURL(params) {
+  //   const queryString = new URLSearchParams(params).toString();
+  //   navigate(`/gigs?${queryString}`);
+  // }
   function handleTagButtonClick(tag) {
-    const updatedTags = [tag];
-    setFilterByTags({ tags: updatedTags });
-    debouncedUpdateURL({ tags: updatedTags });
+    // const updatedTags = tag;
+    // setFilterByTags({ tags: updatedTags });
+    debouncedUpdateURL({ tags: tag });
+    setFilterByTags(tag)
+    handleFilterChange(tag,"tags")
     // Reset the filter value
-    setFilterByTags({ tags: [] });
+    // setFilterByTags({ tags: [] });
   }
 
   function updateURL(params) {
@@ -46,7 +58,7 @@ export function TagFilterMain({ filterBy, onSetFilter }) {
         {gigTags.slice(0, 4).map((tag) => ( // Slice the first 4 tags
           <button
             key={tag}
-            className={filterByTags.tags.includes(tag) ? "selected" : ""}
+            className={filterByTags===tag ? "selected" : ""}
             onClick={() => handleTagButtonClick(tag)}
           >
             {newTag=tag.replace('-', ' ')}

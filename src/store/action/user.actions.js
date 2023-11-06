@@ -42,6 +42,7 @@ export async function login(credentials) {
     }
 }
 export function updateUserImageUrl(imgUrl) {
+    console.log('imgUrl:', imgUrl)
     return {
         type: UPDATE_USER_IMAGE_URL,
         imgUrl,
@@ -50,8 +51,10 @@ export function updateUserImageUrl(imgUrl) {
 
 
 export async function signup(credentials) {
+    console.log('credentialsaction:', credentials)
     try {
         const user = await userService.signup(credentials)
+        console.log('credentialsactionafter:', user)
         store.dispatch({
             type: SET_USER,
             user
