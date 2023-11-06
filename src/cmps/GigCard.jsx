@@ -1,34 +1,9 @@
 import { GigDescription } from './GigDescription'
 import React from 'react'
-import ImageGallery from 'react-image-gallery'
-import 'react-image-gallery/styles/scss/image-gallery.scss'
-import 'react-image-gallery/styles/css/image-gallery.css'
-import fullscreenIcon from '../assets/img/fullscreen.svg'
-import { utilService } from '../services/util.service'
+import { GalleryCarousel } from './GalleryCarousel'
 
 
-
-export function GigCard({ gig, starSymbol }) {
-    // Ensure that gig.imgUrl is an array, or provide a default empty array
-    const images = Array.isArray(gig.imgUrl)
-        ? gig.imgUrl.map((img) => ({
-            original: img,
-            thumbnail: img,
-        }))
-        : []
-
-    const customFullscreenButton = (onClick, isFullscreen) => (
-        <div className={`custom-fullscreen-button ${isFullscreen ? 'fullscreen-active' : ''}`} onClick={onClick}>
-            <img
-                src={fullscreenIcon}
-                alt="Fullscreen Icon"
-                className="fullscreen-icon"
-                width="16"
-                height="32"
-            />
-            {isFullscreen ? 'Exit Fullscreen' : 'Full Screen'}
-        </div>
-    )
+export function GigCard({ gig, starSymbol, scrollToReviews }) {
 
     return (
         <div className='gig-card'>
@@ -39,14 +14,14 @@ export function GigCard({ gig, starSymbol }) {
                         <div className="mini-user flex-align-center">
                             <div className='seller-details flex-align-center'>
                                 <div className='img flex'>
-                                    <img className='user-img' src={gig.owner.imgUrl} alt='user-img' />
+                                    <img className='user-img' src={gig.sellerUrl} alt='user-img' />
                                 </div>
                             </div>
                         </div>
                         <div className='user-info'>
                                 <div className='name flex align-center'>
                                     <div className='owner'>
-                                        {gig.owner.username}{'   '}
+                                        {gig.name}{'   '}
                                     </div>
                                     <div className='store'> {gig.owner.store}</div>
 
@@ -57,7 +32,7 @@ export function GigCard({ gig, starSymbol }) {
                                     </div>
                                     <b  className='rating-score' >{gig.rate + " "}</b>
                                     <div className='review'>
-                                        ({gig.owner.reviews})
+                                        ({gig.reviews})
                                     </div>
                                     <div className='line'>{'|'}</div>
                                     <div className='queue'>
@@ -70,16 +45,13 @@ export function GigCard({ gig, starSymbol }) {
             </div>
 
             <div className='details-gallery'>
-                <ImageGallery
-                    items={images}
-                    showPlayButton={false}
-                    renderFullscreenButton={customFullscreenButton}
-                />
+                <GalleryCarousel
+                gig={gig}/>
             </div>
 
             <div className='mini-review'>
                 <h2>What people loved about this seller</h2>
-                <button href=''>See all reviews</button>
+                <button onClick={scrollToReviews}>See all reviews</button>
             </div>
             <div className='details-mini-review'> add mini reviews </div> <br /><br />
             <GigDescription gig={gig} />
