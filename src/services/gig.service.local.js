@@ -52,14 +52,43 @@ const gigImages = [
     ['https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/195427537/original/09dd06a33e510f8b98bcb2f897b84877679564a3/create-and-design-custom-font-design-for-your-own-projects.png', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/ad55c0e4b54246d35bbe9ffe968ee183-1697695772/IMG-20231019-WA0002/create-and-design-custom-font-design-for-your-own-projects.jpg', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/022131c450f52fb5a47634b9f24ef0d4-1693403738/Heading%20Font/create-and-design-custom-font-design-for-your-own-projects.png', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/69e1de8b0eeeaea6afcb37ef4d4590d9-1693314962/Massive-1/create-and-design-custom-font-design-for-your-own-projects.png', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/932ba0440484a72ba8eb43e458315fea-1673976124/Complete/create-and-design-custom-font-design-for-your-own-projects.png'],
     ['https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/144181078/original/650df8470dc24f152502963672f5d740bf5fb930/do-business-logo-design.jpg', 'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/144181078/original/b74182de4d8a73a15a56ba74e4676664dd760e43/do-business-logo-design.jpg', 'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/144181078/original/e88627b8acefa42c2f020e1bef4c58d699498b47/do-business-logo-design.jpg', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/fff6e178b55d961f4c8aca749806b3ff-1679413543/358EC172-A452-48CF-A0AD-441592AAF040/do-business-logo-design.jpeg'],
     ['https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/15719089/original/4a6b8991f0aa110716d08b6b4f92896c6a82eb3a/do-unique-and-professional-logo-design.jpg', 'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/15719089/original/811e0a35007d2841c9948d287fa0ceb9b8c05c30/do-unique-and-professional-logo-design.jpg', 'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/15719089/original/17b357d81c5cf1847d42877c34b4a407fb5e33b4/do-unique-and-professional-logo-design.jpg', 'https://fiverr-res.cloudinary.com/image/upload/t_gig_pdf_gallery_view_ver4,f_jpg/20230607/Logo%20Design%20Modern%203_zkn7sv.jpg'],
-    ['https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/50672784/original/7da55cf8d5be59284cd5c816f4ea2b946812b354/do-awesome-logo-design.jpg', 'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/50672784/original/8448226d0b6a7459fd8d06ca6ce240386a9d5772/do-awesome-logo-design.jpg', 'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/50672784/original/ba7598ae8d3450b8166fbe48f833b30422f4638b/do-awesome-logo-design.jpg', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/e4972aa1f6140b00d6317ae1f793644a-1698386506/preview/do-awesome-logo-design.jpg', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/a4825e9885d8a5782333fa37fb18cb66-1698210371/preview%20(2)/do-awesome-logo-design.jpg']
+    ['https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/50672784/original/7da55cf8d5be59284cd5c816f4ea2b946812b354/do-awesome-logo-design.jpg', 'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/50672784/original/8448226d0b6a7459fd8d06ca6ce240386a9d5772/do-awesome-logo-design.jpg', 'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/50672784/original/ba7598ae8d3450b8166fbe48f833b30422f4638b/do-awesome-logo-design.jpg', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/e4972aa1f6140b00d6317ae1f793644a-1698386506/preview/do-awesome-logo-design.jpg', 'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/a4825e9885d8a5782333fa37fb18cb66-1698210371/preview%20(2)/do-awesome-logo-design.jpg'],
+    ['https://picsum.photos/550/370?random=${1}','https://picsum.photos/550/370?random=${2}','https://picsum.photos/550/370?random=${3}','https://picsum.photos/550/370?random=${4}'],
+    ['https://picsum.photos/550/370?random=${12}','https://picsum.photos/550/370?random=${21}','https://picsum.photos/550/370?random=${31}','https://picsum.photos/550/370?random=${41}'],
+    ['https://picsum.photos/550/370?random=${13}','https://picsum.photos/550/370?random=${22}','https://picsum.photos/550/370?random=${32}','https://picsum.photos/550/370?random=${42}'],
+    ['https://picsum.photos/550/370?random=${14}','https://picsum.photos/550/370?random=${23}','https://picsum.photos/550/370?random=${33}','https://picsum.photos/550/370?random=${43}'],
+    ['https://picsum.photos/550/370?random=${15}','https://picsum.photos/550/370?random=${24}','https://picsum.photos/550/370?random=${34}','https://picsum.photos/550/370?random=${44}'],
+    ['https://picsum.photos/550/370?random=${16}','https://picsum.photos/550/370?random=${25}','https://picsum.photos/550/370?random=${35}','https://picsum.photos/550/370?random=${45}'],
+    ['https://picsum.photos/550/370?random=${17}','https://picsum.photos/550/370?random=${26}','https://picsum.photos/550/370?random=${36}','https://picsum.photos/550/370?random=${46}'],
+    ['https://picsum.photos/550/370?random=${18}','https://picsum.photos/550/370?random=${27}','https://picsum.photos/550/370?random=${37}','https://picsum.photos/550/370?random=${47}'],
+    ['https://picsum.photos/550/370?random=${19}','https://picsum.photos/550/370?random=${28}','https://picsum.photos/550/370?random=${38}','https://picsum.photos/550/370?random=${48}'],
+    ['https://picsum.photos/550/370?random=${10}','https://picsum.photos/550/370?random=${29}','https://picsum.photos/550/370?random=${39}','https://picsum.photos/550/370?random=${49}'],
+    ['https://picsum.photos/550/370?random=${11}','https://picsum.photos/550/370?random=${20}','https://picsum.photos/550/370?random=${30}','https://picsum.photos/550/370?random=${40}'],
+
 
 ]
 
+
 function getImgs() {
 
-    return gigImages[utilService.getRandomIntInclusive(0,13)]
+    return gigImages[utilService.getRandomIntInclusive(0,24)]
 }
+
+// function getImgs(size = Math.floor(Math.random() * 6)) {
+//     const randomImageUrls = [];
+//     for (let i = 1; i <= 1000; i++) {
+//       const imageUrl = `https://picsum.photos/550/370?random=${i}`;
+//       randomImageUrls.push(imageUrl);
+//     }
+//     var img = ''
+//     let imgs = []
+//     while (size > 0) {
+//         size--
+//         img = randomImageUrls[Math.floor(Math.random() * randomImageUrls.length)]
+//         imgs.push(img)
+//     }
+//     return imgs
+// }
 // async function query(filterBy = { txt: '', price: 0 }) {
 //     var gigs = await storageService.query(STORAGE_KEY)}
 
@@ -162,14 +191,17 @@ function getDemoGig() {
     const randomIdx = utilService.getRandomIntInclusive(0, 21)
     return {
         imgUrl: getImgs(),
-        // name: utilService.makeLorem(1),
+        name: utilService.makeUser()[0],
+        sellerUrl: utilService.makeUser()[1],
         title: utilService.makeRandomGigTitle(randomIdx),
         about: utilService.makeRandomGigAbout(randomIdx),
         price: utilService.getRandomIntInclusive(100, 300),
+        reviews:utilService.getRandomIntInclusive(100, 999),
         rate: parseFloat((utilService.getRandomIntInclusive(45, 50) * 0.1).toPrecision(2)),
         createdAt: utilService.formatDateForTimeAgo(new Date()),
         tags: utilService.makeTag(1),
         owner: userService.getLoggedinUser(),
+
         // inStock: utilService.randomTrueFalse(),
         // icon: utilService.makeImage()
     }
