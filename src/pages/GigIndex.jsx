@@ -139,6 +139,7 @@ export function GigIndex() {
 
 
     async function onRemoveGig(gigId) {
+        console.log('gigId',gigId);
         try {
             await removeGig(gigId)
             showSuccessMsg('Gig removed')
