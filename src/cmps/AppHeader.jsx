@@ -12,6 +12,7 @@ import { logout } from "../store/action/user.actions"
 import { ModalProvider, useModal } from '../cmps/ModalProvider';
 import { LoginModal } from './LoginModal';
 import { gigService } from "../services/gig.service.local"
+import { onAddGig } from "../pages/GigIndex"
 
 export function AppHeader() {
     const user = userService.getLoggedinUser()
@@ -237,7 +238,7 @@ export function AppHeader() {
                             <li onClick={toggleModal} className="modal-button nav btn">
                                 {isModalOpen ? "Orders" : "Orders"}
                             </li>
-                            <li className="nav btn sigin-in">
+                            <li onClick={onAddGig} className="nav btn sigin-in">
                                 Become a Seller
                             </li>
                             {!user && <li onClick={openModal} className="nav  btn sigin-in">
