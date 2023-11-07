@@ -67,7 +67,6 @@ function getImgs() {
 //     var gigs = await storageService.query(STORAGE_KEY)}
 
 async function query(filterBy = {}) {
-    console.log('filterByFrom the front', filterBy)
     return httpService.get(BASE_URL, filterBy);
 
     // let gigToDisplay = [...gigs];
@@ -102,17 +101,17 @@ async function query(filterBy = {}) {
     // return gigToDisplay;
 }
 function getDefaultFilter() {
-    return { txt: '', tags: ''}
+    return { txt: '', tags: '',userId:''}
 }
 
 
 function getById(gigId) {
-    return storageService.get(STORAGE_KEY, gigId)
+    return httpService.get(BASE_URL +gigId)
 }
 
 async function remove(gigId) {
     // throw new Error('Nope')
-    await storageService.remove(STORAGE_KEY, gigId)
+    await httpService.remove(BASE_URL, gigId)
 }
 
 async function save(gig) {
@@ -127,18 +126,21 @@ async function save(gig) {
     }
     return savedGig
 }
-async function update({ _id, imgUrl }) {
-    const gig = await storageService.get(STORAGE_KEY, _id);
+async function update(gigToUpdate) {
+    const gig = await httpService.get(BASE_URL + gigToUpdate._id);
 
-    // Optionally, update the imgUrl if provided
-    if (imgUrl) {
-        gig.imgUrl = imgUrl;
+    // Update all fields from gigToUpdate
+    for (const key in gigToUpdate) {
+        if (key !== '_id') {
+            gig[key] = gigToUpdate[key];
+        }
     }
 
-    await storageService.put(STORAGE_KEY, gig); // Update the gig object in storage
+    await httpService.put(BASE_URL, gig); // Update the gig object in storage
 
     return gig;
 }
+
 
 
 async function addGigMsg(gigId, txt) {

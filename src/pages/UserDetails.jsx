@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { store } from '../store/store'
 import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from '../services/socket.service'
 import { utilService } from '../services/util.service'
 import { GigList } from './GigList'
-import { loadGigsUser } from '../store/action/gig.actions'
+import { loadGigsUser, resetFilterBy } from '../store/action/gig.actions'
 import { ImgUploader } from '../cmps/ImgUploader'
 import { userService } from '../services/user.service'
 import { logout, updateUserImageUrl } from '../store/action/user.actions'
@@ -18,8 +18,11 @@ export function UserDetails() {
   const [newImgUrl, setNewImgUrl] = useState(null)
   const gigs = useSelector(storeState => storeState.gigModule.gigs)
   const [orders, setOrders] = useState([])
-  const seller = userService.getLoggedinUser()
   const [showImgUploader, setShowImgUploader] = useState(false);
+  const dispatch = useDispatch()
+
+
+
 
 
 
@@ -38,8 +41,15 @@ export function UserDetails() {
   }, [params.id])
 
   useEffect(() => {
+    // Dispatch the action to reset the filterBy when the component unmounts
+    return () => {
+      dispatch(resetFilterBy());
+    };
+  }, []);
+
+  useEffect(() => {
     try {
-      loadGigsUser({ userId: params.id })
+      loadGigsUser(params.id)
       loadOrders()
     } catch (err) {
       console.log('err:', err)
@@ -57,11 +67,16 @@ export function UserDetails() {
 
     showSuccessMsg('User image updated successfully')
   }
+
+  const userId = params.id;
   async function loadOrders() {
     try {
+      const seller = await userService.getById(userId);
+      console.log('seller:', seller)
       const sellerId = seller?._id
-      // console.log('seller:', seller)
+      console.log('seller:', seller)
       const orders = await orderService.query({ sellerId })
+      console.log('orders:', orders)
       setOrders(orders)
     } catch (err) {
       console.log('Had issues loading orders', err)
@@ -95,8 +110,7 @@ export function UserDetails() {
 
   const loggedInUser = userService.getLoggedinUser();
   const isCurrentUser = loggedInUser && loggedInUser._id === user?._id;
-  console.log('loggedInUser:', loggedInUser)
-  console.log('isCurrentUser:', isCurrentUser)
+
   if (user === null) {
     return <div>Loading user data...</div>
   }
@@ -112,7 +126,7 @@ export function UserDetails() {
               <img className="user-profile-img" src={user?.imgUrl} alt={user?.username} />
               <div className='upload'>
                 {showImgUploader && isCurrentUser && (
-                 <ImgUploader onUploaded={handleImageUpload} useCustomSVG={true} />
+                  <ImgUploader onUploaded={handleImageUpload} useCustomSVG={true} />
                 )}
               </div>
             </div>
@@ -167,7 +181,7 @@ export function UserDetails() {
               </div>
             </div>
           </div>
-           <div className='user-stats-desc'>
+          <div className='user-stats-desc'>
             <ul className="user-stats with-border-top">
               <li className="location">
                 <span className='from-user'>
@@ -195,7 +209,7 @@ export function UserDetails() {
                       </path>
                     </svg>
                   </span>Member since</span>
-                <b>{utilService.timeAgo(new Date(user?.createdAt))}</b>
+                <b>{utilService.timeAgo((user?.createdAt))}</b>
               </li>
             </ul>
           </div>
@@ -300,7 +314,7 @@ export function UserDetails() {
           </div>
           <div className='grey'></div>
           <div className='orders' >
-            
+
             <ul className='order-profile-container'>
               {orders?.map((order) => (
                 <li className="order-profile-item " key={order._id}>
@@ -314,16 +328,16 @@ export function UserDetails() {
                   {/* </div> */}
 
                   <div className='img-main' >
-                  <img className="order-profile-imgs" src={order.imgUrl[0]} alt="" />
+                    <img className="order-profile-imgs" src={order.imgUrl[0]} alt="" />
                   </div>
                   <div className="order-info">
-                  
+
 
                     <div className="txt-review ">
-                     
-                     
-                      
-                      
+
+
+
+
                       <b className='desc'>Description</b>
                       <div className='place-start'>
                         <span className="truncate-text desc">{order.title}</span>
@@ -331,23 +345,23 @@ export function UserDetails() {
                     </div>
 
                     <div className="txt-review ">
-                     
-                        <b>Ordered</b>
-                     
-                      
-                        <div className='place-start'>
-                          <span >{utilService.timeAgo(new Date(order.createdAt))}</span>
-                        </div>
-                      
+
+                      <b>Ordered</b>
+
+
+                      <div className='place-start'>
+                        <span >{utilService.timeAgo(new Date(order.createdAt))}</span>
+                      </div>
+
 
                     </div>
-                   
+
                     <div className='txt-review ' >
                       <div>
                         <b>Buyer </b>
                       </div>
                       <div className='place-start'>
-                        <span >{' ' + order.buyer.username}</span>
+                        <span >{' ' + order?.buyer.username}</span>
                       </div>
                     </div>
                     <div className='txt-review  '>
@@ -355,28 +369,28 @@ export function UserDetails() {
                         <b className='price'>Price  </b>
                       </div>
                       <div className='place-start'>
-                        <span >{' ' + order.price}$</span>
+                        <span >{' ' + order?.price}$</span>
                       </div>
                     </div>
                     <div className="txt-review stat">
                       <div>
-                      <span style={{ color: orderService.getStatusColor(order.status) }}>{<b>{order.status}</b>}</span>
+                        <span style={{ color: orderService.getStatusColor(order.status) }}>{<b>{order.status}</b>}</span>
                       </div>
-                      {order.status==="Pending" && 
-                       <div className='place-start'>
-                       <select className='custom-select txt-review  '
-                         value={order.status}
-                         onChange={(e) => handleStatusChange(e, order._id)}
-                       >
-                         <option className='pending status' value="Pending">Pending</option>
-                         <option className='approve status' value="Approve">Approve</option>
-                         <option className='decline status' value="Decline">Decline</option>
-                       </select> 
-                       
-                       </div>
+                      {order.status === "Pending" &&
+                        <div className='place-start'>
+                          <select className='custom-select txt-review  '
+                            value={order?.status}
+                            onChange={(e) => handleStatusChange(e, order._id)}
+                          >
+                            <option className='pending status' value="Pending">Pending</option>
+                            <option className='approve status' value="Approve">Approve</option>
+                            <option className='decline status' value="Decline">Decline</option>
+                          </select>
+
+                        </div>
                       }
-                     
-                      
+
+
                     </div>
                   </div>
 
@@ -402,13 +416,12 @@ export function UserDetails() {
             </ul>
           </div>
           <div className='grey'></div>
-          {isCurrentUser && <div className='gigs-profile'>
+          <div className='gigs-profile'>
             <GigList
               gigs={gigs} isCurrentUser={isCurrentUser}
             />
 
-          </div>}
-          
+          </div>
 
 
         </div>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { loadGigs, addGig, updateGig, removeGig, setGigFilter } from '../store/action/gig.actions.js'
+import { useDispatch, useSelector } from 'react-redux'
+import { loadGigs, addGig, updateGig, removeGig, setGigFilter,resetFilterBy  } from '../store/action/gig.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { gigService } from '../services/gig.service.local.js'
@@ -38,6 +38,13 @@ export function GigIndex() {
     const homeSymbol = <svg width="14" height="14" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#404145"><path d="M12.773 14.5H3.227a.692.692 0 0 1-.482-.194.652.652 0 0 1-.2-.468V7.884H.5l7.041-6.212a.694.694 0 0 1 .918 0L15.5 7.884h-2.046v5.954a.652.652 0 0 1-.2.468.692.692 0 0 1-.481.194Zm-4.091-1.323h3.409V6.664L8 3.056 3.91 6.664v6.513h3.408v-3.97h1.364v3.97Z"></path></svg>
 
     useEffect(() => {
+        // Dispatch the action to reset the filterBy when the component unmounts
+        return () => {
+          dispatch(resetFilterBy());
+        };
+      }, []);
+
+    useEffect(() => {
         try {
               loadGigs()
             
@@ -47,6 +54,10 @@ export function GigIndex() {
         }
       
     }, [filterBy])
+
+    const dispatch = useDispatch();
+
+  
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -92,7 +103,7 @@ export function GigIndex() {
         const filtered = gigs.filter(gig => {
 
             const tagFilters = filterBy.tags;
-            const gigTags = gig.tags.map(tag => tag.toLowerCase());
+            const gigTags = gig.tags?.map(tag => tag.toLowerCase());
             console.log('gigTags:', gigTags)
 
             if (tagFilters && typeof tagFilters === 'string') {

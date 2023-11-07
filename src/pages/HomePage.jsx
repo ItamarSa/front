@@ -88,7 +88,7 @@ export function HomePage() {
   }
 
   useEffect(() => {
-       console.log('useEffect:')
+      
     setGigFilter( filter )
 }, [filter])
 

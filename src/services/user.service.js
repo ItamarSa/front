@@ -97,7 +97,7 @@ async function signup(userCred) {
             email: userCred.email,
             username: userCred.username,
             password: userCred.password,
-            createdAt: formatDateForTimeAgo(new Date()),
+            createdAt:new Date(),
             imgUrl: userCred.imgUrl,
             from: flag[1],
             level: userCred.level,

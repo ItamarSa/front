@@ -61,7 +61,7 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig ,isCurrentUser }) {
             <div className="mini-user-preview">
                 <div className="left-content">
                     <div className='left-user flex'>
-                        <img src={gig.owner.imgUrl} alt="user-img" className="mini-img" />
+                        <img src={gig.owner?.imgUrl} alt="user-img" className="mini-img" />
                         <Link className='gig-details' to={`/user/${gig.owner._id}`}><span className='user-name'>{gig.owner.username}</span></Link>
                     </div>
                 </div>

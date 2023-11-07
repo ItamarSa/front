@@ -3,6 +3,7 @@ import { userService } from '../services/user.service'
 import { login, logout, signup } from '../store/action/user.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { ImgUploader } from './ImgUploader'
+import { utilService } from '../services/util.service'
 // import { ImgUploader } from './ImgUploader'
 
 export function LoginSignup(props) {
@@ -10,7 +11,7 @@ export function LoginSignup(props) {
         username: '',
         password: '',
         email: '',
-        CreateAt: new Date(),
+        createdAt: '',
         imgUrl: '',
         store: '',
         from: [],
@@ -20,6 +21,7 @@ export function LoginSignup(props) {
         queue: '',
         reviews: ''
     })
+    console.log('credentialsState:', credentials)
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
 
@@ -60,6 +62,7 @@ export function LoginSignup(props) {
     }
     async function sign(credentials) {
         try {
+            console.log('credentialsOf Loginjsx:', credentials)
             const user = await signup(credentials)
             showSuccessMsg(`Welcome new user: ${user.email}`)
         } catch (err) {

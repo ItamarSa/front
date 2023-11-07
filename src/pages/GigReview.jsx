@@ -206,15 +206,15 @@ export function GigReview({ gig, starSymbol }) {
                 <div className="reviews-wrap">
                     <ul>
                         {reviews.map((review) => (
-                            <li className="clean-list" key={review._id}>
-                                {review.byUser.username + '   '} <img className="flag" src={review.flag[0]} alt="US" /> {review.flag[1]}
+                            <li className="clean-list" key={review?._id}>
+                                {review?.byUser.username + '   '} <img className="flag" src={review?.flag[0]} alt="US" /> {review?.flag[1]}
                                 <div className="stars">
                                     {Array.from({ length: 5 }).map((_, index) => (
                                         <span
                                             key={index}
-                                            className={`star ${index < review.starRating ? 'star-full' : 'star-empty'}`}
+                                            className={`star ${index < review?.starRating ? 'star-full' : 'star-empty'}`}
                                         >
-                                            {index < review.starRating ? '★' : '☆'}
+                                            {index < review?.starRating ? '★' : '☆'}
                                         </span>
 
                                     ))}

@@ -78,7 +78,7 @@ export function AppHeader() {
                 setShowTagFilter(false)
             }
         }
-    }, [isHomePage, orders])
+    }, [isHomePage])
 
     useEffect(() => {
        
@@ -87,9 +87,10 @@ export function AppHeader() {
 
     async function loadOrders() {
         try {
-            // console.log('user:', user)
+            console.log('user:', user)
             const buyerId = user._id
             const orders = await orderService.query({ buyerId })
+            console.log('ordersheader:', orders)
             setOrders(orders)
         } catch (err) {
             console.log('Had issues loading orders', err)
