@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { utilService } from "../services/util.service";
 
+const searchSymbol = <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="m15.89 14.653-3.793-3.794a.37.37 0 0 0-.266-.109h-.412A6.499 6.499 0 0 0 6.5 0C2.91 0 0 2.91 0 6.5a6.499 6.499 0 0 0 10.75 4.919v.412c0 .1.04.194.11.266l3.793 3.794a.375.375 0 0 0 .531 0l.707-.707a.375.375 0 0 0 0-.53ZM6.5 11.5c-2.763 0-5-2.238-5-5 0-2.763 2.237-5 5-5 2.762 0 5 2.237 5 5 0 2.762-2.238 5-5 5Z"></path></svg>
+
 export function TextFilter({ filterBy, handleFilterChange }) {
   const location = useLocation();
   const navigate = useNavigate();
@@ -77,7 +79,6 @@ export function TextFilter({ filterBy, handleFilterChange }) {
       <form onSubmit={handleSearch} className="search-form">
         <div className="search-input-container">
           <label htmlFor="txt"></label>
-          <br />
           <input
             className="search-input"
             value={filterByText}
@@ -88,7 +89,8 @@ export function TextFilter({ filterBy, handleFilterChange }) {
             name="txt"
           />
           <button onClick={handleSearch} className="btn-search-header" type="button">
-            <i className="fa-solid fa-magnifying-glass search-icon"></i>
+            <div className="submit-button flex">{searchSymbol}</div>
+            {/* <i className="fa-solid fa-magnifying-glass search-icon"></i> */}
           </button>
         </div>
         {/* Display the autocomplete suggestions */}
