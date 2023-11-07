@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react'
 import { gigService } from '../services/gig.service.local'
 import { useNavigate, useParams } from 'react-router'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { utilService } from '../services/util.service'
 import { useSelector } from 'react-redux'
-import { ImgUploader } from './ImgUploader' // Import ImgUploader here
+import { ImgUploader } from './ImgUploader'
 
 
 export function GigEdit(onAddGig) {
@@ -36,9 +35,6 @@ export function GigEdit(onAddGig) {
         }));
     }
     
-      
-
-
     function handleChange({ target }) {
         const field = target.name
         let value = target.value
