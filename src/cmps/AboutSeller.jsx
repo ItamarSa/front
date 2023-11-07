@@ -1,22 +1,22 @@
 import { utilService } from "../services/util.service";
 
-export function AboutSeller({ gig, starSymbol }) {
+export function AboutSeller({ gig, starSymbol, scrollContactMeRef }) {
 
 
 
     return (
         <>
             <h2 className="about-seller">About the seller</h2>
-            <div className='profile-card'>
+            <div ref={scrollContactMeRef} className='profile-card'>
                 <div className="seller-card">
                     <div className="mini-user flex">
                         <div className="seller-img flex">
-                            <img className='user-img' src={gig.owner.imgUrl} alt='user-img' />
+                            <img className='user-img' src={gig.sellerUrl} alt='user-img' />
                             <span className={'_'+ gig.owner.level}></span>
                         </div>
                         <div className="seller-info flex column justify-center ">
                             <div className="seller-name flex">
-                                <div className="username">{gig.owner.username}</div>
+                                <div className="username">{gig.name}</div>
                                 <div className="store">{gig.owner.store}</div>
                             </div>
                             <p className="one-line">Design is a solution to a problem</p>

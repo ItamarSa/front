@@ -271,11 +271,11 @@ export function AppHeader() {
                                                 </div>
                                             </div>
 
-                                            <aside className="bottom place-left">
+                                            {
+                                                    isMenuOpen && <aside className="bottom place-left">
                                                 <div className="tip" style={{ left: "calc(100% - 16px)" }}>
                                                 </div>
-                                                {
-                                                    isMenuOpen &&
+                                               
                                                     <ul className="nav-popover-items-content" style={{ width: "auto" }}>
                                                         <li className="profile">
                                                             {/* <a href="/my_profile" className="nav-link">Profile</a> */}
@@ -287,9 +287,9 @@ export function AppHeader() {
                                                             <button className="out" onClick={onLogout}>Logout</button>
                                                         </li>
                                                     </ul>
-                                                }
 
                                             </aside>
+                                                }
                                         </span>
 
 

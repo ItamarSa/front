@@ -9,6 +9,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useClickOutside } from '../customHooks/clickOutside.jsx'
 
 
+const homeSymbol = <svg width="14" height="14" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#404145"><path d="M12.773 14.5H3.227a.692.692 0 0 1-.482-.194.652.652 0 0 1-.2-.468V7.884H.5l7.041-6.212a.694.694 0 0 1 .918 0L15.5 7.884h-2.046v5.954a.652.652 0 0 1-.2.468.692.692 0 0 1-.481.194Zm-4.091-1.323h3.409V6.664L8 3.056 3.91 6.664v6.513h3.408v-3.97h1.364v3.97Z"></path></svg>
 export function GigIndex() {
 
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
@@ -35,7 +36,6 @@ export function GigIndex() {
         'Up to 7 days': 7,
         'Any time': null,
     };
-    const homeSymbol = <svg width="14" height="14" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#404145"><path d="M12.773 14.5H3.227a.692.692 0 0 1-.482-.194.652.652 0 0 1-.2-.468V7.884H.5l7.041-6.212a.694.694 0 0 1 .918 0L15.5 7.884h-2.046v5.954a.652.652 0 0 1-.2.468.692.692 0 0 1-.481.194Zm-4.091-1.323h3.409V6.664L8 3.056 3.91 6.664v6.513h3.408v-3.97h1.364v3.97Z"></path></svg>
 
     useEffect(() => {
         // Dispatch the action to reset the filterBy when the component unmounts
@@ -153,6 +153,7 @@ export function GigIndex() {
 
 
     async function onRemoveGig(gigId) {
+        console.log('gigId',gigId);
         try {
             await removeGig(gigId)
             showSuccessMsg('Gig removed')
@@ -269,16 +270,20 @@ export function GigIndex() {
     //     return gig.owner?._id === user._id
     // }
     const loggedInUser = userService.getLoggedinUser();
-
+    let newTag = ''
+    
     return (
         <div className='gigs'>
             <div className="list-head flex column ">
-                <div className='home-nav'>
-                    <Link  to='/'>{homeSymbol}</Link>
+                <div className='home-nav flex align-center'>
+                    <span className='home-symbol'><Link  to='/'>{homeSymbol}</Link></span>
+                    
+                    <small> / </small> 
+                    {tags === null ? <Link to={`/gigs`}>Explore</Link> : <Link to={`/gigs?tags=${tags}`}>{newTag=tags.replace('-', ' & ')}</Link>}
                 </div>
-                <h1 className='gig-list-title'>{tags}</h1>
+                <h1 className='gig-list-title'>{tags === null ? 'Explore Gigs in Tenner': newTag=tags.replace('-', ' & ')}</h1>
                 <div className="explanation-video flex align-center">
-                    <p className="subtitle">Get a beautiful website design that people love to engage with.</p>
+                    <p className="subtitle">Find top freelancers and professional business tools for any project.</p>
                 </div>
             </div>
             <main>
