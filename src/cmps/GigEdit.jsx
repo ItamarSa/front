@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react'
 import { gigService } from '../services/gig.service.local'
 import { useNavigate, useParams } from 'react-router'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { utilService } from '../services/util.service'
 import { useSelector } from 'react-redux'
-import { ImgUploader } from './ImgUploader' // Import ImgUploader here
+import { ImgUploader } from './ImgUploader'
 
 
 export function GigEdit(onAddGig) {
@@ -36,9 +35,6 @@ export function GigEdit(onAddGig) {
             imgUrl: imgUrls, // Replace the existing imgUrl with the new array
         }));
     }
-    
-      
-
 
     function handleChange({ target }) {
   if (target) {
@@ -92,7 +88,81 @@ export function GigEdit(onAddGig) {
 
     return (
         <section className='edit-gig gigs'>
-            <form onSubmit={onSubmitGig}>
+            {/* <button onClick={onBack}>Back</button> */}
+            <form className='main-edit-gig' onSubmit={onSubmitGig}>
+                <header className="edit-gig-head">
+                    <h2 className='edit-gig-title'>Edit Your Gig</h2>
+                    <p>On this page, you can edit and modify your gig. After you complete it, the gig will be ready for publishing.</p>
+                    <small>* Mandatory fields</small>
+                </header>
+                <div className="edit-field flex">
+                    <aside>
+                        <h3 className="font-accent flex align-center">
+                            <span>Title</span>
+                        </h3>
+                        <div class="education-text">Ex. I will transform your ideas into...</div>
+                    </aside>
+                    <div className="filed-content">
+                        <div className="field-input">
+                            <input
+                            className="title-input-field"
+                                value={gigToAdd.title}s
+                                onChange={handleChange}
+                                type='text'
+                                placeholder='title'
+                                id='title'
+                                name='title'
+                                required
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className="edit-field flex">
+                    <aside>
+                        <h3 className="font-accent flex align-center">
+                            <span>Price</span>
+                        </h3>
+                        <div class="education-text">Offer a low price that will attract customers.</div>
+                    </aside>
+                    <div className="filed-content">
+                        <div className="field-input">
+                            <input
+                            className="price-input-field"
+                            value={gigToAdd.price}
+                            onChange={handleChange}
+                            type='number'
+                            placeholder='price'
+                            id='price'
+                            name='price'
+                            required
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className="edit-field flex">
+                    <aside>
+                        <h3 className="font-accent flex align-center">
+                            <span>Upload Pictures</span>
+                        </h3>
+                        <div class="education-text">Add a pictures of your gig so customers will know exactly what they buying.</div>
+                    </aside>
+                    <div className="filed-content">
+                        <section className="gig-img">
+                        <ImgUploader onUploaded={onUploaded} />
+
+                            {/* <input
+                            className="price-input-field"
+                            value={gigToAdd.price}
+                            onChange={handleChange}
+                            type='number'
+                            placeholder='price'
+                            id='price'
+                            name='price'
+                            required
+                            /> */}
+                        </section>
+                    </div>
+                </div>
                 {/* <label htmlFor='name'>Name: </label>
                 <input
                     value={gigToAdd.name}
@@ -103,7 +173,7 @@ export function GigEdit(onAddGig) {
                     name='name'
                     required
                 /> */}
-                <label htmlFor='title'>Title: </label>
+                {/* <label htmlFor='title'>Title: </label>
                 <input
                     value={gigToAdd?.title}
                     onChange={handleChange}
@@ -121,12 +191,10 @@ export function GigEdit(onAddGig) {
                     placeholder='price'
                     id='price'
                     name='price'
-                    // required
-                />
-                <ImgUploader onUploaded={onUploaded} />
-                <button>Save</button>
+                    required */}
+                {/* /> */}
+            <button className='submit-btn'>Save</button>
             </form>
-            <button onClick={onBack}>Back</button>
         </section>
     )
 }

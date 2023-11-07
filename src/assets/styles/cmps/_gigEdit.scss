@@ -1,0 +1,141 @@
+.edit-gig {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 100px;
+
+    .main-edit-gig {
+        padding-top: 40px;
+
+        .edit-gig-head {
+            border-bottom: 1px solid #e4e5e7;
+
+            .edit-gig-title {
+                margin: 0;
+                margin-bottom: 12px;
+                color: $clr9;
+                font-size: 32px;
+                line-height: 120%;
+                font-family: macan-bold, Helvetica Neue, Helvetica, Arial, sans-serif;
+            }
+
+            p {
+                margin: 0;
+                color: #95979d;
+                width: 475px;
+                font-size: 15px;
+                line-height: 23px;
+                padding: 5px 20px 0 0;
+            }
+
+            small {
+                float: none;
+                text-align: right;
+                font-size: 16px;
+                font-style: italic;
+                position: inherit;
+                margin-top: 2px;
+                margin-bottom: 10px;
+                color: #95979d;
+                line-height: 23px;
+                display: block;
+            }
+        }
+
+        .edit-field {
+            padding: 35px 0 96px;
+            align-items: flex-start;
+            width: 100%;
+            min-height: 60px;
+
+            aside {
+                flex: 1 1;
+                padding: 5px 0;
+                min-width: 210px;
+
+                .font-accent {
+                    margin: 0;
+                    color: $clr7;
+                    font-size: 18px;
+                    line-height: 130%;
+
+                    span {
+                        &::after {
+                            content: "*";
+                            color: #c43333;
+                        }
+
+                    }
+                }
+
+                .education-text {
+                    visibility: hidden;
+                    color: #74767e;
+                    font-size: 12px;
+                    line-height: 20px;
+                    padding: 5px 0 0;
+                    max-width: 90%;
+
+                }
+
+                &:hover .education-text {
+                    visibility: visible;
+
+
+                }
+            }
+
+            .filed-content {
+                width: 100%;
+                position: relative;
+                flex: 2 1;
+                display: inline-block;
+                position: relative;
+                
+                .field-input {
+                    // width: 60%;
+                    position: relative;
+
+                    input {
+                        width: 100%;
+                        padding: 8px 12px;
+                        border: 1px solid #c5c6c9;
+                        border-radius: 4px;
+                        box-shadow: none;
+                        font: inherit;
+                        color: #404145;
+                        transition: .15s ease-in-out;
+                        vertical-align: middle;
+                    }
+
+                }
+            }
+        }
+
+
+    }
+
+    .submit-btn {
+        border-color: #00ad04;
+        text-transform: none;
+        background-color: #1dbf73;
+        font-family: macan-bold, Helvetica Neue, Helvetica, Arial, sans-serif;
+        color: #fff;
+        border: 1px solid transparent;
+        padding-left: 10px;
+        padding-right: 10px;
+        // background: #fff url(//assetsv2.fiverrcdn.com/assets/v2_buttons/btn-progress-ddd-728ee36….gif) no-repeat -2000px -2000px;
+        font-size: 12px;
+        line-height: 12px;
+        display: inline-block;
+        letter-spacing: 0;
+        white-space: nowrap;
+        padding: 9px 20px 8px;
+        margin: 0;
+        cursor: pointer;
+        transition: color .2s, background-color .2s, box-shadow .2s, border .2s;
+        border-radius: 3px;
+
+
+    }
+}
