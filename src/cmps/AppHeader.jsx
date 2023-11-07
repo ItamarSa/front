@@ -393,7 +393,7 @@ export function AppHeader() {
                 )}
             </div>
 
-            <UserMsg />
+            {/* <UserMsg /> */}
         </header>
     )
 }

@@ -1,23 +1,52 @@
 .user-msg {
-    color:white;
-    padding: 10px;
-    font-size: 1.4em;
-    position: fixed;
-    top:0;
-    right:0;
-    background-color: grey;
-}
-.user-msg button {
-    float:right;
-    border:0;
-    border-radius: 50%;
-    margin: 5px;
-    background-color: #222;
-}
+    bottom: 32px;
+    display: inline-block;
+    margin-left: 32px;
+    position: sticky;
+    z-index: 100;
 
-.user-msg.success {
-    background-color: rgb(41, 189, 73);
-}
-.user-msg.error {
-    background-color: rgb(216, 59, 59);
+    .msg-wrapper {
+        width: fit-content;
+        background-color: #fff;
+        border-radius: 68px;
+        // cursor: pointer;
+        padding: 8px 24px 8px 8px;
+        width: fit-content;
+        box-shadow: 0 0 2.17382px rgba(0, 0, 0, .049), 0 1.75px 6.01034px rgba(0, 0, 0, .07), 0 3.63px 14.4706px rgba(0, 0, 0, .091), 0 22px 48px rgba(0, 0, 0, .14);
+
+        .msg-user {
+            padding-bottom: 0;
+            flex-direction: column;
+            font-size: 14px;
+            line-height: 21px;
+            padding-left: 16px;
+            color: #404145;
+
+            .mag {
+                font-size: 16px;
+                line-height: 24px;
+                font-family: macan-semibold, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+                button {
+                    float: right;
+                    border: 0;
+                    border-radius: 50%;
+                    margin-left: 15px;
+                    cursor: pointer;
+                    
+                    // background-color:#f74040;;
+                }
+            }
+        }
+
+    }
+
+    &.success .msg-wrapper {
+       border: #1dbf73 solid 5px;
+    }
+
+    &.error .msg-wrapper{
+        background-color:  #f74040;
+
+    }
 }
