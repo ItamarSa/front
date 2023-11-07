@@ -12,11 +12,12 @@ import { CategoriesCmp } from '../cmps/CategoriesCmp';
 import { GigList } from './GigList';
 import { GigListMobile } from './GigListMobile';
 import { CarouselMobile } from '../cmps/CarouselMobile';
+import { gigService } from '../services/gig.service.local';
 
 export function HomePage() {
+  const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
+  const [filter, setFilter] = useState(filterBy)
   const dispatch = useDispatch()
-  const [filterText, setFilterText] = useState("")
-  const [filterTags, setFilterTags] = useState([])
   const [activeImageIndex, setActiveImageIndex] = useState(0)
   const gigs = useSelector(storeState => storeState.gigModule.gigs)
 
@@ -25,7 +26,7 @@ export function HomePage() {
       imgSrc:
         'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616487/jenny-2x.jpg',
       altTxt: 'Jenny Img',
-      class: 'hero-jenny hero-background',
+      className: 'hero-jenny hero-background',
       backgroundColor: '#0a4226',
       iconImg: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_40,dpr_1.0/v1/attachments/generic_asset/asset/7539ee9d7a6ab02e3d23069ebefb32c8-1690386499430/jenny-2x.png',
       job: `Children's Voice Over`,
@@ -37,7 +38,7 @@ export function HomePage() {
       imgSrc:
         'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616493/colin-2x.jpg',
       altTxt: 'Colin Img',
-      class: 'hero-colin hero-background',
+      className: 'hero-colin hero-background',
       backgroundColor: '#a7445a',
       iconImg: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_40,dpr_1.0/v1/attachments/generic_asset/asset/7539ee9d7a6ab02e3d23069ebefb32c8-1690386499432/colin-2x.png',
       job: 'Creative Director',
@@ -48,10 +49,10 @@ export function HomePage() {
       imgSrc:
         'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616487/scarlett-2x.jpg',
       altTxt: 'Scarlet Img',
-      class: 'hero-scarlett hero-background',
+      className: 'hero-scarlett hero-background',
       backgroundColor: '#5f1628',
       altTxt: 'Scarlett Img',
-      class: 'hero-scarlett hero-background',
+      className: 'hero-scarlett hero-background',
       iconImg: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_40,dpr_1.0/v1/attachments/generic_asset/asset/7539ee9d7a6ab02e3d23069ebefb32c8-1690386499428/scarlett-2x.png',
       job: 'Business Founder',
       name: 'Scarlett'
@@ -61,7 +62,7 @@ export function HomePage() {
       imgSrc:
         'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616493/jordan-2x.jpg',
       altTxt: 'Jordan Img ',
-      class: 'hero-jordan hero-background',
+      className: 'hero-jordan hero-background',
       backgroundColor: '#0f4926',
       iconImg: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_40,dpr_1.0/v1/attachments/generic_asset/asset/7539ee9d7a6ab02e3d23069ebefb32c8-1690386499439/jordan-2x.png',
       job: 'Production Assistant',
@@ -73,7 +74,7 @@ export function HomePage() {
       imgSrc:
         'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,dpr_1.0/v1/attachments/generic_asset/asset/4637ac0b5e7bc7f247cd24c0ca9e36a3-1690384616497/christina-2x.jpg',
       altTxt: 'Christina Img',
-      class: 'hero-christina hero-background',
+      className: 'hero-christina hero-background',
       backgroundColor: '#ad3906',
       iconImg: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_40,dpr_1.0/v1/attachments/generic_asset/asset/7539ee9d7a6ab02e3d23069ebefb32c8-1690386499422/christina-2x.png',
       job: 'jewelry Shop Owner',
@@ -85,6 +86,11 @@ export function HomePage() {
   const changeActiveImage = () => {
     setActiveImageIndex((prevIndex) => (prevIndex + 1) % mainImgCount)
   }
+
+  useEffect(() => {
+      
+    setGigFilter( filter )
+}, [filter])
 
   useEffect(() => {
     try {
@@ -103,15 +109,26 @@ export function HomePage() {
       clearInterval(intervalId)
     }
   }, [])
-  function onSetFilterTag(filterBy) {
-    setFilterTags(filterBy.tags)
-    setGigFilter({ txt: filterText, tags: filterBy.tags })
-  }
+  // function onSetFilterTag(filterBy) {
+  //   setFilterTags(filterBy.tags)
+  //   setGigFilter({ txt: filterText, tags: filterBy.tags })
+  // }
 
-  function onSetFilterText(filterBy) {
-    setFilterText(filterBy.txt)
-    setGigFilter({ txt: filterBy.txt, tags: filterTags })
-  }
+  // function onSetFilterText(filterBy) {
+  //   setFilterText(filterBy.txt)
+  //   setGigFilter({ txt: filterBy.txt, tags: filterTags })
+  // }
+
+  function handleFilterChange(value, location) {
+    if (location === "tags") {
+        const filterToUpdate = { ...filter, tags: value }
+        setFilter(filterToUpdate)
+    }
+    else {
+        const filterToUpdate = { ...filter, txt: value }
+        setFilter(filterToUpdate)
+    }
+}
 
   const sponsors = [
     {
@@ -179,10 +196,10 @@ export function HomePage() {
               <br />
               service, right away
             </h1>
-            <TextFilterMain onSetFilter={onSetFilterText} />
+            <TextFilterMain handleFilterChange={handleFilterChange} />
             <div className="tag-filter-container">
               <span className="popular-label">Popular:</span>
-              <TagFilterMain onSetFilter={onSetFilterTag} />
+              <TagFilterMain handleFilterChange={handleFilterChange} />
             </div>
           </div>
         </div>

@@ -5,33 +5,33 @@ import { gigService } from "../services/gig.service.local";
 
 const gigTags = gigService.getGigTags();
 
-export function TagFilter({ filterBy, onSetFilter }) {
+export function TagFilter({ filterBy, handleFilterChange }) {
   const location = useLocation();
   const navigate = useNavigate();
 
   const searchParams = new URLSearchParams(location.search);
-  const filterByFromURL = {
-    tags: searchParams.getAll("tags") || [],
-  };
+  const filterByFromURL = searchParams.get("tags") ||''
 
   const [filterByTags, setFilterByTags] = useState(filterByFromURL);
 
   const debouncedUpdateURL = utilService.debounce(updateURL, 500);
 
-  useEffect(() => {
-    onSetFilter(filterByTags);
-  }, [filterByTags, onSetFilter]);
+  // useEffect(() => {
+  //   // onSetFilter(filterByTags);
+  // }, [filterByTags]);
 
-  useEffect(() => {
-    setFilterByTags(filterByFromURL);
-  }, [location.search]);
+  // useEffect(() => {
+  //   setFilterByTags(filterByFromURL);
+  // }, [location.search]);
 
   function handleTagButtonClick(tag) {
-    const updatedTags = [tag];
-    setFilterByTags({ tags: updatedTags });
-    debouncedUpdateURL({ tags: updatedTags });
+    // const updatedTags = tag;
+    // setFilterByTags({ tags: updatedTags });
+    debouncedUpdateURL({ tags: tag });
+    setFilterByTags(tag)
+    handleFilterChange(tag,"tags")
     // Reset the filter value
-    setFilterByTags({ tags: [] });
+    // setFilterByTags({ tags: [] });
   }
 
   function updateURL(params) {
@@ -46,7 +46,7 @@ export function TagFilter({ filterBy, onSetFilter }) {
         {gigTags.map((tag) => (
           <button
             key={tag}
-            className={`btn tag ${filterByTags.tags.includes(tag) ? "selected" : ""}`}
+            className={`btn tag ${filterByTags===tag? "selected" : ""}`}
             onClick={() => handleTagButtonClick(tag)}
           >
             {/* {tag} */}

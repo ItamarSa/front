@@ -4,9 +4,10 @@ import { userService } from './user.service'
 import { utilService } from './util.service'
 
 const STORAGE_KEY = 'orderDB'
+const BASE_URL = 'order/'
 
 export const orderService = {
-  add,
+  // add,
   query,
   remove,
   save,
@@ -22,27 +23,41 @@ function getImgs() {
   return gigImgs
 }
 
-async function query(filterBy = {}) {
-  let orders = await storageService.query(STORAGE_KEY);
-  // if (filterBy.gigId) {
-  //   return orders.filter((order) => order.gigId === filterBy.gigId);
+async function query(user = {}) {
+  // console.log("order",filterBy);
+  // var queryStr = (!user) ? '' : ``;
+  // if (user.aboutGigId) {
+  //   queryStr+=`aboutGigId=${user.aboutGigId}`
   // }
-  if (filterBy.buyerId) {
-  orders = orders.filter((order) => order.buyer._id === filterBy.buyerId);
-  }
-  if (filterBy.sellerId) {
-  orders = orders.filter((order) => order.seller._id === filterBy.sellerId);
-  }
+  // if (user.sellerId) {
+  //   queryStr+=`sellerId=${user.sellerId}`
+  // }
+  // if (user.buyerId) {
+  //   queryStr+=`buyerId=${user.buyerId}`
+  // }
+  // console.log('queryStr:', queryStr)
+  // return httpService.get(`order`, user);
+  // let orders = await storageService.query(`order`);
+  // if (user.gigId) {
+  //   return orders.filter((order) => order.gigId === user.gigId);
+  // }
+  // if (user.buyerId) {
+  // orders = orders.filter((order) => order.buyer._id === user.buyerId);
+  // }
+  // if (user.sellerId) {
+  // orders = orders.filter((order) => order.seller._id === user.sellerId);
+  // }
+  return httpService.get(BASE_URL, user);
 
 
-  // Filter orders by gigId if provided
-// console.log('orders:', orders)
-  return orders;
+//   // Filter orders by gigId if provided
+// // console.log('orders:', orders)
+//   return orders;
 }
 
 async function remove(orderId) {
   // await httpService.delete(`order/${orderId}`)
-  await storageService.remove(STORAGE_KEY, orderId)
+  await httpService.remove(BASE_URL, orderId)
 }
 function formatDateForTimeAgo(date) {
   return date.toISOString();
@@ -61,7 +76,7 @@ function getOrder(gig) {
     status: status,
     statusColor: statusColor, // Include the color in the order object
     seller: gig.owner,
-    gigId: gig._id,
+    gig: gig,
   };
 }
 
@@ -84,8 +99,11 @@ async function updateStatus(orderId, newStatus) {
       throw new Error("orderId is not defined");
     }
 
+    console.log('newStatus:', newStatus)
+    console.log('orderId:', orderId)
     // Retrieve the existing entity from your storage
-    const existingEntity = await storageService.get(STORAGE_KEY, orderId);
+    const existingEntity = await httpService.get(BASE_URL+orderId);
+    console.log('existingEntity:', existingEntity)
 
     if (!existingEntity) {
       throw new Error(`Entity with id ${orderId} not found.`);
@@ -95,53 +113,60 @@ async function updateStatus(orderId, newStatus) {
     existingEntity.status = newStatus;
 
     // Make an HTTP request to update the entity's "status" property in the backend
-    const updatedOrder = await storageService.put(STORAGE_KEY, existingEntity);
+    const updatedOrder = await httpService.put(BASE_URL,existingEntity);
+    console.log('updatedOrder:', updatedOrder)
     // Handle the response as needed
 
     // Return the updated order if necessary
+    console.log('updatedOrder:', updatedOrder)
     return updatedOrder;
   } catch (error) {
     // Handle any errors or error responses
+    console.error('Error:', error);
     throw error;
   }
 }
 
 
 
+
 async function save(order) {
+  console.log('orderofsave:', order)
   var savedOrder
   if (order._id) {
-    savedOrder = await storageService.put(STORAGE_KEY, order)
+    savedOrder = await httpService.put(BASE_URL, order)
   } else {
     // Later, owner is set by the backend
-    savedOrder = await storageService.post(STORAGE_KEY, order)
+    savedOrder = await httpService.post(BASE_URL, order)
+    console.log('savedOrderofPost:', savedOrder)
   }
   return savedOrder
 }
 
-async function add({ sellerName, gigId, price, title }) {
+// async function add({ sellerName, gigId, price, title }) {
   // const addedOrder = await httpService.post(`order`, {txt, aboutUserId})
 
   // const aboutUser = await userService.getById(aboutUserId)
 
-  const orderToAdd = {
-    buyer: userService.getLoggedinUser(),
-    sellerName: sellerName,
-    gigId: gigId,
-    createdAt: formatDateForTimeAgo(new Date()),
-    price: price,
-    title: title,
-    status: 'pending'
+//   const orderToAdd = {
+//     buyer: userService.getLoggedinUser(),
+//     sellerName: sellerName,
+//     gigId: gigId,
+//     createdAt: formatDateForTimeAgo(new Date()),
+//     price: price,
+//     title: title,
+//     status: 'pending'
 
-    // aboutUser: {
-    //   _id: aboutUser._id,
-    //   fullname: aboutUser.fullname,
-    //   imgUrl: aboutUser.imgUrl
-    // }
-  }
+//     // aboutUser: {
+//     //   _id: aboutUser._id,
+//     //   fullname: aboutUser.fullname,
+//     //   imgUrl: aboutUser.imgUrl
+//     // }
+//   }
 
-  // orderToAdd.byUser.score += 10
-  // await userService.update(orderToAdd.txt)
-  const addedOrder = await storageService.post(STORAGE_KEY, orderToAdd)
-  return addedOrder
-}
+//   // orderToAdd.byUser.score += 10
+//   // await userService.update(orderToAdd.txt)
+//   const addedOrder = await httpService.post(BASE_URL, orderToAdd)
+//   console.log('addedOrder:', addedOrder)
+//   return addedOrder
+// }

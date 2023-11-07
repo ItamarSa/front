@@ -2,7 +2,10 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import { httpService } from './http.service.js'
 
+
+const BASE_URL = 'gig/'
 const STORAGE_KEY = 'gigDB'
 const tags = [
     // 'Website-Design',
@@ -93,76 +96,80 @@ function getImgs() {
 //     var gigs = await storageService.query(STORAGE_KEY)}
 
 async function query(filterBy = {}) {
-    var gigs = await storageService.query(STORAGE_KEY, filterBy);
+    return httpService.get(BASE_URL, filterBy);
 
-    let gigToDisplay = [...gigs];
+    // let gigToDisplay = [...gigs];
 
-    if (filterBy.txt) {
-        const regex = new RegExp(filterBy.txt, 'i');
-        gigToDisplay = gigToDisplay.filter((gig) => {
-            return (
-                gig.title.match(regex) || // Match by title
-                gig.tags.some((tag) => tag.match(regex)) // Match by tags
-            );
-        });
-    }
+    // if (filterBy.txt) {
+    //     const regex = new RegExp(filterBy.txt, 'i');
+    //     gigToDisplay = gigToDisplay.filter((gig) => {
+    //         return (
+    //             gig.title.match(regex) || // Match by title
+    //             gig.tags.some((tag) => tag.match(regex)) // Match by tags
+    //         );
+    //     });
+    // }
 
-    if (filterBy.price) {
-        gigToDisplay = gigToDisplay.filter((gig) => gig.price <= filterBy.price);
-    }
+    // if (filterBy.price) {
+    //     gigToDisplay = gigToDisplay.filter((gig) => gig.price <= filterBy.price);
+    // }
 
-    if (filterBy.tags && filterBy.tags.length > 0) {
-        gigToDisplay = gigToDisplay.filter((gig) => {
-            return gig.tags.some((tag) => filterBy.tags.includes(tag));
-        });
-    }
-    if (filterBy.userId) {
-        gigToDisplay = gigToDisplay.filter((gig) => gig.owner._id === filterBy.userId);
-    }
+    // if (filterBy.tags && filterBy.tags.length > 0) {
+    //     gigToDisplay = gigToDisplay.filter((gig) => {
+    //         return gig.tags.some((tag) => filterBy.tags.includes(tag));
+    //     });
+    // }
+    // if (filterBy.userId) {
+    //     gigToDisplay = gigToDisplay.filter((gig) => gig.owner._id === filterBy.userId);
+    // }
     // if (filterBy.buyerId) {
     //     orders = orders.filter((order) => order.buyer._id === filterBy.buyerId);
     //     }
 
 
-    return gigToDisplay;
+    // return gigToDisplay;
 }
 function getDefaultFilter() {
-    return { txt: '', tags: [] }
+    return { txt: '', tags: '',userId:''}
 }
 
 
 function getById(gigId) {
-    return storageService.get(STORAGE_KEY, gigId)
+    return httpService.get(BASE_URL +gigId)
 }
 
 async function remove(gigId) {
     // throw new Error('Nope')
-    await storageService.remove(STORAGE_KEY, gigId)
+    await httpService.remove(BASE_URL, gigId)
 }
 
 async function save(gig) {
+    console.log('gig:', gig)
     var savedGig
     if (gig._id) {
-        savedGig = await storageService.put(STORAGE_KEY, gig)
+        savedGig = await httpService.put(BASE_URL, gig)
     } else {
         // Later, owner is set by the backend
         gig.owner = userService.getLoggedinUser()
-        savedGig = await storageService.post(STORAGE_KEY, gig)
+        savedGig = await httpService.post(BASE_URL, gig)
     }
     return savedGig
 }
-async function update({ _id, imgUrl }) {
-    const gig = await storageService.get(STORAGE_KEY, _id);
+async function update(gigToUpdate) {
+    const gig = await httpService.get(BASE_URL + gigToUpdate._id);
 
-    // Optionally, update the imgUrl if provided
-    if (imgUrl) {
-        gig.imgUrl = imgUrl;
+    // Update all fields from gigToUpdate
+    for (const key in gigToUpdate) {
+        if (key !== '_id') {
+            gig[key] = gigToUpdate[key];
+        }
     }
 
-    await storageService.put(STORAGE_KEY, gig); // Update the gig object in storage
+    await httpService.put(BASE_URL, gig); // Update the gig object in storage
 
     return gig;
 }
+
 
 
 async function addGigMsg(gigId, txt) {

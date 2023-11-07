@@ -3,6 +3,7 @@ import { userService } from '../services/user.service'
 import { login, logout, signup } from '../store/action/user.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { ImgUploader } from './ImgUploader'
+import { utilService } from '../services/util.service'
 // import { ImgUploader } from './ImgUploader'
 
 export function LoginSignup(props) {
@@ -10,7 +11,7 @@ export function LoginSignup(props) {
         username: '',
         password: '',
         email: '',
-        CreateAt: new Date(),
+        createdAt: '',
         imgUrl: '',
         store: '',
         from: [],
@@ -20,6 +21,7 @@ export function LoginSignup(props) {
         queue: '',
         reviews: ''
     })
+    console.log('credentialsState:', credentials)
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
 
@@ -60,6 +62,7 @@ export function LoginSignup(props) {
     }
     async function sign(credentials) {
         try {
+            console.log('credentialsOf Loginjsx:', credentials)
             const user = await signup(credentials)
             showSuccessMsg(`Welcome new user: ${user.email}`)
         } catch (err) {
@@ -90,81 +93,100 @@ export function LoginSignup(props) {
         setCredentials({ ...credentials, imgUrl })
     }
 
+    const { username, password, email } = credentials
     return (
         <div className='flex flex-col qeqNPA2'>
             <section className='_5WljZku m-b-24'>
                 <section className="_5rRovJw">
-                    <h4 class="vzvFWqe">Sign in to your account</h4>
-                    <p class="_0vcWjbi p-t-8 _2VpvlgD"><span>Don’t have an account? <span onClick={toggleSignup} role="button" class="UxOgbC1">{!isSignup ? 'Join here' : 'Sign in'}</span></span></p>
+                    <h4 className="vzvFWqe">Sign in to your account</h4>
+                    <p className="_0vcWjbi p-t-8 _2VpvlgD"><span>Don’t have an account? <span onClick={toggleSignup} role="button" className="UxOgbC1">{!isSignup ? 'Join here' : 'Sign in'}</span></span></p>
                 </section>
                 <div className='field'>
                     <section className='field-label'>
                         {/* <label for="login">Select Your username</label> */}
                     </section>
                     <div className='WvIqLXU H6Jxm4z field-input-wrapper'>
-                        {!isSignup && <form className='' onSubmit={onLogin}>
+                        {!isSignup &&
+                            <form className='' onSubmit={onLogin}>
 
-                            <div>
-                                <select className='GD3asS+ field-input custom-select'
-                                    name='username'
-                                    value={credentials.username}
-                                    onChange={handleChange}
-                                >
-                                    <option value=''>Select User</option>
-                                    {users.map(user => <option key={user._id} value={user.username}>{user.email}</option>)}
-                                </select>
-                            </div>
-                          
-                            <button className='FW1syM7 Af0hvld co-white Kk1804g OCrkteb WMEjUS4 bg-co-black'>Sign In</button>
-                        </form>}
+                                <div>
+                                    {/* <select className='GD3asS+ field-input custom-select' */}
+                                    <input className='GD3asS+ field-input'
+
+                                        type="text"
+                                        name="username"
+                                        value={username}
+                                        placeholder="Username"
+                                        onChange={handleChange}
+                                        required
+                                        autoFocus
+                                    />
+                                    <br /><br />
+                                    <input
+                                        className='GD3asS+ field-input'
+                                        type="password"
+                                        name="password"
+                                        value={password}
+                                        placeholder="Password"
+                                        onChange={handleChange}
+                                        required
+                                    />
+
+
+                                    <br /><br />
+                                </div>
+
+                                <button className='FW1syM7 Af0hvld co-white Kk1804g OCrkteb WMEjUS4 bg-co-black'>Sign In</button>
+                            </form>}
                         {/* <p>
                             <button className='btn-link' ></button>
                         </p> */}
-                        
+
                     </div>
                     <div className='WvIqLXU H6Jxm4z field-input-wrapper'>
-                {isSignup && <form className='signup-form' onSubmit={onSignup}>
-                    <input className='GD3asS+ field-input'
-                        type='text'
-                        name='email'
-                        value={credentials.email}
-                        placeholder='email'
-                        onChange={handleChange}
-                        required
-                    />
-                    <br /><br />
-                    <input className='GD3asS+ field-input'
-                        type='text'
-                        name='username'
-                        value={credentials.username}
-                        placeholder='Username'
-                        onChange={handleChange}
-                        required
-                    />
-                    <br /><br />
-                    <input className='GD3asS+ field-input'
-                        type='password'
-                        name='password'
-                        value={credentials.password}
-                        placeholder='Password'
-                        onChange={handleChange}
-                        required
-                    />
-                    {/* <ImgUploader onUploaded={onUploaded} /> */}
-                    <button className='FW1syM7 Af0hvld co-white Kk1804g OCrkteb WMEjUS4 bg-co-black' >Continue</button>
-                </form>}
-                <p class="tbody-7 co-text-medium YGfvk+q">By joining, you agree to the Fiverr
-                            <a class="oz+h+rw" href="/terms_of_service?store=false" target="_blank"
+                        {isSignup &&
+                            <form className='signup-form' onSubmit={onSignup}>
+                                <input className='GD3asS+ field-input'
+                                    type='text'
+                                    name='email'
+                                    value={credentials.email}
+                                    placeholder='email'
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <br /><br />
+                                <input className='GD3asS+ field-input'
+                                    type='text'
+                                    name='username'
+                                    value={credentials.username}
+                                    placeholder='Username'
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <br /><br />
+                                <input className='GD3asS+ field-input'
+                                    type='password'
+                                    name='password'
+                                    value={credentials.password}
+                                    placeholder='Password'
+                                    onChange={handleChange}
+                                    required
+                                />
+                                {/* <ImgUploader onUploaded={onUploaded} /> */}
+                                <button className='FW1syM7 Af0hvld co-white Kk1804g OCrkteb WMEjUS4 bg-co-black' >Continue</button>
+                            </form>}
+                        <p className="tbody-7 co-text-medium YGfvk+q">By joining, you agree to the Fiverr
+                            <a className="oz+h+rw" href="/terms_of_service?store=false" target="_blank"
                                 rel="noreferrer noopener">Terms of Service</a> and to occasionally receive emails from us. Please read our <a
-                                    class="oz+h+rw" href="/privacy-policy?store=false"
+                                    className="oz+h+rw" href="/privacy-policy?store=false"
                                     target="_blank" rel="noreferrer noopener">Privacy Policy
                             </a> to learn how we use your personal data.
                         </p>
-            </div>
+                    </div>
                 </div>
             </section>
-            
-              {/* <input
+
+            {/* <input
                         type='text'
                         name='username'
                         value={username}
@@ -181,8 +203,8 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     /> */}
-                            {/* <button onClick={onLogout}>Logout</button> */}
+            {/* <button onClick={onLogout}>Logout</button> */}
         </div>
-        
+
     )
 }

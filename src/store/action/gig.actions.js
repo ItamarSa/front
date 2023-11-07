@@ -3,6 +3,7 @@ import { store } from '../store.js'
 import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service.js'
 import { ADD_GIG, ADD_ORDER, REMOVE_GIG, SET_FILTER, SET_GIGS, UNDO_REMOVE_GIG, UPDATE_GIG } from '../reducer/gig.reducer.js'
 import { orderService } from '../../services/order.service.js'
+export const RESET_FILTER_BY = 'RESET_FILTER_BY';
 
 // Action Creators:
 export function getActionRemoveGig(gigId) {
@@ -32,6 +33,7 @@ export function getActionUpdateGig(gig) {
 
 export async function loadGigs() {
     try {
+
         const { filterBy } = store.getState().gigModule
         const gigs = await gigService.query(filterBy)
         store.dispatch({
@@ -40,21 +42,30 @@ export async function loadGigs() {
         })
 
     } catch (err) {
-        console.log('Cannot load gigs', err)
+        // console.log('Cannot load gigs', err)
         throw err
     }
 
 }
-export async function loadGigsUser(filterBy = {}) {
+export async function loadGigsUser(userId) {
     try {
-      const { userId } = filterBy; // Destructure the userId from filterBy
-      const gigs = await gigService.query(filterBy);
-      console.log('filterBy:', filterBy);
-      console.log('gigs:', gigs);
-      console.log('Gigs from DB:', gigs);
+      // Get the current filterBy from the store
+      const { filterBy } = store.getState().gigModule;
+      
+      // Update the filterBy with the userId
+      const updatedFilterBy = { ...filterBy, userId };
+      
+      // Call gigService.query with the updated filterBy
+      const gigs = await gigService.query(updatedFilterBy);
+  
+      store.dispatch({
+        type: SET_FILTER,
+        filterBy: updatedFilterBy, // Update the filterBy in the store
+      });
+  
       store.dispatch({
         type: SET_GIGS,
-        gigs
+        gigs,
       });
     } catch (err) {
       console.log('Cannot load gigs', err);
@@ -74,6 +85,7 @@ export async function addGig(gig) {
     }
 }
 export async function addOrder(order) {
+    console.log('orderodadd:', order)
     try {
         const savedOrder = await orderService.save(order)
         console.log('Added Order', savedOrder)
@@ -125,6 +137,11 @@ export function setGigFilter(filterBy = gigService.getDefaultFilter()) {
     // return Promise.resolve(filterBy)
     // return loadToys()
 }
+export const resetFilterBy = () => {
+    return {
+      type: RESET_FILTER_BY,
+    };
+  };
 
 
 

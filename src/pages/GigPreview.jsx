@@ -86,7 +86,7 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig ,isCurrentUser }) {
             {isCurrentUser && (
                 <>
                     <button className='edit'>
-                        <Link to={`/edit/${gig._id}`}><i class="fa-sharp fa-solid fa-pen-to-square fa-lg"></i></Link>
+                        <Link to={`/edit/${gig._id}`}><i className="fa-sharp fa-solid fa-pen-to-square fa-lg"></i></Link>
                     </button>
                 </>
             )}

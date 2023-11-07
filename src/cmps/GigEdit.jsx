@@ -16,11 +16,12 @@ export function GigEdit(onAddGig) {
 
     useEffect(() => {
         if (params.gigId) loadGig()
-    }, [])
+    }, [params.gigId])
 
     async function loadGig() {
         try {
             const gig = await gigService.getById(params.gigId)
+            console.log('gigto edit:', gig)
             setGigToAdd(gig)
             showSuccessMsg('Gig loaded successfully')
         } catch (err) {
@@ -36,38 +37,50 @@ export function GigEdit(onAddGig) {
     }
 
     function handleChange({ target }) {
-        const field = target.name
-        let value = target.value
+  if (target) {
+    const field = target.name;
+    let value = target.value;
 
-        switch (target.type) {
-            case 'number':
-            case 'range':
-                value = +value || 0 // Ensure value is a number
-                break
+    switch (target.type) {
+      case 'number':
+      case 'range':
+        value = +value || 0; // Ensure value is a number
+        break;
 
-            case 'checkbox':
-                value = target.checked
-                break
+      case 'checkbox':
+        value = target.checked;
+        break;
 
-            default:
-                break
-        }
-
-        setGigToAdd((prevGigToAdd) => ({ ...prevGigToAdd, [field]: value }))
+      default:
+        break;
     }
+
+    setGigToAdd((prevGigToAdd) => ({ ...prevGigToAdd, [field]: value }));
+  }
+}
+
 
     async function onSubmitGig(ev) {
-        ev.preventDefault()
+        ev.preventDefault();
         try {
-            console.log('gigToAdd:', gigToAdd)
-            await gigService.save(gigToAdd)
-            showSuccessMsg(`Gig saved successfully`)
-            navigate(`/user/${user._id}`)
+          if (params.gigId) {
+            // If params.gigId exists, we are editing an existing gig
+            const updatedGig = { ...gigToAdd, _id: params.gigId };
+            await gigService.update(updatedGig); // Assuming you have an update function in your service
+            showSuccessMsg('Gig updated successfully');
+          } else {
+            // If params.gigId is not set, we are adding a new gig
+            await gigService.save(gigToAdd);
+            showSuccessMsg('Gig saved successfully');
+          }
+          navigate(`/user/${user._id}`);
         } catch (error) {
-            console.log('Had issues saving gig', error)
-            showErrorMsg('Couldn\'t save gig')
+          console.error("Error while saving/updating gig:", error);
+          showErrorMsg("An error occurred while saving/updating gig. Please check the console for details.");
         }
     }
+    
+    
 
     function onBack() {
         navigate(`/user/${user._id}`)
@@ -162,17 +175,17 @@ export function GigEdit(onAddGig) {
                 /> */}
                 {/* <label htmlFor='title'>Title: </label>
                 <input
-                    value={gigToAdd.title}
+                    value={gigToAdd?.title}
                     onChange={handleChange}
                     type='text'
                     placeholder='title'
                     id='title'
                     name='title'
-                    required
+                    
                 />
                 <label htmlFor='price'>Price: </label>
                 <input
-                    value={gigToAdd.price}
+                    value={gigToAdd?.price}
                     onChange={handleChange}
                     type='number'
                     placeholder='price'
