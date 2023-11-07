@@ -12,9 +12,17 @@
         border-radius: 4px 0px 0px 4px        ;
         min-width: em(464px);
         height: em(40px);
-        width: em(50px);
+        // width: em(50px);
         font-size: em(16px);
         border:1px solid #c5c6c9;
+      }
+      @media (max-width: 768px) {
+        .search-input {
+          min-width:395px;
+          &::placeholder{
+            content: "sfsdfsdfsdfsdf";
+          }         
+        }
       }
   
       .btn-search-header {
@@ -33,7 +41,20 @@
           font-size: 15px;
         }
       }
+      @media (max-width: 768px) {
+      .btn-search-header{
+       display: none;
+      }
+   }
     }
+    
+  //   @media (max-width: 768px) {
+  //     .search-input-container {
+  //         display: flex;
+  //         position: relative;
+  //         justify-content: center;
+  // }
+  // }
   
     .autocomplete-suggestions {
       position: absolute;
@@ -56,4 +77,5 @@
       }
     }
   }
+  
   

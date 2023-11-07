@@ -1,0 +1,43 @@
+@media (max-width: 768px) {
+    .main-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 360px;
+
+    }
+
+    .filter-container {
+        border-bottom: transparent !important;
+    }
+
+    .filter-group {
+        display: none;
+    }
+
+    .user-container {}
+
+    @media (max-width: 768px) {
+        .filter-group {
+            display: none;
+        }
+    }
+
+
+
+
+    @media (max-width: 768px) {
+        .logo {
+            margin: 0;
+            font-size: 24px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-container {
+        border-bottom: transparent !important;
+    }
+}
+

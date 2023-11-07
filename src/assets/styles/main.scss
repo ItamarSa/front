@@ -3,6 +3,7 @@
 @import "setup/functions";
 @import "setup/mixins";
 @import "setup/typography";
+@import "setup/mq.scss";
 
 // Basics
 @import "basics/helpers";
@@ -48,6 +49,7 @@
 @import"cmps/gigDescription";
 @import"cmps/galleryCarousel";
 @import"cmps/gigEdit";
+@import"cmps/MobileFooter.scss";
 
 
 

@@ -323,9 +323,9 @@ export function UserDetails() {
                      
                       
                       
-                      <b>Description</b>
+                      <b className='desc'>Description</b>
                       <div className='place-start'>
-                        <span className="truncate-text">{order.title}</span>
+                        <span className="truncate-text desc">{order.title}</span>
                       </div>
                     </div>
 
@@ -351,27 +351,30 @@ export function UserDetails() {
                     </div>
                     <div className='txt-review  '>
                       <div>
-                        <b>Price  </b>
+                        <b className='price'>Price  </b>
                       </div>
                       <div className='place-start'>
                         <span >{' ' + order.price}$</span>
                       </div>
                     </div>
-                    <div className="txt-review ">
+                    <div className="txt-review stat">
                       <div>
                       <span style={{ color: orderService.getStatusColor(order.status) }}>{<b>{order.status}</b>}</span>
                       </div>
-                      <div className='place-start'>
-                      <select className='custom-select txt-review  '
-                        value={order.status}
-                        onChange={(e) => handleStatusChange(e, order._id)}
-                      >
-                        <option className='pending status' value="Pending">Pending</option>
-                        <option className='approve status' value="Approve">Approve</option>
-                        <option className='decline status' value="Decline">Decline</option>
-                      </select> 
-                      
-                      </div>
+                      {order.status==="Pending" && 
+                       <div className='place-start'>
+                       <select className='custom-select txt-review  '
+                         value={order.status}
+                         onChange={(e) => handleStatusChange(e, order._id)}
+                       >
+                         <option className='pending status' value="Pending">Pending</option>
+                         <option className='approve status' value="Approve">Approve</option>
+                         <option className='decline status' value="Decline">Decline</option>
+                       </select> 
+                       
+                       </div>
+                      }
+                     
                       
                     </div>
                   </div>

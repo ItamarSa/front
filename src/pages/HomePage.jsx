@@ -4,17 +4,21 @@ import { Carousel } from '../cmps/Carousel';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { TextFilterMain } from '../cmps/TextFilterMain';
-import { setGigFilter } from '../store/action/gig.actions';
+import { loadGigs, setGigFilter } from '../store/action/gig.actions';
 import { TagFilterMain } from '../cmps/TagFilterMain';
 import '../assets/styles/setup/variables.scss'
 import { InfoCmp } from '../cmps/InfoCmp';
 import { CategoriesCmp } from '../cmps/CategoriesCmp';
+import { GigList } from './GigList';
+import { GigListMobile } from './GigListMobile';
+import { CarouselMobile } from '../cmps/CarouselMobile';
 
 export function HomePage() {
   const dispatch = useDispatch()
   const [filterText, setFilterText] = useState("")
   const [filterTags, setFilterTags] = useState([])
   const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const gigs = useSelector(storeState => storeState.gigModule.gigs)
 
   const mainImg = [
     {
@@ -81,6 +85,16 @@ export function HomePage() {
   const changeActiveImage = () => {
     setActiveImageIndex((prevIndex) => (prevIndex + 1) % mainImgCount)
   }
+
+  useEffect(() => {
+    try {
+      loadGigs()
+
+    } catch (err) {
+      console.log('err:', err)
+      showErrorMsg('Cannot load toys')
+    }
+  }, [])
 
   useEffect(() => {
     const intervalId = setInterval(changeActiveImage, 7000)
@@ -183,9 +197,38 @@ export function HomePage() {
           </ul>
         </div>
       </section>
-      <Carousel />
-      <InfoCmp />
-      <CategoriesCmp />
+      <div className='carusleMobile'>
+          <div>
+            <CarouselMobile />
+          </div>
+          
+        </div>
+        <div className='explore'>
+          <img src='../../src/assets/img/explore.jpg' alt="" />
+        </div>
+      <div className='mobile-gigs-container'>
+      <div className='mobile-gigs-first'>
+    <GigListMobile gigs={gigs} slidesToShow={1.5} slidesToScroll={3} gigsTitle={"Recently viewed & more"} />
+  </div>
+  <div className='explore'>
+          <img src='../../src/assets/img/exp.jpg' alt="" />
+        </div>
+  <div className='mobile-gigs-seconde'>
+    <GigListMobile gigs={gigs} slidesToShow={2.5} slidesToScroll={3} gigsTitle={'What new on Fiver?'}/>
+</div>
+
+      </div>
+      <div className='carusale'>
+            <Carousel />
+          </div>
+      <div className='video'>
+
+        <InfoCmp />
+      </div>
+      <div className='category'>
+
+        <CategoriesCmp />
+      </div>
     </>
   )
 }

@@ -1,0 +1,61 @@
+.container {
+    height: 60px;
+    background-color: white;
+    border-top: 1px solid #1dbf73;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    z-index: 999;
+    /* Add a z-index to make it appear above other content */
+    transform: translateY(0);
+    /* Initialize transform property */
+    transition: transform 0.3s ease;
+
+    .footer-nav {
+
+        width: 375px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .fa-house-chimney {
+            color: #1dbf73;
+            font-size: 35px;
+        }
+
+        .fa-clipboard-list {
+            color: #1dbf73;
+            font-size: 35px;
+        }
+
+        .fa-circle-user {
+            color: #1dbf73;
+            font-size: 35px;
+            // margin-right: 15px
+        }
+
+        .fa-magnifying-glass {
+            color: #1dbf73;
+            font-size: 35px;
+        }
+
+        .fa-table-list {
+            color: #1dbf73;
+            font-size: 35px;
+        }
+    }
+}
+
+.sticky-footer {
+    padding-top: 25px
+    /* Move the container up by its own height */
+}
+
+
+@media (min-width: 768px) {
+    .container {
+        display: none;
+    }
+}
