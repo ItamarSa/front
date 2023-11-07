@@ -99,8 +99,11 @@ async function updateStatus(orderId, newStatus) {
       throw new Error("orderId is not defined");
     }
 
+    console.log('newStatus:', newStatus)
+    console.log('orderId:', orderId)
     // Retrieve the existing entity from your storage
-    const existingEntity = await httpService.get(BASE_URL+ orderId);
+    const existingEntity = await httpService.get(BASE_URL+orderId);
+    console.log('existingEntity:', existingEntity)
 
     if (!existingEntity) {
       throw new Error(`Entity with id ${orderId} not found.`);
@@ -110,16 +113,20 @@ async function updateStatus(orderId, newStatus) {
     existingEntity.status = newStatus;
 
     // Make an HTTP request to update the entity's "status" property in the backend
-    const updatedOrder = await httpService.put(BASE_URL, existingEntity);
+    const updatedOrder = await httpService.put(BASE_URL,existingEntity);
+    console.log('updatedOrder:', updatedOrder)
     // Handle the response as needed
 
     // Return the updated order if necessary
+    console.log('updatedOrder:', updatedOrder)
     return updatedOrder;
   } catch (error) {
     // Handle any errors or error responses
+    console.error('Error:', error);
     throw error;
   }
 }
+
 
 
 
