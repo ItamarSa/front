@@ -257,7 +257,7 @@ export function AppHeader() {
                             {/* </div> */}
 
 
-                            <li>
+                            <li className="user-logged-in">
                                 <div className="toggler-popover">
                                     {user && user.imgUrl && (
                                         <span className="target-wrap" onClick={toggleMenu}>

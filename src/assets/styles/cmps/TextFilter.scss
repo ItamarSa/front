@@ -1,3 +1,6 @@
+.search-text{
+  width: 40%;
+}
 .search-form {
   display: flex;
   flex-direction: column;
@@ -10,7 +13,7 @@
       flex: 1;
       padding: 10px;
       border-radius: 4px 0px 0px 4px;
-      min-width: em(464px);
+      // min-width: em(464px);
       height: em(40px);
       // width: em(50px);
       font-size: em(16px);
