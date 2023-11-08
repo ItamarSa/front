@@ -85,10 +85,8 @@ export async function addGig(gig) {
     }
 }
 export async function addOrder(order) {
-    console.log('orderodadd:', order)
     try {
         const savedOrder = await orderService.save(order)
-        console.log('Added Order', savedOrder)
         store.dispatch(getActionAddOrder(savedOrder))
         return savedOrder
     } catch (err) {

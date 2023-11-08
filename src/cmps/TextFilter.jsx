@@ -58,7 +58,7 @@ export function TextFilter({ filterBy, handleFilterChange }) {
   
   function handleSearch(ev) {
     if (ev)ev.preventDefault()
-    console.log('handle:')
+    
     // Update URL parameters here
     const newSearchParams = new URLSearchParams(location.search);
     newSearchParams.set("txt", filterByText);

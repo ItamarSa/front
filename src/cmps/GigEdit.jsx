@@ -21,7 +21,7 @@ export function GigEdit(onAddGig) {
     async function loadGig() {
         try {
             const gig = await gigService.getById(params.gigId)
-            console.log('gigto edit:', gig)
+            
             setGigToAdd(gig)
             showSuccessMsg('Gig loaded successfully')
         } catch (err) {
