@@ -145,29 +145,29 @@ export function AppHeader() {
     }, [isModalOpen, isMenuOpen])
 
     const handleScroll = () => {
-        if (isHomePage && window.innerWidth >= 800) {
-            const isScrolled = window.scrollY > 30;
-            const textColor = isScrolled ? "#62646a" : "white";
-            const isScrolling = isScrolled;
-            const isScrollingHeader = isScrolled;
-            const showFilter = isScrolled;
-            // const showTagFilter = isScrolled;
-
-            setTextColor(textColor);
-            setScrolling(isScrolling);
-            setScrollingHeader(isScrollingHeader);
-
-            if (!showFilter) {
+        if (window.innerWidth >= 800) {
+            if (isHomePage) {
+                const isScrolled = window.scrollY > 30;
+                const textColor = isScrolled ? "#62646a" : "white";
+                const isScrolling = isScrolled;
+                const isScrollingHeader = isScrolled;
+                setTextColor(textColor);
+                setScrolling(isScrolling);
                 setScrollingHeader(isScrollingHeader);
+    
+                if (window.scrollY > 100) {
+                    secondScroll();
+                } else {
+                    CloseHeader();
+                }
             }
-
-            if (window.scrollY > 100) {
-                secondScroll()
-            } else {
-                CloseHeader()
-            }
+            setScrollingHeader(isScrolled);
+        } else {
+            setShowFilter(true);
+            setScrollingHeader(false);
         }
-    };
+    }
+    
 
     useEffect(() => {
         if (isHomePage) {
