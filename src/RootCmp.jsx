@@ -28,6 +28,7 @@ export function RootCmp() {
         <ModalProvider>
             <AppHeader /> 
             {/* <main className='full'> */}
+            <UserMsg/>
                 <Routes>
                     {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
                     <Route path='/' element={<HomePage />} />
@@ -46,7 +47,7 @@ export function RootCmp() {
             <AppFooter />
             <MobileFooter/>
             </ModalProvider>
-            <UserMsg/>
+
         </div>
         </Provider>
     )

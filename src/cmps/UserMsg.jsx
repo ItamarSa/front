@@ -41,7 +41,8 @@ export function UserMsg() {
       <div className="msg-wrapper">
         <div className="msg-user flex align-center">
           <div className="mag flex align-ce">
-          {msg.txt} <button onClick={closeMsg}>{xSymbol}</button>
+          {msg.txt} 
+          {/* <button onClick={closeMsg}>{xSymbol}</button> */}
           </div>
           
         </div>
