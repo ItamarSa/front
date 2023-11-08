@@ -15,16 +15,18 @@ $line-transition: border-color 0.2s ease-in-out, padding 0.2s ease-in-out;
         flex-wrap: wrap;
         justify-content: space-between; // Ensure equal spacing between items
         list-style: none;
-        margin-left: -109px; // Create space on the left side
+        // margin-left: -109px; // Create space on the left side
+        padding-inline-start: 0;
 
         li {
-            width: calc(20% - 109px); // Adjusted width to account for left margin
-            margin-bottom: 94px; // Adjusted spacing between rows
-            box-sizing: border-box;
+            // width: 20%; // Adjusted width to account for left margin
+            // margin-bottom: 94px; // Adjusted spacing between rows
+            padding-bottom: 55px;
+            // box-sizing: border-box;
             text-align: center;
-            margin-left: 109px; // Create space between items
+            // margin-left: 109px; // Create space between items
 
-            > a {
+            >a {
                 color: #222325;
                 text-align: center;
                 position: relative;
@@ -58,20 +60,37 @@ $line-transition: border-color 0.2s ease-in-out, padding 0.2s ease-in-out;
                     margin: 0 auto 15px;
                 }
             }
+
         }
     }
 
-    @media (max-width: 768px) {
-        .catagories-list {
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-left: 0; // Reset margin for small screens
+    // @media (max-width: 768px) {
+    //     .catagories-list {
+    //         flex-direction: column;
+    //         justify-content: center;
+    //         align-items: center;
+    //         margin-left: 0; // Reset margin for small screens
 
+    //         li {
+    //             width: 100%;
+    //             margin-left: 0; // Reset margin for small screens
+    //             margin-bottom: 20px; // Adjust spacing between rows for small screens
+    //         }
+    //     }
+    // }
+
+    @media (min-width: 600px) {
+        .catagories-list {
             li {
-                width: 100%;
-                margin-left: 0; // Reset margin for small screens
-                margin-bottom: 20px; // Adjust spacing between rows for small screens
+                width: 33%;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .catagories-list {
+                li {
+                    width: 20%;
+                }
             }
         }
     }

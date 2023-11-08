@@ -39,8 +39,8 @@
         height: em(80px);
 
         width: 100%;
-        margin-left: 25px;
-        width: calc(100% + 50px);
+        // margin-left: 25px;
+        // width: calc(100% + 50px);
 
         .nav-bar {
             display: flex;
@@ -53,6 +53,8 @@
                 list-style: none;
                 margin: 0;
                 padding: 0;
+
+                
 
 
                 li {
@@ -295,6 +297,9 @@
                     }
 
                 }
+                li.user-logged-in{
+                    padding-right: 0;
+                }
 
 
             }
@@ -382,8 +387,8 @@
 
 
 .filter-container {
-    display: flex;
-    align-items: center;
+    // display: flex;
+    // align-items: center;
     // padding-top: 10px;
     /* Top padding */
     // padding-bottom: 10px;
@@ -407,7 +412,7 @@ a.btn {
 }
 
 .logo {
-    margin: -25px;
+    // margin: -25px;
     font-size: 2.3rem;
     font-family: macan-bold, Helvetica Neue, Helvetica, Arial, sans-serif;
     letter-spacing: -4px;
