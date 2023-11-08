@@ -16,7 +16,7 @@
 
 .gig-list {
     padding: 0;
-    margin-bottom: 0;
+    margin-bottom: 32px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     justify-content: flex-start;
