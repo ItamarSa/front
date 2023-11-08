@@ -2,8 +2,10 @@
     // bottom: -100px;
     display: inline-block;
     margin-left: 17px;
-    position: relative;
+    position: fixed;
     z-index: 9999;
+    top: 110px;
+    right: 15px;
 
     .msg-wrapper {
         width: fit-content;

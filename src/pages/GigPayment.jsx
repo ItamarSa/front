@@ -74,10 +74,12 @@ export function GigPayment() {
     async function onAddOrder() {
         try {
             const order =  await orderService.getOrder(gig)
+            console.log('order:', order)
             const savedOrder = await addOrder(order)
+            console.log('order saved:', order)
             showSuccessMsg(`Order added (id: ${savedOrder._id})`)
             socketService.emit(SOCKET_EVENT_NEW_ORDER,gig)
-            navigate('/gig')
+            navigate('/')
         } catch (err) {
             showErrorMsg('Cannot add order')
         }

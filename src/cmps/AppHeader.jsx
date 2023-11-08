@@ -401,7 +401,7 @@ export function AppHeader() {
                                                         <div className="order-info-section">
                                                             <br />
                                                             <div className="seller" >
-                                                                <span >Seller : {' ' + order.seller.username}</span>
+                                                                <span >Seller : {' ' + order.gig.owner.username}</span>
                                                             </div>
                                                             <br />
                                                             <div className="status">
