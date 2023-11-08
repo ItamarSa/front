@@ -221,14 +221,14 @@ export function HomePage() {
           
         </div>
         <div className='explore'>
-          <img src='../../src/assets/img/explore.jpg' alt="" />
+          <img src='https://res.cloudinary.com/dzqnyehxn/image/upload/v1699473999/wn6kst2tyof4lvvyajye.jpg' alt="" />
         </div>
       <div className='mobile-gigs-container'>
       <div className='mobile-gigs-first'>
     <GigListMobile gigs={gigs} slidesToShow={1.5} slidesToScroll={3} gigsTitle={"Recently viewed & more"} />
   </div>
   <div className='explore'>
-          <img src='../../src/assets/img/exp.jpg' alt="" />
+          <img src='https://res.cloudinary.com/dzqnyehxn/image/upload/v1699474226/yqqykaaby82cnjptprdh.jpg' alt="" />
         </div>
   <div className='mobile-gigs-seconde'>
     <GigListMobile gigs={gigs} slidesToShow={2.5} slidesToScroll={3} gigsTitle={'What new on Fiver?'}/>
