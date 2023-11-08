@@ -395,20 +395,30 @@
         border: 1px solid #ddd;
 
         .order-profile-item {
-            display: flex;
-            flex-direction: row;
 
-            .img-main {
-                // display: flex;
-                // align-items: center;
-                padding: 5px;
+            // display: flex;
+            // flex-direction: row;
+            .order-wrapper {
                 border-bottom: 2px solid #dadbdd;
 
-                .order-profile-imgs {
-                    width: 10vw;
-                    display: flex;
-                    align-items: center;
+                .img-main {
+                    // display: flex;
+                    // align-items: center;
+                    flex: 1 1;
+                    padding: 5px;
+                    border-bottom: 2px solid #dadbdd;
+
+                    .order-profile-imgs {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                    }
                 }
+            }
+
+            .order-details {
+                flex: 2 1;
+                padding: 15px 0;
             }
 
             // align-items: center;
@@ -426,6 +436,7 @@
                     object-fit: fill;
                     border-radius: 4px;
                     margin-right: 20px;
+                    border-bottom: 10px solid #dadbdd;
                 }
 
                 .seller-imgs {
@@ -439,37 +450,55 @@
             .order-info {
                 padding: 5px;
                 font-family: macan-regular !important;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
+
                 font-size: em(18px);
                 background-color: #fff;
                 border-bottom: 2px solid #dadbdd;
                 width: 100%;
                 width: 100%;
+                line-height: 24px;
+                font-size: 22px;
+                border-bottom: 3px solid gray;
 
-                .txt-review {
-                    margin-bottom: 3px;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    margin-left: 5px;
+                // .txt-review {
+                //     margin-bottom: 3px;
+                //     display: flex;
+                //     flex-direction: row;
+                //     justify-content: space-between;
+                //     margin-left: 5px;
 
 
 
-                    .place-start {
-                        width: 300px;
-                        font-family: macan-regular;
-                        font-weight: 400;
-                        color: #404145;
+                .place-start {
+                    width: 50%;
+                    font-family: macan-regular;
+                    // font-weight: 400;
+                    color: #404145;
+                    // flex: 1 1;
 
-                    }
-
-                    img {
-                        width: 10%;
-                    }
                 }
+
+                .txt-review .stat {
+                    display: flex;
+                    justify-content: space-between;
+                    // flex: 2 1;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 250px;
+                    display: inline-block;
+                    padding-left: 85px;
+                    width: 50%;
+
+
+
+                    // font-weight: 400;
+                }
+
             }
+
+            // }
+
 
         }
 
@@ -538,20 +567,24 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     // padding: 15px;
-    width: 200px;
+    // width: 67%;
+    font-size: 30px;
+    // height: 50px;
     margin: 0;
+
+    .status {
+        font-size: 30px;
+        font-family: macan-semibold;
+        padding: 25px;
+        line-height: 50px;
+    }
 
     .username {
 
         color: black !important;
     }
 
-    .status {
-        font-size: 16px;
-        font-family: macan-semibold;
-        padding: 25px;
 
-    }
 
     /* Add more custom styles as needed */
 }
@@ -723,6 +756,7 @@
         }
     }
 }
+//////////////////////////////////////////////
 
 @media (max-width: 768px) {
     .user-container {
@@ -732,58 +766,91 @@
         margin: 0 auto;
         align-items: center;
         overflow-x: visible !important;
+        
+     
 
         .main-content {
-            padding-left: 40px;
+            // padding-left: 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 410px;
+            width: 360px;
+            margin-left: 50px;
 
 
             .react-seller-gigs {
                 display: none;
 
+                
 
+
+            }
+            .grey {
+                height: 10px;
+                margin: 0;
+                padding: 0;
             }
 
             .orders {
-                min-width: 405px;
+                min-width: 350px;
 
                 .order-profile-container {
                     // width: 100%;
-                    margin-right: -5px;
+                    // margin-right: -5px;
 
                     .order-profile-item {
                         height: 200px;
-                        .order-profile-imgs {
-                            width: 30vw;
+
+                        .order-wrapper {
+                            height: 80%;
+
+                            .img-main {
+                                display: none;
+                            }
+
+                            .order-details {
+                                padding-left: 10px;
+
+                                .truncate-text {
+                                    max-width: 200px;
+                                }
+                            }
+
+                            .txt-review {
+                                margin: 0;
+                                font-size: 14px;
+
+                                &.stat {
+                                    display: flex;
+                                    align-items: center
+                                }
+
+                                .desc {
+                                    display: none
+                                }
+
+                            }
+
                         }
 
-                        .txt-review {
-                            margin: 0;
-                            font-size: 14px;
+                        .place-start {
+                            // width: 190px;
 
-                            &.stat {
-                                display: flex;
-                                align-items: center
-                            }
+                            .custom-select {
+                                // max-width: 90px;
 
-                            .desc {
-                                display: none
-                            }
-
-                            .place-start {
-                                width: 90px;
-
-                                .custom-select {
-                                    max-width: 90px;
+                                .status {
+                                    font-size: 20px;
                                 }
                             }
                         }
 
                     }
                 }
+            }
+
+            .grey {
+                margin-top: 30px;
             }
         }
     }
@@ -802,3 +869,4 @@
         }
     }
 }
+

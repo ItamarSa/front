@@ -59,7 +59,7 @@ export function GigPreview({ gig, onRemoveGig, onUpdateGig ,isCurrentUser }) {
 
                 </div>
             </div>
-            <button onClick={() =>onRemoveGig(gig._id)}>❎</button>
+            {/* <button onClick={() =>onRemoveGig(gig._id)}>❎</button> */}
 
             <div className="mini-user-preview">
                 <div className="left-content">

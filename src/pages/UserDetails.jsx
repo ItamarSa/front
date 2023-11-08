@@ -25,25 +25,25 @@ export function UserDetails() {
 
 
 
-//   useEffect(() => {
-//     console.log("hellow");
-//     // Emit the SOCKET_EMIT_USER_WATCH event when the component loads
-//     socketService.emit(SOCKET_EMIT_USER_WATCH, params.id,()=>{
-//     showSuccessMsg('Someone watched your profile');
+  //   useEffect(() => {
+  //     console.log("hellow");
+  //     // Emit the SOCKET_EMIT_USER_WATCH event when the component loads
+  //     socketService.emit(SOCKET_EMIT_USER_WATCH, params.id,()=>{
+  //     showSuccessMsg('Someone watched your profile');
 
-//     })
+  //     })
 
-//     // Listen for the SOCKET_USER_WATCH_SUCCESS event and show the success message
-//     socketService.on(SOCKET_USER_WATCH_SUCCESS, () => {
-//       console.log('Received SOCKET_USER_WATCH_SUCCESS event');
-//     });
+  //     // Listen for the SOCKET_USER_WATCH_SUCCESS event and show the success message
+  //     socketService.on(SOCKET_USER_WATCH_SUCCESS, () => {
+  //       console.log('Received SOCKET_USER_WATCH_SUCCESS event');
+  //     });
 
-//     // Cleanup the event when the component unmounts (optional)
-//     return () => {
-//       socketService.off(SOCKET_EMIT_USER_WATCH);
-//       socketService.off(SOCKET_USER_WATCH_SUCCESS);
-//     };
-// }, [params.id]);
+  //     // Cleanup the event when the component unmounts (optional)
+  //     return () => {
+  //       socketService.off(SOCKET_EMIT_USER_WATCH);
+  //       socketService.off(SOCKET_USER_WATCH_SUCCESS);
+  //     };
+  // }, [params.id]);
 
 
   useEffect(() => {
@@ -328,99 +328,59 @@ export function UserDetails() {
           <div className='grey'></div>
           <div className='orders' >
 
-            <ul className='order-profile-container'>
+            <ul className='order-profile-container clean-list'>
               {orders?.map((order) => (
-                <li className="order-profile-item " key={order._id}>
-                  {/* <div className="main-detils-profile "> */}
-                  {/* <div>
+                <li className="order-profile-item clean-list" key={order._id}>
+                  <div className='order-wrapper flex fs20'>
+                    <div className='img-main flex '>
                       <img className="order-profile-imgs" src={order.imgUrl[0]} alt="" />
-                    </div> */}
-                  {/* <div>
-                      <img className="seller-imgs" src={order.seller.imgUrl} alt="" />
-                    </div> */}
-                  {/* </div> */}
-
-                  <div className='img-main' >
-                    <img className="order-profile-imgs" src={order.imgUrl[0]} alt="" />
-                  </div>
-                  <div className="order-info">
-
-
-                    <div className="txt-review ">
-
-
-
-
-                      <b className='desc'>Description</b>
-                      <div className='place-start'>
+                    </div>
+                    <div className='order-details flex space-between'>
+                      <div className="left-col flex column space-between">
+                        <b className='title desc'>Description</b>
+                        <b className='title'>Ordered</b>
+                        <b className='title'>Buyer</b>
+                        <b className='title'>Price</b>
+                      </div>
+                      <div className="right-col flex column space-between">
                         <span className="truncate-text desc">{order.title}</span>
-                      </div>
-                    </div>
-
-                    <div className="txt-review ">
-
-                      <b>Ordered</b>
-
-
-                      <div className='place-start'>
                         <span >{utilService.timeAgo(new Date(order.createdAt))}</span>
-                      </div>
-
-
-                    </div>
-
-                    <div className='txt-review ' >
-                      <div>
-                        <b>Buyer </b>
-                      </div>
-                      <div className='place-start'>
                         <span >{' ' + order?.buyer.username}</span>
-                      </div>
-                    </div>
-                    <div className='txt-review  '>
-                      <div>
-                        <b className='price'>Price  </b>
-                      </div>
-                      <div className='place-start'>
                         <span >{' ' + order?.price}$</span>
                       </div>
                     </div>
-                    <div className="txt-review stat">
-                      <div>
-                        <span style={{ color: orderService.getStatusColor(order.status) }}>{<b>{order.status}</b>}</span>
-                      </div>
-                      {order.status === "Pending" &&
-                        <div className='place-start'>
-                          <select className='custom-select txt-review  '
-                            value={order?.status}
-                            onChange={(e) => handleStatusChange(e, order._id)}
-                          >
-                            <option className='pending status' value="Pending">Pending</option>
-                            <option className='approve status' value="Approve">Approve</option>
-                            <option className='decline status' value="Decline">Decline</option>
-                          </select>
 
-                        </div>
-                      }
+                  </div>
+
+                  <div className="order-info flex align-center">
+
+
+                    {order.status === "Pending" &&
+                      <div className='place-start'>
+                        <select className='custom-select'
+                          value={order?.status}
+                          onChange={(e) => handleStatusChange(e, order._id)}
+                        >
+                          <option className='pending status' value="Pending">Pending</option>
+                          <option className='approve status' value="Approve">Approve</option>
+                          <option className='decline status' value="Decline">Decline</option>
+                        </select>
+
+                      </div>
+                    }
+
+                    <div className="txt-review stat">
+                      {/* <div>
+                        <span> <b>Status</b></span>
+                      </div> */}
+                      <div className='order-status'>
+                        <span  style={{ color: orderService.getStatusColor(order.status) }}>{<b className='fs30'>{order.status}</b>}</span>
+                      </div>
+
 
 
                     </div>
                   </div>
-
-
-                  {/* <div className='main-detils-profile' >
-                    <div className='select-status'>
-                      
-                  {/* <div className='img-review  '>
-                    <div>
-                      <span><b>Byer Image</b></span> <img className='buyer-img' src={order.buyer.imgUrl} alt="" />
-                    </div>
-                  </div> */}
-                  {/* </div>
-
-                  </div> */}
-
-
 
 
 
