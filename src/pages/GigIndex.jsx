@@ -65,17 +65,16 @@ export function GigIndex() {
 
     useClickOutside(deliveryMenuRef, handleClickOutSide)
     function handleClickOutSide() {
-        console.log('handle click activated')
+        
         if (isDeliveryOpen) {
-            console.log("activating toggle  from handle")
+            
             toggleDeliveryMenu()
         }
     }
     useClickOutside(budgetMenuRef, handleClickOutSideBudget)
     function handleClickOutSideBudget() {
-        console.log('handle click activated')
+        
         if (list) {
-            console.log("activating toggle  from handle")
             toggleBudgetMenu()
         }
     }
@@ -104,7 +103,6 @@ export function GigIndex() {
 
             const tagFilters = filterBy.tags;
             const gigTags = gig.tags?.map(tag => tag.toLowerCase());
-            console.log('gigTags:', gigTags)
 
             if (tagFilters && typeof tagFilters === 'string') {
                 // Check if the gigTags array includes the single tag filter
@@ -153,7 +151,6 @@ export function GigIndex() {
 
 
     async function onRemoveGig(gigId) {
-        console.log('gigId',gigId);
         try {
             await removeGig(gigId)
             showSuccessMsg('Gig removed')
@@ -232,12 +229,10 @@ export function GigIndex() {
     function toggleDeliveryMenu(ev) {
 
         if (ev) ev.stopPropagation()
-        console.log('toggle')
         setTime(!isDeliveryOpen)
     }
     function toggleBudgetMenu(ev) {
         if (ev) ev.stopPropagation()
-        console.log('toggle')
         setList(!list)
     }
     // const handleTimeClick = (e) => {

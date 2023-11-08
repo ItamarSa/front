@@ -1,13 +1,16 @@
 import io from 'socket.io-client'
 import { userService } from './user.service'
+import { showSuccessMsg } from './event-bus.service'
 
 export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg'
 export const SOCKET_EMIT_SEND_MSG = 'chat-send-msg'
 export const SOCKET_EMIT_SET_TOPIC = 'chat-set-topic'
 export const SOCKET_EMIT_USER_WATCH = 'user-watch'
+export const SOCKET_USER_WATCH_SUCCESS = 'user-watch-success'
 export const SOCKET_EVENT_USER_UPDATED = 'user-updated'
 export const SOCKET_EVENT_REVIEW_ADDED = 'review-added'
 export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you'
+export const SOCKET_EVENT_NEW_ORDER = 'new-order'
 
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
@@ -15,7 +18,7 @@ const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
 
 const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
 // export const socketService = createSocketService()
-export const socketService = createDummySocketService()
+export const socketService = createSocketService()
 
 // for debugging from console
 window.socketService = socketService
@@ -30,6 +33,7 @@ function createSocketService() {
       socket = io(baseUrl)
       const user = userService.getLoggedinUser()
       if (user) this.login(user._id)
+      // this.handleNewOrderEvent()
     },
     on(eventName, cb) {
       socket.on(eventName, cb)
@@ -51,8 +55,32 @@ function createSocketService() {
     terminate() {
       socket = null
     },
+    // testNewOrder(gig) {
+    //   console.log('loggedInUser:', loggedInUser)
+    //   try {
+    //     this.emit(SOCKET_EVENT_NEW_ORDER, { gig });
+    //     showSuccessMsg('New order')
+    //   } catch (error) {
+    //     console.error('Error emitting SOCKET_EVENT_NEW_ORDER:', error);
+    //   }
+    // },
+    
+    // handleNewOrderEvent() {
+    //   // Service.emit(SOCKET_EVENT_NEW_ORDER, { gig }),
+    //   this.on(SOCKET_EVENT_NEW_ORDER, ({ gig }) => {
+    //     const loggedInUser = userService.getLoggedinUser();
+    //     console.log('loggedInUser:', loggedInUser)
+    //     if (gig.owner._id === loggedInUser._id) {
+    //       // Trigger your desired action here (e.g., show a success message)
+    //       showSuccessMsg('New order')
+    //       console.log('New order');
+    //     }
+    //   })
+    // }
+    
 
   }
+  
   return socketService
 }
 

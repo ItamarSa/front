@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { store } from '../store/store'
-import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from '../services/socket.service'
+import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH, SOCKET_USER_WATCH_SUCCESS } from '../services/socket.service'
 import { utilService } from '../services/util.service'
 import { GigList } from './GigList'
 import { loadGigsUser, resetFilterBy } from '../store/action/gig.actions'
@@ -25,6 +25,25 @@ export function UserDetails() {
 
 
 
+//   useEffect(() => {
+//     console.log("hellow");
+//     // Emit the SOCKET_EMIT_USER_WATCH event when the component loads
+//     socketService.emit(SOCKET_EMIT_USER_WATCH, params.id,()=>{
+//     showSuccessMsg('Someone watched your profile');
+
+//     })
+
+//     // Listen for the SOCKET_USER_WATCH_SUCCESS event and show the success message
+//     socketService.on(SOCKET_USER_WATCH_SUCCESS, () => {
+//       console.log('Received SOCKET_USER_WATCH_SUCCESS event');
+//     });
+
+//     // Cleanup the event when the component unmounts (optional)
+//     return () => {
+//       socketService.off(SOCKET_EMIT_USER_WATCH);
+//       socketService.off(SOCKET_USER_WATCH_SUCCESS);
+//     };
+// }, [params.id]);
 
 
   useEffect(() => {
@@ -72,11 +91,8 @@ export function UserDetails() {
   async function loadOrders() {
     try {
       const seller = await userService.getById(userId);
-      console.log('seller:', seller)
       const sellerId = seller?._id
-      console.log('seller:', seller)
       const orders = await orderService.query({ sellerId })
-      console.log('orders:', orders)
       setOrders(orders)
     } catch (err) {
       console.log('Had issues loading orders', err)
@@ -85,8 +101,6 @@ export function UserDetails() {
   }
   async function handleStatusChange(e, orderId) {
     const newStatus = e.target.value;
-    console.log('orderId:', orderId); // Check if orderId is correct
-    console.log('newStatus:', newStatus); // Check if newStatus is correct
 
     // Update the order's status in the component state
     setOrders((prevOrders) =>
@@ -115,7 +129,6 @@ export function UserDetails() {
     return <div>Loading user data...</div>
   }
 
-  // console.log('orders:', orders)
 
   return (
     <section className='user-details full'>

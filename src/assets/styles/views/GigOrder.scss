@@ -84,6 +84,7 @@
             /* Hide the scrollbar when not needed */
             scrollbar-width: none;
             -ms-overflow-style: none;
+            height: 100%;
 
             /* Hide the scrollbar thumb and track */
             &::-webkit-scrollbar {
