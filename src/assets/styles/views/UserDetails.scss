@@ -567,9 +567,9 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     // padding: 15px;
-    width: 67%;
+    // width: 67%;
     font-size: 30px;
-    height: 50px;
+    // height: 50px;
     margin: 0;
 
     .status {
@@ -756,6 +756,7 @@
         }
     }
 }
+//////////////////////////////////////////////
 
 @media (max-width: 768px) {
     .user-container {
@@ -765,6 +766,8 @@
         margin: 0 auto;
         align-items: center;
         overflow-x: visible !important;
+        
+     
 
         .main-content {
             // padding-left: 40px;
@@ -772,6 +775,7 @@
             flex-direction: column;
             align-items: center;
             width: 360px;
+            margin-left: 50px;
 
 
             .react-seller-gigs {
@@ -865,3 +869,4 @@
         }
     }
 }
+
