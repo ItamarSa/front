@@ -63,7 +63,6 @@ function formatDateForTimeAgo(date) {
   return date.toISOString();
 }
 function getOrder(gig) {
-  console.log('gig:', gig);
   const status = 'Pending'; // Default status
   const statusColor = getStatusColor(status); // Get the color for the default status
 
@@ -131,14 +130,12 @@ async function updateStatus(orderId, newStatus) {
 
 
 async function save(order) {
-  console.log('orderofsave:', order)
   var savedOrder
   if (order._id) {
     savedOrder = await httpService.put(BASE_URL, order)
   } else {
     // Later, owner is set by the backend
     savedOrder = await httpService.post(BASE_URL, order)
-    console.log('savedOrderofPost:', savedOrder)
   }
   return savedOrder
 }

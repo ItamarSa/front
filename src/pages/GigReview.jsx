@@ -48,7 +48,6 @@ export function GigReview({ gig, starSymbol, scrollAllReviewsRef }) {
         ev.preventDefault();
         const randomStarRating = 4 + utilService.getRandomIntInclusive(0, 10) * 0.1
         const flag = utilService.makeFlag();
-        console.log('flag:', flag)
         const savedReview = await reviewService.add({
             txt: review.txt,
             byUser: review.byUser,
@@ -56,12 +55,10 @@ export function GigReview({ gig, starSymbol, scrollAllReviewsRef }) {
             starRating: randomStarRating,
             flag: flag
         })
-        console.log('savedReview:', savedReview)
         // Update the reviews state with the new review
         setReviews((prevReviews) => [...prevReviews, savedReview]);
         setReview(utilService.getEmptyReview());
         showSuccessMsg('Review saved!');
-        console.log('savedReview:', savedReview)
     }
     async function onRemoveReview(reviewId) {
         try {
@@ -70,7 +67,6 @@ export function GigReview({ gig, starSymbol, scrollAllReviewsRef }) {
             // Update the reviews state by filtering out the removed review
             setReviews((prevReviews) => prevReviews.filter((review) => review._id !== removedReviewId));
             const reviews = await reviewService.query();
-            console.log('reviews:', reviews)
             setReviews(reviews);
             showSuccessMsg('Review removed!');
         } catch (err) {

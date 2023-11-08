@@ -11,8 +11,8 @@ export const reviewService = {
   remove
 }
 
-async function query(filterBy = {}) {
-  return httpService.get(BASE_URL, filterBy);
+async function query(gig = {}) {
+  return httpService.get(BASE_URL, gig);
   // const reviews = await httpService.query();
 
   // // Filter reviews by gigId if provided

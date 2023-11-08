@@ -138,7 +138,6 @@ function makeUser(){
 function makeFlag(size = 1) {
     let flag = ''; // Change from const to let
     const randomIdx = Math.floor(Math.random() * 9)
-    console.log('randomIdx:', randomIdx)
     const flags =
         [
             'https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png',

@@ -5,14 +5,18 @@ import { setGigFilter } from "../store/action/gig.actions"
 import { TextFilter } from "./TextFilter"
 import { TagFilter } from "./TagFilter"
 import { orderService } from "../services/order.service"
-import { showErrorMsg } from "../services/event-bus.service"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { utilService } from "../services/util.service"
 import { UserMsg } from "./UserMsg"
 import { logout } from "../store/action/user.actions"
 import { ModalProvider, useModal } from '../cmps/ModalProvider';
 import { LoginModal } from './LoginModal';
 import { gigService } from "../services/gig.service.local"
+
+import { socketService } from "../services/socket.service"
+
 import { onAddGig } from "../pages/GigIndex"
+
 
 export function AppHeader() {
     const user = userService.getLoggedinUser()
@@ -82,16 +86,35 @@ export function AppHeader() {
     }, [isHomePage])
 
     useEffect(() => {
-       
-        setGigFilter( filter )
+
+        setGigFilter(filter)
     }, [filter])
 
+
+    useEffect(() => {
+        socketService.on("order-received", onOrderReceived)
+        return () => {
+            socketService.off("order-received", onOrderReceived)
+        }
+    }, [])
+    function onOrderReceived(gig) {
+        showSuccessMsg("Order successfully received")
+        console.log('new order:', gig)
+    }
+    // useEffect(() => {
+    //   socketService.emit(SOCKET_EMIT_SET_TOPIC, topic)
+    //   socketService.on(SOCKET_EVENT_ADD_MSG, addMsg)
+    //   return () => {
+    //    socketService.off(SOCKET_EVENT_ADD_MSG, addMsg)
+    //    botTimeoutRef.current && clearTimeout(botTimeoutRef.current)
+    //   }
+    //  }, [])
     async function loadOrders() {
         try {
-            console.log('user:', user)
+
             const buyerId = user._id
             const orders = await orderService.query({ buyerId })
-            console.log('ordersheader:', orders)
+
             setOrders(orders)
         } catch (err) {
             console.log('Had issues loading orders', err)
@@ -122,45 +145,39 @@ export function AppHeader() {
     }, [isModalOpen, isMenuOpen])
 
     const handleScroll = () => {
-        if (window.innerWidth < 800) {
-            setShowFilter(true); // Always show filters when resolution is less than 768px
-        } else if (isHomePage) {
-            if (isHomePage) {
-                if (window.scrollY > 30) {
-                    setTextColor("#62646a")
-                    setScrolling(true)
-                    setScrollingHeader(true)
-                    // document.querySelector(".app-header").classList.add("scrolling")
+        if (isHomePage && window.innerWidth >= 800) {
+            const isScrolled = window.scrollY > 30;
+            const textColor = isScrolled ? "#62646a" : "white";
+            const isScrolling = isScrolled;
+            const isScrollingHeader = isScrolled;
+            const showFilter = isScrolled;
+            // const showTagFilter = isScrolled;
 
-                    if (!showFilter) {
-                        // document.querySelector(".app-header").classList.add("scrolling")
-                        setScrollingHeader(true)
-                    }
-                    if (window.scrollY > 100) {
-                        setShowTagFilter(true)
-                        setShowFilter(true)
-                        // document.querySelector(".app-header").classList.add("scrolling")
-                        setScrollingHeader(true)
-                        setScrollingNav(true)
-                        // document.querySelector(".main-nav").classList.add("scrolling")
-                    } else {
-                        setShowTagFilter(false)
-                        // document.querySelector(".main-nav").classList.remove("scrolling")
-                        setScrollingNav(false)
-                    }
-                } else {
-                    setShowFilter(false)
-                    setScrolling(false)
-                    setShowTagFilter(false)
-                    setTextColor("white")
-                    setScrollingHeader(false)
-                    // document.querySelector(".app-header").classList.remove("scrolling")
-                    // document.querySelector(".main-nav").classList.remove("scrolling")
-                    setScrollingNav(false)
-                }
+            setTextColor(textColor);
+            setScrolling(isScrolling);
+            setScrollingHeader(isScrollingHeader);
+
+            if (!showFilter) {
+                setScrollingHeader(isScrollingHeader);
+            }
+
+            if (window.scrollY > 100) {
+                secondScroll()
+            } else {
+                CloseHeader()
             }
         }
-    }
+    };
+
+    useEffect(() => {
+        if (isHomePage) {
+            window.addEventListener('scroll', handleScroll);
+            return () => {
+                window.removeEventListener('scroll', handleScroll);
+            };
+        }
+    },
+        [isHomePage]);
     function handleFilterChange(value, location) {
         if (location === "tags") {
             const filterToUpdate = { ...filter, tags: value }
@@ -194,7 +211,18 @@ export function AppHeader() {
     }
 
 
+    function secondScroll() {
 
+        setShowTagFilter(true);
+        setShowFilter(true);
+        setScrollingHeader(true);
+        setScrollingNav(true);
+    }
+    function CloseHeader() {
+        setShowTagFilter(false);
+        setScrollingNav(false);
+        setShowFilter(false);
+    }
 
 
 
@@ -273,10 +301,10 @@ export function AppHeader() {
                                             </div>
 
                                             {
-                                                    isMenuOpen && <aside className="bottom place-left">
-                                                <div className="tip" style={{ left: "calc(100% - 16px)" }}>
-                                                </div>
-                                               
+                                                isMenuOpen && <aside className="bottom place-left">
+                                                    <div className="tip" style={{ left: "calc(100% - 16px)" }}>
+                                                    </div>
+
                                                     <ul className="nav-popover-items-content" style={{ width: "auto" }}>
                                                         <li className="profile">
                                                             {/* <a href="/my_profile" className="nav-link">Profile</a> */}
@@ -289,8 +317,8 @@ export function AppHeader() {
                                                         </li>
                                                     </ul>
 
-                                            </aside>
-                                                }
+                                                </aside>
+                                            }
                                         </span>
 
 
