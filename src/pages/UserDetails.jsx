@@ -374,7 +374,7 @@ export function UserDetails() {
                         <span> <b>Status</b></span>
                       </div> */}
                       <div className='order-status'>
-                        <span style={{ color: orderService.getStatusColor(order.status) }}>{<b className='fs30'>{order.status}</b>}</span>
+                        <span style={{ color: orderService.getStatusColor(order.status) }}>{<b className='fs22'>{order.status}</b>}</span>
                       </div>
 
 
