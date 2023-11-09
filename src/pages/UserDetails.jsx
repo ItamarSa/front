@@ -80,7 +80,7 @@ export function UserDetails() {
     setNewImgUrl(uploadedImgUrl)
 
     setUser({ ...user, imgUrl: uploadedImgUrl })
-    await userService.update({ _id: user._id, imgUrl: uploadedImgUrl })
+    await userService.update({ _id: user._id, imgUrl: uploadedImgUrl, username: username })
     store.dispatch(updateUserImageUrl(uploadedImgUrl));
 
 
@@ -374,7 +374,7 @@ export function UserDetails() {
                         <span> <b>Status</b></span>
                       </div> */}
                       <div className='order-status'>
-                        <span  style={{ color: orderService.getStatusColor(order.status) }}>{<b className='fs30'>{order.status}</b>}</span>
+                        <span style={{ color: orderService.getStatusColor(order.status) }}>{<b className='fs30'>{order.status}</b>}</span>
                       </div>
 
 

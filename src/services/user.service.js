@@ -41,11 +41,11 @@ function remove(userId) {
     return httpService.delete(`user/${userId}`)
 }
 
-async function update({_id, imgUrl }) {
+async function update({_id, imgUrl , username}) {
     // const user = await storageService.get(STORAGE_KEY, _id);
-
+    console.log('username', username)
    
-    const userToUpdate={_id,imgUrl}
+    const userToUpdate={_id,imgUrl, username}
     const user = await httpService.put(`user/${_id}`,userToUpdate);
 
     // Optionally, update the imgUrl if provided
