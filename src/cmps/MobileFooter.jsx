@@ -2,9 +2,14 @@ import { Link } from "react-router-dom";
 import { CategoriesCmp } from "./CategoriesCmp";
 import { loadGigs } from "../store/action/gig.actions";
 import { userService } from "../services/user.service";
+import { HiOutlineHome } from 'react-icons/hi';
+import { AiOutlineTable } from 'react-icons/ai';
+import { BiSearchAlt } from 'react-icons/bi';
+import { HiOutlineClipboardList } from 'react-icons/hi';
+import { LuUserCircle2 } from 'react-icons/lu';
 
 export function MobileFooter() {
-const user =userService.getLoggedinUser()
+    const user = userService.getLoggedinUser()
 
 
     return (
@@ -12,17 +17,17 @@ const user =userService.getLoggedinUser()
             <div className="container main-container">
                 <div className="footer-nav">
                     <Link className="nav-link" to='/'>
-                    <i className="fa-solid fa-house-chimney"></i>
+                        <h3 className="fa-solid clean-list"><HiOutlineHome /></h3>
                     </Link>
                     <Link className="nav-link" to='/gigs'>
-                        <i className="fa-solid fa-table-list"></i>
+                        <h3 className="fa-solid clean-list"><AiOutlineTable /></h3>
                     </Link>
                     <Link className="nav-link" to='/gig/category'>
-                        <i className="fa-solid fa-magnifying-glass"></i>
+                        <h3 className="fa-solid clean-list"><BiSearchAlt /></h3>
                     </Link>
-                    <div className="li nav-link"><i className="fa-solid fa-clipboard-list"></i> </div>
+                    <h3 className="fa-solid clean-list"><HiOutlineClipboardList /></h3>
                     <Link className="li nav-link" to={`user/${user?._id}`}>
-                        <i className="fa-solid fa-circle-user"></i>
+                    <h3 className="fa-solid clean-list"><LuUserCircle2 /></h3>
                     </Link>
                 </div>
             </div>
