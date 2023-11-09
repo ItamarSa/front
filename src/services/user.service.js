@@ -103,7 +103,7 @@ async function signup(userCred) {
             level: userCred.level,
             store: `@${userCred.username}shop`,
             level: utilService.makeLevel(),
-            response: utilService.getRandomIntInclusive(1, 7),
+            response: utilService.getRandomIntInclusive(2, 6),
             delivery: utilService.getRandomIntInclusive(1, 14),
             queue: utilService.getRandomIntInclusive(1, 45),
             reviews: utilService.getRandomIntInclusive(150, 450),

@@ -53,7 +53,7 @@ export function GigCard({ gig, starSymbol, scrollToReviews }) {
                 <h2>What people loved about this seller</h2>
                 <button onClick={scrollToReviews}>See all reviews</button>
             </div>
-            <div className='details-mini-review'> add mini reviews </div> <br /><br />
+            <div className='details-mini-review'> {/*add mini reviews*/} </div> <br /><br />
             <GigDescription gig={gig} />
         </div>
     )

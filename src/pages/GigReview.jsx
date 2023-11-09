@@ -217,13 +217,13 @@ export function GigReview({ gig, starSymbol, scrollAllReviewsRef }) {
                                 <div className="review-header-container flex align-center">
                                     <div className="user-img">
                                         <div className='img flex align-center'>
-                                            <img className='user-img' src={gig.owner.imgUrl} alt='user-img' />
+                                            <img className='user-img' src={utilService.makeUser()[1]} alt='user-img' />
                                         </div>
 
                                     </div>
                                     <div className="reviewer-user-details flex column">
                                         <div className="reviewer-detail flex">
-                                            {review.byUser.username}
+                                            {utilService.makeUser()[0]}
                                         </div>
                                         <div className="reviewer-sub-detail flex align-center">
                                             <img className="flag" src={review.flag[0]} alt="US" />
@@ -244,7 +244,7 @@ export function GigReview({ gig, starSymbol, scrollAllReviewsRef }) {
                                                     </span>
                                                 ))}
                                             </div>
-                                            <b className="rate-score flex">{review.score} 4.6</b>
+                                            <b className="rate-score flex">{review.starRating}</b>
                                         </div>
                                         <span className="inline-divider"></span>
                                         <span className="review-date flex">{utilService.timeAgo(new Date(review.createdAt))}</span>

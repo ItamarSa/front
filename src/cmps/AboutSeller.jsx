@@ -36,7 +36,7 @@ export function AboutSeller({ gig, starSymbol, scrollContactMeRef }) {
                     <ul className="user-stats clean-list flex">
                         <li>From <strong>{gig.owner.from}</strong></li>
                         <li>Member since <strong>{utilService.timeAgo(new Date(gig.owner.createdAt))}</strong></li>
-                        <li>Avg. response time <strong>{gig.owner.response}</strong></li>
+                        <li>Avg. response time <strong>{gig.owner.response} hours</strong></li>
                         <li>Last delivery <strong>about {gig.owner.delivery} hours</strong></li>
                         <li>Languages <strong>English{gig.owner.languages}</strong></li>
                     </ul>
