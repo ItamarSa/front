@@ -6,7 +6,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 10px;
+    
     z-index: 999;
     /* Add a z-index to make it appear above other content */
     transform: translateY(0);
@@ -19,6 +19,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 10px;
+        
 
         .fa-house-chimney {
             color: #1dbf73;

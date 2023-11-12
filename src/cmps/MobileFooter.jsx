@@ -9,7 +9,7 @@ const user =userService.getLoggedinUser()
 
     return (
         <footer className="sticky-footer">
-            <div className="container main-container">
+            <div className="container">
                 <div className="footer-nav">
                     <Link className="nav-link" to='/'>
                     <i className="fa-solid fa-house-chimney"></i>
