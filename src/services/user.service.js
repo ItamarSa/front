@@ -47,6 +47,7 @@ async function update({_id, imgUrl , username}) {
    
     const userToUpdate={_id,imgUrl, username}
     const user = await httpService.put(`user/${_id}`,userToUpdate);
+    console.log('user', user)
 
     // Optionally, update the imgUrl if provided
     // if (imgUrl) {

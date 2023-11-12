@@ -80,7 +80,7 @@ export function UserDetails() {
     setNewImgUrl(uploadedImgUrl)
 
     setUser({ ...user, imgUrl: uploadedImgUrl })
-    await userService.update({ _id: user._id, imgUrl: uploadedImgUrl, username: username })
+    await userService.update({ _id: user._id, imgUrl: uploadedImgUrl, username: user.username })
     store.dispatch(updateUserImageUrl(uploadedImgUrl));
 
 
