@@ -46,7 +46,16 @@
 @media (max-width: 768px) {
 
   .gigs {
-    padding-left: 8px;
+    // padding-left: 8px;
+    .list-head {
+      padding-top: 130px;
+  }
+  main{
+
+    .sort-option{
+      padding: 10px 1px ;
+    }
+  }
   }
 
 

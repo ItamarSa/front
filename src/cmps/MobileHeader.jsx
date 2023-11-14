@@ -13,6 +13,13 @@ import { logout } from "../store/action/user.actions"
 
 export function MobileHeader() {
     const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
+    const [inputValue, setInputValue] = useState('');
+
+
+    const handleLogoClick = () => {
+        setInputValue(''); // Resetting the input value
+    };
+
 
     const user = useSelector((storeState) => storeState.userModule.user)
     console.log('user:', user)
@@ -59,7 +66,7 @@ export function MobileHeader() {
             <div className="main-header-container">
                 <div className="container-header">
                     <div>
-                        <Link className="btn" title="home" to="/">
+                        <Link className="btn" title="home" to="/" onClick={handleLogoClick}>
                             <h1 className={"logo"}>Tenner</h1>
                         </Link>
                     </div>
@@ -75,7 +82,7 @@ export function MobileHeader() {
                 </div>
                 <div className="filter-header">
                     <div className="search-text">
-                        <TextFilter handleFilterChange={handleFilterChange} />
+                        <TextFilter handleFilterChange={handleFilterChange} value={inputValue} />
                     </div>
                 </div>
             </div>

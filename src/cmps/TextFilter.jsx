@@ -66,7 +66,7 @@ export function TextFilter({ filterBy, handleFilterChange }) {
     // onSetFilter(filterByText)
     // Reset the filter value
     handleFilterChange(filterByText,"txt")
-    // setFilterByText({ txt: "" });
+    setFilterByText('');
   }
 
   function updateURL(params) {

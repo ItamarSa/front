@@ -17,16 +17,16 @@
 @media (max-width: 768px) {
   .main-container {
     display: grid;
-    grid-template-columns: minmax(em(8px), 1fr) minmax(0, 380px);
+    grid-template-columns: minmax(15px, 15px) minmax(380px, 380px)minmax(15px, 15px);
     justify-content: center;
     align-items: center;
-    // .full {
-    //   grid-column: 2;
-    // }
+    .full {
+      grid-column: 1 / -1;
+    }
   
-    // :not(.full) {
-    //   grid-column: 2;
-    // }
+    :not(.full) {
+      grid-column: 2;
+    }
   }
 }
 
