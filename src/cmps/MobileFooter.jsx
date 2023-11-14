@@ -7,10 +7,16 @@ import { AiOutlineTable } from 'react-icons/ai';
 import { BiSearchAlt } from 'react-icons/bi';
 import { HiOutlineClipboardList } from 'react-icons/hi';
 import { LuUserCircle2 } from 'react-icons/lu';
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 export function MobileFooter() {
     const user = useSelector((storeState) => storeState.userModule.user)
+    const [selectedButton, setSelectedButton] = useState(null)
+
+    const handleButtonClick = (buttonName) => {
+        setSelectedButton(buttonName);
+      }
     
     
     return (
@@ -18,17 +24,17 @@ export function MobileFooter() {
             <div className="container main-container">
                 <div className="footer-nav">
                     <Link className="nav-link" to='/'>
-                        <h3 className="fa-solid clean-list"><HiOutlineHome /></h3>
+                        <h3 className={`fa-solid clean-list ${selectedButton ==='home' ? 'selected' : ''}`} onClick={() => handleButtonClick('home')} ><HiOutlineHome /></h3>
                     </Link>
                     <Link className="nav-link" to='/gigs'>
-                        <h3 className="fa-solid clean-list"><AiOutlineTable /></h3>
+                        <h3 className={`fa-solid clean-list ${selectedButton ==='gigs' ? 'selected' : ''}`} onClick={() => handleButtonClick('gigs')} ><AiOutlineTable /></h3>
                     </Link>
                     <Link className="nav-link" to='/gig/category'>
-                        <h3 className="fa-solid clean-list"><BiSearchAlt /></h3>
+                    <h3 className={`fa-solid clean-list ${selectedButton ==='category' ? 'selected' : ''}`} onClick={() => handleButtonClick('category')} ><BiSearchAlt /></h3>
                     </Link>
-                    <h3 className="fa-solid clean-list"><HiOutlineClipboardList /></h3>
+                    <h3 className={`fa-solid clean-list ${selectedButton ==='orders' ? 'selected' : ''}`} onClick={() => handleButtonClick('orders')} ><HiOutlineClipboardList /></h3>
                     <Link className="li nav-link" to={`user/${user?._id}`}>
-                    <h3 className="fa-solid clean-list"><LuUserCircle2 /></h3>
+                    <h3 className={`fa-solid clean-list ${selectedButton ==='user' ? 'selected' : ''}`} onClick={() => handleButtonClick('user')} ><LuUserCircle2 /></h3>
                     </Link>
                 </div>
             </div>
