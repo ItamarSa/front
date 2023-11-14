@@ -112,7 +112,7 @@ export function AppHeader() {
     async function loadOrders() {
         try {
 
-            const buyerId = user._id
+            const buyerId = user?._id
             const orders = await orderService.query({ buyerId })
 
             setOrders(orders)

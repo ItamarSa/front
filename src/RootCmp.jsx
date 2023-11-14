@@ -19,6 +19,7 @@ import { store } from './store/store'
 import { ModalProvider } from './cmps/ModalProvider'
 import { MobileFooter } from './cmps/MobileFooter'
 import { CategoriesCmp } from './cmps/CategoriesCmp'
+import { MobileHeader } from './cmps/MobileHeader'
 
 export function RootCmp() {
 
@@ -26,6 +27,7 @@ export function RootCmp() {
         <Provider store={store}>
         <div className='main-container full '>
         <ModalProvider>
+            <MobileHeader/>
             <AppHeader /> 
             {/* <main className='full'> */}
             <UserMsg/>

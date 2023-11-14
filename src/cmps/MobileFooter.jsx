@@ -7,14 +7,15 @@ import { AiOutlineTable } from 'react-icons/ai';
 import { BiSearchAlt } from 'react-icons/bi';
 import { HiOutlineClipboardList } from 'react-icons/hi';
 import { LuUserCircle2 } from 'react-icons/lu';
+import { useSelector } from "react-redux";
 
 export function MobileFooter() {
-    const user = userService.getLoggedinUser()
-
-
+    const user = useSelector((storeState) => storeState.userModule.user)
+    
+    
     return (
         <footer className="sticky-footer">
-            <div className="container">
+            <div className="container main-container">
                 <div className="footer-nav">
                     <Link className="nav-link" to='/'>
                         <h3 className="fa-solid clean-list"><HiOutlineHome /></h3>
