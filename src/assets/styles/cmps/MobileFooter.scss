@@ -47,15 +47,19 @@
         }
 
         .fa-solid {
-            color: #1dbf73;
+            color: $clr2;
             font-size: 45px;
+
+            &.selected{
+                color: #1dbf73;
+            }
         }
     }
 }
 
 .sticky-footer {
     padding-top: 25px
-    /* Move the container up by its own height */
+        /* Move the container up by its own height */
 }
 
 
