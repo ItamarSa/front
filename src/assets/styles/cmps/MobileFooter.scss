@@ -68,36 +68,8 @@
         display: none;
     }
 }
-@media (max-width: 768px) {
-    .tip {
-        left: calc(100% - 16px);
-        border-bottom-color: rgba(0, 0, 0, .25);
-        border-top-width: 0;
-        top: auto; /* Remove the negative top value */
-        bottom: -11px; /* Add a negative bottom value */
-        border-width: 10px;
-        border-color: transparent;
-        border-style: solid;
-        content: "";
-        display: block;
-        height: 0;
-        position: absolute;
-        width: 0;
-
-        &::after {
-            border-bottom-color: #fff;
-            top: auto; /* Remove the positive top value */
-            bottom: 1px; /* Add a positive bottom value */
-            border-top-width: 0;
-            transform: translateX(-50%);
-            border-width: 10px;
-            border-color: transparent;
-            border-style: solid;
-            content: "";
-            display: block;
-            height: 0;
-            position: absolute;
-            width: 0;
-        }
+@media (min-width: 768px) {
+    .container {
+        display: none;
     }
 }
