@@ -41,13 +41,12 @@ function remove(userId) {
     return httpService.delete(`user/${userId}`)
 }
 
-async function update({_id, imgUrl , username}) {
+async function update({_id, imgUrl }) {
     // const user = await storageService.get(STORAGE_KEY, _id);
-    console.log('username', username)
+
    
-    const userToUpdate={_id,imgUrl, username}
+    const userToUpdate={_id,imgUrl}
     const user = await httpService.put(`user/${_id}`,userToUpdate);
-    console.log('user', user)
 
     // Optionally, update the imgUrl if provided
     // if (imgUrl) {
@@ -76,6 +75,7 @@ async function login(userCred) {
         if (user) {
             return saveLocalUser(user)
         }
+        //emitosetchattopic of user id 
     } catch (err) {
         console.log('Had issues in login', err)
         showErrorMsg('Cannot login')
@@ -104,7 +104,7 @@ async function signup(userCred) {
             level: userCred.level,
             store: `@${userCred.username}shop`,
             level: utilService.makeLevel(),
-            response: utilService.getRandomIntInclusive(2, 6),
+            response: utilService.getRandomIntInclusive(1, 7),
             delivery: utilService.getRandomIntInclusive(1, 14),
             queue: utilService.getRandomIntInclusive(1, 45),
             reviews: utilService.getRandomIntInclusive(150, 450),
@@ -129,15 +129,8 @@ async function signup(userCred) {
     }
 
     async function logout() {
-        // return await httpService.post('auth/logout')
-        try {
-            await httpService.post('auth/logout')
-            // sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-            sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-        } catch (err) {
-            console.log('Had issues in logout', err)
-        }
-        // return await httpService.post('auth/logout')
+        sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+        return await httpService.post('auth/logout')
     }
 
     // async function changeScore(by) {

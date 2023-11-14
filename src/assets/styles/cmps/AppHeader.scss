@@ -105,6 +105,7 @@
                                     align-items: center;
                                     border-radius: 50%;
                                     height: 1em;
+                                    width: 1em;
 
                                     justify-content: center;
                                     margin: 0;
@@ -380,8 +381,9 @@
 }
 @media (max-width: 768px) {
     .app-header {
-        max-width: 360px;
-       background-color: #fff;
+        display: none;
+    //     max-width: 360px;
+    //    background-color: #fff;
         // font-size: 24px;
     }
 }

@@ -8,16 +8,17 @@ import { BiSearchAlt } from 'react-icons/bi';
 import { HiOutlineClipboardList } from 'react-icons/hi';
 import { LuUserCircle2 } from 'react-icons/lu';
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export function MobileFooter() {
-    const user = userService.getLoggedinUser()
+    const user = useSelector((storeState) => storeState.userModule.user)
     const [selectedButton, setSelectedButton] = useState(null)
 
     const handleButtonClick = (buttonName) => {
         setSelectedButton(buttonName);
       }
-
-
+    
+    
     return (
         <footer className="sticky-footer">
             <div className="container main-container">

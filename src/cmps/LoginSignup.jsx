@@ -7,7 +7,7 @@ import { utilService } from '../services/util.service'
 import { socketService , SOCKET_EMIT_SET_TOPIC} from '../services/socket.service'
 // import { ImgUploader } from './ImgUploader'
 
-export function LoginSignup(props) {
+export function LoginSignup({closeModal}) {
     const [credentials, setCredentials] = useState({
         username: '',
         password: '',
@@ -57,6 +57,7 @@ export function LoginSignup(props) {
 
     function onLogin(ev = null) {
         if (ev) ev.preventDefault()
+        closeModal()
         if (!credentials.username) return
         log(credentials)
         clearState()
@@ -73,6 +74,7 @@ export function LoginSignup(props) {
 
     function onSignup(ev = null) {
         if (ev) ev.preventDefault()
+        closeModal()
         if (!credentials.username || !credentials.password || !credentials.email) return
         sign(credentials)
         clearState()
@@ -99,8 +101,8 @@ export function LoginSignup(props) {
         <div className='flex flex-col qeqNPA2'>
             <section className='_5WljZku m-b-24'>
                 <section className="_5rRovJw">
-                    <h4 className="vzvFWqe">Sign in to your account</h4>
-                    <p className="_0vcWjbi p-t-8 _2VpvlgD"><span>Don’t have an account? <span onClick={toggleSignup} role="button" className="UxOgbC1">{!isSignup ? 'Join here' : 'Sign in'}</span></span></p>
+                    <h4 className="vzvFWqe">{isSignup ? 'Create a new account' : 'Sign in to your account'}</h4>
+                    <p className="_0vcWjbi p-t-8 _2VpvlgD"><span>{isSignup ? 'Already' : 'Don’t'} have an account? <span onClick={toggleSignup} role="button" className="UxOgbC1">{!isSignup ? 'Join here' : 'Sign in'}</span></span></p>
                 </section>
                 <div className='field'>
                     <section className='field-label'>
