@@ -19,7 +19,7 @@ import { onAddGig } from "../pages/GigIndex"
 
 
 export function AppHeader() {
-    const user = userService.getLoggedinUser()
+    const user = useSelector((storeState) => storeState.userModule.user)
     // const user = useSelector((storeState) => storeState.userModule.user)
     const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
     const [showFilter, setShowFilter] = useState(false)
@@ -146,8 +146,8 @@ export function AppHeader() {
 
     const handleScroll = () => {
         if (window.innerWidth >= 800) {
+            const isScrolled = window.scrollY > 30;
             if (isHomePage) {
-                const isScrolled = window.scrollY > 30;
                 const textColor = isScrolled ? "#62646a" : "white";
                 const isScrolling = isScrolled;
                 const isScrollingHeader = isScrolled;
