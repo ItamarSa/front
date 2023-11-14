@@ -41,12 +41,12 @@ function remove(userId) {
     return httpService.delete(`user/${userId}`)
 }
 
-async function update({_id, imgUrl }) {
+async function update({ _id, imgUrl, username }) {
     // const user = await storageService.get(STORAGE_KEY, _id);
 
-   
-    const userToUpdate={_id,imgUrl}
-    const user = await httpService.put(`user/${_id}`,userToUpdate);
+
+    const userToUpdate = { _id, imgUrl, username }
+    const user = await httpService.put(`user/${_id}`, userToUpdate);
 
     // Optionally, update the imgUrl if provided
     // if (imgUrl) {
@@ -66,7 +66,7 @@ async function update({_id, imgUrl }) {
 
 async function login(userCred) {
     console.log('userCred:', userCred)
-    
+
     try {
         // const users = await storageService.query(STORAGE_KEY)
         // const user = users.find(user => user.username === userCred.username)
@@ -82,85 +82,85 @@ async function login(userCred) {
     }
 }
 async function signup(userCred) {
-        // if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-        if (!userCred.imgUrl && userCred.username) {
-            userCred.imgUrl = `https://via.placeholder.com/128/A866EC/fff?text=${userCred.username[0].toUpperCase()}`;
-        } else if (!userCred.imgUrl) {
-            userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png';
-        }
+    // if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+    if (!userCred.imgUrl && userCred.username) {
+        userCred.imgUrl = `https://via.placeholder.com/128/A866EC/fff?text=${userCred.username[0].toUpperCase()}`;
+    } else if (!userCred.imgUrl) {
+        userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png';
+    }
 
 
-        // userCred.score = 10000
-        const flag = utilService.makeFlag();
-        console.log();
-        userCred = {
-            _id: userCred._id,
-            email: userCred.email,
-            username: userCred.username,
-            password: userCred.password,
-            createdAt:new Date(),
-            imgUrl: userCred.imgUrl,
-            from: flag[1],
-            level: userCred.level,
-            store: `@${userCred.username}shop`,
-            level: utilService.makeLevel(),
-            response: utilService.getRandomIntInclusive(1, 7),
-            delivery: utilService.getRandomIntInclusive(1, 14),
-            queue: utilService.getRandomIntInclusive(1, 45),
-            reviews: utilService.getRandomIntInclusive(150, 450),
-            languages: utilService.makeRandomLanguages(),
-            aboutMe: utilService.makeRandomUserAbout()
-        }
-        console.log('userCred:', userCred)
+    // userCred.score = 10000
+    const flag = utilService.makeFlag();
+    console.log();
+    userCred = {
+        _id: userCred._id,
+        email: userCred.email,
+        username: userCred.username,
+        password: userCred.password,
+        createdAt: new Date(),
+        imgUrl: userCred.imgUrl,
+        from: flag[1],
+        level: userCred.level,
+        store: `@${userCred.username}shop`,
+        level: utilService.makeLevel(),
+        response: utilService.getRandomIntInclusive(1, 7),
+        delivery: utilService.getRandomIntInclusive(1, 14),
+        queue: utilService.getRandomIntInclusive(1, 45),
+        reviews: utilService.getRandomIntInclusive(150, 450),
+        languages: utilService.makeRandomLanguages(),
+        aboutMe: utilService.makeRandomUserAbout()
+    }
+    console.log('userCred:', userCred)
+    // const user = await storageService.post(STORAGE_KEY, userCred)
+    // const user = await httpService.post('auth/signup', userCred)
+    try {
+        const registeredUser = await httpService.post(`auth/signup`, userCred)
+        console.log('registeredUser:', registeredUser)
         // const user = await storageService.post(STORAGE_KEY, userCred)
-        // const user = await httpService.post('auth/signup', userCred)
-        try {
-            const registeredUser = await httpService.post(`auth/signup`, userCred)
-            console.log('registeredUser:', registeredUser)
-            // const user = await storageService.post(STORAGE_KEY, userCred)
-            
-            if (registeredUser) {
-                return saveLocalUser(registeredUser)
-            }
-        } catch (err) {
-            console.log('Had issues in signup', err)
-            showErrorMsg('Cannot sign up')
+
+        if (registeredUser) {
+            return saveLocalUser(registeredUser)
         }
+    } catch (err) {
+        console.log('Had issues in signup', err)
+        showErrorMsg('Cannot sign up')
     }
+}
 
-    async function logout() {
-        sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-        return await httpService.post('auth/logout')
-    }
+async function logout() {
+    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    return await httpService.post('auth/logout')
+}
 
-    // async function changeScore(by) {
-    //     const user = getLoggedinUser()
-    //     if (!user) throw new Error('Not loggedin')
-    //     user.score = user.score + by || by
-    //     await update(user)
-    //     return user.score
-    // }
+// async function changeScore(by) {
+//     const user = getLoggedinUser()
+//     if (!user) throw new Error('Not loggedin')
+//     user.score = user.score + by || by
+//     await update(user)
+//     return user.score
+// }
 
-    function formatDateForTimeAgo(date) {
-        return date.toISOString();
-    }
-    function saveLocalUser(user) {
-
-
-        sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-        return user
-    }
-
-    function getLoggedinUser() {
-        return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
-    }
+function formatDateForTimeAgo(date) {
+    return date.toISOString();
+}
+function saveLocalUser(user) {
 
 
-    // (async () => {
-    //     // await userService.signup({email: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
-    //     // await userService.signup({email: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
-    //     // await userService.signup({email: 'Muki G', username: 'muki', password:'123', score: 10000})
-    // })()
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    return user
+}
+
+function getLoggedinUser() {
+    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+}
+
+
+// (async () => {
+//     // await userService.signup({email: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
+//     // await userService.signup({email: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
+//     // await userService.signup({email: 'Muki G', username: 'muki', password:'123', score: 10000})
+// })()
 
 
 
