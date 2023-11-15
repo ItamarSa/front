@@ -22,7 +22,6 @@ export function MobileHeader() {
 
 
     const user = useSelector((storeState) => storeState.userModule.user)
-    console.log('user:', user)
     const [filter, setFilter] = useState(filterBy)
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 

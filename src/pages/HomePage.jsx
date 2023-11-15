@@ -98,7 +98,7 @@ export function HomePage() {
 
     } catch (err) {
       console.log('err:', err)
-      showErrorMsg('Cannot load toys')
+      showErrorMsg('Cannot load gigs')
     }
   }, [])
 
@@ -244,7 +244,7 @@ export function HomePage() {
       </div>
       <div className='category'>
 
-        <CategoriesCmp />
+        <CategoriesCmp  handleFilterChange={handleFilterChange} />
       </div>
     </>
   )
