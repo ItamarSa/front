@@ -244,7 +244,7 @@ export function HomePage() {
       </div>
       <div className='category'>
 
-        <CategoriesCmp  handleFilterChange={handleFilterChange} />
+        <CategoriesCmp/>
       </div>
     </>
   )

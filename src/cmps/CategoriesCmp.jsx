@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { utilService } from "../services/util.service";
 import { gigService } from "../services/gig.service.local";
+import { useDispatch, useSelector } from "react-redux";
+import { loadGigs, setGigFilter } from "../store/action/gig.actions";
 
 const gigTags = gigService.getGigTags().map(String); // Ensure all values are strings
 const newTag = "LifeStyle";
@@ -21,27 +23,50 @@ if (!gigTags.includes(newTag)) {
     "Photography": "https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/photography.0cf5a3f.svg"
   };
 
-export function CategoriesCmp({ handleFilterChange }) {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const searchParams = new URLSearchParams(location.search);
-  const filterByFromURL = searchParams.get("tags") || "";
-
-  const [filterByTags, setFilterByTags] = useState(filterByFromURL);
-
-  const debouncedUpdateURL = utilService.debounce(updateURL, 500);
-
-  function handleTagButtonClick(tag) {
-    debouncedUpdateURL({ tags: tag });
-    setFilterByTags(tag);
-    handleFilterChange(tag, "tags");
-  }
-
-  function updateURL(params) {
-    const queryString = new URLSearchParams(params).toString();
-    navigate(`/gigs?${queryString}`);
-  }
+export function CategoriesCmp() {
+    const dispatch = useDispatch();
+    const filterBy = useSelector((storeState) => storeState.gigModule.filterBy);
+    const [filterByTags, setFilterByTags] = useState(filterBy.tags);
+  
+    const location = useLocation();
+    const navigate = useNavigate();
+  
+    useEffect(() => {
+            try {
+              loadGigs()
+        
+            } catch (err) {
+              console.log('err:', err)
+              showErrorMsg('Cannot load gigs')
+            }
+          }, [])
+  
+    useEffect(() => {
+        setFilterByTags(filterBy.tags);
+    }, [filterBy.tags]);
+  
+    const debouncedUpdateURL = utilService.debounce(updateURL, 500);
+  
+    function handleFilterChange(value, location) {
+      if (location === 'tags') {
+        const updatedFilter = { ...filterBy, tags: value };
+        setGigFilter(updatedFilter);
+      } else {
+        const updatedFilter = { ...filterBy, txt: value };
+        setGigFilter(updatedFilter);
+      }
+    }
+  
+    function handleTagButtonClick(tag) {
+      debouncedUpdateURL({ tags: tag });
+      setFilterByTags(tag);
+      handleFilterChange(tag, 'tags');
+    }
+  
+    function updateURL(params) {
+      const queryString = new URLSearchParams(params).toString();
+      navigate(`/gigs?${queryString}`);
+    }
 
   return (
     <div className="main-catagories">
