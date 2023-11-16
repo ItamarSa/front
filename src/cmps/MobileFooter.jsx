@@ -32,7 +32,9 @@ export function MobileFooter() {
                     <Link className="nav-link" to='/gig/category'>
                     <h3 className={`fa-solid clean-list ${selectedButton ==='category' ? 'selected' : ''}`} onClick={() => handleButtonClick('category')} ><BiSearchAlt /></h3>
                     </Link>
+                    <Link className="nav-link" to='/gig/order'>
                     <h3 className={`fa-solid clean-list ${selectedButton ==='orders' ? 'selected' : ''}`} onClick={() => handleButtonClick('orders')} ><HiOutlineClipboardList /></h3>
+                    </Link>
                     <Link className="li nav-link" to={`user/${user?._id}`}>
                     <h3 className={`fa-solid clean-list ${selectedButton ==='user' ? 'selected' : ''}`} onClick={() => handleButtonClick('user')} ><LuUserCircle2 /></h3>
                     </Link>

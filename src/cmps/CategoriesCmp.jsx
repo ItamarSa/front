@@ -5,7 +5,7 @@ import { gigService } from "../services/gig.service.local";
 import { useDispatch, useSelector } from "react-redux";
 import { loadGigs, setGigFilter } from "../store/action/gig.actions";
 
-const gigTags = gigService.getGigTags().map(String); // Ensure all values are strings
+const gigTags = gigService.getGigTags().map(String)
 const newTag = "LifeStyle";
 
 if (!gigTags.includes(newTag)) {
